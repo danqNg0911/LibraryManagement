@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import javax.swing.text.html.ImageView;
+
 public class Controller {
     @FXML
     private Label result;
@@ -13,6 +15,8 @@ public class Controller {
     private long number2 = 0;
     private String operator;
     private boolean start = true;
+    private ImageView loginLogo;;
+
     public void processNumber(ActionEvent event) {
         if (start) {
             result.setText("");

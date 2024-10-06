@@ -12,7 +12,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 500);
 
-        stage.setTitle("Hello!");
+        stage.setTitle("Ulib Library Management");
         stage.setScene(scene);
         stage.show();
     }
