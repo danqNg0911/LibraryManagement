@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.Controller">
    <children>
-      <TextField fx:id="usernameField" layoutX="350.0" layoutY="144.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="field" layoutX="350.0" layoutY="144.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="350.0" layoutY="115.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
       <Label layoutX="350.0" layoutY="204.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
       <Button fx:id="button" layoutX="350.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Sign In" />
@@ -24,9 +24,9 @@
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="350.0" layoutY="68.0" prefHeight="19.0" prefWidth="200.0" text="Ulib Library Management | Login" textFill="#0000007c" />
-      <PasswordField fx:id="passwordField" layoutX="350.0" layoutY="232.0" prefHeight="25.0" prefWidth="200.0" />
+      <PasswordField fx:id="field" layoutX="350.0" layoutY="232.0" prefHeight="25.0" prefWidth="200.0" />
       <Hyperlink layoutX="444.0" layoutY="257.0" prefHeight="24.0" prefWidth="106.0" text="Forgot Password ?" />
-      <Button fx:id="button_create_new_account" layoutX="350.0" layoutY="377.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="200.0" text="Create new account" onAction="#handleCreateNewAccount"/>
+      <Button fx:id="button_create_new_account" layoutX="350.0" layoutY="377.0" mnemonicParsing="false" onAction="#handleCreateNewAccount" prefHeight="29.0" prefWidth="200.0" text="Create new account" />
       <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
          <children>
             <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
