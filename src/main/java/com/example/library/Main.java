@@ -9,12 +9,17 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/Sign_In.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 500);
-
+        stylesheet("stylesheet (css)/style.css", scene);
+        stylesheet("stylesheet (css)/login.css", scene);
         stage.setTitle("Ulib Library Management");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void stylesheet(String filepath, Scene scene) {
+        scene.getStylesheets().add(getClass().getResource(filepath).toExternalForm());
     }
 
     public static void main(String[] args) {

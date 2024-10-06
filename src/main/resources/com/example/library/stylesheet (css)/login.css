@@ -1,0 +1,42 @@
+
+#button {
+    -fx-background-radius: 50px;
+}
+
+#button:pressed {
+    -fx-background-color: #ff6694;
+}
+
+#button_create_new_account {
+    -fx-font-size: 13px;
+    -fx-background-color: transparent;
+    -fx-background-color: #fff;
+    -fx-text-fill: #00c4cc;
+    -fx-background-radius: 50;
+    -fx-font-weight: bold;
+    -fx-cursor: pointer;
+    -fx-transition: opacity 0.2 ease;
+    -fx-padding: 5px;
+    -fx-border-color: #00c4cc;
+    -fx-border-radius: 50;
+}
+
+#button_create_new_account:pressed {
+    -fx-text-fill: #fff;
+    -fx-background-color: #ff6694;
+}
+
+#field {
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+}
+
+#field:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 50;
+}
+
+#body_left_login {
+    -fx-background-color: linear-gradient(to left, #8ddadc, #fabcce);
+}

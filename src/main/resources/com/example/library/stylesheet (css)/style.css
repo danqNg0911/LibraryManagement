@@ -1,0 +1,22 @@
+
+#button {
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-background-color: #00c4cc;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-cursor: pointer;
+    -fx-transition: opacity 0.2 ease;
+}
+
+#button:hover{
+    -fx-opacity: 0.8;
+}
+
+
+
+
+
+
+
+
