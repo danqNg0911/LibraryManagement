@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.fxml.User">
+   <children>
+      <VBox layoutX="52.0" layoutY="143.0" prefHeight="314.0" prefWidth="144.0">
+         <children>
+            <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" text="Dashboard" />
+            <Button fx:id="LibraryButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Library" />
+            <Button fx:id="collectionButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" text="Collection" />
+            <Button fx:id="settingButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" text="Setting" />
+         </children>
+      </VBox>
+      <ImageView fx:id="logo" fitHeight="55.0" fitWidth="118.0" layoutX="60.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../java/com/example/library/assets/Ulib_logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Line endX="700.0" endY="116.89289855957031" startX="93.60000610351562" startY="116.89289855957031" />
+      <Label fx:id="dashboardTitle" layoutX="238.0" layoutY="123.0" prefHeight="40.0" prefWidth="117.0" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="selectCollectionLabel" layoutX="238.0" layoutY="169.0" text="Select Collection">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="262.0" layoutY="288.0" prefHeight="208.0" prefWidth="390.0" title="Unique items added by rolling year">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <MenuButton fx:id="accountMenu" layoutX="652.0" layoutY="64.0" mnemonicParsing="false" text="Account">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Account Settings" />
+          <MenuItem mnemonicParsing="false" text="Helps" />
+            <MenuItem mnemonicParsing="false" text="Log out" />
+        </items>
+      </MenuButton>
+      <Label fx:id="accountName" layoutX="583.0" layoutY="64.0" prefHeight="26.0" prefWidth="55.0" text="Acc name" />
+   </children>
+</AnchorPane>
