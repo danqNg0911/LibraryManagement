@@ -39,4 +39,5 @@
 
 #body_left_login {
     -fx-background-color: linear-gradient(to left, #8ddadc, #fabcce);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 5, 5);
 }
