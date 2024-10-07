@@ -42,3 +42,24 @@
     -fx-background-color: linear-gradient(to left, #8ddadc, #fabcce);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 5, 5);
 }
+
+.field-birthday {
+    -fx-background-color: #f0f0f0;  /* Màu nền chung */
+    -fx-border-radius: 50;           /* Bo góc */
+}
+
+.field-birthday:hover {
+    -fx-opacity: 0.8;
+}
+
+.field-birthday-popup {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #6a9cf5;
+}
+
+
+.field-birthday:selected {
+    -fx-background-color: #00c4cc;
+}
+
+

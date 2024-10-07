@@ -1,16 +1,18 @@
 package com.example.library;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class RegisterController {
-    @FXML
-    private RadioButton adminRadioButton;
 
     @FXML
     private Pane body_left_login;
@@ -31,8 +33,26 @@ public class RegisterController {
     private PasswordField setPasswordField;
 
     @FXML
-    private RadioButton userRadioButton;
+    private TextField usernameTextField;
+
 
     @FXML
-    private TextField usernameTextField;
+    private RadioButton managerRadioButton;
+
+    @FXML
+    private RadioButton readerRadioButton;
+
+    @FXML
+    private ToggleGroup selectUserType;
+
+    public void handleSecurityQuestion(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/SecurityQuestion.fxml"));
+        Scene registerScene = new Scene(fxmlLoader.load(), 600, 500);
+        registerScene.getStylesheets().add(getClass().getResource("stylesheet (css)/style.css").toExternalForm());
+        registerScene.getStylesheets().add(getClass().getResource("stylesheet (css)/login.css").toExternalForm());
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(registerScene);
+        stage.show();
+    }
 }
