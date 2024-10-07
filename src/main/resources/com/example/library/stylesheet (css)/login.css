@@ -1,15 +1,16 @@
 
-#button {
+/* Hiệu ứng Login và Registration */
+
+.button {
     -fx-background-radius: 50px;
 }
 
-#button:pressed {
+.button:pressed {
     -fx-background-color: #ff6694;
 }
 
-#button_create_new_account {
+.button-create_new_account {
     -fx-font-size: 13px;
-    -fx-background-color: transparent;
     -fx-background-color: #fff;
     -fx-text-fill: #00c4cc;
     -fx-background-radius: 50;
@@ -21,17 +22,17 @@
     -fx-border-radius: 50;
 }
 
-#button_create_new_account:pressed {
+.button-create_new_account:pressed {
     -fx-text-fill: #fff;
     -fx-background-color: #ff6694;
 }
 
-#field {
+.field {
     -fx-background-color: #fff;
     -fx-background-radius: 50;
 }
 
-#field:focused {
+.field:focused {
     -fx-background-color: #ffffe0;
     -fx-border-color: #ffcc00;
     -fx-border-radius: 50;
