@@ -27,7 +27,7 @@
       </VBox>
       <ImageView fx:id="logo" fitHeight="55.0" fitWidth="118.0" layoutX="60.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../java/com/example/library/assets/Ulib_logo-removebg-preview.png" />
+            <Image url="@../../../../../java/com/example/library/assets/Ulib_logo-removebg- .png" />
          </image>
       </ImageView>
       <Line endX="700.0" endY="116.89289855957031" startX="93.60000610351562" startY="116.89289855957031" />
