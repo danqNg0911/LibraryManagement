@@ -1,0 +1,24 @@
+
+/* Hiệu ứng chung cho toàn bộ Project */
+
+.button {
+    -fx-font-size: 14px;   /* Cỡ chữ: 14px */
+    -fx-background-color: transparent; /* Màu nền: trong suốt */
+    -fx-background-color: #00c4cc;  /*  Màu nền: #00c4cc  */
+    -fx-text-fill: #fff; /* Màu chữ: #fff */
+    -fx-font-weight: bold; /* Nét chữ: Đậm */
+    -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
+    -fx-transition: opacity 0.2 ease; /* Độ mờ khi trỏ vào button */
+}
+
+.button:hover{
+    -fx-opacity: 0.8; /* Độ mờ */
+}
+
+
+
+
+
+
+
+
