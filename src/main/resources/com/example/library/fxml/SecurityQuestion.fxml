@@ -4,19 +4,20 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.SecurityQuestionController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="body-security_question" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.SecurityQuestionController">
    <children>
       <Label layoutX="210.0" layoutY="67.0" text="SECURITY QUESTION">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="209.0" layoutY="97.0" prefHeight="19.0" prefWidth="200.0" text="Library Manager | Security question" textFill="#0000007c" />
+      <Label alignment="CENTER" layoutX="187.0" layoutY="97.0" prefHeight="19.0" prefWidth="244.0" text="Ulib Library Management | Security question" textFill="#0000007c" />
       <Label layoutX="123.0" layoutY="125.0" prefHeight="18.0" prefWidth="372.0" text="We have some questions about you. Your answers can help you in account security. " textFill="#9c9b9b">
          <font>
             <Font name="System Italic" size="10.0" />
@@ -26,22 +27,25 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="field" layoutX="100.0" layoutY="248.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;red&quot;" />
+      <TextField fx:id="Q1Field" layoutX="100.0" layoutY="248.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;red&quot;" styleClass="field" />
       <Label layoutX="74.0" layoutY="285.0" text="Question 2 : What is your first pet name?">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="field" layoutX="100.0" layoutY="312.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;Teddy&quot;" />
+      <TextField fx:id="Q2Field" layoutX="100.0" layoutY="312.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;Teddy&quot;" styleClass="field" />
       <Label layoutX="74.0" layoutY="182.0" text="Your birhday">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <DatePicker fx:id="birthdayUser" layoutX="174.0" layoutY="178.0" />
+      <DatePicker fx:id="birthdayField" layoutX="174.0" layoutY="178.0" styleClass="field-birthday">
+         <effect>
+            <Glow />
+         </effect></DatePicker>
       <Label layoutX="74.0" layoutY="348.0" text="Question 3 : What is the most impressive movie you have ever seen?">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="field" layoutX="100.0" layoutY="375.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;Di giua troi ruc ro&quot;" />
+      <TextField fx:id="Q3Field" layoutX="100.0" layoutY="375.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;Di giua troi ruc ro&quot;" styleClass="field" />
       <Button fx:id="button" layoutX="252.0" layoutY="427.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Register" />
       <Label layoutX="199.0" layoutY="143.0" prefHeight="18.0" prefWidth="219.0" text="Please give unique answer and don't forge! them!" textFill="#9c9b9b">
          <font>
