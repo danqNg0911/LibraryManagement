@@ -1,5 +1,5 @@
 
-/* Hiệu ứng Login và Registration */
+/* Hiệu ứng Login, Registration và Security Question */
 
 .button {
     -fx-background-radius: 50px;
@@ -43,23 +43,37 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 5, 5);
 }
 
-.field-birthday {
-    -fx-background-color: #f0f0f0;  /* Màu nền chung */
-    -fx-border-radius: 50;           /* Bo góc */
+
+.radio-button-reader:selected {
+    -fx-mark-color: #00c4cc;
 }
 
-.field-birthday:hover {
-    -fx-opacity: 0.8;
+.radio-button-manager:selected {
+    -fx-mark-color: #ff6694;
 }
 
-.field-birthday-popup {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #6a9cf5;
+#body_security_question {
+    -fx-background-color: linear-gradient(to right, #d0b5ba, #a1dfe1);
 }
 
-
-.field-birthday:selected {
-    -fx-background-color: #00c4cc;
+#buttonRegister {
+    -fx-font-size: 14px;   /* Cỡ chữ: 14px */
+    -fx-background-color: transparent; /* Màu nền: trong suốt */
+    -fx-background-color: #fff;  /*  Màu nền: #00c4cc  */
+    -fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #ff6694, #00c4cc);
+    -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #ff6694, #00c4cc);
+    -fx-border-radius: 50;
+    -fx-font-weight: bold; /* Nét chữ: Đậm */
+    -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
+    -fx-transition: opacity 0.2 ease; /* Độ mờ khi trỏ vào button */
 }
 
+#buttonRegister:pressed {
+    -fx-text-fill: #fff;
+    -fx-background-color: #ff6694;
+}
+
+#buttonRegister:hover{
+    -fx-opacity: 0.8; /* Độ mờ */
+}
 

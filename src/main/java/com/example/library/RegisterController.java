@@ -46,13 +46,8 @@ public class RegisterController {
     private ToggleGroup selectUserType;
 
     public void handleSecurityQuestion(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/SecurityQuestion.fxml"));
-        Scene registerScene = new Scene(fxmlLoader.load(), 600, 500);
-        registerScene.getStylesheets().add(getClass().getResource("stylesheet (css)/style.css").toExternalForm());
-        registerScene.getStylesheets().add(getClass().getResource("stylesheet (css)/login.css").toExternalForm());
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(registerScene);
-        stage.show();
+        WindowManager.setStage(stage);
+        WindowManager.addFxmlCss("fxml/SecurityQuestion.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
     }
 }
