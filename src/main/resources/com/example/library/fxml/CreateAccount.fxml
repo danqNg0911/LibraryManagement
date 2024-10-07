@@ -5,6 +5,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,9 +26,12 @@
       <Label layoutX="345.0" layoutY="184.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
       <Label layoutX="345.0" layoutY="250.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
       <Label layoutX="345.0" layoutY="320.0" prefHeight="19.0" prefWidth="200.0" text="Confirm Password" />
-      <RadioButton fx:id="userRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" text="User" />
-      <RadioButton fx:id="adminRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" text="Admin" />
-      <Button fx:id="button" layoutX="345.0" layoutY="436.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Register" />
+      <RadioButton fx:id="readerRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" text="Reader">
+         <toggleGroup>
+            <ToggleGroup fx:id="selectUserType" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="managerRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" text="Manager" toggleGroup="$selectUserType" />
+      <Button fx:id="button" layoutX="345.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleSecurityQuestion" prefHeight="26.0" prefWidth="200.0" text="Next" />
       <PasswordField fx:id="field" layoutX="345.0" layoutY="276.0" prefHeight="26.0" prefWidth="200.0" promptText="Password  (More than 8 characters)" />
       <PasswordField fx:id="field" layoutX="345.0" layoutY="345.0" prefHeight="26.0" prefWidth="200.0" promptText="Confirm Password" />
       <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
