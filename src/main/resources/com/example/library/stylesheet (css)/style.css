@@ -1,4 +1,6 @@
 
+/* Hiệu ứng chung cho toàn bộ Project */
+
 #button {
     -fx-font-size: 14px;   /* Cỡ chữ: 14px */
     -fx-background-color: transparent; /* Màu nền: trong suốt */
