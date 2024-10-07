@@ -14,31 +14,31 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.LoginController">
    <children>
-      <TextField fx:id="field" layoutX="350.0" layoutY="144.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="nameField" layoutX="350.0" layoutY="144.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
       <Label layoutX="350.0" layoutY="115.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
       <Label layoutX="350.0" layoutY="204.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
-      <Button fx:id="button" layoutX="350.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Sign In" />
+      <Button fx:id="buttonSignIn" layoutX="350.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="button" text="Sign In" />
       <Label alignment="CENTER" layoutX="350.0" layoutY="32.0" prefHeight="41.0" prefWidth="200.0" text="LOGIN">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="350.0" layoutY="68.0" prefHeight="19.0" prefWidth="200.0" text="Ulib Library Management | Login" textFill="#0000007c" />
-      <PasswordField fx:id="field" layoutX="350.0" layoutY="232.0" prefHeight="25.0" prefWidth="200.0" />
+      <PasswordField fx:id="passwordField" layoutX="350.0" layoutY="232.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
       <Hyperlink layoutX="444.0" layoutY="257.0" prefHeight="24.0" prefWidth="106.0" text="Forgot Password ?" />
-      <Button fx:id="button_create_new_account" layoutX="350.0" layoutY="377.0" mnemonicParsing="false" onAction="#handleCreateNewAccount" prefHeight="29.0" prefWidth="200.0" text="Create new account" />
+      <Button fx:id="buttonCreateNewAccount" layoutX="350.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCreateNewAccount" prefHeight="29.0" prefWidth="200.0" styleClass="button-create_new_account" text="Create new account" />
       <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
          <children>
-            <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Ulib_logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="84.0" layoutY="259.0" text="Developed by MAGNETeam">
+            <Label layoutX="85.0" layoutY="269.0" text="Developed by NONAME">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Ulib_logo.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
