@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class LoginController {
 
+
     @FXML
     public void handleCreateNewAccount(ActionEvent event) throws IOException {
         // Tải file register.fxml khi người dùng nhấn nút "Create new account"

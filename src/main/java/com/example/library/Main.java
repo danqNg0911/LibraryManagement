@@ -12,6 +12,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         WindowManager.setStage(stage);
         WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        UserJDBC.testConnection();
     }
 
     public static void main(String[] args) {
