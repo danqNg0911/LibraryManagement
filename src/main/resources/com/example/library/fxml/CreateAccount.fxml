@@ -19,21 +19,21 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="345.0" layoutY="78.0" prefHeight="19.0" prefWidth="200.0" text="Ready to a new journey ?" textFill="#0000007c" />
+      <Label alignment="CENTER" layoutX="345.0" layoutY="78.0" prefHeight="19.0" prefWidth="200.0" text="Ulib Library Manger | Register" textFill="#0000007c" />
       <TextField fx:id="nameField" layoutX="345.0" layoutY="143.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
       <Label layoutX="345.0" layoutY="118.0" prefHeight="19.0" prefWidth="200.0" text="Name" />
       <TextField fx:id="usernameField" layoutX="345.0" layoutY="210.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
       <Label layoutX="345.0" layoutY="184.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
       <Label layoutX="345.0" layoutY="250.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
-      <Label layoutX="345.0" layoutY="320.0" prefHeight="19.0" prefWidth="200.0" text="Confirm Password" />
-      <RadioButton fx:id="readerRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" text="Reader">
+      <Label layoutX="344.0" layoutY="333.0" prefHeight="19.0" prefWidth="200.0" text="Confirm Password" />
+      <RadioButton fx:id="readerRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-reader" text="Reader">
          <toggleGroup>
             <ToggleGroup fx:id="selectUserType" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="managerRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" text="Manager" toggleGroup="$selectUserType" />
+      <RadioButton fx:id="managerRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-manager" text="Manager" toggleGroup="$selectUserType" />
       <Button fx:id="button" layoutX="345.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleSecurityQuestion" prefHeight="26.0" prefWidth="200.0" text="Next" />
-      <PasswordField fx:id="passwordField" layoutX="345.0" layoutY="276.0" prefHeight="26.0" prefWidth="200.0" promptText="More than 8 characters" styleClass="field" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="345.0" layoutY="345.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
+      <PasswordField fx:id="passwordField" layoutX="345.0" layoutY="276.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
+      <PasswordField fx:id="confirfmPasswordField" layoutX="344.0" layoutY="360.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
       <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
          <children>
             <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
@@ -48,5 +48,10 @@
             </Label>
          </children>
       </Pane>
+      <Label layoutX="344.0" layoutY="302.0" prefHeight="17.0" prefWidth="200.0" text="More than 8 characters" textFill="#ff1414">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

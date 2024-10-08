@@ -33,7 +33,7 @@ public class WindowManager {
         scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource(cssMainFile)).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource(cssSubFile)).toExternalForm());
 
-        stage.setTitle("Ulib Library Management");
+        stage.setTitle("Ulib Library Manager");
         stage.setScene(scene);
         stage.show();
     }
