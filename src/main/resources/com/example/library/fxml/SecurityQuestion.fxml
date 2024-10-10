@@ -36,13 +36,13 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <DatePicker fx:id="birthdayUser" layoutX="174.0" layoutY="178.0" />
+      <DatePicker fx:id="birthdateField" layoutX="174.0" layoutY="178.0" />
       <Label layoutX="74.0" layoutY="348.0" text="Question 3 : What is the most impressive movie you have ever seen?">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <TextField fx:id="Q3Field" layoutX="100.0" layoutY="375.0" prefHeight="30.0" prefWidth="426.0" promptText="Eg : &quot;Di giua troi ruc ro&quot;" styleClass="field" />
-      <Button fx:id="buttonRegister" layoutX="252.0" layoutY="427.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Register" />
+      <Button fx:id="buttonRegister" layoutX="256.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="26.0" prefWidth="113.0" text="Register" />
       <Label layoutX="199.0" layoutY="143.0" prefHeight="18.0" prefWidth="219.0" text="Please give unique answer and don't forge! them!" textFill="#605656">
          <font>
             <Font name="System Italic" size="10.0" />
@@ -53,5 +53,15 @@
             <Image url="@../assets/Ulib_logo.png" />
          </image>
       </ImageView>
+      <Label fx:id="questionLabel" alignment="CENTER" layoutX="100.0" layoutY="411.0" prefHeight="17.0" prefWidth="426.0" textFill="#ff0909">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="successfulLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="460.0" prefHeight="17.0" prefWidth="426.0" textFill="#037707">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

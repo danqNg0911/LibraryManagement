@@ -60,7 +60,7 @@
     -fx-font-size: 14px;   /* Cỡ chữ: 14px */
     -fx-background-color: transparent; /* Màu nền: trong suốt */
     -fx-background-color: #fff;  /*  Màu nền: #00c4cc  */
-    -fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #ff6694, #00c4cc);
+    -fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #e70346, #047e85);
     -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #ff6694, #00c4cc);
     -fx-border-radius: 50;
     -fx-font-weight: bold; /* Nét chữ: Đậm */
