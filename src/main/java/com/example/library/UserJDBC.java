@@ -99,4 +99,39 @@ public class UserJDBC {
         }
         return false; // Nhập sai mật khẩu
     }
+
+    public static boolean securityQuestionCheck(String username, String Q1, String Q2, String Q3) {
+        String query = "SELECT * FROM users WHERE username = ? AND Q1 = ? AND Q2 = ? AND Q3 = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            sqlStatement.setString(2, Q1);
+            sqlStatement.setString(3, Q2);
+            sqlStatement.setString(4, Q3);
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean passWordUpdate(String username, String password) {
+        String query = "UPDATE `users` SET password = ? WHERE username = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, password);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

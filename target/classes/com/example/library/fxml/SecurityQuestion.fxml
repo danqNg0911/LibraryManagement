@@ -53,14 +53,14 @@
             <Image url="@../assets/Ulib_logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="questionLabel" alignment="CENTER" layoutX="100.0" layoutY="411.0" prefHeight="17.0" prefWidth="426.0" textFill="#e60a0a">
+      <Label fx:id="questionLabel" alignment="CENTER" layoutX="100.0" layoutY="411.0" prefHeight="17.0" prefWidth="426.0" textFill="#ff0909">
          <font>
-            <Font size="10.0" />
+            <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="successfulLabel" contentDisplay="CENTER" layoutX="100.0" layoutY="460.0" prefHeight="17.0" prefWidth="426.0" textFill="#18ff24">
+      <Label fx:id="successfulLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="460.0" prefHeight="17.0" prefWidth="426.0" textFill="#037707">
          <font>
-            <Font size="10.0" />
+            <Font size="11.0" />
          </font>
       </Label>
    </children>

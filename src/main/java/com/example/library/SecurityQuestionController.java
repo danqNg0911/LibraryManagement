@@ -74,7 +74,7 @@ public class SecurityQuestionController {
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     WindowManager.setStage(stage);
                     try {
-                        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+                        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 500);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }

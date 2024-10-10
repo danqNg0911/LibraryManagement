@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 500);
         UserJDBC.testConnection();
     }
 

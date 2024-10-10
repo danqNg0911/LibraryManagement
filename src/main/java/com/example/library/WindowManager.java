@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -59,5 +61,25 @@ public class WindowManager {
             }
         });
         pause.play();
+    }
+
+    // Cửa sổ thông báo không có file CSS
+    public static void alertWindow (Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+
+        alert.show();
+    }
+
+    // Cửa sổ thông báo có file CSS
+    public static void alertWindow (Alert.AlertType alertType, String title, String message, String cssFile) {
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource(cssFile)).toExternalForm());
+        alert.show();
     }
 }
