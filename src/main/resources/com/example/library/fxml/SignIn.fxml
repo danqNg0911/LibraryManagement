@@ -25,7 +25,7 @@
       </Label>
       <Label alignment="CENTER" layoutX="350.0" layoutY="68.0" prefHeight="19.0" prefWidth="200.0" text="Ulib Library Manger | Login" textFill="#0000007c" />
       <PasswordField fx:id="passwordField" layoutX="350.0" layoutY="232.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
-      <Hyperlink fx:id="forgotPasswordLink" layoutX="397.0" layoutY="429.0" onAction="#handleForgotPasswordLink" prefHeight="24.0" prefWidth="106.0" text="Forgot Password ?" />
+      <Hyperlink layoutX="397.0" layoutY="429.0" prefHeight="24.0" prefWidth="106.0" text="Forgot Password ?" onAction="#handleForgotPassword"/>
       <Button fx:id="buttonCreateNewAccount" layoutX="350.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleCreateNewAccountButton" prefHeight="29.0" prefWidth="200.0" styleClass="button-create_new_account" text="Create new account" />
       <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
          <children>

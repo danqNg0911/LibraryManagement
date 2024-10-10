@@ -38,6 +38,18 @@
     -fx-border-radius: 50;
 }
 
+.usernamecheckField {
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+}
+
+#usernamecheckField:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 50;
+}
+
+
 #body_left_login {
     -fx-background-color: linear-gradient(to left, #8ddadc, #fabcce);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 5, 5);
