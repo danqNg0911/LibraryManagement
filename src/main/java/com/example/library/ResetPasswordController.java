@@ -80,24 +80,22 @@ public class ResetPasswordController {
         if (username.isEmpty()) {
             WindowManager.RedWarningLabel(usernameWarning, "This information is required", 2);
         } else if (!UserJDBC.checkUserAccount(username)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("This account does not exist");
-            alert.show();
+            WindowManager.RedWarningLabel(usernameWarning, "This account does not exist", 2);
         } else {
             usernameCheck = true;
         }
 
         // newpassword khong hop le
-        if (newPassword.isEmpty()) {
+        if ((username.isEmpty() || usernameCheck) && newPassword.isEmpty()) {
             WindowManager.RedWarningLabel(newPasswordWarning, "This information is required", 2);
-        } else if (newPassword.length() < 8) {
+        } else if (usernameCheck && newPassword.length() < 8) {
             WindowManager.RedWarningLabel(newPasswordWarning, "Password must be over 8 characters", 2);
         } else {
             passwordCheck = true;
         }
 
         // confirmpasswordField bị trống
-        if (confirmPassword.isEmpty()) {
+        if ((username.isEmpty() || usernameCheck) && confirmPassword.isEmpty()) {
             WindowManager.RedWarningLabel(confirmPasswordWarning, "This information is required", 2);
         } else if (passwordCheck && !confirmPassword.equals(newPassword)){
             WindowManager.RedWarningLabel(confirmPasswordWarning, "Password must be the same", 2);
@@ -107,7 +105,7 @@ public class ResetPasswordController {
 
         // Kiem tra birthdate
         if (birthdateField.getValue() == null) {
-            WindowManager.RedWarningLabel(birthdateWarning, "This information is required", 2);
+            if (username.isEmpty() || usernameCheck) WindowManager.RedWarningLabel(birthdateWarning, "This information is required", 2);
         } else {
             birthdate = birthdateField.getValue().toString();
             if (usernameCheck && !UserJDBC.birthdateCheck(username, birthdate)) {
@@ -118,19 +116,19 @@ public class ResetPasswordController {
         }
 
         // security question bi trong
-        if (question1.isEmpty()) {
+        if ((username.isEmpty() || usernameCheck) && question1.isEmpty()) {
             WindowManager.RedWarningLabel(question1Warning, "This information is required", 2);
         } else {
             question1Check = true;
         }
 
-        if (question2.isEmpty()) {
+        if ((username.isEmpty() || usernameCheck) && question2.isEmpty()) {
             WindowManager.RedWarningLabel(question2Warning, "This information is required", 2);
         } else {
             question2Check = true;
         }
 
-        if (question3.isEmpty()) {
+        if ((username.isEmpty() || usernameCheck) && question3.isEmpty()) {
             WindowManager.RedWarningLabel(question3Warning, "This information is required", 2);
         } else {
             question3Check = true;
