@@ -147,7 +147,7 @@ public class ResetPasswordController {
                 alert.setContentText("Your password has been successfully changed.");
                 alert.show();
 
-                PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(3));
+                PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
                 delay.setOnFinished(e -> {
                     try {
                         // Chuyển đến màn hình đăng nhập

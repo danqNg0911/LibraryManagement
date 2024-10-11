@@ -134,5 +134,4 @@ public class UserJDBC {
         }
         return false;
     }
-
 }
