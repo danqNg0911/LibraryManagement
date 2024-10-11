@@ -39,7 +39,7 @@ public class UserJDBC {
 
     // Thêm tài khoản và kiểm tra sự tồn tại của tài khoản trong database
     public static boolean addAndCheckUserAccount(String name, String username, String password, String birthdate, String Q1, String Q2, String Q3) {
-        String query = "INSERT INTO `user` (name, username, password, birthdate, Q1, Q2, Q3) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO `users` (name, username, password, birthdate, Q1, Q2, Q3) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, name);
             sqlStatement.setString(2, username);
@@ -63,7 +63,7 @@ public class UserJDBC {
 
     // Kiểm tra sự tồn tại của tài khoản trong database
     public static boolean checkUserAccount(String username) {
-        String query = "SELECT * FROM user WHERE username = ?";
+        String query = "SELECT * FROM users WHERE username = ?";
         try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
 
             sqlStatement.setString(1, username);
@@ -83,7 +83,7 @@ public class UserJDBC {
 
     // Kiểm tra tài khoản (đã tồn tại) có được nhâp đúng password không
     public static boolean checkUserAccount(String username, String password) {
-        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
         try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
 
             sqlStatement.setString(1, username);
@@ -128,6 +128,23 @@ public class UserJDBC {
 
             if (rowsUpdated > 0) {
                 return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Kiem tra birthdate
+    public static boolean birthdateCheck(String username, String birthdate) {
+        String query = "SELECT * FROM users WHERE username = ? AND birthdate = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            sqlStatement.setString(2, birthdate);
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();

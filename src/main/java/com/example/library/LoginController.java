@@ -45,7 +45,7 @@ public class LoginController {
             WindowManager.RedWarningLabel(usernameWarning, "Please enter your username !", 2);
         }
         else if (!UserJDBC.checkUserAccount(username)) {
-            WindowManager.RedWarningLabel(usernameWarning, "This account has never existed", 2);
+            WindowManager.RedWarningLabel(usernameWarning, "This account does not exist", 2);
 
         } else {
             // Nếu nhập username đúng nhưng không có password (password để rỗng)
