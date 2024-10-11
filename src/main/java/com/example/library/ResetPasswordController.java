@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -50,96 +51,97 @@ public class ResetPasswordController {
     @FXML
     private Label question3Warning;
 
+    @FXML
+    private DatePicker birthdateField;
+
+    @FXML
+    private Label birthdateWarning;
+
 
     public void handleResetButton(ActionEvent event) throws IOException {
         String username = usernamecheckField.getText();
         String newPassword = newpasswordField.getText();
         String confirmPassword = confirmpasswordField.getText();
+        String birthdate;
         String question1 = Q1_Field.getText();
         String question2 = Q2_Field.getText();
         String question3 = Q3_Field.getText();
-        boolean success = true;
-        boolean userConfirm = false;
+        boolean usernameCheck = false;
+        boolean passwordCheck = false;
+        boolean confirmPasswordCheck = false;
+        boolean birthdateCheck = false;
+        boolean question1Check = false;
+        boolean question2Check = false;
+        boolean question3Check = false;
 
-        // usernameField bị trống
+        boolean success = false;
+
+        // usernameField bị trống hoac khong hop le
         if (username.isEmpty()) {
             WindowManager.RedWarningLabel(usernameWarning, "This information is required", 2);
-            success = false;
+        } else if (!UserJDBC.checkUserAccount(username)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This account does not exist");
+            alert.show();
         } else {
-            success = true;
+            usernameCheck = true;
         }
 
-        // Tài khoản (username) đã tồn tại trên Database
-        if (!UserJDBC.checkUserAccount(username)) {
-            WindowManager.RedWarningLabel(usernameWarning, "This account has existed", 2);
-            success = false;
-        } else {
-            success = true;
-        }
-
-        // newpasswordField bị trống
+        // newpassword khong hop le
         if (newPassword.isEmpty()) {
             WindowManager.RedWarningLabel(newPasswordWarning, "This information is required", 2);
-            success = false;
+        } else if (newPassword.length() < 8) {
+            WindowManager.RedWarningLabel(newPasswordWarning, "Password must be over 8 characters", 2);
         } else {
-            success = true;
+            passwordCheck = true;
         }
 
         // confirmpasswordField bị trống
         if (confirmPassword.isEmpty()) {
             WindowManager.RedWarningLabel(confirmPasswordWarning, "This information is required", 2);
-            success = false;
-        } else {
-            success = true;
-        }
-
-        // newPassword dưới 8 kí tự
-        if (newPassword.length() < 8) {
-            WindowManager.RedWarningLabel(newPasswordWarning, "Password must be over 8 characters", 2);
-            success = false;
-        } else {
-            success = true;
-        }
-
-        // Password và confirmPassword khác nhau
-        if (!confirmPassword.equals(newPassword)) {
+        } else if (passwordCheck && !confirmPassword.equals(newPassword)){
             WindowManager.RedWarningLabel(confirmPasswordWarning, "Password must be the same", 2);
-            success= false;
         } else {
-            success = true;
+            confirmPasswordCheck = true;
         }
 
+        // Kiem tra birthdate
+        if (birthdateField.getValue() == null) {
+            WindowManager.RedWarningLabel(birthdateWarning, "This information is required", 2);
+        } else {
+            birthdate = birthdateField.getValue().toString();
+            if (usernameCheck && !UserJDBC.birthdateCheck(username, birthdate)) {
+                WindowManager.RedWarningLabel(birthdateWarning, "Your birthdate is not correct", 2);
+            } else {
+                birthdateCheck = true;
+            }
+        }
+
+        // security question bi trong
         if (question1.isEmpty()) {
             WindowManager.RedWarningLabel(question1Warning, "This information is required", 2);
-            success = false;
         } else {
-            success = true;
+            question1Check = true;
         }
 
         if (question2.isEmpty()) {
             WindowManager.RedWarningLabel(question2Warning, "This information is required", 2);
-            success = false;
         } else {
-            success = true;
+            question2Check = true;
         }
 
         if (question3.isEmpty()) {
             WindowManager.RedWarningLabel(question3Warning, "This information is required", 2);
-            success = false;
         } else {
-            success = true;
+            question3Check = true;
         }
 
-        if (success) {
-            if (UserJDBC.securityQuestionCheck(username, question1, question2, question3)) {
-                userConfirm = UserJDBC.passWordUpdate(username, newPassword);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You got wrong in one or more security questions");
-                alert.show();
-            }
 
-            if(userConfirm) {
+        // xu li reset password
+        if (usernameCheck && passwordCheck && confirmPasswordCheck && birthdateCheck && question1Check && question2Check && question3Check) {
+            if (UserJDBC.securityQuestionCheck(username, question1, question2, question3)) {
+                UserJDBC.passWordUpdate(username, newPassword);
+
                 // Thông bao doi mat khau thanh cong
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Password Reset");
@@ -159,6 +161,10 @@ public class ResetPasswordController {
                     }
                 });
                 delay.play();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("You got wrong in one or more security questions");
+                alert.show();
             }
         }
     }
