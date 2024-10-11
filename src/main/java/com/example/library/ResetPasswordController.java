@@ -97,7 +97,7 @@ public class ResetPasswordController {
         // confirmpasswordField bị trống
         if ((username.isEmpty() || usernameCheck) && confirmPassword.isEmpty()) {
             WindowManager.RedWarningLabel(confirmPasswordWarning, "This information is required", 2);
-        } else if (passwordCheck && !confirmPassword.equals(newPassword)){
+        } else if (usernameCheck && passwordCheck && !confirmPassword.equals(newPassword)){
             WindowManager.RedWarningLabel(confirmPasswordWarning, "Password must be the same", 2);
         } else {
             confirmPasswordCheck = true;
