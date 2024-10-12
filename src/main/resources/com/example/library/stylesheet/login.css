@@ -2,7 +2,7 @@
 /* Hiệu ứng Login, Registration và Security Question */
 
 .button {
-    -fx-background-radius: 50px;
+    -fx-background-radius: 30px;
 }
 
 .button:pressed {
@@ -38,18 +38,6 @@
     -fx-border-radius: 50;
 }
 
-.usernamecheckField {
-    -fx-background-color: #fff;
-    -fx-background-radius: 50;
-}
-
-#usernamecheckField:focused {
-    -fx-background-color: #ffffe0;
-    -fx-border-color: #ffcc00;
-    -fx-border-radius: 50;
-}
-
-
 #body_left_login {
     -fx-background-color: linear-gradient(to left, #8ddadc, #fabcce);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 5, 5);
@@ -63,6 +51,7 @@
 .radio-button-manager:selected {
     -fx-mark-color: #ff6694;
 }
+
 
 #body_security_question {
     -fx-background-color: linear-gradient(to right, #d0b5ba, #a1dfe1);
@@ -85,29 +74,15 @@
     -fx-background-color: #ff6694;
 }
 
-#buttonRegister:hover {
+#buttonRegister:hover{
     -fx-opacity: 0.8; /* Độ mờ */
 }
 
-#resetPasswordButton {
-    -fx-font-size: 14px;   /* Cỡ chữ: 14px */
-    -fx-background-color: transparent; /* Màu nền: trong suốt */
-    -fx-background-color: #00c4cc;  /*  Màu nền: #00c4cc  */
-    -fx-background-radius: 50px;
-    -fx-text-fill: #fff; /* Màu chữ: #fff */
-    -fx-font-weight: bold; /* Nét chữ: Đậm */
-    -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
-    -fx-transition: opacity 0.2 ease; /* Độ mờ khi trỏ vào button */
+#birthdateField:focused{
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 5;
 }
-
-#resetPasswordButton:pressed {
-    -fx-background-color: #ff6694;
-}
-
-#resetPasswordButton:hover{
-    -fx-opacity: 0.8; /* Độ mờ */
-}
-
 
 
 
