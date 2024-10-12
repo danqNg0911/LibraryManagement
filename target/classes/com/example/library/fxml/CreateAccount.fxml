@@ -5,6 +5,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,18 +19,21 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="345.0" layoutY="78.0" prefHeight="19.0" prefWidth="200.0" text="Library Manager | Create account" textFill="#0000007c" />
-      <TextField fx:id="nameTextField" layoutX="345.0" layoutY="143.0" prefHeight="25.0" prefWidth="200.0" promptText="Name" />
-      <Label layoutX="345.0" layoutY="118.0" prefHeight="19.0" prefWidth="200.0" text="Name" />
-      <TextField fx:id="usernameTextField" layoutX="345.0" layoutY="210.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
-      <Label layoutX="345.0" layoutY="184.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
-      <Label layoutX="345.0" layoutY="250.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
-      <Label layoutX="345.0" layoutY="320.0" prefHeight="19.0" prefWidth="200.0" text="Confirm Password" />
-      <RadioButton fx:id="userRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" text="User" />
-      <RadioButton fx:id="adminRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" text="Admin" />
-      <Button fx:id="registerButton" layoutX="345.0" layoutY="436.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Register" />
-      <PasswordField fx:id="setPasswordField" layoutX="345.0" layoutY="276.0" prefHeight="26.0" prefWidth="200.0" promptText="Password  (More than 8 characters)" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="345.0" layoutY="345.0" prefHeight="26.0" prefWidth="200.0" promptText="Confirm Password" />
+      <Label alignment="CENTER" layoutX="345.0" layoutY="78.0" prefHeight="19.0" prefWidth="200.0" text="Ulib Library Manger | Register" textFill="#0000007c" />
+      <TextField fx:id="nameField" layoutX="344.0" layoutY="128.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+      <Label layoutX="345.0" layoutY="109.0" prefHeight="19.0" prefWidth="200.0" text="Name" />
+      <TextField fx:id="usernameField" layoutX="345.0" layoutY="195.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+      <Label layoutX="344.0" layoutY="170.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
+      <Label layoutX="345.0" layoutY="243.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
+      <Label layoutX="345.0" layoutY="321.0" prefHeight="19.0" prefWidth="200.0" text="Confirm Password" />
+      <RadioButton fx:id="readerRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-reader" text="Reader">
+         <toggleGroup>
+            <ToggleGroup fx:id="selectUserType" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="managerRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-manager" text="Manager" toggleGroup="$selectUserType" />
+      <Button fx:id="nextButton" layoutX="345.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="26.0" prefWidth="200.0" text="Next" />
+      <PasswordField fx:id="passwordField" layoutX="344.0" layoutY="266.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="345.0" layoutY="347.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
       <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
          <children>
             <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
@@ -37,12 +41,37 @@
                   <Image url="@../assets/Ulib_logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="84.0" layoutY="259.0" text="Developed by MAGNETeam">
+            <Label layoutX="84.0" layoutY="259.0" text="Developed by NONAME">
                <font>
                   <Font name="System Italic" size="11.0" />
                </font>
             </Label>
          </children>
       </Pane>
+      <Label fx:id="passwordLabel" layoutX="345.0" layoutY="292.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff1414">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" layoutX="344.0" layoutY="153.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel1" layoutX="345.0" layoutY="244.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="usernameLabel" layoutX="345.0" layoutY="220.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="confirmPasswordLabel" layoutX="344.0" layoutY="373.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
