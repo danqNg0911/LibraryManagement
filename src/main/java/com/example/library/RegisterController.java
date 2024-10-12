@@ -120,8 +120,8 @@ public class RegisterController {
 
 
                 Scene scene = new Scene(root, 600, 500);
-                scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource("stylesheet (css)/style.css")).toExternalForm());
-                scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource("stylesheet (css)/login.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource("stylesheet/style.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource("stylesheet/login.css")).toExternalForm());
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("Ulib Library Manager");

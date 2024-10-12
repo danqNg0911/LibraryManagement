@@ -33,7 +33,7 @@ public class LoginController {
         // Lấy stage hiện tại từ event (khi bấm nút)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 500);
         //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
     }
 
@@ -45,7 +45,7 @@ public class LoginController {
             WindowManager.RedWarningLabel(usernameWarning, "Please enter your username !", 2);
         }
         else if (!UserJDBC.checkUserAccount(username)) {
-            WindowManager.RedWarningLabel(usernameWarning, "This account has never existed", 2);
+            WindowManager.RedWarningLabel(usernameWarning, "This account does not exist", 2);
 
         } else {
             // Nếu nhập username đúng nhưng không có password (password để rỗng)
@@ -62,8 +62,16 @@ public class LoginController {
             else {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
-                WindowManager.addFxmlCss("fxml/UserDashboard.fxml", "stylesheet (css)/style.css", "stylesheet (css)/", 600, 500);
+                WindowManager.addFxmlCss("fxml/UserDashboard.fxml", "stylesheet/style.css", "stylesheet/", 600, 500);
             }
         }
+    }
+
+    @FXML
+    public void handleForgotPasswordLink(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WindowManager.setStage(stage);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 600);
+        //WindowManager.addFxml("fxml/ResetPassword.fxml", 600, 600);
     }
 }
