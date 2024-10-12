@@ -141,7 +141,7 @@ public class ResetPasswordController {
                 UserJDBC.passWordUpdate(username, newPassword);
 
                 // Thông bao doi mat khau thanh cong
-                WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet/login_alert.css");
+                WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet (css)/login_alert.css");
 
                 PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
                 delay.setOnFinished(e -> {
@@ -149,7 +149,7 @@ public class ResetPasswordController {
                         // Chuyển đến màn hình đăng nhập
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         WindowManager.setStage(stage);
-                        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+                        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css) (css)/style.css", "stylesheet (css) (css)/login.css", 600, 500);
                     } catch (IOException ex) {
                         System.out.println("Loi khi chuyen man hinh");
                     }
@@ -157,7 +157,7 @@ public class ResetPasswordController {
                 delay.play();
 
             } else {
-                WindowManager.alertWindow(Alert.AlertType.ERROR, "Warning", "You got wrong in one or more security questions", "stylesheet/login_alert.css");
+                WindowManager.alertWindow(Alert.AlertType.ERROR, "Warning", "You got wrong in one or more security questions", "stylesheet (css)/login_alert.css");
             }
         }
     }

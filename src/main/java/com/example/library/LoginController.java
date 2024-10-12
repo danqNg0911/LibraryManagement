@@ -33,7 +33,7 @@ public class LoginController {
         // Lấy stage hiện tại từ event (khi bấm nút)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 500);
+        WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
         //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
     }
 
@@ -62,7 +62,7 @@ public class LoginController {
             else {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
-                WindowManager.addFxmlCss("fxml/UserDashboard.fxml", "stylesheet/style.css", "stylesheet/", 600, 500);
+                WindowManager.addFxmlCss("fxml/UserDashboard.fxml", "stylesheet (css)/style.css", "stylesheet (css)/userStyles.css", 1200, 800);
             }
         }
     }
@@ -71,7 +71,7 @@ public class LoginController {
     public void handleForgotPasswordLink(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 600);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 600);
         //WindowManager.addFxml("fxml/ResetPassword.fxml", 600, 600);
     }
 }
