@@ -2,7 +2,7 @@
 /* Hiệu ứng Login, Registration và Security Question */
 
 .button {
-    -fx-background-radius: 50px;
+    -fx-background-radius: 30px;
 }
 
 .button:pressed {
@@ -52,6 +52,7 @@
     -fx-mark-color: #ff6694;
 }
 
+
 #body_security_question {
     -fx-background-color: linear-gradient(to right, #d0b5ba, #a1dfe1);
 }
@@ -76,4 +77,12 @@
 #buttonRegister:hover{
     -fx-opacity: 0.8; /* Độ mờ */
 }
+
+#birthdateField:focused{
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 5;
+}
+
+
 
