@@ -1,0 +1,57 @@
+#dashboardButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+#dashboardButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+}
+
+#libraryButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+#libraryButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+}
+
+#collectionButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+#collectionButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+}
+
+#settingButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+#settingButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+}
+
+#mainSce {
+    -fx-background-color: #ffffff;
+}
+
+#accountMenu {
+    -fx-background-color: #38b1ff;
+    -fx-font-weight: bold;
+    -fx-border-radius: 50;
+}
