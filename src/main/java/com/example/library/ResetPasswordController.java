@@ -87,7 +87,7 @@ public class ResetPasswordController {
         // newpassword khong hop le
         if ((username.isEmpty() || usernameCheck) && newPassword.isEmpty()) {
             WindowManager.RedWarningLabel(newPasswordWarning, "This information is required", 2);
-        } else if (usernameCheck && newPassword.length() < 8) {
+        } else if ((username.isEmpty() || usernameCheck) && newPassword.length() < 8) {
             WindowManager.RedWarningLabel(newPasswordWarning, "Password must be over 8 characters", 2);
         } else {
             passwordCheck = true;
@@ -96,7 +96,7 @@ public class ResetPasswordController {
         // confirmpasswordField bị trống
         if ((username.isEmpty() || usernameCheck) && confirmPassword.isEmpty()) {
             WindowManager.RedWarningLabel(confirmPasswordWarning, "This information is required", 2);
-        } else if (usernameCheck && passwordCheck && !confirmPassword.equals(newPassword)){
+        } else if ((usernameCheck || username.isEmpty()) && passwordCheck && !confirmPassword.equals(newPassword)){
             WindowManager.RedWarningLabel(confirmPasswordWarning, "Password must be the same", 2);
         } else {
             confirmPasswordCheck = true;
