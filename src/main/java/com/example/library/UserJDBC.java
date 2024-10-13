@@ -3,9 +3,9 @@ package com.example.library;
 import java.sql.*;
 
 public class UserJDBC {
-    private static final String databaseURL = "jdbc:mysql://localhost:3307/useraccount";
+    private static final String databaseURL = "jdbc:mysql://localhost:3306/librarymanagement";
     private static final String databseUser = "root";
-    private static final String databasePassword = "bongbibo9";
+    private static final String databasePassword = "Hieu@123456";
 
     // Kết nối database user từ mysql workbench với project java
     private static Connection connect() {
@@ -100,6 +100,7 @@ public class UserJDBC {
         return false; // Nhập sai mật khẩu
     }
 
+    // Kiem tra cau hoi bao mat
     public static boolean securityQuestionCheck(String username, String Q1, String Q2, String Q3) {
         String query = "SELECT * FROM users WHERE username = ? AND Q1 = ? AND Q2 = ? AND Q3 = ?";
         try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
@@ -107,6 +108,23 @@ public class UserJDBC {
             sqlStatement.setString(2, Q1);
             sqlStatement.setString(3, Q2);
             sqlStatement.setString(4, Q3);
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Kiem tra birthdate
+    public static boolean birthdateCheck(String username, String birthdate) {
+        String query = "SELECT * FROM users WHERE username = ? AND birthdate = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            sqlStatement.setString(2, birthdate);
             ResultSet resultSet = sqlStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -128,23 +146,6 @@ public class UserJDBC {
 
             if (rowsUpdated > 0) {
                 return true; // Cập nhật thành công
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    // Kiem tra birthdate
-    public static boolean birthdateCheck(String username, String birthdate) {
-        String query = "SELECT * FROM users WHERE username = ? AND birthdate = ?";
-        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
-            sqlStatement.setString(1, username);
-            sqlStatement.setString(2, birthdate);
-            ResultSet resultSet = sqlStatement.executeQuery();
-
-            if (resultSet.next()) {
-                return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
