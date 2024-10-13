@@ -4,8 +4,14 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -59,5 +65,50 @@ public class WindowManager {
             }
         });
         pause.play();
+    }
+
+    // Cửa sổ thông báo không có file CSS
+    public static void alertWindow (Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+
+        alert.show();
+    }
+
+    // Cửa sổ thông báo có file CSS
+    public static void alertWindow (Alert.AlertType alertType, String title, String message, String cssFile) {
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource(cssFile)).toExternalForm());
+        alert.show();
+    }
+
+
+    //
+    public static void handleBackButton(String fxmlFile, ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WindowManager.setStage(stage);
+        WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+    }
+
+    //Chuyen den trang khac
+    public static void handlemoveButton(String fxmlFile, String cssMainFile, String cssSubFile, int width, int height, ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WindowManager.setStage(stage);
+        WindowManager.addFxmlCss(fxmlFile, cssMainFile, cssSubFile, width, height);
+    }
+
+    public static void showPic(MouseEvent mevent, Button button, ImageView imageView) {
+        // Khi chuột di chuyển vào nút
+        button.setOnMouseEntered(mouseEvent -> imageView.setVisible(true));
+    }
+
+    public static void unshowPic(MouseEvent event, Button button, ImageView imageView) {
+        // Khi chuột di chuyển ra ngoài nút
+        button.setOnMouseExited(mouseEvent -> imageView.setVisible(false));
     }
 }

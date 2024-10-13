@@ -11,7 +11,8 @@ module com.example.library {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.desktop;
-    requires java.sql;
+    requires okhttp3;
+    requires com.google.gson;
 
     opens com.example.library to javafx.fxml;
     exports com.example.library;

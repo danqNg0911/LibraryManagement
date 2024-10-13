@@ -17,6 +17,11 @@ import java.util.Objects;
 public class RegisterController {
 
 
+    public Label nameLabel1;
+    public ToggleGroup selectUserType;
+    public Pane body_left_login;
+    public ImageView logo;
+
     @FXML
     private TextField nameField;
 
