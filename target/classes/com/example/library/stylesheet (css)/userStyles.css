@@ -3,11 +3,14 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
+    -fx-alignment: CENTRE_LEFT;
 }
 
 #dashboardButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
+    -fx-alignment: CENTRE_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
 }
 
 #libraryButton {
@@ -15,11 +18,14 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
+    -fx-alignment: CENTRE_LEFT;
 }
 
 #libraryButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
+    -fx-alignment: CENTRE_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
 }
 
 #collectionButton {
@@ -27,11 +33,14 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
+    -fx-alignment: CENTRE_LEFT;
 }
 
 #collectionButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
+    -fx-alignment: CENTRE_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
 }
 
 #settingButton {
@@ -39,11 +48,14 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
+    -fx-alignment: CENTRE_LEFT;
 }
 
 #settingButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
+    -fx-alignment: CENTRE_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
 }
 
 #mainSce {

@@ -9,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -22,6 +20,9 @@ public class SecurityQuestionController {
     private String username;
     private String password;
     private boolean isReader;
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
 
     public void setUserData(String name, String username, String password, boolean isReader) {
         this.name = name;
@@ -64,26 +65,16 @@ public class SecurityQuestionController {
 
         // them vao User Database
         else if (this.isReader){
-            UserJDBC.addAndCheckUserAccount(this.name, this.username, this.password,birthdate, Q1, Q2, Q3);
-
+            userJDBC.addAccountToDatabase(this.name, this.username, this.password,birthdate, Q1, Q2, Q3);
             successfulLabel.setText("Congratulation! You have successfully registered");
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    WindowManager.setStage(stage);
-                    try {
-                        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-            });
-            pause.play();
+            WindowManager.moveToAnotherScene(event, "fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 2,600, 500);
         }
         else {
-
+            if (managerJDBC.checkManagerNameWithBirthdate(this.username, birthdate)) {
+                managerJDBC.addAccountToDatabase(this.name, this.username, this.password,birthdate, Q1, Q2, Q3);
+                successfulLabel.setText("Congratulation! You have successfully registered");
+                WindowManager.moveToAnotherScene(event, "fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 2, 600, 500);
+            }
         }
     }
 }

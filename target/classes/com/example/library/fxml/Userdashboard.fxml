@@ -23,62 +23,6 @@
                 <Image url="@../assets/Ulib_logo.png" />
             </image>
         </ImageView>
-        <Pane layoutY="136.0" prefHeight="664.0" prefWidth="222.0">
-            <children>
-                <HBox layoutX="-2.0" layoutY="25.0" maxHeight="35.0" maxWidth="222.0" minHeight="35.0" minWidth="222.0" prefHeight="35.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="dashboardPic" fitHeight="36.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/Dasb.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="198.0" text="Dashboard">
-                            <font>
-                                <Font size="15.0" />
-                            </font></Button>
-                    </children>
-                </HBox>
-                <HBox layoutX="-2.0" layoutY="60.0" maxHeight="35.0" maxWidth="222.0" minHeight="35.0" minWidth="222.0" prefHeight="35.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="libraryPic" fitHeight="36.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                            <image>
-                                <Image url="@../assets/Lib.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="35.0" prefWidth="193.0" text="Library">
-                            <font>
-                                <Font size="15.0" />
-                            </font></Button>
-                    </children>
-                </HBox>
-                <HBox layoutY="95.0" maxHeight="35.0" maxWidth="222.0" minHeight="35.0" minWidth="222.0" prefHeight="35.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="collectionPic" fitHeight="36.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                            <image>
-                                <Image url="@../assets/Collection.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="35.0" prefWidth="193.0" text="Collection">
-                            <font>
-                                <Font size="15.0" />
-                            </font></Button>
-                    </children>
-                </HBox>
-                <HBox layoutY="130.0" maxHeight="35.0" maxWidth="222.0" minHeight="35.0" minWidth="222.0" prefHeight="35.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="settingPic" fitHeight="36.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                            <image>
-                                <Image url="@../assets/Setting.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="35.0" prefWidth="193.0" text="Setting">
-                            <font>
-                                <Font size="15.0" />
-                            </font></Button>
-                    </children>
-                </HBox>
-            </children>
-        </Pane>
         <AnchorPane fx:id="mainSce" layoutX="221.0" layoutY="-15.0" prefHeight="794.0" prefWidth="986.0">
             <children>
                 <MenuButton fx:id="accountMenu" layoutX="820.0" layoutY="66.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="85.0" text="Account">
@@ -113,9 +57,53 @@
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
+      <Pane layoutY="135.0" prefHeight="664.0" prefWidth="222.0">
+         <children>
+            <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Dasb.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
+               </children>
+            </HBox>
+            <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Lib.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
+               </children>
+            </HBox>
+            <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Collection.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
+               </children>
+            </HBox>
+            <HBox layoutY="161.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Setting.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
     </children>
-    <stylesheets>
-        <URL value="@../stylesheet (css)/userStyles.css" />
-        <URL value="@../stylesheet (css)/userDasStyle.css" />
-    </stylesheets>
+   <stylesheets>
+      <URL value="@../stylesheet%20(css)/userStyles.css" />
+      <URL value="@../stylesheet%20(css)/userDashStyle.css" />
+   </stylesheets>
 </AnchorPane>
