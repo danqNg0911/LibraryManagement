@@ -3,9 +3,9 @@ package com.example.library;
 import java.sql.*;
 
 public class UserJDBC {
-    private static final String databaseURL = "jdbc:mysql://localhost:3307/useraccount";
+    private static final String databaseURL = "jdbc:mysql://127.0.0.1:3306/useraccount";
     private static final String databseUser = "root";
-    private static final String databasePassword = "bongbibo9";
+    private static final String databasePassword = "Haidang0911.";
 
     // Kết nối database user từ mysql workbench với project java
     private static Connection connect() {
@@ -146,23 +146,6 @@ public class UserJDBC {
 
             if (rowsUpdated > 0) {
                 return true; // Cập nhật thành công
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    // Kiem tra birthdate
-    public static boolean birthdateCheck(String username, String birthdate) {
-        String query = "SELECT * FROM users WHERE username = ? AND birthdate = ?";
-        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
-            sqlStatement.setString(1, username);
-            sqlStatement.setString(2, birthdate);
-            ResultSet resultSet = sqlStatement.executeQuery();
-
-            if (resultSet.next()) {
-                return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
