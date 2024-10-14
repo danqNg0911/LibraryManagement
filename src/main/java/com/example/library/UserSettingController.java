@@ -95,7 +95,7 @@ public class UserSettingController {
     }
 
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
-        WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDasStyle.css", 1200, 800, actionEvent);
+        WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
 }
