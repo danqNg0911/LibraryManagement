@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class API {
-    private static final String API_KEY = "AIzaSyCZ9Ee9DuenXY5gvW6IcKh_NhTMnB5U4qM"; // Thay bằng API Key của bạn
+    private static final String API_KEY = "AIzaSyCZ9Ee9DuenXY5gvW6IcKh_NhTMnB5U4qM";
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     // Hàm lấy dữ liệu sách từ Google Books API
@@ -22,7 +22,7 @@ public class API {
             query.append("intitle:").append(title).append("+");
         }
         if (!author.isEmpty()) {
-            query.append("inauthor:").append(author).append("+");
+                query.append("inauthor:").append(author).append("+");
         }
         if (!category.isEmpty()) {
             query.append("subject:").append(category).append("+");
@@ -48,7 +48,7 @@ public class API {
             JsonObject volumeInfo = item.getAsJsonObject().getAsJsonObject("volumeInfo");
             String title = volumeInfo.get("title").getAsString();
             String author = volumeInfo.getAsJsonArray("authors").get(0).getAsString();
-            String category = volumeInfo.get("category").getAsString();
+            String category = volumeInfo.getAsJsonArray("category").get(0).getAsString();
             String imageUrl = volumeInfo.has("imageLinks") ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
 
             // Tạo đối tượng Book và thêm vào danh sách

@@ -66,6 +66,9 @@ public class LoginController {
 
             // Nhập đúng toàn bộ thông tin
             else {
+                // luu username vao class User de su dung cho cac class khac
+                User.setUsername(username);
+
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
                 WindowManager.addFxmlCss("fxml/UserDashboard.fxml", "stylesheet (css)/style.css", "stylesheet (css)/userStyles.css", 1200, 800);

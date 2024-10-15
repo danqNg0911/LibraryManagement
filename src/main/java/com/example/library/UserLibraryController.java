@@ -24,9 +24,6 @@ public class UserLibraryController {
     private MenuButton accountMenu;
 
     @FXML
-    private Label accountName;
-
-    @FXML
     private Button collectionButton;
 
     @FXML
@@ -81,6 +78,13 @@ public class UserLibraryController {
     private TextArea bookInformation;
 
     private List<JsonObject> bookResults = new ArrayList<>();
+
+    @FXML
+    private Label accountName;
+
+    public void initialize() {
+        accountName.setText(User.username);
+    }
 
     public void onSearch(ActionEvent event) {
         String title = titleField.getText().trim();
@@ -141,10 +145,19 @@ public class UserLibraryController {
             authors = String.join(", ", authorList);
         }
 
-        String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
-        String category = volumeInfo.has("categories") ? volumeInfo.get("categories").getAsString() : "No category available";
+        String categories = "Unknown Category";
+        if (volumeInfo.has("categories")) {
+            JsonArray categoriesArray = volumeInfo.getAsJsonArray("categories");
+            List<String> categoryList = new ArrayList<>();
+            for (JsonElement categoryElement : categoriesArray) {
+                categoryList.add(categoryElement.getAsString());
+            }
+            categories = String.join(", ", categoryList);
+        }
 
-        bookInformation.setText("Title: " + title + "\nAuthors: " + authors + "\nCategory: " + category + "\nDescription: " + description);
+        String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
+
+        bookInformation.setText("Title: " + title + "\nAuthors: " + authors + "\nCategory: " + categories + "\nDescription: " + description);
 
         if (volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")) {
             String imageUrl = volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
