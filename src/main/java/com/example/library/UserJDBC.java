@@ -152,4 +152,83 @@ public class UserJDBC {
         }
         return false;
     }
+
+    public static boolean nameUpdate(String username, String name) {
+        if (name == null || name.trim().isEmpty()) {
+            //System.out.println("Tên không hợp lệ!");
+            return false;
+        }
+        String query = "UPDATE `users` SET name = ? WHERE username = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, name);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean securityQuestionsUpdate(String username, String ques1, String ques2, String ques3) {
+        String query = "UPDATE `users` SET ques1 = ?, ques2 = ?, ques3 = ? WHERE username = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, ques1);
+            sqlStatement.setString(2, ques2);
+            sqlStatement.setString(3, ques3);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Lấy tên của user
+    public static String getName(String username) {
+        String query = "SELECT name FROM users WHERE username = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username); // Đặt giá trị của tham số vào câu SQL
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                return name;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Nếu không tìm thấy tài khoản
+    }
+
+    // Lấy mật khẩu của user
+    public static String getPassword(String username) {
+        String query = "SELECT password FROM users WHERE username = ?";
+        try (Connection databaseConnect = connect(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username); // Đặt giá trị của tham số vào câu SQL
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String password = resultSet.getString("password");
+                return password;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Nếu không tìm thấy tài khoản
+    }
+
 }

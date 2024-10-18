@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
@@ -27,6 +28,9 @@ public class UserDashboardController {
 
     @FXML
     private ImageView collectionPic;
+
+    @FXML
+    private ImageView currentAvatar;
 
     @FXML
     private Button dashboardButton;
@@ -47,7 +51,7 @@ public class UserDashboardController {
     private ImageView logo;
 
     @FXML
-    private Pane mainSce;
+    private AnchorPane mainSce;
 
     @FXML
     private BarChart<?, ?> rollingYearChart;
@@ -107,4 +111,10 @@ public class UserDashboardController {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
+    @FXML
+    public void initialize() {
+        // Hiển thị username
+        accountName.setText(User.getName());
+        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+    }
 }

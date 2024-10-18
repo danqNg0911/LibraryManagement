@@ -8,6 +8,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
@@ -35,6 +36,9 @@ public class UserCollectionController {
     private Label collectionTitle;
 
     @FXML
+    private ImageView currentAvatar;
+
+    @FXML
     private Button dashboardButton;
 
     @FXML
@@ -60,7 +64,6 @@ public class UserCollectionController {
 
     @FXML
     private ImageView settingPic;
-
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
@@ -107,4 +110,10 @@ public class UserCollectionController {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
+    @FXML
+    public void initialize() {
+        // Hiển thị username
+        accountName.setText(User.getName());
+        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+    }
 }
