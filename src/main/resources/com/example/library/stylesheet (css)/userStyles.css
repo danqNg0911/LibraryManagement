@@ -3,13 +3,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
 }
 
 #dashboardButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -18,13 +18,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
 }
 
 #libraryButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -33,13 +33,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
 }
 
 #collectionButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -48,13 +48,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
 }
 
 #settingButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE_LEFT;
+    -fx-alignment: LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -65,5 +65,26 @@
 #accountMenu {
     -fx-background-color: #38b1ff;
     -fx-font-weight: bold;
+    -fx-background-radius: 50;
     -fx-border-radius: 50;
+}
+
+#accountMenu:pressed {
+    -fx-background-color: #ff6694;
+}
+
+#accountName {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 0px 5px 0px 5px;
+    -fx-border-color: #696969;
+    -fx-background-radius: 40;
+    -fx-border-radius: 40;
+}
+
+#currentAvaPane {
+    -fx-border-radius: 30;
+    -fx-border-width: 0.5px;
+    -fx-border-color: #696969;
+    -fx-border-style: solid;
 }

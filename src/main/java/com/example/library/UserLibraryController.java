@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class UserLibraryController {
 
     @FXML
     private Label accountName;
+
+    @FXML
+    private ImageView currentAvatar;
 
     @FXML
     private Button collectionButton;
@@ -198,5 +202,13 @@ public class UserLibraryController {
 
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    @FXML
+    public void initialize() {
+        // Hiển thị username
+        accountName.setText(User.getName());
+        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
     }
 }

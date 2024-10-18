@@ -29,7 +29,7 @@
                         <Image url="@../assets/Dasb.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
+                  <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseDragEntered="#showAnimationDas" onMouseDragExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
                </children>
             </HBox>
             <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
@@ -66,17 +66,6 @@
         </Pane>
         <AnchorPane fx:id="mainSce" layoutX="220.0" prefHeight="800.0" prefWidth="987.0">
             <children>
-                <MenuButton fx:id="accountMenu" layoutX="820.0" layoutY="66.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="85.0" text="Account">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Account Settings" />
-                        <MenuItem mnemonicParsing="false" text="Helps" />
-                        <MenuItem mnemonicParsing="false" text="Log out" />
-                    </items>
-                    <font>
-                        <Font size="50.0" />
-                    </font>
-                </MenuButton>
-                <Label fx:id="accountName" layoutX="704.0" layoutY="66.0" prefHeight="43.0" prefWidth="116.0" text="Acc name" />
                 <Label fx:id="collectionTitle" layoutX="39.0" layoutY="63.0" prefHeight="50.0" prefWidth="190.0" text="Collections">
                     <font>
                         <Font name="System Bold" size="34.0" />
@@ -95,7 +84,7 @@
                     </items>
                 </MenuButton>
                 <Button fx:id="addNewClt" layoutX="774.0" layoutY="197.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="132.0" text="Add new collection" />
-                <ImageView fitHeight="43.0" fitWidth="51.0" layoutX="906.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="43.0" fitWidth="51.0" layoutX="906.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/Add.png" />
                     </image>
@@ -105,6 +94,22 @@
                         <Image url="@../assets/Sorted.png" />
                     </image>
                 </ImageView>
+            <MenuButton fx:id="accountMenu" layoutX="812.0" layoutY="86.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="86.0" text="Account">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Account Settings" />
+                  <MenuItem mnemonicParsing="false" text="Helps" />
+                  <MenuItem mnemonicParsing="false" text="Log out" />
+               </items>
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </MenuButton>
+            <Label fx:id="accountName" layoutX="812.0" layoutY="51.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
+            <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/defaultUserAva.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />

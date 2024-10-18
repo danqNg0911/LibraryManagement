@@ -76,6 +76,7 @@ public class LoginController {
 
             // Nhập đúng toàn bộ thông tin
             else {
+                User.setUsername(username);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
 

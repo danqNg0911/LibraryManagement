@@ -4,3 +4,101 @@
     -fx-font-weight: bold;
     -fx-padding: 0px 10px 0px 50px;
 }
+
+#accountStgTitledPane {
+    -fx-border-color: #494949;
+    -fx-border-width: 0.4px;
+}
+
+#accountStgTitledPane > .title {
+    -fx-background-color: #d3d3d3;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTRE_LEFT;
+    -fx-text-fill: #000000;
+    -fx-min-height: 40px;
+    -fx-pref-height: 40px;
+    -fx-max-height: 40px;
+    -fx-transition: opacity 0.2 ease;
+}
+
+#accountStgTitledPane > .title:hover {
+    -fx-background-color: #b5b5b5;
+    -fx-opacity: 0.8;
+}
+
+#accountStgPane {
+    -fx-background-color: #ffffff
+
+}
+
+.subTitledPane > .title {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-min-height: 35px;
+    -fx-pref-height: 35px;
+    -fx-max-height: 35px;
+    -fx-background-color: #f8f8f8;
+    -fx-transition: opacity 0.2 ease;
+}
+
+.subTitledPane > .title:hover {
+    -fx-background-color: #b5b5b5;
+    -fx-opacity: 0.8;
+}
+
+.changeButton {
+    -fx-font-size: 13px;
+    -fx-background-color: #38b1ff;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+.changeButton:pressed {
+    -fx-background-color: #ff6694;
+}
+
+.field {
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+}
+
+.field:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 50;
+}
+
+#newAvatar {
+    -fx-border-color: #696969;
+}
+
+#personalitiesTitledPane {
+    -fx-border-color: #494949;
+    -fx-border-width: 0.4px;
+}
+
+#personalitiesTitledPane > .title {
+    -fx-background-color: #d3d3d3;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTRE_LEFT;
+    -fx-text-fill: #000000;
+    -fx-min-height: 40px;
+    -fx-pref-height: 40px;
+    -fx-max-height: 40px;
+    -fx-transition: opacity 0.2 ease;
+}
+
+#personalitiesTitledPane > .title:hover {
+    -fx-background-color: #b5b5b5;
+    -fx-opacity: 0.8;
+}
+
+#personalitiesPane {
+    -fx-background-color: #ffffff
+
+}
