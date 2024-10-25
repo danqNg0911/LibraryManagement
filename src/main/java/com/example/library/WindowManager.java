@@ -27,6 +27,8 @@ public class WindowManager {
 
     public static void setStage(Stage newStage) {
         stage =  newStage;
+
+        newStage.setResizable(false);
     }
 
     public static void setScene(Scene newScene) {

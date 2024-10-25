@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +14,10 @@ import javafx.scene.layout.Region;
 import java.io.IOException;
 
 public class UserCollectionController {
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private MenuButton SortedButton;
@@ -61,6 +66,9 @@ public class UserCollectionController {
 
     @FXML
     private Button settingButton;
+
+    @FXML
+    private MenuItem accSetting;
 
     @FXML
     private ImageView settingPic;
@@ -113,7 +121,7 @@ public class UserCollectionController {
     @FXML
     public void initialize() {
         // Hiển thị username
-        accountName.setText(User.getName());
+        accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
     }
 }

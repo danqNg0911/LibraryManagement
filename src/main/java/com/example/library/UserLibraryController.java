@@ -21,6 +21,10 @@ import java.util.List;
 
 public class UserLibraryController {
 
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
+
     @FXML
     private MenuButton accountMenu;
 
@@ -83,6 +87,9 @@ public class UserLibraryController {
 
     @FXML
     private TextArea bookInformation;
+
+    @FXML
+    private MenuItem accSetting;
 
     private List<JsonObject> bookResults = new ArrayList<>();
 
@@ -207,7 +214,7 @@ public class UserLibraryController {
     @FXML
     public void initialize() {
         // Hiển thị username
-        accountName.setText(User.getName());
+        accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
 
     }

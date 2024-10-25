@@ -96,6 +96,10 @@
     -fx-opacity: 0.8; /* Độ mờ */
 }
 
-
+#backButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #696969;
+    -fx-font-size: 11;
+}
 
 

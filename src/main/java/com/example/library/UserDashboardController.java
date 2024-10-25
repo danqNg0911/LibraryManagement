@@ -5,6 +5,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -16,6 +17,10 @@ import javafx.scene.layout.Region;
 import java.io.IOException;
 
 public class UserDashboardController {
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private MenuButton accountMenu;
@@ -64,6 +69,9 @@ public class UserDashboardController {
 
     @FXML
     private ImageView settingPic;
+
+    @FXML
+    private MenuItem accSetting;
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     /*public void showAnimationDsb(MouseEvent event) {
@@ -114,7 +122,7 @@ public class UserDashboardController {
     @FXML
     public void initialize() {
         // Hiển thị username
-        accountName.setText(User.getName());
+        accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
     }
 }

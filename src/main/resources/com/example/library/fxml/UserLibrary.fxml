@@ -87,7 +87,7 @@
             </Pane>
             <MenuButton fx:id="accountMenu" layoutX="812.0" layoutY="86.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="86.0" text="Account">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Account Settings" />
+                  <MenuItem fx:id="accSetting" mnemonicParsing="false" onAction="#moveToSetting" text="Account Settings" />
                   <MenuItem mnemonicParsing="false" text="Helps" />
                   <MenuItem mnemonicParsing="false" text="Log out" />
                </items>

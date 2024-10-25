@@ -13,6 +13,7 @@ public class LoginController {
 
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private Label usernameWarning;
@@ -76,7 +77,7 @@ public class LoginController {
 
             // Nhập đúng toàn bộ thông tin
             else {
-                User.setUsername(username);
+                user.setUsername(username);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
 

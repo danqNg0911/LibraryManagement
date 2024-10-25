@@ -3,13 +3,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
 }
 
 #dashboardButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -18,13 +18,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
 }
 
 #libraryButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -33,13 +33,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
 }
 
 #collectionButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -48,13 +48,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
 }
 
 #settingButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTRE-LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 

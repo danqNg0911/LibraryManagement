@@ -23,6 +23,10 @@ import java.sql.SQLException;
 
 public class UserSettingController {
 
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
+
     @FXML
     private TextField Q1Field;
 
@@ -210,9 +214,9 @@ public class UserSettingController {
     @FXML
     public void initialize() {
         // Hiển thị tên hiện tại của user
-        accountName.setText(User.getName());
+        accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        currentNameLabel.setText(User.getName());
+        currentNameLabel.setText(user.getName(user.getUsername()));
     }
 
     @FXML
@@ -223,10 +227,10 @@ public class UserSettingController {
 
         boolean passwordCheck = false;
         // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
-        boolean success = User.nameUpdate(User.getUsername(),newName); // Cập nhật tên trong DBif (newName.isEmpty()) {
+        boolean success = user.nameUpdate(user.getUsername(),newName); // Cập nhật tên trong DBif (newName.isEmpty()) {
 
         // check password hiện tại
-        if (!currentPassword.equals(User.getPassword())) {
+        if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning1, "Password is incorrect", 2);
         } else {
             passwordCheck = true;
@@ -257,7 +261,7 @@ public class UserSettingController {
         boolean confirmPasswordCheck = false;
 
         // check password hiện tại
-        if (!currentPassword.equals(User.getPassword())) {
+        if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning, "Password is incorrect", 2);
         } else {
             passwordCheck = true;
@@ -268,7 +272,7 @@ public class UserSettingController {
             WindowManager.RedWarningLabel(newPassWarning, "This information is required", 2);
         } else if (passwordCheck && newPassword.length() < 8) {
             WindowManager.RedWarningLabel(newPassWarning, "Password must be over 8 characters", 2);
-        } else if (passwordCheck && newPassword.equals(User.getPassword())) {
+        } else if (passwordCheck && newPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(newPassWarning, "New password must be different the current password ", 2);
         } else {
             newPasswordCheck = true;
@@ -285,7 +289,7 @@ public class UserSettingController {
 
         // Nếu thay password thành công
         if (passwordCheck && newPasswordCheck && confirmPasswordCheck) {
-            UserJDBC.passWordUpdate(User.getUsername(), newPassword);
+            userJDBC.passwordUpdate(user.getUsername(), newPassword);
             // Thông bao doi mat khau thanh cong
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
@@ -305,7 +309,7 @@ public class UserSettingController {
         boolean question3Check = false;
 
         // check xem nhập đúng mkhau chưa
-        if (!currentPassword.equals(User.getPassword())) {
+        if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning2, "Password is incorrect", 2);
         } else {
             passwordCheck = true;
@@ -332,7 +336,7 @@ public class UserSettingController {
 
         // khi nhập các câu trả lời hợp lệ
         if (passwordCheck && question1Check && question2Check && question3Check) {
-            UserJDBC.securityQuestionsUpdate(User.getUsername(), question1, question2, question3);
+            userJDBC.securityQuestionsUpdate(user.getUsername(), question1, question2, question3);
             // Thông bao doi mat khau thanh cong
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change security answers", "Your security answers has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));

@@ -57,6 +57,9 @@ public class RegisterController {
     @FXML
     private RadioButton readerRadioButton;
 
+    public void backToLogin(ActionEvent event) throws IOException {
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+    }
 
     public void handleNextButton(ActionEvent event) throws IOException {
         String name = nameField.getText();
