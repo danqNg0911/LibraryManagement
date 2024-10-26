@@ -53,15 +53,32 @@ public class WindowManager {
     }
 
     // Hiển thị dòng cảnh báo đỏ
-    public static void RedWarningLabel (Label label, String warningText, int displayedSecond) {
+    public static void RedWarningLabel (Label label, String warningText, int SecondToDisplay) {
         label.setText(warningText);
 
-        // Ngắt hiển thị cảnh báo sau displayedSecond giây
-        PauseTransition pause = new PauseTransition(Duration.seconds(displayedSecond));
+        // Ngắt hiển thị cảnh báo sau SecondToDisplay giây
+        PauseTransition pause = new PauseTransition(Duration.seconds(SecondToDisplay));
         pause.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 label.setText(""); // Xóa thông báo
+            }
+        });
+        pause.play();
+    }
+
+    public static void moveToAnotherScene(ActionEvent event, String fxmlFile, String cssMainFile, String cssSubFile, int SecondToDisplay, int width, int height) {
+        PauseTransition pause = new PauseTransition(Duration.seconds(SecondToDisplay));
+        pause.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                WindowManager.setStage(stage);
+                try {
+                    WindowManager.addFxmlCss(fxmlFile, cssMainFile, cssSubFile, width, height);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         pause.play();
@@ -88,13 +105,6 @@ public class WindowManager {
     }
 
 
-    //
-    public static void handleBackButton(String fxmlFile, ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        WindowManager.setStage(stage);
-        WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-    }
-
     //Chuyen den trang khac
     public static void handlemoveButton(String fxmlFile, String cssMainFile, String cssSubFile, int width, int height, ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -102,7 +112,7 @@ public class WindowManager {
         WindowManager.addFxmlCss(fxmlFile, cssMainFile, cssSubFile, width, height);
     }
 
-    public static void showPic(MouseEvent mevent, Button button, ImageView imageView) {
+    public static void showPic(MouseEvent event, Button button, ImageView imageView) {
         // Khi chuột di chuyển vào nút
         button.setOnMouseEntered(mouseEvent -> imageView.setVisible(true));
     }

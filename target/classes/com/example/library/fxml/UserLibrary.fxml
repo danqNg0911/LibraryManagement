@@ -36,118 +36,116 @@
                         <Font size="50.0" />
                     </font>
                 </MenuButton>
-                <Label fx:id="accountName" layoutX="722.0" layoutY="66.0" prefHeight="43.0" prefWidth="116.0" />
+                <Label fx:id="accountName" layoutX="704.0" layoutY="66.0" prefHeight="43.0" prefWidth="116.0" text="Acc name" />
                 <Label fx:id="libraryTitle" layoutX="39.0" layoutY="63.0" prefHeight="50.0" prefWidth="116.0" text="Library">
                     <font>
                         <Font name="System Bold" size="34.0" />
                     </font>
                 </Label>
-                <ListView fx:id="bookList" layoutX="217.0" layoutY="192.0" onMouseClicked="#onBookSelected" prefHeight="496.0" prefWidth="298.0" />
-                <Label layoutX="44.0" layoutY="212.0" text="Select Collection">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Label>
-                <MenuButton layoutX="44.0" layoutY="248.0" mnemonicParsing="false" prefWidth="120.0">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                </MenuButton>
-                <Label layoutX="44.0" layoutY="279.0" text="Search for Books">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Label>
-                <Label layoutX="44.0" layoutY="300.0" text="Title">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="44.0" layoutY="358.0" text="Author">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="44.0" layoutY="412.0" text="Category">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="titleField" layoutX="44.0" layoutY="319.0" />
-                <TextField fx:id="authorField" layoutX="44.0" layoutY="377.0" />
-                <TextField fx:id="categoryField" layoutX="44.0" layoutY="437.0" />
-                <Button fx:id="searchButton" layoutX="71.0" layoutY="492.0" mnemonicParsing="false" onAction="#onSearch" text="Search">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Button>
-                <ScrollPane layoutX="579.0" layoutY="450.0" prefHeight="200.0" prefWidth="300.0">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="300.0">
-                            <children>
-                                <TextArea fx:id="bookInformation" layoutX="-3.0" layoutY="1.0" prefHeight="186.0" prefWidth="290.0" wrapText="true" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </ScrollPane>
-                <Pane layoutX="580.0" layoutY="157.0" prefHeight="285.0" prefWidth="289.0">
-                    <children>
-                        <ImageView fx:id="bookCoverPicture" fitHeight="285.0" fitWidth="289.0" pickOnBounds="true" preserveRatio="true" />
-                    </children>
-                </Pane>
-            <Button fx:id="addSelectedBook" alignment="CENTER" contentDisplay="CENTER" layoutX="605.0" layoutY="663.0" mnemonicParsing="false" prefWidth="120.0" text="Add selected book " />
-            <Button fx:id="undo" layoutX="768.0" layoutY="663.0" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
+            <ListView fx:id="bookList" layoutX="217.0" layoutY="192.0" onMouseClicked="#onBookSelected" prefHeight="496.0" prefWidth="298.0" />
+            <Label layoutX="44.0" layoutY="212.0" text="Select Collection">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="44.0" layoutY="248.0" mnemonicParsing="false" prefWidth="120.0">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <Label layoutX="44.0" layoutY="279.0" text="Search for Books">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="300.0" text="Title">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="358.0" text="Author">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="412.0" text="Category">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="titleField" layoutX="44.0" layoutY="319.0" />
+            <TextField fx:id="authorField" layoutX="44.0" layoutY="377.0" />
+            <TextField fx:id="categoryField" layoutX="44.0" layoutY="437.0" />
+            <Button fx:id="searchButton" layoutX="71.0" layoutY="492.0" mnemonicParsing="false" onAction="#onSearch" text="Search">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <ScrollPane layoutX="554.0" layoutY="487.0" prefHeight="200.0" prefWidth="300.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <TextArea fx:id="bookInformation" layoutX="-3.0" layoutY="1.0" prefHeight="186.0" prefWidth="290.0" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Pane layoutX="560.0" layoutY="189.0" prefHeight="285.0" prefWidth="289.0">
+               <children>
+                  <ImageView fx:id="bookCoverPicture" fitHeight="285.0" fitWidth="289.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
             </children>
         </AnchorPane>
         <Line endX="1210.0" endY="135.2928924560547" startX="221.99998474121094" startY="135.2928924560547" />
-        <Pane layoutY="135.0" prefHeight="664.0" prefWidth="222.0">
-            <children>
-                <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                            <image>
-                                <Image url="@../assets/Dasb.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
-                    </children>
-                </HBox>
-                <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/Lib.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="libraryButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Library" />
-                    </children>
-                </HBox>
-                <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                            <image>
-                                <Image url="@../assets/Collection.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
-                    </children>
-                </HBox>
-                <HBox layoutY="161.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-                    <children>
-                        <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                            <image>
-                                <Image url="@../assets/Setting.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
-                    </children>
-                </HBox>
-            </children>
-        </Pane>
+      <Pane layoutY="135.0" prefHeight="664.0" prefWidth="222.0">
+         <children>
+            <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Dasb.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
+               </children>
+            </HBox>
+            <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Lib.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="libraryButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Library" />
+               </children>
+            </HBox>
+            <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Collection.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
+               </children>
+            </HBox>
+            <HBox layoutY="161.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Setting.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
     </children>
-    <stylesheets>
-        <URL value="@../stylesheet%20(css)/userStyles.css" />
-        <URL value="@../stylesheet%20(css)/userLibStyle.css" />
-    </stylesheets>
+   <stylesheets>
+      <URL value="@../stylesheet%20(css)/userStyles.css" />
+      <URL value="@../stylesheet%20(css)/userLibStyle.css" />
+   </stylesheets>
 </AnchorPane>
