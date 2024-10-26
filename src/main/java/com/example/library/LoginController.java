@@ -1,19 +1,19 @@
 package com.example.library;
 
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class LoginController {
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private Label usernameWarning;
@@ -33,7 +33,7 @@ public class LoginController {
         // Lấy stage hiện tại từ event (khi bấm nút)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 500);
+        WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
         //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
     }
 
@@ -46,31 +46,55 @@ public class LoginController {
 
 
     @FXML
+    public void handleForgotPassword(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WindowManager.setStage(stage);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 600);
+    }
+
+    @FXML
     public void handleSignInButton(ActionEvent event) throws IOException {
         String username = nameField.getText();
         String password = passwordField.getText();
+        boolean isReader = true;
+
+        // Kiểm tra đối tượng là User hay Manager
+        if (!username.isEmpty() && (managerJDBC.checkMemberOfManager(username))) {
+            isReader = false;
+            System.out.println("This is Manager account");
+        }
+
         if (username.isEmpty()) {
             WindowManager.RedWarningLabel(usernameWarning, "Please enter your username !", 2);
         }
-        else if (!UserJDBC.checkUserAccount(username)) {
-            WindowManager.RedWarningLabel(usernameWarning, "This account does not exist", 2);
 
-        } else {
+        else if (isReader && !userJDBC.checkAccountIsExisted(username)) {
+            WindowManager.RedWarningLabel(usernameWarning, "This account does not exist", 2);
+        }
+
+        else {
             // Nếu nhập username đúng nhưng không có password (password để rỗng)
             if (password.isEmpty()) {
                 WindowManager.RedWarningLabel(passwordWarning, "Please enter your password !", 2);
             }
 
             // Nếu nhập username đúng nhưng password sai
-            else if (!UserJDBC.checkUserAccount(username, password)) {
+            else if (!userJDBC.checkUsernameWithPassword(username, password) && !managerJDBC.checkUsernameWithPassword(username, password)) {
                 WindowManager.RedWarningLabel(passwordWarning, "Wrong Password !", 2);
             }
 
             // Nhập đúng toàn bộ thông tin
             else {
+                user.setUsername(username);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
-                WindowManager.addFxmlCss("fxml/UserDashboard.fxml", "stylesheet/style.css", "stylesheet/", 600, 500);
+
+                String fxmlFile = "fxml/UserDashboard.fxml";
+                if (!isReader) {
+                    fxmlFile = "";
+                }
+
+                WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/style.css", "stylesheet (css)/userStyles.css", 1200, 800);
             }
         }
     }
@@ -79,7 +103,7 @@ public class LoginController {
     public void handleForgotPasswordLink(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet/style.css", "stylesheet/login.css", 600, 600);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 600);
         //WindowManager.addFxml("fxml/ResetPassword.fxml", 600, 600);
     }
 }

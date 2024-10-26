@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -10,52 +11,104 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" >
-   <children>
-      <VBox layoutX="52.0" layoutY="143.0" prefHeight="314.0" prefWidth="144.0">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserDashboardController">
+    <children>
+        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/Ulib_logo.png" />
+            </image>
+        </ImageView>
+        <AnchorPane fx:id="mainSce" layoutX="221.0" layoutY="1.0" prefHeight="800.0" prefWidth="986.0">
+            <children>
+                <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="224.0" layoutY="406.0" prefHeight="242.0" prefWidth="377.0" title="Unique items added by rolling year">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </BarChart>
+                <Label fx:id="dashboardTitle" layoutX="39.0" layoutY="63.0" prefHeight="50.0" prefWidth="190.0" text="Dashboards">
+                    <font>
+                        <Font name="System Bold" size="34.0" />
+                    </font>
+                </Label>
+                <Label fx:id="selectCollectionLabel" layoutX="92.0" layoutY="199.0" text="Select Collection">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            <MenuButton fx:id="accountMenu" layoutX="812.0" layoutY="86.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="86.0" text="Account">
+               <items>
+                  <MenuItem fx:id="accSetting" mnemonicParsing="false" onAction="#moveToSetting" text="Account Settings" />
+                  <MenuItem mnemonicParsing="false" text="Helps" />
+                  <MenuItem mnemonicParsing="false" text="Log out" />
+               </items>
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </MenuButton>
+            <Label fx:id="accountName" layoutX="812.0" layoutY="51.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
+            <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/defaultUserAva.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
+      <Pane layoutY="135.0" prefHeight="664.0" prefWidth="222.0">
          <children>
-            <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" text="Dashboard" />
-            <Button fx:id="LibraryButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Library" />
-            <Button fx:id="collectionButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" text="Collection" />
-            <Button fx:id="settingButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" text="Setting" />
+            <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Dasb.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
+               </children>
+            </HBox>
+            <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Lib.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
+               </children>
+            </HBox>
+            <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Collection.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
+               </children>
+            </HBox>
+            <HBox layoutY="161.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Setting.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
+               </children>
+            </HBox>
          </children>
-      </VBox>
-      <ImageView fx:id="logo" fitHeight="55.0" fitWidth="118.0" layoutX="60.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Ulib_logo.png" />
-         </image>
-      </ImageView>
-      <Line endX="700.0" endY="116.89289855957031" startX="93.60000610351562" startY="116.89289855957031" />
-      <Label fx:id="dashboardTitle" layoutX="238.0" layoutY="123.0" prefHeight="40.0" prefWidth="117.0" text="Dashboard">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="selectCollectionLabel" layoutX="238.0" layoutY="169.0" text="Select Collection">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="262.0" layoutY="288.0" prefHeight="208.0" prefWidth="390.0" title="Unique items added by rolling year">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
-      <MenuButton fx:id="accountMenu" layoutX="652.0" layoutY="64.0" mnemonicParsing="false" text="Account">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Account Settings" />
-          <MenuItem mnemonicParsing="false" text="Helps" />
-            <MenuItem mnemonicParsing="false" text="Log out" />
-        </items>
-      </MenuButton>
-      <Label fx:id="accountName" layoutX="583.0" layoutY="64.0" prefHeight="26.0" prefWidth="55.0" text="Acc name" />
-   </children>
+      </Pane>
+    </children>
+   <stylesheets>
+      <URL value="@../stylesheet%20(css)/userStyles.css" />
+      <URL value="@../stylesheet%20(css)/userDashStyle.css" />
+   </stylesheets>
 </AnchorPane>

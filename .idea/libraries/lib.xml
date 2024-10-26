@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Lib (thu vien bai tap lon)/okio-2.10.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Lib (thu vien bai tap lon)/okhttp-4.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Lib (thu vien bai tap lon)/gson-2.8.6.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/../Lib (thu vien bai tap lon)/javafx-sdk-21.0.4/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src/main/java" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../Lib (thu vien bai tap lon)/javafx-sdk-21.0.4/lib" recursive="false" />
+  </library>
+</component>
