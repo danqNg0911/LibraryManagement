@@ -5,13 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
 public class UserCollectionController {
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private MenuButton SortedButton;
@@ -33,6 +39,9 @@ public class UserCollectionController {
 
     @FXML
     private Label collectionTitle;
+
+    @FXML
+    private ImageView currentAvatar;
 
     @FXML
     private Button dashboardButton;
@@ -59,8 +68,10 @@ public class UserCollectionController {
     private Button settingButton;
 
     @FXML
-    private ImageView settingPic;
+    private MenuItem accSetting;
 
+    @FXML
+    private ImageView settingPic;
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
@@ -107,4 +118,10 @@ public class UserCollectionController {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
+    @FXML
+    public void initialize() {
+        // Hiển thị username
+        accountName.setText(user.getName(user.getUsername()));
+        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+    }
 }

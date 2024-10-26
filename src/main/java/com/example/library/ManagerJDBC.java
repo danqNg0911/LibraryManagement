@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerJDBC extends BaseJDBC {
-    private static final String databaseURL = "jdbc:mysql://localhost:3306/librarymanagement";
+    private static final String databaseURL = "jdbc:mysql://127.0.0.1:3306/manageraccount";
     private static final String databaseUser = "root";
-    private static final String databasePassword = "Hieu@123456";
-    private static final String MANAGER_DATA_FILE_PATH = "D:\\LibraryManagement\\ListOfManagers.txt";
+    private static final String databasePassword = "Haidang0911.";
+    private static final String MANAGER_DATA_FILE_PATH = "F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\ListOfManagers.txt";
 
     public final List<String> listOfManager = new ArrayList<>();
 

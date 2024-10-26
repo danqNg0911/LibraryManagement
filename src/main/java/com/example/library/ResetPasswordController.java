@@ -55,6 +55,10 @@ public class ResetPasswordController {
     private Label birthdateWarning;
 
 
+    public void backToLogin(ActionEvent event) throws IOException {
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+    }
+
     public void handleResetButton(ActionEvent event) throws IOException {
         String username = usernamecheckField.getText();
         String newPassword = newpasswordField.getText();

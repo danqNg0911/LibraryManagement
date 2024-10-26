@@ -5,16 +5,22 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
 public class UserDashboardController {
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private MenuButton accountMenu;
@@ -27,6 +33,9 @@ public class UserDashboardController {
 
     @FXML
     private ImageView collectionPic;
+
+    @FXML
+    private ImageView currentAvatar;
 
     @FXML
     private Button dashboardButton;
@@ -47,7 +56,7 @@ public class UserDashboardController {
     private ImageView logo;
 
     @FXML
-    private Pane mainSce;
+    private AnchorPane mainSce;
 
     @FXML
     private BarChart<?, ?> rollingYearChart;
@@ -60,6 +69,9 @@ public class UserDashboardController {
 
     @FXML
     private ImageView settingPic;
+
+    @FXML
+    private MenuItem accSetting;
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     /*public void showAnimationDsb(MouseEvent event) {
@@ -107,4 +119,10 @@ public class UserDashboardController {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
+    @FXML
+    public void initialize() {
+        // Hiển thị username
+        accountName.setText(user.getName(user.getUsername()));
+        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+    }
 }

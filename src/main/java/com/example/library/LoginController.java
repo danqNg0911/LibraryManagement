@@ -13,6 +13,7 @@ public class LoginController {
 
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
     private Label usernameWarning;
@@ -36,12 +37,20 @@ public class LoginController {
         //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
     }
 
-    /*@FXML
+    public void handleForgotPassword(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WindowManager.setStage(stage);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 530, 580);
+        //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
+    }
+
+
+    @FXML
     public void handleForgotPassword(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
         WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 600);
-    }*/
+    }
 
     @FXML
     public void handleSignInButton(ActionEvent event) throws IOException {
@@ -76,9 +85,7 @@ public class LoginController {
 
             // Nhập đúng toàn bộ thông tin
             else {
-                // luu username vao class User de su dung cho cac class khac
-                User.setUsername(username);
-
+                user.setUsername(username);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 WindowManager.setStage(stage);
 

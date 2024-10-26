@@ -5,20 +5,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Stack;
 
 public class WindowManager {
     private static Stage stage;
@@ -26,13 +27,13 @@ public class WindowManager {
 
     public static void setStage(Stage newStage) {
         stage =  newStage;
+
+        newStage.setResizable(false);
     }
 
     public static void setScene(Scene newScene) {
         scene = newScene;
     }
-
-    private static Stack<Parent> viewStack = new Stack<>();
 
     // Truyền file FXML
     public static void addFxml(String fxmlFile, int width, int height) throws IOException {
@@ -126,22 +127,4 @@ public class WindowManager {
         button.setOnMouseExited(mouseEvent -> imageView.setVisible(false));
     }
 
-    // them, bot view trong stack de su dung khi can quay lai
-    /*public static void addView(Parent view) {
-        viewStack.push(view);
-    }
-
-    public static void removeView(Parent view) {
-        if (!viewStack.isEmpty()) {
-            viewStack.pop();
-        }
-    }
-
-    public static void getBack(Stage stage) {
-        if (!viewStack.isEmpty()) {
-            Parent lastView = viewStack.peek();
-            Scene lastScene = new Scene(lastView);
-            stage.setScene(lastScene);
-        }
-    }*/
 }
