@@ -8,11 +8,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -77,14 +80,8 @@ public class UserLibraryController {
     @FXML
     private TextArea bookInformation;
 
-    private List<JsonObject> bookResults = new ArrayList<>();
-
     @FXML
-    private Label accountName;
-
-    public void initialize() {
-        accountName.setText(User.username);
-    }
+    private VBox booksContainer;
 
     public void onSearch(ActionEvent event) {
         String title = titleField.getText().trim();
@@ -93,79 +90,86 @@ public class UserLibraryController {
 
         try {
             String jsonResponse = API.searchBooks(title, author, category);
-            parseAndDisplayResults(jsonResponse);
+            updateBook(jsonResponse);
         } catch (Exception e) {
-            bookInformation.setText("Error fetching data: " + e.getMessage());
+           e.printStackTrace();
         }
     }
 
-    private void parseAndDisplayResults(String jsonData) {
+    public void updateBook(String jsonData) {
         JsonObject jsonObject = JsonParser.parseString(jsonData).getAsJsonObject();
+
+        if (!jsonObject.has("items")) {
+            System.out.println("No items found");
+            return;
+        }
+
         JsonArray items = jsonObject.getAsJsonArray("items");
+        booksContainer.getChildren().clear();  // Xóa kết quả cũ
 
-        if (items == null || items.size() == 0) {
-            bookList.setItems(FXCollections.observableArrayList("No results found."));
+        if (items.size() == 0) {
+            System.out.println("No books found");
             return;
         }
 
-        bookResults.clear(); // Reset previous results
-        List<String> titles = new ArrayList<>();
 
-        for (var item : items) {
+        for (JsonElement item : items) {
             JsonObject volumeInfo = item.getAsJsonObject().getAsJsonObject("volumeInfo");
-            String title = volumeInfo.get("title").getAsString();
-            bookResults.add(item.getAsJsonObject());
-            titles.add(title);
-        }
 
-        ObservableList<String> observableTitles = FXCollections.observableArrayList(titles);
-        bookList.setItems(observableTitles);
+            String title = volumeInfo.has("title") ? volumeInfo.get("title").getAsString() : "Unknown Title";
+            String authors = getAuthors(volumeInfo);
+            String categories = getCategories(volumeInfo);
+            String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
+            String imageUrl = getImageUrl(volumeInfo);
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/example/library/fxml/bookItem.fxml"));
+
+            try {
+                // tao Hbox cho tung doi tuong
+                HBox bookItem = loader.load();
+
+                BookItemController controller = loader.getController();
+                controller.setBook(new Book(title, authors, categories, imageUrl, description));
+                booksContainer.getChildren().add(bookItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void onBookSelected() {
-        int selectedIndex = bookList.getSelectionModel().getSelectedIndex();
-        if (selectedIndex < 0 || selectedIndex >= bookResults.size()) {
-            return;
-        }
 
-        JsonObject selectedBook = bookResults.get(selectedIndex).getAsJsonObject("volumeInfo");
-        displayBookDetails(selectedBook);
-    }
-
-    private void displayBookDetails(JsonObject volumeInfo) {
-        String title = volumeInfo.get("title").getAsString();
-
-        String authors = "Unknown Author";
+    private String getAuthors(JsonObject volumeInfo) {
         if (volumeInfo.has("authors")) {
             JsonArray authorsArray = volumeInfo.getAsJsonArray("authors");
             List<String> authorList = new ArrayList<>();
             for (JsonElement authorElement : authorsArray) {
                 authorList.add(authorElement.getAsString());
             }
-            authors = String.join(", ", authorList);
+            return String.join(", ", authorList);
         }
+        return "Unknown Author";
+    }
 
-        String categories = "Unknown Category";
+    private String getCategories(JsonObject volumeInfo) {
         if (volumeInfo.has("categories")) {
             JsonArray categoriesArray = volumeInfo.getAsJsonArray("categories");
             List<String> categoryList = new ArrayList<>();
             for (JsonElement categoryElement : categoriesArray) {
                 categoryList.add(categoryElement.getAsString());
             }
-            categories = String.join(", ", categoryList);
+            return String.join(", ", categoryList);
         }
-
-        String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
-
-        bookInformation.setText("Title: " + title + "\nAuthors: " + authors + "\nCategory: " + categories + "\nDescription: " + description);
-
-        if (volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")) {
-            String imageUrl = volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
-            bookCoverPicture.setImage(new Image(imageUrl));
-        } else {
-            bookCoverPicture.setImage(null);
-        }
+        return "Unknown Category";
     }
+
+    private String getImageUrl(JsonObject volumeInfo) {
+        if (volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")) {
+            return volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
+        }
+        return null;
+    }
+
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
