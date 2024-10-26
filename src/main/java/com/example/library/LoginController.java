@@ -37,11 +37,11 @@ public class LoginController {
         //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
     }
 
-    @FXML
     public void handleForgotPassword(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 600);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 530, 580);
+        //WindowManager.addFXML("fxml/CreateAccount.fxml", 600, 500);
     }
 
     @FXML

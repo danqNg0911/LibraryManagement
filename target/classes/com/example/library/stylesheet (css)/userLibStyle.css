@@ -4,3 +4,64 @@
     -fx-font-weight: bold;
     -fx-padding: 0px 10px 0px 50px;
 }
+
+.libButton {
+    -fx-background-color: #38b1ff;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+.libButton:pressed {
+    -fx-background-color: #ff6694;
+}
+
+.searchPane {
+    -fx-background-color: #ffff;
+}
+
+.bookCell {
+    -fx-background-color: #ffff;
+}
+
+#bookItem {
+    -fx-border-width: 0.7;
+    -fx-border-color: #696969;
+}
+
+#deleteItemButton {
+    -fx-background-color: #ff5757;
+    -fx-text-fill: #ffff;
+}
+
+#viewItemButton {
+    -fx-background-color: #38b1ff;
+    -fx-text-fill: #ffff;
+}
+
+#addItemButton {
+    -fx-background-color: #38b1ff;
+    -fx-text-fill: #ffff;
+}
+
+#bookInfo {
+    -fx-alignment: top-left;
+}
+
+.textField {
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+    -fx-border-color: #696969;
+    -fx-border-radius: 50;
+}
+
+.textField:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 50;
+}
+
+#Description {
+    -fx-alignment: top-left;
+}
