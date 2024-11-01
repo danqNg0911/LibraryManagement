@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -23,7 +24,13 @@ public class UserDashboardController {
     User user = new User();
 
     @FXML
-    private MenuButton accountMenu;
+    private Button accSetButton;
+
+    @FXML
+    private VBox accVBox;
+
+    @FXML
+    private Button accountButton;
 
     @FXML
     private Label accountName;
@@ -70,9 +77,6 @@ public class UserDashboardController {
     @FXML
     private ImageView settingPic;
 
-    @FXML
-    private MenuItem accSetting;
-
     // Di chuột vào hiện hiệu ứng và ngược lại
     /*public void showAnimationDsb(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
@@ -108,15 +112,28 @@ public class UserDashboardController {
 
     // Chuyen den trang khac
     public void moveToLibrary(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToCollection(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserCollection.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userCltStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        accVBox.setVisible(!accVBox.isVisible());
     }
 
     @FXML

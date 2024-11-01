@@ -56,7 +56,7 @@ public class ResetPasswordController {
 
 
     public void backToLogin(ActionEvent event) throws IOException {
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        WindowManager.goBack();
     }
 
     public void handleResetButton(ActionEvent event) throws IOException {

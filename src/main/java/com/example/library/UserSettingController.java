@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -37,7 +38,13 @@ public class UserSettingController {
     private TextField Q3Field;
 
     @FXML
-    private MenuButton accountMenu;
+    private Button accSetButton;
+
+    @FXML
+    private VBox accVBox;
+
+    @FXML
+    private Button accountButton;
 
     @FXML
     private Label accountName;
@@ -162,9 +169,6 @@ public class UserSettingController {
     @FXML
     private Label settingTitle;
 
-    @FXML
-    private Button uploadImageButton;
-
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
@@ -200,15 +204,23 @@ public class UserSettingController {
 
     // Chuyen den trang khac
     public void moveToLibrary(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToCollection(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserCollection.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userCltStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        accVBox.setVisible(!accVBox.isVisible());
     }
 
     @FXML

@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -23,14 +24,42 @@ import java.util.List;
 
 public class UserLibraryController {
 
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
+
     @FXML
-    private MenuButton accountMenu;
+    private Button accSetButton;
+
+    @FXML
+    private VBox accVBox;
+
+    @FXML
+    private Button accountButton;
+
+    @FXML
+    private Label accountName;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
+    private VBox booksContainer;
+
+    @FXML
+    private TextField categoryField;
+
+    @FXML
+    private VBox cltOptionVBox;
 
     @FXML
     private Button collectionButton;
 
     @FXML
     private ImageView collectionPic;
+
+    @FXML
+    private ImageView currentAvatar;
 
     @FXML
     private Button dashboardButton;
@@ -54,6 +83,12 @@ public class UserLibraryController {
     private AnchorPane mainSce;
 
     @FXML
+    private Button searchButton;
+
+    @FXML
+    private Button selectCltButton;
+
+    @FXML
     private Button settingButton;
 
     @FXML
@@ -61,27 +96,6 @@ public class UserLibraryController {
 
     @FXML
     private TextField titleField;
-
-    @FXML
-    private TextField authorField;
-
-    @FXML
-    private TextField categoryField;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
-    private ListView<String> bookList;
-
-    @FXML
-    private ImageView bookCoverPicture;
-
-    @FXML
-    private TextArea bookInformation;
-
-    @FXML
-    private VBox booksContainer;
 
     public void onSearch(ActionEvent event) {
         String title = titleField.getText().trim();
@@ -206,14 +220,39 @@ public class UserLibraryController {
 
     // Chuyen den trang khac
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToCollection(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserCollection.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userCltStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        accVBox.setVisible(!accVBox.isVisible());
+    }
+
+    public void showCltOption(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        cltOptionVBox.setVisible(!cltOptionVBox.isVisible());
+    }
+
+    @FXML
+    public void initialize() {
+        // Hiển thị username
+        accountName.setText(user.getName(user.getUsername()));
+        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
     }
 }

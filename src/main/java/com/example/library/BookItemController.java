@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class BookItemController {
     @FXML
@@ -41,15 +42,12 @@ public class BookItemController {
             Image image = new Image(book.getImageUrl());
             bookCover.setImage(image);
         } else {
-            bookCover.setImage(null);
+            Image nullImage = new Image("file:/F:/OOP/LibraryManagement_Ulib/LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png");
+            bookCover.setImage(nullImage);
         }
     }
 
     public void viewBook(ActionEvent event) {
-        //luu view hien tai vao viewstack de quay lai
-        //Parent lastView = ((Node) event.getSource()).getScene().getRoot();
-        //WindowManager.addView(lastView);
-
         // Load ViewItem.fxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/ViewItem.fxml"));
         Parent root = null;
@@ -68,6 +66,7 @@ public class BookItemController {
 
         Scene scene = new Scene(root, 1200, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WindowManager.navigateTo(scene);
         stage.setScene(scene);
         stage.show();
     }

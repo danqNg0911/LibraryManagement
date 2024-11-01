@@ -14,7 +14,7 @@
     -fx-background-color: #d3d3d3;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER-LEFT;
     -fx-text-fill: #000000;
     -fx-min-height: 40px;
     -fx-pref-height: 40px;
@@ -85,7 +85,7 @@
     -fx-background-color: #d3d3d3;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER-LEFT;
     -fx-text-fill: #000000;
     -fx-min-height: 40px;
     -fx-pref-height: 40px;

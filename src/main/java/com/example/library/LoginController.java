@@ -86,7 +86,7 @@ public class LoginController {
                     fxmlFile = "";
                 }
 
-                WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/style.css", "stylesheet (css)/userStyles.css", 1200, 800);
+                WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800);
             }
         }
     }

@@ -58,7 +58,7 @@ public class RegisterController {
     private RadioButton readerRadioButton;
 
     public void backToLogin(ActionEvent event) throws IOException {
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        WindowManager.goBack();
     }
 
     public void handleNextButton(ActionEvent event) throws IOException {
@@ -75,14 +75,14 @@ public class RegisterController {
             isSuccesful = false;
         }
 
-        else {
+        /*else {
             for (int i = 0; i < name.length(); i++) {
                 if (!Character.isAlphabetic(name.charAt(i))) {
                     WindowManager.RedWarningLabel(nameLabel, "Name cannot contain special characters !", 2);
                     isSuccesful = false;
                 }
             }
-        }
+        }*/
 
         // Kiểm tra đối tượng là User hay Manager
         if (!username.isEmpty() && managerJDBC.checkMemberOfManager(username)) {

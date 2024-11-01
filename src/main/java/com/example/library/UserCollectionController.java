@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -20,16 +21,25 @@ public class UserCollectionController {
     User user = new User();
 
     @FXML
-    private MenuButton SortedButton;
+    private Button accSetButton;
 
     @FXML
-    private MenuButton accountMenu;
+    private VBox accVBox;
+
+    @FXML
+    private Button accountButton;
 
     @FXML
     private Label accountName;
 
     @FXML
     private Button addNewClt;
+
+    @FXML
+    private Button addedDateSortButton;
+
+    @FXML
+    private VBox cltOptionVBox;
 
     @FXML
     private Button collectionButton;
@@ -62,16 +72,24 @@ public class UserCollectionController {
     private AnchorPane mainSce;
 
     @FXML
-    private MenuButton selectClt;
+    private Button selectCltButton;
 
     @FXML
     private Button settingButton;
 
     @FXML
-    private MenuItem accSetting;
+    private ImageView settingPic;
 
     @FXML
-    private ImageView settingPic;
+    private Button sortButton;
+
+    @FXML
+    private VBox sortOptionVBox;
+
+    @FXML
+    private Button titleSortButton;
+
+
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
@@ -107,15 +125,38 @@ public class UserCollectionController {
 
     // Chuyen den trang khac
     public void moveToLibrary(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        accVBox.setVisible(!accVBox.isVisible());
+    }
+
+    public void showCltOption(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        cltOptionVBox.setVisible(!cltOptionVBox.isVisible());
+    }
+
+    public void showSortOption(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        sortOptionVBox.setVisible(!sortOptionVBox.isVisible());
     }
 
     @FXML

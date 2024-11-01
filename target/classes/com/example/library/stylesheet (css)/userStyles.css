@@ -3,13 +3,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
 }
 
 #dashboardButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -18,13 +18,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
 }
 
 #libraryButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -33,13 +33,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
 }
 
 #collectionButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTer_LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -48,13 +48,13 @@
     -fx-font-size: 15px;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
 }
 
 #settingButton:hover {
     -fx-background-color: #ffffff;
     -fx-font-size: 15px;
-    -fx-alignment: CENTRE-LEFT;
+    -fx-alignment: CENTER_LEFT;
     -fx-padding: 0px 10px 0px 50px;
 }
 
@@ -62,14 +62,14 @@
     -fx-background-color: #ffffff;
 }
 
-#accountMenu {
+#accountButton {
     -fx-background-color: #38b1ff;
     -fx-font-weight: bold;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
 }
 
-#accountMenu:pressed {
+#accountButton:pressed {
     -fx-background-color: #ff6694;
 }
 
@@ -87,4 +87,19 @@
     -fx-border-width: 0.5px;
     -fx-border-color: #696969;
     -fx-border-style: solid;
+}
+
+.accButton {
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-background-color: #f8f8f8;
+    -fx-border-radius: 0;
+}
+
+.accButton:hover {
+    -fx-opacity: 0.8;
+}
+
+.accButton:pressed {
+    -fx-background-color: #ff6694;
 }
