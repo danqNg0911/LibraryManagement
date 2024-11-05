@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -62,7 +63,7 @@ public class UserSettingController {
     private Button changeAnswerButton;
 
     @FXML
-    private Button changeAvatarButton;
+    private Button changeEmailButton;
 
     @FXML
     private Button changeNameButton;
@@ -72,6 +73,9 @@ public class UserSettingController {
 
     @FXML
     private Button changePassButton;
+
+    @FXML
+    private Button changePhoneButton;
 
     @FXML
     private Button collectionButton;
@@ -89,6 +93,15 @@ public class UserSettingController {
     private ImageView currentAvatar;
 
     @FXML
+    private Label currentBirthdateLabel;
+
+    @FXML
+    private Label currentEmailLabel;
+
+    @FXML
+    private Label currentName1Label;
+
+    @FXML
     private Label currentNameLabel;
 
     @FXML
@@ -101,6 +114,9 @@ public class UserSettingController {
     private PasswordField currentPass2;
 
     @FXML
+    private PasswordField currentPass3;
+
+    @FXML
     private Label currentPassWarning;
 
     @FXML
@@ -110,10 +126,25 @@ public class UserSettingController {
     private Label currentPassWarning2;
 
     @FXML
+    private Label currentPassWarning3;
+
+    @FXML
+    private Label currentPhoneLabel;
+
+    @FXML
+    private Label currentUserameLabel;
+
+    @FXML
     private Button dashboardButton;
 
     @FXML
     private ImageView dashboardPic;
+
+    @FXML
+    private ImageView dashboardPic11;
+
+    @FXML
+    private Button helpsButton;
 
     @FXML
     private Button libraryButton;
@@ -122,7 +153,13 @@ public class UserSettingController {
     private ImageView libraryPic;
 
     @FXML
+    private ImageView libraryPic11;
+
+    @FXML
     private ImageView logo;
+
+    @FXML
+    private Button logoutButton;
 
     @FXML
     private AnchorPane mainSce;
@@ -131,7 +168,10 @@ public class UserSettingController {
     private TitledPane nameTitledPane;
 
     @FXML
-    private ImageView newAvatar;
+    private TextField newEmailField;
+
+    @FXML
+    private Label newEmailWarning;
 
     @FXML
     private TextField newNameField;
@@ -141,6 +181,12 @@ public class UserSettingController {
 
     @FXML
     private Label newPassWarning;
+
+    @FXML
+    private TextField newPhoneField;
+
+    @FXML
+    private Label newPhoneWarning;
 
     @FXML
     private TitledPane passTitledPane;
@@ -168,6 +214,9 @@ public class UserSettingController {
 
     @FXML
     private Label settingTitle;
+
+    @FXML
+    private Button upgradeButton;
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
@@ -202,6 +251,21 @@ public class UserSettingController {
         WindowManager.unshowPic(event, settingButton, settingPic);
     }*/
 
+    public void showAnimationHelps(MouseEvent event) {
+        WindowManager.showPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void unshowAnimationHelps(MouseEvent event) {
+        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void showAnimationUpg(MouseEvent event) {
+        WindowManager.showPic(event, upgradeButton, libraryPic11);
+    }
+
+    public void unshowAnimationUpg(MouseEvent event) {
+        WindowManager.unshowPic(event, upgradeButton, libraryPic11);
+    }
     // Chuyen den trang khac
     public void moveToLibrary(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
@@ -218,22 +282,45 @@ public class UserSettingController {
         WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
+    public void moveToHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
+    }
+
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         accVBox.setVisible(!accVBox.isVisible());
     }
 
+    // Log out
+    public void logOut(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        user.closeConnection();
+        pause.play();
+    }
     @FXML
     public void initialize() {
         // Hiển thị tên hiện tại của user
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        currentName1Label.setText(user.getName(user.getUsername()));
+        currentUserameLabel.setText(user.getUsername());
         currentNameLabel.setText(user.getName(user.getUsername()));
+        currentPhoneLabel.setText(user.getPhone(user.getUsername()));
+        currentEmailLabel.setText(user.getEmail(user.getUsername()));
     }
 
     @FXML
     // Thay tên
     public void handleChangeName(ActionEvent event) {
+        WindowManager.playButtonSound();
         String newName = newNameField.getText();
         String currentPassword = currentPass1.getText();
 
@@ -264,6 +351,7 @@ public class UserSettingController {
     @FXML
     // Thay password
     public void handleChangePassword(ActionEvent event) {
+        WindowManager.playButtonSound();
         String currentPassword = currentPass.getText();
         String newPassword = newPass.getText();
         String confirmPassword = confirmNewPass.getText();
@@ -310,6 +398,7 @@ public class UserSettingController {
 
     @FXML
     public void handleChangeAnswers(ActionEvent event) {
+        WindowManager.playButtonSound();
         String question1 = Q1Field.getText();
         String question2 = Q2Field.getText();
         String question3 = Q3Field.getText();
@@ -355,4 +444,61 @@ public class UserSettingController {
         }
     }
 
+    // Thay phone number
+    public void handleChangePhone(ActionEvent event) {
+        WindowManager.playButtonSound();
+        String newPhonenum = newPhoneField.getText();
+        String currentPassword = currentPass3.getText();
+
+        boolean passwordCheck = false;
+        // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
+        boolean success = user.phoneNumUpdate(user.getUsername(),newPhonenum); // Cập nhật tên trong DBif (newName.isEmpty()) {
+
+        // check password hiện tại
+        if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
+            WindowManager.RedWarningLabel(currentPassWarning3, "Password is incorrect", 2);
+        } else {
+            passwordCheck = true;
+        }
+
+        if (success && passwordCheck) {
+            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
+            PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
+
+            currentPhoneLabel.setText(newPhonenum);
+        } else {
+
+            WindowManager.RedWarningLabel(newPhoneWarning, "This phone is invalid", 2);
+        }
+    }
+
+    // Thay phone number
+    public void handleChangeEmail(ActionEvent event) {
+        WindowManager.playButtonSound();
+        String newEmail = newEmailField.getText();
+        String currentPassword = currentPass3.getText();
+
+        boolean passwordCheck = false;
+        // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
+        boolean success = user.emailUpdate(user.getUsername(),newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
+
+        // check password hiện tại
+        if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
+            WindowManager.RedWarningLabel(currentPassWarning3, "Password is incorrect", 2);
+        } else {
+            passwordCheck = true;
+        }
+
+        if (success && passwordCheck) {
+            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Email", "Your email has been successfully changed", "stylesheet (css)/login_alert.css");
+            PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
+
+            currentEmailLabel.setText(newEmail);
+        } else {
+
+            WindowManager.RedWarningLabel(newEmailWarning, "This email is invalid", 2);
+        }
+    }
 }

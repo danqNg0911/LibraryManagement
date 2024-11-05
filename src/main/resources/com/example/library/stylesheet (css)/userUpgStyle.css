@@ -1,0 +1,37 @@
+#upgradeButton {
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 0px 10px 0px 50px;
+    -fx-alignment: center-left;
+}
+
+#mainPane {
+    -fx-border-width: 0.2;
+    -fx-border-color: #696969;
+}
+
+#keyFeature {
+    -fx-background-color: #d9ebf7;
+    -fx-background-radius: 40;
+    -fx-border-color: #7fcdff;
+    -fx-border-width: 0.2;
+    -fx-border-radius: 40;
+}
+
+.termButton:selected {
+    -fx-mark-color: #38b1ff;
+}
+
+#donateButton {
+    -fx-font-size: 13px;
+    -fx-background-color: #38b1ff;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+#donateButton:pressed {
+    -fx-background-color: #ff6694;
+}

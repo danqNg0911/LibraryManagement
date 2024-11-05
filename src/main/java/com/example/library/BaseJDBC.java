@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 abstract class BaseJDBC {
+    protected Connection connection;
     protected abstract String getDatabaseURL();
     protected abstract String getDatabaseUser();
     protected abstract String getDatabasePassword();
@@ -13,6 +14,9 @@ abstract class BaseJDBC {
 
     // Kết nối Project đến Database
     protected abstract Connection connectToDatabase();
+
+    // Ngắt kết nối Database
+    protected abstract void closeConnection();
 
     // Kiểm tra kết nối tới Database
     public boolean testDatabaseConnection() {
@@ -30,12 +34,14 @@ abstract class BaseJDBC {
     }
 
     // Thêm tài khoản vào Database
-    public boolean addAccountToDatabase(String name, String username, String password, String birthdate, String Q1, String Q2, String Q3) {
-        String query = "INSERT INTO `accounts` (name, username, password, birthdate, Q1, Q2, Q3) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public boolean addAccountToDatabase(String name, String username, String password, String phonenum, String email, String birthdate, String Q1, String Q2, String Q3) {
+        String query = "INSERT INTO `accounts` (name, username, password, birthdate, Q1, Q2, Q3, phonenum, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, name);
             sqlStatement.setString(2, username);
             sqlStatement.setString(3, password);
+            sqlStatement.setString(8, phonenum);
+            sqlStatement.setString(9, email);
             sqlStatement.setString(4, birthdate);
             sqlStatement.setString(5, Q1);
             sqlStatement.setString(6, Q2);
@@ -110,6 +116,10 @@ abstract class BaseJDBC {
 
     // Cập nhật mật khẩu
     public boolean passwordUpdate(String username, String password) {
+        if (password == null || password.trim().isEmpty() || password.trim().length() < 8) {
+            //System.out.println("Tên không hợp lệ!");
+            return false;
+        }
         String query = "UPDATE `accounts` SET password = ? WHERE username = ?";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, password);
@@ -144,6 +154,7 @@ abstract class BaseJDBC {
         return false; // Ngày sinh sai
     }
 
+    // Cap nhat ten
     public boolean nameUpdate(String username, String name) {
         if (name == null || name.trim().isEmpty()) {
             //System.out.println("Tên không hợp lệ!");
@@ -165,12 +176,57 @@ abstract class BaseJDBC {
         return false;
     }
 
+    // Cap nhat cau hoi bao mat
     public boolean securityQuestionsUpdate(String username, String ques1, String ques2, String ques3) {
         String query = "UPDATE `accounts` SET ques1 = ?, ques2 = ?, ques3 = ? WHERE username = ?";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, ques1);
             sqlStatement.setString(2, ques2);
             sqlStatement.setString(3, ques3);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //cap nhat phone number
+    public boolean phoneNumUpdate(String username, String phonenum) {
+        if (phonenum == null || phonenum.trim().isEmpty() || phonenum.trim().length() != 10) {
+            //System.out.println("Tên không hợp lệ!");
+            return false;
+        }
+        String query = "UPDATE `accounts` SET phonenum = ? WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, phonenum);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //cap nhat phone number
+    public boolean emailUpdate(String username, String email) {
+        if (email == null || email.trim().isEmpty() || !email.trim().contains("@")) {
+            //System.out.println("Tên không hợp lệ!");
+            return false;
+        }
+        String query = "UPDATE `accounts` SET email = ? WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, email);
             sqlStatement.setString(2, username);
 
             int rowsUpdated = sqlStatement.executeUpdate();
@@ -214,6 +270,45 @@ abstract class BaseJDBC {
             if (resultSet.next()) {
                 String password = resultSet.getString("password");
                 return password;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Nếu không tìm thấy tài khoản
+    }
+
+
+    // Lấy phone của user
+    public String getPhone(String username) {
+        String query = "SELECT phonenum FROM accounts WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username); // Đặt giá trị của tham số vào câu SQL
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String phonenum = resultSet.getString("phonenum");
+                return phonenum;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Nếu không tìm thấy tài khoản
+    }
+
+    // lấy email của user
+    public String getEmail(String username) {
+        String query = "SELECT email FROM accounts WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username); // Đặt giá trị của tham số vào câu SQL
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String email = resultSet.getString("email");
+                return email;
             }
 
         } catch (SQLException e) {

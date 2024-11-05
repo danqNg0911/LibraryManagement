@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        WindowManager.addFxmlCss("fxml/BeginScene.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 400, 300);
 
         if (userJDBC.testDatabaseConnection()) {
             System.out.println("Successful UserDatabase Connection");

@@ -58,6 +58,36 @@
     -fx-padding: 0px 10px 0px 50px;
 }
 
+#helpsButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+#helpsButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
+}
+
+#upgradeButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+#upgradeButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
+}
+
 #mainSce {
     -fx-background-color: #ffffff;
 }
@@ -82,12 +112,6 @@
     -fx-border-radius: 40;
 }
 
-#currentAvaPane {
-    -fx-border-radius: 30;
-    -fx-border-width: 0.5px;
-    -fx-border-color: #696969;
-    -fx-border-style: solid;
-}
 
 .accButton {
     -fx-font-weight: bold;
@@ -103,3 +127,10 @@
 .accButton:pressed {
     -fx-background-color: #ff6694;
 }
+
+.scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
+
+

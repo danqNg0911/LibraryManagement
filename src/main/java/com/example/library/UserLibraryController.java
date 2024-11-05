@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,16 +70,28 @@ public class UserLibraryController {
     private ImageView dashboardPic;
 
     @FXML
+    private ImageView dashboardPic11;
+
+    @FXML
+    private Button helpsButton;
+
+    @FXML
     private Button libraryButton;
 
     @FXML
     private ImageView libraryPic;
 
     @FXML
+    private ImageView libraryPic11;
+
+    @FXML
     private Label libraryTitle;
 
     @FXML
     private ImageView logo;
+
+    @FXML
+    private Button logoutButton;
 
     @FXML
     private AnchorPane mainSce;
@@ -96,6 +110,10 @@ public class UserLibraryController {
 
     @FXML
     private TextField titleField;
+
+    @FXML
+    private Button upgradeButton;
+
 
     public void onSearch(ActionEvent event) {
         String title = titleField.getText().trim();
@@ -218,6 +236,21 @@ public class UserLibraryController {
         WindowManager.unshowPic(event, settingButton, settingPic);
     }
 
+    public void showAnimationHelps(MouseEvent event) {
+        WindowManager.showPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void unshowAnimationHelps(MouseEvent event) {
+        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void showAnimationUpg(MouseEvent event) {
+        WindowManager.showPic(event, upgradeButton, libraryPic11);
+    }
+
+    public void unshowAnimationUpg(MouseEvent event) {
+        WindowManager.unshowPic(event, upgradeButton, libraryPic11);
+    }
     // Chuyen den trang khac
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
@@ -234,6 +267,16 @@ public class UserLibraryController {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
+    public void moveToHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
+    }
+
     public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
@@ -247,6 +290,15 @@ public class UserLibraryController {
     public void showCltOption(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         cltOptionVBox.setVisible(!cltOptionVBox.isVisible());
+    }
+
+    //log out
+    public void logOut(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        user.closeConnection();
+        pause.play();
     }
 
     @FXML

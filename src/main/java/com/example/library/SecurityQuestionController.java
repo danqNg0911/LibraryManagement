@@ -19,15 +19,19 @@ public class SecurityQuestionController {
     private String name;
     private String username;
     private String password;
+    private String phonenumber;
+    private String email;
     private boolean isReader;
 
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
 
-    public void setUserData(String name, String username, String password, boolean isReader) {
+    public void setUserData(String name, String username, String password, String phonenumber, String email, boolean isReader) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.phonenumber = phonenumber;
+        this.email = email;
         this.isReader = isReader;
     }
 
@@ -53,6 +57,7 @@ public class SecurityQuestionController {
     public Label successfulLabel;
 
     public void handleRegisterButton(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
         String birthdate = birthdateField.getValue().toString();
         String Q1 = Q1Field.getText();
         String Q2 = Q2Field.getText();
@@ -65,13 +70,13 @@ public class SecurityQuestionController {
 
         // them vao User Database
         else if (this.isReader){
-            userJDBC.addAccountToDatabase(this.name, this.username, this.password,birthdate, Q1, Q2, Q3);
+            userJDBC.addAccountToDatabase(this.name, this.username, this.password, this.phonenumber, this.email, birthdate, Q1, Q2, Q3);
             successfulLabel.setText("Congratulation! You have successfully registered");
             WindowManager.moveToAnotherScene(event, "fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 2,600, 500);
         }
         else {
             if (managerJDBC.checkManagerNameWithBirthdate(this.username, birthdate)) {
-                managerJDBC.addAccountToDatabase(this.name, this.username, this.password,birthdate, Q1, Q2, Q3);
+                managerJDBC.addAccountToDatabase(this.name, this.username, this.password, this.phonenumber, this.email, birthdate, Q1, Q2, Q3);
                 successfulLabel.setText("Congratulation! You have successfully registered");
                 WindowManager.moveToAnotherScene(event, "fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 2, 600, 500);
             }

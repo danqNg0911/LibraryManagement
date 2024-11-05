@@ -90,3 +90,12 @@
     -fx-font-size: 11;
 }
 
+.scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+    -fx-border-color: transparent;
+}
+
+.anchor-pane-border {
+    -fx-border-color: transparent;
+}

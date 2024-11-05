@@ -19,53 +19,76 @@ public class RegisterController {
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
 
-    public Label nameLabel1;
-    public ToggleGroup selectUserType;
-    public Pane body_left_login;
-    public ImageView logo;
+    @FXML
+    private Button backButton;
 
     @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
+    private Pane body_left_login;
 
     @FXML
     private PasswordField confirmPasswordField;
 
     @FXML
-    private Label nameLabel;
-
-    @FXML
-    private Label usernameLabel;
-
-    @FXML
-    private Label passwordLabel;
-
-    @FXML
     private Label confirmPasswordLabel;
 
     @FXML
-    private Button nextButton;
+    private TextField emailField;
+
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private ImageView logo;
 
     @FXML
     private RadioButton managerRadioButton;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Button nextButton;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Label passwordLabel;
+
+    @FXML
+    private TextField phoneNumField;
+
+    @FXML
+    private Label phoneNumLabel;
+
+    @FXML
     private RadioButton readerRadioButton;
 
+    @FXML
+    private ToggleGroup selectUserType;
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private Label usernameLabel;
+
     public void backToLogin(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.goBack();
     }
 
     public void handleNextButton(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
+        String phonenumber = phoneNumField.getText();
+        String email = emailField.getText();
         boolean isReader = true;
         boolean isSuccesful = true;
 
@@ -120,6 +143,30 @@ public class RegisterController {
             isSuccesful = false;
         }
 
+        // phone number bị trống
+        if (phonenumber.isEmpty()) {
+            WindowManager.RedWarningLabel(phoneNumLabel, "This information is required", 2);
+            isSuccesful = false;
+        }
+        // phone number ko đúng
+        else {
+            if (phonenumber.length() != 10) {
+                WindowManager.RedWarningLabel(phoneNumLabel, "Phone number is false", 2);
+                isSuccesful = false;
+            }
+        }
+
+        // phone number bị trống
+        if (email.isEmpty()) {
+            WindowManager.RedWarningLabel(emailLabel, "This information is required", 2);
+            isSuccesful = false;
+        }
+        // email ko đúng
+        else if (!email.contains("@")) {
+            WindowManager.RedWarningLabel(emailLabel, "This email is false", 2);
+            isSuccesful = false;
+        }
+
         // cả 2 radioButton đều không được chọn
         if (!managerRadioButton.isSelected() && !readerRadioButton.isSelected()) {
             isSuccesful = false;
@@ -149,7 +196,7 @@ public class RegisterController {
                 SecurityQuestionController securityQuestionController = loader.getController();
 
                 // Truyền thông tin sang controller
-                securityQuestionController.setUserData(name, username, password, isReader);
+                securityQuestionController.setUserData(name, username, password, phonenumber, email, isReader);
 
 
                 Scene scene = new Scene(root, 600, 500);

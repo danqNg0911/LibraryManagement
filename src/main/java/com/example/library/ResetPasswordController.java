@@ -56,10 +56,12 @@ public class ResetPasswordController {
 
 
     public void backToLogin(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.goBack();
     }
 
     public void handleResetButton(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
         String username = usernamecheckField.getText();
         String newPassword = newpasswordField.getText();
         String confirmPassword = confirmpasswordField.getText();

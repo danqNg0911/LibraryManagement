@@ -42,24 +42,24 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-            <Label fx:id="accountName" layoutX="812.0" layoutY="51.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
+            <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
             <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/defaultUserAva.png" />
                </image>
             </ImageView>
-            <Button fx:id="accountButton" layoutX="812.0" layoutY="88.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
+            <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
             <VBox fx:id="accVBox" layoutX="812.0" layoutY="114.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                <children>
                   <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
                   <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
-      <Pane layoutY="135.0" prefHeight="664.0" prefWidth="222.0">
+      <Pane layoutY="135.0" prefHeight="250.0" prefWidth="222.0">
          <children>
             <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
@@ -99,6 +99,30 @@
                      </image>
                   </ImageView>
                   <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutX="-2.0" layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
+         <children>
+            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Help.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" text="Helps" />
+               </children>
+            </HBox>
+            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="libraryPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Upgrade.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade" onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0" prefWidth="186.0" text="Upgrade" />
                </children>
             </HBox>
          </children>

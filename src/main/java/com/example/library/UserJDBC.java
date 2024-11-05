@@ -24,12 +24,25 @@ public class UserJDBC extends BaseJDBC{
 
     @Override
     protected Connection connectToDatabase() {
-        Connection databaseConnect = null;
         try {
-            databaseConnect = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return databaseConnect;
+        return connection;
+    }
+
+    @Override
+    protected void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                connection = null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

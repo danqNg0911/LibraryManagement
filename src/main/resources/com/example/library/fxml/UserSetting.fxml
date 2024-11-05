@@ -24,20 +24,20 @@
                 <Image url="@../assets/Ulib_logo.png" />
             </image>
         </ImageView>
-        <AnchorPane fx:id="mainSce" layoutX="221.0" layoutY="-2.0" prefHeight="800.0" prefWidth="986.0">
+        <AnchorPane fx:id="mainSce" layoutX="221.0" layoutY="-1.0" prefHeight="813.0" prefWidth="986.0">
             <children>
                 <Label fx:id="settingTitle" layoutX="39.0" layoutY="63.0" prefHeight="50.0" prefWidth="134.0" text="Settings">
                     <font>
                         <Font name="System Bold" size="34.0" />
                     </font>
                 </Label>
-            <Accordion layoutX="148.0" layoutY="199.0" prefHeight="541.0" prefWidth="708.0">
+            <Accordion layoutX="322.0" layoutY="198.0" prefHeight="542.0" prefWidth="608.0">
               <panes>
-                <TitledPane fx:id="accountStgTitledPane" text="Account settings">
+                <TitledPane fx:id="accountStgTitledPane" prefHeight="502.0" prefWidth="648.0" text="Account settings">
                   <content>
                     <AnchorPane fx:id="accountStgPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Accordion focusTraversable="false" layoutX="34.0" prefHeight="449.0" prefWidth="606.0">
+                              <Accordion focusTraversable="false" layoutX="31.0" prefHeight="450.0" prefWidth="568.0">
                                 <panes>
                                   <TitledPane fx:id="nameTitledPane" maxHeight="318.0" maxWidth="606.0" minHeight="150.0" minWidth="543.0" prefHeight="286.0" prefWidth="606.0" styleClass="subTitledPane" text="Change name">
                                     <content>
@@ -102,7 +102,7 @@
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ScrollPane prefHeight="308.0" prefWidth="604.0">
+                                                <ScrollPane prefHeight="308.0" prefWidth="604.0" styleClass="scroll">
                                                   <content>
                                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="590.0">
                                                          <children>
@@ -143,21 +143,33 @@
                                           </AnchorPane>
                                       </content>
                                     </TitledPane>
-                                  <TitledPane fx:id="avatarTitledPane" styleClass="subTitledPane" text="Change avatar">
+                                  <TitledPane fx:id="avatarTitledPane" styleClass="subTitledPane" text="Change phone number and email">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ImageView fx:id="newAvatar" fitHeight="150.0" fitWidth="150.0" layoutX="92.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" styleClass="field">
-                                                   <image>
-                                                      <Image url="@../assets/defaultAvaUpload.png" />
-                                                   </image></ImageView>
-                                                <Button fx:id="uploadImageButton" layoutX="337.0" layoutY="139.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="145.0" styleClass="changeButton" text="Upload image    ↑" />
-                                                <Button fx:id="changeAvatarButton" layoutX="337.0" layoutY="186.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" styleClass="changeButton" text="Change" />
-                                                <Label layoutX="296.0" layoutY="94.0" text="You should upload .png, .jpg or .jpeg file">
+                                                <Label layoutX="50.0" layoutY="71.0" text="Current password">
                                                    <font>
-                                                      <Font size="13.0" />
+                                                      <Font name="System Bold" size="13.0" />
                                                    </font>
                                                 </Label>
+                                                <Label layoutX="50.0" layoutY="125.0" text="New phone number">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="50.0" layoutY="183.0" text="New email">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="changePhoneButton" layoutX="441.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleChangePhone" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
+                                                <Label fx:id="currentPassWarning3" layoutX="202.0" layoutY="98.0" prefHeight="18.0" prefWidth="191.0" textFill="#db1414" />
+                                                <Label fx:id="newPhoneWarning" layoutX="202.0" layoutY="151.0" prefHeight="18.0" prefWidth="204.0" textFill="#db1414" />
+                                                <Label fx:id="newEmailWarning" layoutX="202.0" layoutY="209.0" prefHeight="18.0" prefWidth="206.0" textFill="#db1414" />
+                                                <PasswordField fx:id="currentPass3" layoutX="196.0" layoutY="68.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                <Button fx:id="changeEmailButton" layoutX="441.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleChangeEmail" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
+                                                <TextField fx:id="newPhoneField" layoutX="196.0" layoutY="122.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                <TextField fx:id="newEmailField" layoutX="197.0" layoutY="179.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -175,24 +187,57 @@
                 </TitledPane>
               </panes>
             </Accordion>
-            <Label fx:id="accountName" layoutX="812.0" layoutY="51.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
+            <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
             <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/defaultUserAva.png" />
                </image>
             </ImageView>
-            <Button fx:id="accountButton" layoutX="812.0" layoutY="88.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <VBox fx:id="accVBox" layoutX="812.0" layoutY="114.0" prefHeight="78.0" prefWidth="132.0" visible="false">
+            <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
+            <VBox fx:id="accVBox" layoutX="812.0" layoutY="112.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                <children>
                   <Button fx:id="accSetButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
                   <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>
+            <Pane layoutX="23.0" layoutY="198.0" prefHeight="366.0" prefWidth="282.0" styleClass="infoPane">
+               <children>
+                  <ImageView fx:id="currentAvatar" fitHeight="80.0" fitWidth="80.0" layoutX="13.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/defaultUserAva.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="106.0" layoutY="26.0" text="Name">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentName1Label" layoutX="124.0" layoutY="45.0" prefHeight="18.0" prefWidth="156.0" text="Label" />
+                  <Label layoutX="106.0" layoutY="71.0" text="Username">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentUserameLabel" layoutX="124.0" layoutY="94.0" prefHeight="18.0" prefWidth="156.0" text="Label" />
+                  <Label layoutX="26.0" layoutY="121.0" text="Phone number">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentPhoneLabel" layoutX="124.0" layoutY="121.0" prefHeight="18.0" prefWidth="156.0" text="Label" />
+                  <Label layoutX="26.0" layoutY="151.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentEmailLabel" layoutX="124.0" layoutY="151.0" prefHeight="18.0" prefWidth="156.0" text="Label" />
+               </children>
+            </Pane>
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
-      <Pane layoutY="135.0" prefHeight="664.0" prefWidth="222.0">
+      <Pane layoutY="135.0" prefHeight="246.0" prefWidth="222.0">
          <children>
             <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
@@ -201,7 +246,7 @@
                         <Image url="@../assets/Dasb.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseDragEntered="#showAnimationDas" onMouseDragExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
+                  <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseDragExited="#unshowAnimationDas" onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
                </children>
             </HBox>
             <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
@@ -232,6 +277,30 @@
                      </image>
                   </ImageView>
                   <Button fx:id="settingButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Setting" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutY="395.0" prefHeight="417.0" prefWidth="222.0">
+         <children>
+            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Help.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" text="Helps" />
+               </children>
+            </HBox>
+            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="libraryPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/Upgrade.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade" onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0" prefWidth="186.0" text="Upgrade" />
                </children>
             </HBox>
          </children>

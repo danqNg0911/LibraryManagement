@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerJDBC extends BaseJDBC {
-    private static final String databaseURL = "jdbc:mysql://127.0.0.1:3306/useraccount";
+    private static final String databaseURL = "jdbc:mysql://127.0.0.1:3306/manageraccount";
     private static final String databaseUser = "root";
     private static final String databasePassword = "Haidang0911.";
     private static final String MANAGER_DATA_FILE_PATH = "F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\ListOfManagers.txt";
@@ -45,13 +45,26 @@ public class ManagerJDBC extends BaseJDBC {
 
     @Override
     protected Connection connectToDatabase() {
-        Connection databaseConnect = null;
         try {
-            databaseConnect = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return databaseConnect;
+        return connection;
+    }
+
+    @Override
+    protected void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                connection = null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public boolean checkMemberOfManager (String username) {

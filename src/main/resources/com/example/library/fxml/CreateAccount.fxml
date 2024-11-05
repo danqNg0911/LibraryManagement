@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -19,59 +20,81 @@
       </font>
    </Label>
    <Label alignment="CENTER" layoutX="345.0" layoutY="78.0" prefHeight="19.0" prefWidth="200.0" text="Ulib Library Manger | Register" textFill="#0000007c" />
-   <TextField fx:id="nameField" layoutX="344.0" layoutY="128.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
-   <Label layoutX="345.0" layoutY="109.0" prefHeight="19.0" prefWidth="200.0" text="Name" />
-   <TextField fx:id="usernameField" layoutX="345.0" layoutY="195.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
-   <Label layoutX="344.0" layoutY="170.0" prefHeight="19.0" prefWidth="200.0" text="Username" />
-   <Label layoutX="345.0" layoutY="243.0" prefHeight="19.0" prefWidth="200.0" text="Password" />
-   <Label layoutX="345.0" layoutY="321.0" prefHeight="19.0" prefWidth="200.0" text="Confirm Password" />
-   <RadioButton fx:id="readerRadioButton" layoutX="345.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-reader" text="Reader">
+   <RadioButton fx:id="readerRadioButton" layoutX="360.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-reader" text="Reader">
       <toggleGroup>
          <ToggleGroup fx:id="selectUserType" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton fx:id="managerRadioButton" layoutX="457.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-manager" text="Manager" toggleGroup="$selectUserType" />
-   <Button fx:id="nextButton" layoutX="345.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="26.0" prefWidth="200.0" text="Next" />
-   <PasswordField fx:id="passwordField" layoutX="344.0" layoutY="266.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
-   <PasswordField fx:id="confirmPasswordField" layoutX="345.0" layoutY="347.0" prefHeight="26.0" prefWidth="200.0" styleClass="field" />
+   <RadioButton fx:id="managerRadioButton" layoutX="470.0" layoutY="400.0" mnemonicParsing="false" styleClass="radio-button-manager" text="Manager" toggleGroup="$selectUserType" />
+   <Button fx:id="nextButton" layoutX="350.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="26.0" prefWidth="200.0" text="Next" />
    <Pane fx:id="body_left_login" prefHeight="500.0" prefWidth="300.0">
       <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../assets/Ulib_logo.png" />
       </ImageView>
-      <Label layoutX="84.0" layoutY="259.0" text="Developed by NONAME">
+      <Label layoutX="93.0" layoutY="260.0" text="Developed by NONAME">
          <font>
             <Font name="System Italic" size="11.0" />
          </font>
       </Label>
    </Pane>
-   <Label fx:id="passwordLabel" layoutX="345.0" layoutY="292.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff1414">
-      <font>
-         <Font size="10.0" />
-      </font>
-   </Label>
-   <Label fx:id="nameLabel" layoutX="344.0" layoutY="153.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
-      <font>
-         <Font size="10.0" />
-      </font>
-   </Label>
-   <Label fx:id="nameLabel1" layoutX="345.0" layoutY="244.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
-      <font>
-         <Font size="10.0" />
-      </font>
-   </Label>
-   <Label fx:id="usernameLabel" layoutX="345.0" layoutY="220.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
-      <font>
-         <Font size="10.0" />
-      </font>
-   </Label>
-   <Label fx:id="confirmPasswordLabel" layoutX="344.0" layoutY="373.0" prefHeight="17.0" prefWidth="200.0" textFill="#ff0a0a">
-      <font>
-         <Font size="10.0" />
-      </font>
-   </Label>
    <Button fx:id="backButton" layoutX="314.0" layoutY="34.0" mnemonicParsing="false" onAction="#backToLogin" text="← Back">
       <font>
          <Font size="11.0" />
       </font>
    </Button>
+   <ScrollPane layoutX="322.0" layoutY="97.0" prefHeight="296.0" prefWidth="262.0">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="441.0" prefWidth="260.0">
+            <children>
+               <TextField fx:id="nameField" layoutX="30.0" layoutY="30.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+               <Label layoutX="30.0" layoutY="10.0" prefHeight="20.0" prefWidth="200.0" text="Name" />
+               <TextField fx:id="usernameField" layoutX="30.0" layoutY="100.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+               <Label layoutX="30.0" layoutY="80.0" prefHeight="20.0" prefWidth="200.0" text="Username" />
+               <Label layoutX="30.0" layoutY="150.0" prefHeight="20.0" prefWidth="200.0" text="Password" />
+               <Label layoutX="30.0" layoutY="220.0" prefHeight="20.0" prefWidth="200.0" text="Confirm Password" />
+               <PasswordField fx:id="passwordField" layoutX="30.0" layoutY="170.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+               <PasswordField fx:id="confirmPasswordField" layoutX="30.0" layoutY="240.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+               <Label fx:id="passwordLabel" layoutX="30.0" layoutY="200.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff1414">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Label>
+               <Label fx:id="nameLabel" layoutX="30.0" layoutY="60.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff0a0a">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Label>
+               <Label fx:id="usernameLabel" layoutX="30.0" layoutY="130.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff0a0a">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Label>
+               <Label fx:id="confirmPasswordLabel" layoutX="30.0" layoutY="270.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff0a0a">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="phoneNumField" layoutX="30.0" layoutY="310.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+               <Label layoutX="30.0" layoutY="290.0" prefHeight="20.0" prefWidth="200.0" text="Phone number" />
+               <Label fx:id="phoneNumLabel" layoutX="30.0" layoutY="340.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff0a0a">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="emailField" layoutX="30.0" layoutY="380.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
+               <Label layoutX="30.0" layoutY="360.0" prefHeight="20.0" prefWidth="200.0" text="Email" />
+               <Label fx:id="emailLabel" layoutX="30.0" layoutY="410.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff0a0a">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+               </Label>
+               <Label layoutX="239.0" layoutY="7.0" prefHeight="18.0" prefWidth="14.0" text="↓">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+     </content>
+   </ScrollPane>
 </AnchorPane>

@@ -1,0 +1,7 @@
+#manageUsersButton {
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 0px 10px 0px 50px;
+    -fx-alignment: center-left;
+}

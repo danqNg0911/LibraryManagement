@@ -1,0 +1,65 @@
+.sceneButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.sceneButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0px 10px 0px 50px;
+}
+
+#mainSce {
+    -fx-background-color: #ffffff;
+}
+
+#accountButton {
+    -fx-background-color: #ff6694;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+#accountButton:pressed {
+    -fx-background-color: #38b1ff;
+}
+
+#accountName {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 0px 5px 0px 5px;
+    -fx-border-color: #696969;
+    -fx-background-radius: 40;
+    -fx-border-radius: 40;
+}
+
+#currentAvaPane {
+    -fx-border-radius: 30;
+    -fx-border-width: 0.5px;
+    -fx-border-color: #696969;
+    -fx-border-style: solid;
+}
+
+.accButton {
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-background-color: #f8f8f8;
+    -fx-border-radius: 0;
+}
+
+.accButton:hover {
+    -fx-opacity: 0.8;
+}
+
+.accButton:pressed {
+    -fx-background-color: #ff6694;
+}
+
+.scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}

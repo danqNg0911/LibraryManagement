@@ -14,6 +14,7 @@ public class LoginController {
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
     User user = new User();
+    Manager manager = new Manager();
 
     @FXML
     private Label usernameWarning;
@@ -31,6 +32,7 @@ public class LoginController {
     public void handleCreateNewAccountButton(ActionEvent event) throws IOException {
         // Tải file register.fxml khi người dùng nhấn nút "Create new account"
         // Lấy stage hiện tại từ event (khi bấm nút)
+        WindowManager.playButtonSound();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
         WindowManager.addFxmlCss("fxml/CreateAccount.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
@@ -46,6 +48,8 @@ public class LoginController {
 
     @FXML
     public void handleSignInButton(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
+
         String username = nameField.getText();
         String password = passwordField.getText();
         boolean isReader = true;
@@ -77,16 +81,29 @@ public class LoginController {
 
             // Nhập đúng toàn bộ thông tin
             else {
-                user.setUsername(username);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                WindowManager.setStage(stage);
+                if (managerJDBC.checkMemberOfManager(username)) {
+                    manager.setUsername(username);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    WindowManager.setStage(stage);
 
-                String fxmlFile = "fxml/UserDashboard.fxml";
-                if (!isReader) {
-                    fxmlFile = "";
+                    String fxmlFile = "fxml/ManagerUser.fxml";
+                    /*if (!isReader) {
+                        fxmlFile = "";
+                    }*/
+
+                    WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerUserStyle.css", 1200, 800);
+                } else {
+                    user.setUsername(username);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    WindowManager.setStage(stage);
+
+                    String fxmlFile = "fxml/UserDashboard.fxml";
+                    if (!isReader) {
+                        fxmlFile = "";
+                    }
+
+                    WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800);
                 }
-
-                WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800);
             }
         }
     }
@@ -95,7 +112,7 @@ public class LoginController {
     public void handleForgotPasswordLink(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         WindowManager.setStage(stage);
-        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 600);
+        WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 800, 600);
         //WindowManager.addFxml("fxml/ResetPassword.fxml", 600, 600);
     }
 }
