@@ -92,10 +92,21 @@
 
 .scroll-pane {
     -fx-hbar-policy: never;
-    -fx-vbar-policy: never;
+    /*-fx-vbar-policy: never;*/
     -fx-border-color: transparent;
+    -fx-background-color: transparent;
 }
 
-.anchor-pane-border {
-    -fx-border-color: transparent;
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;   /* Nền thanh cuộn trong suốt */
 }
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #ececec;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+
+
+

@@ -43,8 +43,6 @@
                                     <content>
                                       <AnchorPane focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="244.0" prefWidth="605.0">
                                              <children>
-                                                <TextField fx:id="newNameField" layoutX="227.0" layoutY="154.0" prefHeight="26.0" prefWidth="222.0" styleClass="field" />
-                                                <Button fx:id="changeNameButton" layoutX="265.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleChangeName" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                 <Label layoutX="106.0" layoutY="110.0" text="Current name">
                                                    <font>
                                                       <Font name="System Bold" size="13.0" />
@@ -64,6 +62,8 @@
                                                 </Label>
                                                 <Label fx:id="currentPassWarning1" layoutX="246.0" layoutY="81.0" prefHeight="18.0" prefWidth="191.0" />
                                                 <PasswordField fx:id="currentPass1" layoutX="227.0" layoutY="52.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                <TextField fx:id="newNameField" layoutX="227.0" layoutY="154.0" prefHeight="26.0" prefWidth="222.0" styleClass="field" />
+                                                <Button fx:id="changeNameButton" layoutX="265.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleChangeName" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -87,13 +87,13 @@
                                                       <Font name="System Bold" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Button fx:id="changePassButton" layoutX="265.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleChangePassword" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                 <Label fx:id="currentPassWarning" layoutX="260.0" layoutY="87.0" prefHeight="18.0" prefWidth="191.0" textFill="#db1414" />
                                                 <Label fx:id="newPassWarning" layoutX="260.0" layoutY="140.0" prefHeight="18.0" prefWidth="306.0" textFill="#db1414" />
                                                 <Label fx:id="confirmPassWarning" layoutX="260.0" layoutY="198.0" prefHeight="18.0" prefWidth="239.0" textFill="#db1414" />
                                                 <PasswordField fx:id="currentPass" layoutX="254.0" layoutY="57.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
                                                 <PasswordField fx:id="newPass" layoutX="254.0" layoutY="110.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
                                                 <PasswordField fx:id="confirmNewPass" layoutX="254.0" layoutY="168.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                <Button fx:id="changePassButton" layoutX="265.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleChangePassword" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -102,7 +102,7 @@
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ScrollPane prefHeight="308.0" prefWidth="604.0" styleClass="scroll">
+                                                <ScrollPane prefHeight="308.0" prefWidth="566.0" styleClass="scroll">
                                                   <content>
                                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="590.0">
                                                          <children>
@@ -111,20 +111,16 @@
                                                                   <Font name="System Bold" size="12.0" />
                                                                </font>
                                                             </Label>
-                                                            <TextField fx:id="Q1Field" layoutX="105.0" layoutY="98.0" prefHeight="26.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
                                                             <Label layoutX="31.0" layoutY="146.0" text="Question 2 : What is your first pet name?">
                                                                <font>
                                                                   <Font name="System Bold" size="12.0" />
                                                                </font>
                                                             </Label>
-                                                            <TextField fx:id="Q2Field" layoutX="105.0" layoutY="172.0" prefHeight="26.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
                                                             <Label layoutX="31.0" layoutY="220.0" text="Question 3 : What is the most impressive movie you have ever seen?">
                                                                <font>
                                                                   <Font name="System Bold" size="12.0" />
                                                                </font>
                                                             </Label>
-                                                            <TextField fx:id="Q3Field" layoutX="105.0" layoutY="249.0" prefHeight="30.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
-                                                            <Button fx:id="changeAnswerButton" layoutX="280.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleChangeAnswers" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                             <Label fx:id="question1Warning" layoutX="118.0" layoutY="128.0" prefHeight="18.0" prefWidth="256.0" textFill="#db1414" />
                                                             <Label fx:id="question2Warning" layoutX="118.0" layoutY="202.0" prefHeight="18.0" prefWidth="256.0" textFill="#db1414" />
                                                             <Label fx:id="question3Warning" layoutX="118.0" layoutY="284.0" prefHeight="18.0" prefWidth="256.0" textFill="#db1414" />
@@ -135,6 +131,10 @@
                                                             </Label>
                                                             <Label fx:id="currentPassWarning2" layoutX="180.0" layoutY="51.0" prefHeight="18.0" prefWidth="191.0" textFill="#db1414" />
                                                             <PasswordField fx:id="currentPass2" layoutX="174.0" layoutY="21.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                            <TextField fx:id="Q1Field" layoutX="105.0" layoutY="98.0" prefHeight="26.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
+                                                            <TextField fx:id="Q2Field" layoutX="105.0" layoutY="172.0" prefHeight="26.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
+                                                            <TextField fx:id="Q3Field" layoutX="105.0" layoutY="249.0" prefHeight="30.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
+                                                            <Button fx:id="changeAnswerButton" layoutX="280.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleChangeAnswers" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                          </children>
                                                       </AnchorPane>
                                                   </content>
@@ -162,14 +162,14 @@
                                                       <Font name="System Bold" size="13.0" />
                                                    </font>
                                                 </Label>
-                                                <Button fx:id="changePhoneButton" layoutX="441.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleChangePhone" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                 <Label fx:id="currentPassWarning3" layoutX="202.0" layoutY="98.0" prefHeight="18.0" prefWidth="191.0" textFill="#db1414" />
                                                 <Label fx:id="newPhoneWarning" layoutX="202.0" layoutY="151.0" prefHeight="18.0" prefWidth="204.0" textFill="#db1414" />
                                                 <Label fx:id="newEmailWarning" layoutX="202.0" layoutY="209.0" prefHeight="18.0" prefWidth="206.0" textFill="#db1414" />
                                                 <PasswordField fx:id="currentPass3" layoutX="196.0" layoutY="68.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
-                                                <Button fx:id="changeEmailButton" layoutX="441.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleChangeEmail" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                 <TextField fx:id="newPhoneField" layoutX="196.0" layoutY="122.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                <Button fx:id="changePhoneButton" layoutX="441.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleChangePhone" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                 <TextField fx:id="newEmailField" layoutX="197.0" layoutY="179.0" prefHeight="26.0" prefWidth="213.0" styleClass="field" />
+                                                <Button fx:id="changeEmailButton" layoutX="441.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleChangeEmail" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -197,7 +197,7 @@
             <VBox fx:id="accVBox" layoutX="812.0" layoutY="112.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                <children>
                   <Button fx:id="accSetButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
+                  <Button fx:id="accHelpsButton" mnemonicParsing="false" onAction="#moveToAccHelps" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>

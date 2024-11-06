@@ -39,6 +39,9 @@ public class UserSettingController {
     private TextField Q3Field;
 
     @FXML
+    private Button accHelpsButton;
+
+    @FXML
     private Button accSetButton;
 
     @FXML
@@ -91,9 +94,6 @@ public class UserSettingController {
 
     @FXML
     private ImageView currentAvatar;
-
-    @FXML
-    private Label currentBirthdateLabel;
 
     @FXML
     private Label currentEmailLabel;
@@ -290,6 +290,11 @@ public class UserSettingController {
     public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToAccHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {

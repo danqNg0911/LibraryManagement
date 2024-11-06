@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -44,57 +42,51 @@
                </children>
             </VBox>
             <Line endX="1207.4000244140625" endY="135.2928924560547" layoutX="-221.0" layoutY="9.0" startX="220.99998474121094" startY="135.2928924560547" />
-            <Accordion layoutX="148.0" layoutY="199.0" prefHeight="541.0" prefWidth="708.0">
-               <panes>
-                  <TitledPane fx:id="accountStgTitledPane" styleClass="titledPane" text="Your opinion contributions">
-                     <content>
-                        <AnchorPane fx:id="accountStgPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextField layoutX="60.0" layoutY="109.0" prefHeight="329.0" prefWidth="575.0" styleClass="field" />
-                              <Label layoutX="60.0" layoutY="28.0" text="Your opinions about the app">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="63.0" layoutY="56.0" text="This is useful for us to develop more!!!">
-                                 <font>
-                                    <Font name="System Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="545.0" layoutY="44.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" styleClass="hbutton" text="Send" />
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </TitledPane>
-                  <TitledPane fx:id="personalitiesTitledPane" styleClass="titledPane" text="Instructions">
-                     <content>
-                        <AnchorPane fx:id="personalities" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Label layoutX="64.0" layoutY="60.0" text="You can watch the instruction in our Youtube channel">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="64.0" layoutY="99.0" text="Remeber to subcribe us!! Thank you!!">
-                                 <font>
-                                    <Font name="System Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="327.0" layoutY="340.0" mnemonicParsing="false" onAction="#openYouTubeChannel" styleClass="hbutton" text="Open" />
-                              <ImageView fitHeight="170.0" fitWidth="250.0" layoutX="224.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../assets/video.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </TitledPane>
-               </panes>
-            </Accordion>
+            <Label layoutX="554.0" layoutY="267.0" text="You can watch the instruction in our Youtube channel">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="656.0" layoutY="297.0" text="Remeber to subcribe us!! Thank you!!">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="727.0" layoutY="507.0" mnemonicParsing="false" onAction="#openYouTubeChannel" styleClass="hbutton" text="Open" />
+            <ImageView fitHeight="170.0" fitWidth="250.0" layoutX="628.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/video.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="39.0" layoutY="202.0" prefHeight="530.0" prefWidth="482.0" styleClass="opPane">
+               <children>
+                  <TextField layoutX="52.0" layoutY="136.0" prefHeight="331.0" prefWidth="378.0" styleClass="field" />
+                  <Button fx:id="sendButton" layoutX="362.0" layoutY="80.0" mnemonicParsing="false" onAction="#sendOpinion" prefHeight="27.0" prefWidth="68.0" styleClass="hbutton" text="Send" />
+                  <Label layoutX="52.0" layoutY="65.0" text="Your opinions about the app">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="55.0" layoutY="93.0" text="This is useful for us to develop more!!!">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="174.0" layoutY="14.0" text="Your opinions">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="706.0" layoutY="209.0" text="Instruction">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <Pane layoutY="131.0" prefHeight="250.0" prefWidth="222.0">
+      <Pane layoutY="143.0" prefHeight="238.0" prefWidth="222.0">
          <children>
             <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>

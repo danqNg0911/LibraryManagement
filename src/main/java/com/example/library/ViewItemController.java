@@ -1,5 +1,6 @@
 package com.example.library;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,10 +44,16 @@ public class ViewItemController {
     private Label Description;
 
     @FXML
-    private MenuItem accSetting;
+    private Button accHelpsButton;
 
     @FXML
-    private MenuButton accountMenu;
+    private Button accSetButton;
+
+    @FXML
+    private VBox accVBox;
+
+    @FXML
+    private Button accountButton;
 
     @FXML
     private Label accountName;
@@ -72,16 +80,28 @@ public class ViewItemController {
     private ImageView dashboardPic;
 
     @FXML
+    private ImageView dashboardPic11;
+
+    @FXML
+    private Button helpsButton;
+
+    @FXML
     private Button libraryButton;
 
     @FXML
     private ImageView libraryPic;
 
     @FXML
+    private ImageView libraryPic11;
+
+    @FXML
     private Label libraryTitle;
 
     @FXML
     private ImageView logo;
+
+    @FXML
+    private Button logoutButton;
 
     @FXML
     private AnchorPane mainSce;
@@ -91,6 +111,9 @@ public class ViewItemController {
 
     @FXML
     private ImageView settingPic;
+
+    @FXML
+    private Button upgradeButton;
 
 
     public void setBookDetails(Book book) {
@@ -108,12 +131,6 @@ public class ViewItemController {
         }
     }
 
-    /*public void back(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        WindowManager.getBack(stage);
-    }*/
-
-    // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
     }
@@ -122,13 +139,13 @@ public class ViewItemController {
         WindowManager.unshowPic(event, dashboardButton, dashboardPic);
     }
 
-    /*public void showAnimationLib(MouseEvent event) {
+    public void showAnimationLib(MouseEvent event) {
         WindowManager.showPic(event, libraryButton, libraryPic);
     }
 
     public void unshowAnimationLib(MouseEvent event) {
         WindowManager.unshowPic(event, libraryButton, libraryPic);
-    }*/
+    }
 
     public void showAnimationClt(MouseEvent event) {
         WindowManager.showPic(event, collectionButton, collectionPic);
@@ -146,17 +163,69 @@ public class ViewItemController {
         WindowManager.unshowPic(event, settingButton, settingPic);
     }
 
+    public void showAnimationHelps(MouseEvent event) {
+        WindowManager.showPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void unshowAnimationHelps(MouseEvent event) {
+        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void showAnimationUpg(MouseEvent event) {
+        WindowManager.showPic(event, upgradeButton, libraryPic11);
+    }
+
+    public void unshowAnimationUpg(MouseEvent event) {
+        WindowManager.unshowPic(event, upgradeButton, libraryPic11);
+    }
     // Chuyen den trang khac
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
+    public void moveToLibrary(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
+    }
+
     public void moveToCollection(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserCollection.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userCltStyle.css", 1200, 800, actionEvent);
     }
 
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        accVBox.setVisible(!accVBox.isVisible());
+    }
+
+    //log out
+    public void logOut(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        user.closeConnection();
+        pause.play();
     }
 
     //back to previous stage

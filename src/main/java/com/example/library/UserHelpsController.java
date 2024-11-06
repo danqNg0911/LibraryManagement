@@ -3,9 +3,9 @@ package com.example.library;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -83,6 +83,9 @@ public class UserHelpsController {
     private AnchorPane mainSce;
 
     @FXML
+    private Button sendButton;
+
+    @FXML
     private Button settingButton;
 
     @FXML
@@ -90,6 +93,7 @@ public class UserHelpsController {
 
     @FXML
     private Button upgradeButton;
+
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
@@ -170,6 +174,11 @@ public class UserHelpsController {
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
+    public void moveToAccHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+    }
+
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         accVBox.setVisible(!accVBox.isVisible());
@@ -193,7 +202,7 @@ public class UserHelpsController {
 
     public void openYouTubeChannel(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
-        String url = "https://www.youtube.com/@phamhuy2195"; // Đặt URL kênh YouTube của bạn ở đây
+        String url = "https://www.youtube.com/@phamhuy2195";
 
         // Mở trình duyệt mặc định
         if(Desktop.isDesktopSupported()) {
@@ -201,10 +210,15 @@ public class UserHelpsController {
             try {
                 desktop.browse(new URI(url));
             } catch (IOException | URISyntaxException e) {
-                e.printStackTrace(); // Xử lý ngoại lệ
+                e.printStackTrace();
             }
         } else {
             System.out.println("Desktop không hỗ trợ chức năng này.");
         }
+    }
+
+    public void sendOpinion(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Thanks support", "Thanks for your suppport!!\nCheck your email!!", "stylesheet (css)/login_alert.css");
     }
 }

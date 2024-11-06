@@ -130,7 +130,27 @@
 
 .scroll-pane {
     -fx-hbar-policy: never;
-    -fx-vbar-policy: never;
+    /*-fx-vbar-policy: never;*/
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
 }
 
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;   /* Nền thanh cuộn trong suốt */
+}
 
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #ececec;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+#Description {
+    -fx-alignment: top-left;
+}
+
+#backButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #696969;
+    -fx-font-size: 11;
+}

@@ -2,8 +2,13 @@ package com.example.library;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -17,16 +22,25 @@ public class LoginController {
     Manager manager = new Manager();
 
     @FXML
-    private Label usernameWarning;
+    private Pane body_left_login;
+
+    @FXML
+    private Button buttonCreateNewAccount;
+
+    @FXML
+    private Button buttonSignIn;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private PasswordField passwordField;
 
     @FXML
     private Label passwordWarning;
 
     @FXML
-    private javafx.scene.control.TextField nameField;
-
-    @FXML
-    private PasswordField passwordField;
+    private Label usernameWarning;
 
     @FXML
     public void handleCreateNewAccountButton(ActionEvent event) throws IOException {
@@ -115,4 +129,5 @@ public class LoginController {
         WindowManager.addFxmlCss("fxml/ResetPassword.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 800, 600);
         //WindowManager.addFxml("fxml/ResetPassword.fxml", 600, 600);
     }
+
 }

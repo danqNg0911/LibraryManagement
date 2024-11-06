@@ -23,6 +23,9 @@ public class UserUpgradeController {
     User user = new User();
 
     @FXML
+    private Button accHelpsButton;
+
+    @FXML
     private Button accSetButton;
 
     @FXML
@@ -174,6 +177,11 @@ public class UserUpgradeController {
     public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToAccHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {

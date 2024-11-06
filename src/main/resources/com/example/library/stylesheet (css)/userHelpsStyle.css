@@ -37,8 +37,11 @@
 }
 
 .field {
-    -fx-background-color: #fff;
+    -fx-border-color: #bebebe;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 10;
     -fx-background-radius: 10;
+    -fx-alignment: top-left;
 }
 
 .field:focused {
@@ -46,4 +49,9 @@
     -fx-border-color: #ffcc00;
     -fx-border-radius: 10;
     -fx-alignment: top-left;
+}
+
+.opPane {
+    -fx-border-color: transparent #696969 transparent transparent  ;
+    -fx-border-width: 1px;
 }

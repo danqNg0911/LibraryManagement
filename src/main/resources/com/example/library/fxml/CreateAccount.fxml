@@ -44,7 +44,7 @@
    </Button>
    <ScrollPane layoutX="322.0" layoutY="97.0" prefHeight="296.0" prefWidth="262.0">
      <content>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="441.0" prefWidth="260.0">
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="246.0">
             <children>
                <TextField fx:id="nameField" layoutX="30.0" layoutY="30.0" prefHeight="25.0" prefWidth="200.0" styleClass="field" />
                <Label layoutX="30.0" layoutY="10.0" prefHeight="20.0" prefWidth="200.0" text="Name" />
@@ -86,11 +86,6 @@
                <Label fx:id="emailLabel" layoutX="30.0" layoutY="410.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff0a0a">
                   <font>
                      <Font size="10.0" />
-                  </font>
-               </Label>
-               <Label layoutX="239.0" layoutY="7.0" prefHeight="18.0" prefWidth="14.0" text="↓">
-                  <font>
-                     <Font size="16.0" />
                   </font>
                </Label>
             </children>
