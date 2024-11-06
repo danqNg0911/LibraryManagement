@@ -103,7 +103,7 @@ public class ViewItemController {
             Image image = new Image(book.getImageUrl());
             coverImage.setImage(image);
         } else {
-            Image nullImage = new Image("file:/F:/OOP/LibraryManagement_Ulib/LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png");
+            Image nullImage = new Image("file:/D:/LibraryManagement/LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png");
             coverImage.setImage(nullImage);
         }
     }

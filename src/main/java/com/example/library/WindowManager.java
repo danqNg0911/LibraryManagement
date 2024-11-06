@@ -149,7 +149,7 @@ public class WindowManager {
 
     // Phương thức phát âm thanh
     public static void playButtonSound() {
-        String soundFile = "F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mouse-click-153941.mp3";
+        String soundFile = "D:\\LibraryManagement\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mouse-click-153941.mp3";
         Media sound = new Media(new File(soundFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();

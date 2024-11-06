@@ -2,10 +2,9 @@ package com.example.library;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +12,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.*;
 
 public class UserCollectionController {
 
@@ -88,6 +89,54 @@ public class UserCollectionController {
 
     @FXML
     private Button titleSortButton;
+
+    @FXML
+    private VBox collectionBookContainer;
+
+    private List<Book> books = new ArrayList<>();
+
+    private Map<Character, List<Book>> sortByTitle(List<Book> books) {
+        Map<Character, List<Book>> ListByTitle = new TreeMap<Character, List<Book>>();
+
+        for (Book book : books) {
+            char first = book.getTitle().toLowerCase().charAt(0);
+
+            ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+        }
+        return ListByTitle;
+    }
+
+    public void showData(ActionEvent actionEvent) throws IOException, SQLException {
+
+        books.clear();
+        collectionBookContainer.getChildren().clear();
+
+        books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
+        Map<Character, List<Book>> BooksSortByTitle = sortByTitle(books);
+
+        for (Map.Entry<Character, List<Book>> entry : BooksSortByTitle.entrySet()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/Group.fxml"));
+                Node collectionGroupNode = loader.load();
+                CollectionGroupController collectionGroupController = loader.getController();
+
+                collectionGroupController.addGroupCharacter(entry.getKey());
+
+                for (Book book : entry.getValue()) {
+                    FXMLLoader itemLoader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/GroupItem.fxml"));
+                    Node bookItemNode = itemLoader.load();
+                    GroupItemController bookItemController = itemLoader.getController();
+                    bookItemController.setGroupItem(book);
+
+                    collectionGroupController.addBookItem(bookItemNode);
+                }
+
+                collectionBookContainer.getChildren().add(collectionGroupNode);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
     // Di chuột vào hiện hiệu ứng và ngược lại

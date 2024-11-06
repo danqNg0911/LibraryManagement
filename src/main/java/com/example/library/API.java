@@ -14,10 +14,14 @@ public class API {
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     // Hàm lấy dữ liệu sách từ Google Books API
-    public static String searchBooks(String title, String author, String category) throws Exception {
+    public static String searchBooks(String title, String author, String category, String isbn) throws Exception {
         OkHttpClient client = new OkHttpClient();
         StringBuilder query = new StringBuilder();
 
+
+        if (!isbn.isEmpty()) {
+            query.append("isbn:").append(isbn);
+        }
         if (!title.isEmpty()) {
             query.append("intitle:").append(title).append("+");
         }

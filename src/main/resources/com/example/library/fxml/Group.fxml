@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.CollectionGroupController">
+   <children>
+      <Label fx:id="groupCharacter" layoutX="10.0" prefHeight="26.0" prefWidth="824.0" text="Label">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <ScrollPane layoutY="26.0" maxWidth="Infinity" prefHeight="310.0" prefWidth="834.0">
+         <content>
+            <HBox fx:id="BookContainer" fillHeight="false" maxWidth="Infinity" prefHeight="294.0" prefWidth="853.0" styleClass="contentBook" stylesheets="@../stylesheet%20(css)/userCltStyle.css" />
+         </content>
+      </ScrollPane>
+   </children>
+</Pane>
