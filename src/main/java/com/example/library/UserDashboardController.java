@@ -50,6 +50,21 @@ public class UserDashboardController {
     private ImageView currentAvatar;
 
     @FXML
+    private ImageView currentAvatar1;
+
+    @FXML
+    private Label currentEmailLabel;
+
+    @FXML
+    private Label currentName1Label;
+
+    @FXML
+    private Label currentPhoneLabel;
+
+    @FXML
+    private Label currentUserameLabel;
+
+    @FXML
     private Button dashboardButton;
 
     @FXML
@@ -84,9 +99,6 @@ public class UserDashboardController {
 
     @FXML
     private BarChart<?, ?> rollingYearChart;
-
-    @FXML
-    private Label selectCollectionLabel;
 
     @FXML
     private Button settingButton;
@@ -200,5 +212,9 @@ public class UserDashboardController {
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        currentName1Label.setText(user.getName(user.getUsername()));
+        currentUserameLabel.setText(user.getUsername());
+        currentPhoneLabel.setText(user.getPhone(user.getUsername()));
+        currentEmailLabel.setText(user.getEmail(user.getUsername()));
     }
 }

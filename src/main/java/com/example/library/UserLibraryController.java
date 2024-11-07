@@ -117,17 +117,28 @@ public class UserLibraryController {
     @FXML
     private Button upgradeButton;
 
+    @FXML
+    private TextField isbnField;
 
     public void onSearch(ActionEvent event) {
+        String isbn = isbnField.getText().trim();
         String title = titleField.getText().trim();
         String author = authorField.getText().trim();
         String category = categoryField.getText().trim();
 
-        try {
-            String jsonResponse = API.searchBooks(title, author, category);
-            updateBook(jsonResponse);
-        } catch (Exception e) {
-           e.printStackTrace();
+        if (isbn.isEmpty() && title.isEmpty() && author.isEmpty() && category.isEmpty()) {
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "You must filled at least one field to search", "stylesheet (css)/login_alert.css");
+        } else {
+            try {
+                String jsonResponse = API.searchBooks(title, author, category, isbn);
+                if (jsonResponse.isEmpty()) {
+                    WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "No books match your search in current library", "stylesheet (css)/login_alert.css");
+                } else {
+                    updateBook(jsonResponse);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -173,6 +184,31 @@ public class UserLibraryController {
         }
     }
 
+    /*private String getISBN(JsonObject volumeInfo) {
+        if (volumeInfo.has("industryIdentifiers")) {
+            JsonArray industryIdentifiers = volumeInfo.getAsJsonArray("industryIdentifiers");
+            String isbn10 = null;
+            String isbn13 = null;
+            for (JsonElement identifier : industryIdentifiers) {
+                JsonObject id = identifier.getAsJsonObject();
+                String type = id.get("type").getAsString();
+                if (type.equals("ISBN_13")) {
+                    isbn13 = id.get("identifier").getAsString();
+                }
+                if (type.equals("ISBN_10")) {
+                    isbn10 = id.get("identifier").getAsString();
+                }
+            }
+            if (isbn10 != null && isbn13 != null) {
+                return "ISBN13: " + isbn13 + "    " + "ISBN10: " + isbn10;
+            } else if (isbn10 != null) {
+                return "ISBN13: " + isbn13;
+            } else if (isbn13 != null) {
+                return "ISBN10: " + isbn10;
+            }
+        }
+        return "ISBN does not exist";
+    }*/
 
     private String getAuthors(JsonObject volumeInfo) {
         if (volumeInfo.has("authors")) {

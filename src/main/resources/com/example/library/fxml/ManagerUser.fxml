@@ -17,14 +17,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ManagerUserController">
    <children>
-      <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="35.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/Ulib_logo.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="mainSce" layoutX="223.0" prefHeight="800.0" prefWidth="986.0">
+      <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
          <children>
-            <Label fx:id="dashboardTitle" layoutX="39.0" layoutY="63.0" prefHeight="50.0" prefWidth="263.0" text="Manager Users">
+            <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="263.0" text="Manager Users">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
@@ -36,7 +36,7 @@
                </image>
             </ImageView>
             <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <VBox fx:id="accVBox" layoutX="812.0" layoutY="114.0" prefHeight="78.0" prefWidth="132.0" visible="false">
+            <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                <children>
                   <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
                   <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
@@ -81,9 +81,9 @@
          </children>
       </AnchorPane>
       <Line endX="1207.4000244140625" endY="135.2928924560547" layoutX="2.0" layoutY="7.0" startX="220.99998474121094" startY="135.2928924560547" />
-      <Pane layoutX="2.0" layoutY="142.0" prefHeight="250.0" prefWidth="222.0">
+      <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
          <children>
-            <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="MUPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -93,7 +93,7 @@
                   <Button fx:id="manageUsersButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Users" />
                </children>
             </HBox>
-            <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -103,7 +103,7 @@
                   <Button fx:id="manageBooksButton" mnemonicParsing="false" onAction="#moveToManageBooks" onMouseEntered="#showAnimationMB" onMouseExited="#unshowAnimationMB" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Books" />
                </children>
             </HBox>
-            <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -115,7 +115,7 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutX="2.0" layoutY="392.0" prefHeight="417.0" prefWidth="222.0">
+      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
          <children>
             <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>

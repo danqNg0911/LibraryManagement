@@ -24,7 +24,7 @@
       </ImageView>
       <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="977.0">
          <children>
-            <Label fx:id="dashboardTitle" layoutX="39.0" layoutY="63.0" prefHeight="50.0" prefWidth="190.0" text="Upgrade">
+            <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="190.0" text="Upgrade">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
@@ -36,7 +36,7 @@
                </image>
             </ImageView>
             <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <VBox fx:id="accVBox" layoutX="812.0" layoutY="114.0" prefHeight="78.0" prefWidth="132.0" visible="false">
+            <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                <children>
                   <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
                   <Button fx:id="accHelpsButton" mnemonicParsing="false" onAction="#moveToAccHelps" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
@@ -140,9 +140,9 @@
             </Text>
          </children>
       </AnchorPane>
-      <Pane layoutY="144.0" prefHeight="237.0" prefWidth="222.0">
+      <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
          <children>
-            <HBox layoutY="41.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -152,7 +152,7 @@
                   <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
                </children>
             </HBox>
-            <HBox layoutY="81.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -162,7 +162,7 @@
                   <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
                </children>
             </HBox>
-            <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -172,7 +172,7 @@
                   <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
                </children>
             </HBox>
-            <HBox layoutY="161.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+            <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -184,7 +184,7 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutY="381.0" prefHeight="417.0" prefWidth="222.0">
+      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
          <children>
             <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>

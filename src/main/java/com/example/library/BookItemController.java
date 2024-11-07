@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class BookItemController {
+    User user = new User();
+
     @FXML
     private ImageView bookCover;
 
@@ -69,5 +72,31 @@ public class BookItemController {
         WindowManager.navigateTo(scene);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void addBook(ActionEvent event) {
+        String title = book.getTitle();
+        String author = book.getAuthor();
+        String category = book.getCategory();
+        String description = book.getDescription();
+        String imageUrl = book.getImageUrl();
+        String username = user.getUsername();
+        if (!BookJDBC.checkBook(username, title, author)) {
+            BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description);
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
+        } else {
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
+        }
+    }
+    public void deleteBook(ActionEvent event) {
+        String username = user.getUsername();
+        String title = book.getTitle();
+        String author = book.getAuthor();
+        if (!BookJDBC.checkBook(username, title, author)) {
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
+        } else {
+            BookJDBC.deleteBookFromDatabase(username, title, author);
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "Successfully removing this book from your library", "stylesheet (css)/login_alert.css");
+        }
     }
 }

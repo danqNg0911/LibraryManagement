@@ -129,8 +129,8 @@
 }
 
 .scroll-pane {
-    -fx-hbar-policy: never;
-    /*-fx-vbar-policy: never;*/
+    /*-fx-hbar-policy: never;
+    -fx-vbar-policy: never;*/
     -fx-border-color: transparent;
     -fx-background-color: transparent;
 }

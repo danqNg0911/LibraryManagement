@@ -5,3 +5,43 @@
     -fx-padding: 0px 10px 0px 50px;
     -fx-alignment: center-left;
 }
+
+.scroll-pane {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;   /* Nền thanh cuộn trong suốt */
+}
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #ececec;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+.contentBook {
+    -fx-background-color: #ffffff;
+}
+#groupCharacter {
+    -fx-text-fill: #38b1ff;
+}
+.ItemButton {
+    -fx-background-color: #38b1ff;  /*  Màu nền: #00c4cc  */
+    -fx-text-fill: #fff; /* Màu chữ: #fff */
+    -fx-font-weight: bold; /* Nét chữ: Đậm */
+    -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
+    -fx-transition: opacity 0.2 ease;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+.ItemButton:hover {
+    -fx-opacity: 0.8; /* Độ mờ */
+}
+.ItemButton:pressed {
+    -fx-background-color: #ff6694;
+}
+
+.alabel {
+    -fx-text-fill: #38b1ff;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}

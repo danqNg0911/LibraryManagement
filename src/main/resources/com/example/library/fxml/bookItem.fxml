@@ -26,11 +26,11 @@
       </VBox>
       <Pane maxHeight="303.0" maxWidth="221.0" minHeight="303.0" minWidth="213.0" prefHeight="303.0" prefWidth="221.0">
          <children>
-            <Button fx:id="addItemButton" layoutX="74.0" layoutY="84.0" mnemonicParsing="false" styleClass="libButton" text="Add item">
+            <Button fx:id="addItemButton" layoutX="74.0" layoutY="84.0" mnemonicParsing="false" onAction="#addBook" styleClass="libButton" text="Add item">
                <font>
                   <Font size="13.0" />
                </font></Button>
-            <Button fx:id="deleteItemButton" layoutX="67.0" layoutY="171.0" mnemonicParsing="false" styleClass="libButton" text="Delete item">
+            <Button fx:id="deleteItemButton" layoutX="67.0" layoutY="171.0" mnemonicParsing="false" onAction="#deleteBook" styleClass="libButton" text="Delete item">
                <font>
                   <Font size="13.0" />
                </font></Button>

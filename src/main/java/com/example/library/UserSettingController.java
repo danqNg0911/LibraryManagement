@@ -96,12 +96,6 @@ public class UserSettingController {
     private ImageView currentAvatar;
 
     @FXML
-    private Label currentEmailLabel;
-
-    @FXML
-    private Label currentName1Label;
-
-    @FXML
     private Label currentNameLabel;
 
     @FXML
@@ -127,12 +121,6 @@ public class UserSettingController {
 
     @FXML
     private Label currentPassWarning3;
-
-    @FXML
-    private Label currentPhoneLabel;
-
-    @FXML
-    private Label currentUserameLabel;
 
     @FXML
     private Button dashboardButton;
@@ -315,11 +303,7 @@ public class UserSettingController {
         // Hiển thị tên hiện tại của user
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        currentName1Label.setText(user.getName(user.getUsername()));
-        currentUserameLabel.setText(user.getUsername());
         currentNameLabel.setText(user.getName(user.getUsername()));
-        currentPhoneLabel.setText(user.getPhone(user.getUsername()));
-        currentEmailLabel.setText(user.getEmail(user.getUsername()));
     }
 
     @FXML
@@ -471,7 +455,6 @@ public class UserSettingController {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
 
-            currentPhoneLabel.setText(newPhonenum);
         } else {
 
             WindowManager.RedWarningLabel(newPhoneWarning, "This phone is invalid", 2);
@@ -500,7 +483,6 @@ public class UserSettingController {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Email", "Your email has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
 
-            currentEmailLabel.setText(newEmail);
         } else {
 
             WindowManager.RedWarningLabel(newEmailWarning, "This email is invalid", 2);
