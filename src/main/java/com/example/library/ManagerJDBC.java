@@ -7,11 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManagerJDBC extends BaseJDBC {
-    private static final String databaseURL = "jdbc:mysql://localhost:3307/manageraccount";
-    private static final String databaseUser = "root";
-    private static final String databasePassword = "bongbibo9";
-    private static final String MANAGER_DATA_FILE_PATH = "C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\data\\ListOfManagers.txt";
+public class ManagerJDBC extends BaseJDBC implements LinkJDBC{
+    private static final String MANAGER_DATA_FILE_PATH = LinkSetting.MANAGER_LIST_FILE_PATH.getLink();
+
     public final List<String> listOfManager = new ArrayList<>();
 
     {
@@ -28,17 +26,17 @@ public class ManagerJDBC extends BaseJDBC {
 
     @Override
     protected String getDatabaseURL() {
-        return databaseURL;
+        return databaseManagerURL;
     }
 
     @Override
     protected String getDatabaseUser() {
-        return databaseUser;
+        return databaseManager;
     }
 
     @Override
     protected String getDatabasePassword() {
-        return databasePassword;
+        return databaseManagerPassword;
     }
 
 
@@ -46,7 +44,7 @@ public class ManagerJDBC extends BaseJDBC {
     protected Connection connectToDatabase() {
         try {
             if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+                connection = DriverManager.getConnection(databaseManagerURL, databaseManager, databaseManagerPassword);
             }
         } catch (SQLException e) {
             e.printStackTrace();

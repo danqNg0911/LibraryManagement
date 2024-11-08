@@ -1,18 +1,14 @@
 package com.example.library;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookJDBC {
+public class BookJDBC implements LinkJDBC {
     private Connection connection;
-    private static final String databaseURL = "jdbc:mysql://localhost:3307/useraccount";
-    private static final String databaseUser = "root";
-    private static final String databasePassword = "bongbibo9";
 
     protected String getDatabaseURL() {
-        return databaseURL;
+        return databaseUserURL;
     }
 
     protected String getDatabaseUser() {
@@ -20,13 +16,13 @@ public class BookJDBC {
     }
 
     protected String getDatabasePassword() {
-        return databasePassword;
+        return databaseUserPassword;
     }
 
     public static Connection connectToDatabase() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+            connection = DriverManager.getConnection(databaseUserURL, databaseUser, databaseUserPassword);
         } catch (SQLException e) {
             e.printStackTrace();
         }

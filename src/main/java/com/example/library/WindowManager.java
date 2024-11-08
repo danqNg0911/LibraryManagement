@@ -77,6 +77,16 @@ public class WindowManager {
         stage.show();
     }
 
+    // Truyền file FXML và CSS
+    public static void addGameFxml(String fxmlFile, int width, int height) throws IOException {
+        FXMLLoader Loader = new FXMLLoader(Main.class.getResource(fxmlFile));
+        Scene scene = new Scene(Loader.load(), width, height);
+        WindowManager.navigateTo(scene);
+        stage.setTitle("Black Myth Wukong");
+        //stage.setScene(scene);
+        stage.show();
+    }
+
     public static void moveToAnotherScene(ActionEvent event, String fxmlFile, String cssMainFile, String cssSubFile, int SecondToDisplay, int width, int height) {
         PauseTransition pause = new PauseTransition(Duration.seconds(SecondToDisplay));
         pause.setOnFinished(new EventHandler<ActionEvent>() {
@@ -149,7 +159,7 @@ public class WindowManager {
 
     // Phương thức phát âm thanh
     public static void playButtonSound() {
-        String soundFile = "C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\src\\main\\resources\\com\\example\\library\\assets\\mouse-click-153941.mp3";
+        String soundFile = LinkSetting.SOUND_CLICK_MOUSE.getLink();
         Media sound = new Media(new File(soundFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();

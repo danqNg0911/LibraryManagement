@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class API {
-    private static final String API_KEY = "AIzaSyCZ9Ee9DuenXY5gvW6IcKh_NhTMnB5U4qM";
+    private static final String API_KEY = LinkSetting.API_URL.getLink();
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     // Hàm lấy dữ liệu sách từ Google Books API
