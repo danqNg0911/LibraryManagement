@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -92,11 +93,12 @@
                     <children>
                         <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                     </children>
                 </VBox>
             </children>
         </AnchorPane>
+        <ProgressIndicator fx:id="loadingSearching" layoutX="700.0" layoutY="442.0" visible="false" />
         <Line endX="1210.0" endY="135.2928924560547" startX="221.99998474121094" startY="135.2928924560547" />
         <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
             <children>
