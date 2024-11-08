@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class User extends BaseJDBC {
 
-    private static final String databaseURL = "jdbc:mysql://127.0.0.1:3306/useraccount";
+    private static final String databaseURL = "jdbc:mysql://localhost:3307/useraccount";
     private static final String databaseUser = "root";
-    private static final String databasePassword = "Haidang0911.";
+    private static final String databasePassword = "bongbibo9";
 
     @Override
     protected String getDatabaseURL() {

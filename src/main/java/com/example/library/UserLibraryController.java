@@ -7,10 +7,12 @@ import com.google.gson.JsonParser;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -120,6 +122,9 @@ public class UserLibraryController {
     @FXML
     private TextField isbnField;
 
+    @FXML
+    private ProgressIndicator loadingSearching;
+
     public void onSearch(ActionEvent event) {
         String isbn = isbnField.getText().trim();
         String title = titleField.getText().trim();
@@ -129,16 +134,38 @@ public class UserLibraryController {
         if (isbn.isEmpty() && title.isEmpty() && author.isEmpty() && category.isEmpty()) {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "You must filled at least one field to search", "stylesheet (css)/login_alert.css");
         } else {
-            try {
-                String jsonResponse = API.searchBooks(title, author, category, isbn);
-                if (jsonResponse.isEmpty()) {
-                    WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "No books match your search in current library", "stylesheet (css)/login_alert.css");
-                } else {
-                    updateBook(jsonResponse);
+            loadingSearching.setVisible(true);
+            // làm mờ khi tìm kiếm
+            mainSce.setEffect(new GaussianBlur(4));
+            // Sử dụng Task để tìm kiếm sách trên luồng nền
+            Task<String> searchTask = new Task<>() {
+                @Override
+                protected String call() throws Exception {
+                    return API.searchBooks(title, author, category, isbn);  // Gọi API trên nền
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            };
+
+            // Khi task hoàn thành (onSucceeded), cập nhật UI
+            searchTask.setOnSucceeded(e -> {
+                String jsonResponse = searchTask.getValue();
+                if (jsonResponse.isEmpty()) {
+                    WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "No books match your search in the current library", "stylesheet (css)/login_alert.css");
+                } else {
+                    updateBook(jsonResponse);  // Cập nhật sách vào giao diện
+                }
+                loadingSearching.setVisible(false);  // Ẩn biểu tượng loading sau khi hoàn thành
+                mainSce.setEffect(null);
+            });
+
+            // Nếu task gặp lỗi (onFailed), xử lý lỗi và tắt biểu tượng loading
+            searchTask.setOnFailed(e -> {
+                loadingSearching.setVisible(false);
+                mainSce.setEffect(null);
+                WindowManager.alertWindow(Alert.AlertType.ERROR, "Error", "An error occurred during the search", "stylesheet (css)/login_alert.css");
+            });
+
+            // Chạy task trên luồng nền
+            new Thread(searchTask).start();
         }
     }
 
@@ -147,6 +174,7 @@ public class UserLibraryController {
 
         if (!jsonObject.has("items")) {
             System.out.println("No items found");
+            loadingSearching.setVisible(false);
             return;
         }
 
@@ -155,6 +183,7 @@ public class UserLibraryController {
 
         if (items.size() == 0) {
             System.out.println("No books found");
+            loadingSearching.setVisible(false);
             return;
         }
 
@@ -182,6 +211,7 @@ public class UserLibraryController {
                 e.printStackTrace();
             }
         }
+        loadingSearching.setVisible(false);
     }
 
     /*private String getISBN(JsonObject volumeInfo) {

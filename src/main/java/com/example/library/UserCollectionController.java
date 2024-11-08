@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -111,6 +112,9 @@ public class UserCollectionController {
     private Button upgradeButton;
 
     @FXML
+    private ProgressIndicator loadingIndicator;
+
+    @FXML
     private VBox collectionBookContainer;
     private List<Book> books = new ArrayList<>();
     private Map<Character, List<Book>> sortByTitle(List<Book> books) {
@@ -122,6 +126,8 @@ public class UserCollectionController {
         return ListByTitle;
     }
     public void showData(ActionEvent actionEvent) throws IOException, SQLException {
+        loadingIndicator.setVisible(true);
+        mainSce.setEffect(new GaussianBlur(4));
         books.clear();
         collectionBookContainer.getChildren().clear();
         books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
@@ -144,6 +150,9 @@ public class UserCollectionController {
                 e.printStackTrace();
             }
         }
+
+        loadingIndicator.setVisible(false);
+        mainSce.setEffect(null);
     }
 
     // Di chuột vào hiện hiệu ứng và ngược lại

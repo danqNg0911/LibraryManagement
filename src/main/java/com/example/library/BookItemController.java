@@ -45,7 +45,7 @@ public class BookItemController {
             Image image = new Image(book.getImageUrl());
             bookCover.setImage(image);
         } else {
-            Image nullImage = new Image("file:/F:/OOP/LibraryManagement_Ulib/LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png");
+            Image nullImage = new Image("file:C:/YEAR 2/OOP/JavaFX/Bai tap lon _ Thu VIen/src/main/resources/com/example/library/assets/Picture_is_not_available.png");
             bookCover.setImage(nullImage);
         }
     }
