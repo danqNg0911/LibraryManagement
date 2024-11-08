@@ -6,9 +6,10 @@ import java.sql.SQLException;
 
 public class Manager extends BaseJDBC {
 
-    private static final String databaseURL = "jdbc:mysql://127.0.0.1:3306/manageraccount";
+    private static final String databaseURL = "jdbc:mysql://localhost:3307/manageraccount";
     private static final String databaseUser = "root";
-    private static final String databasePassword = "Haidang0911.";
+    private static final String databasePassword = "bongbibo9";
+    private static final String MANAGER_DATA_FILE_PATH = "C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\data\\ListOfManagers.txt";
 
     @Override
     protected String getDatabaseURL() {
