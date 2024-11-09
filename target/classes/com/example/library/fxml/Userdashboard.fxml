@@ -113,6 +113,7 @@
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>
+            <Button fx:id="gameButton" layoutX="346.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleGameButton" text="Game " />
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
@@ -186,7 +187,7 @@
       </Pane>
     </children>
    <stylesheets>
-      <URL value="@../stylesheet%20(css)/userStyles.css" />
-      <URL value="@../stylesheet%20(css)/userDashStyle.css" />
+      <URL value="@../stylesheet (css)/userStyles.css" />
+      <URL value="@../stylesheet (css)/userDashStyle.css" />
    </stylesheets>
 </AnchorPane>

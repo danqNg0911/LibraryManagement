@@ -271,7 +271,7 @@
       </Pane>
     </children>
    <stylesheets>
-      <URL value="@../stylesheet%20(css)/userStyles.css" />
-      <URL value="@../stylesheet%20(css)/userCltStyle.css" />
+      <URL value="@../stylesheet (css)/userStyles.css" />
+      <URL value="@../stylesheet (css)/userCltStyle.css" />
    </stylesheets>
 </AnchorPane>
