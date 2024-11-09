@@ -1,13 +1,12 @@
 package com.example.game;
 
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Bounds;
 
 public class Player {
-    private static int health = Base.PLAYER_LIVES.getInfo();
+    private static int health = NumSetting.PLAYER_LIVES.getNum();
     private ImageView player; // ImageView để hiển thị người chơi
     private Pane bottomPane;
     private boolean isPause;
@@ -22,9 +21,13 @@ public class Player {
     }
 
     public void show() {
-        player.setImage(new Image("/com/example/game/assets/wukong/right/wukong_right.png"));
-        player.setFitWidth(Base.PLAYER_WIDTH.getInfo());
-        player.setFitHeight(Base.PLAYER_HEIGHT.getInfo());
+        try {
+            player.setImage(new Image(getClass().getResource(LinkSetting.PLAYER_IMAGE_RIGHT.getLink()).toExternalForm()));
+        } catch (Exception e) {
+            System.out.println("loi show(). Line = 29");
+        }
+        player.setFitWidth(NumSetting.PLAYER_WIDTH.getNum());
+        player.setFitHeight(NumSetting.PLAYER_HEIGHT.getNum());
         player.setLayoutX(100);
         player.setLayoutY(100);
 

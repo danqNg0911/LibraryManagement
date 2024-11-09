@@ -145,5 +145,12 @@
                 </executions>
             </plugin>
         </plugins>
+
+            <resources>
+                <resource>
+                    <directory>src/main/resources</directory>
+                </resource>
+            </resources>
+            <!-- Các plugin khác của bạn -->
     </build>
 </project>

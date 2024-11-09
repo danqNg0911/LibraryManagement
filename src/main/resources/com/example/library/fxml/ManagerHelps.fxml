@@ -93,7 +93,7 @@
       </Pane>
    </children>
    <stylesheets>
-      <URL value="@../stylesheet%20(css)/managerStyles.css" />
-      <URL value="@../stylesheet%20(css)/managerHelpsStyle.css" />
+      <URL value="@../stylesheet (css)/managerStyles.css" />
+      <URL value="@../stylesheet (css)/managerHelpsStyle.css" />
    </stylesheets>
 </AnchorPane>

@@ -1,9 +1,7 @@
 package com.example.game;
 
 import javafx.animation.KeyFrame;
-import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
@@ -22,7 +20,7 @@ public class MonsterA extends Monster {
     private boolean isShooting = false;
 
 
-    private static final int INITIAL_HEALTH = Base.MONSTER_A_LIVES.getInfo();
+    private static final int INITIAL_HEALTH = NumSetting.MONSTER_A_LIVES.getNum();
 
     public MonsterA(ImageView monster, Player player, String bulletImagePath, double bulletSpeedX, double bulletSpeedY, Pane bottomPane) {
         super(monster, player, bulletImagePath, bulletSpeedX, bulletSpeedY, bottomPane);
@@ -33,7 +31,7 @@ public class MonsterA extends Monster {
 
 
         // Khởi tạo Timeline để điều khiển di chuyển
-        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_A_BULLET_TIME.getInfo()), new EventHandler<ActionEvent>() {
+        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_BULLET_TIME.getNum()), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //Sound.playMonsterSound("A");
@@ -52,7 +50,7 @@ public class MonsterA extends Monster {
         }
 
         isShooting = true;
-        for (int i = 0; i <= Base.MONSTER_A_NUMBER_OF_BULLET_PER_TURN.getInfo(); i++) {
+        for (int i = 0; i <= NumSetting.MONSTER_A_NUMBER_OF_BULLET_PER_TURN.getNum(); i++) {
 
             // Tạo một Timeline cho từng viên đạn
             Timeline shootTimeline = new Timeline(new KeyFrame(Duration.millis(i * SHOOT_COOLDOWN), new EventHandler<ActionEvent>() {
@@ -136,7 +134,7 @@ public class MonsterA extends Monster {
                 aniA = new CharacterAnimation(monster, "monsters/A/left/02-Fly", 8, "A");
                 aniA.start();
             }
-            monster.setLayoutX(monster.getLayoutX() - Base.MONSTER_A_MOVE_SPEED.getInfo()); // Di chuyển quái vật
+            monster.setLayoutX(monster.getLayoutX() - NumSetting.MONSTER_A_MOVE_SPEED.getNum()); // Di chuyển quái vật
         }
     }
 

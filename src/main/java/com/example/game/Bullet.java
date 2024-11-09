@@ -23,26 +23,26 @@ public class Bullet {
     private String answer;
 
     public Bullet(String imagePath, double startX, double startY, double speedX, double speedY, Pane bottomPane, String answer,Player player) {
-        bulletImage = new ImageView(new Image(imagePath));
+        bulletImage = new ImageView(new Image(getClass().getResource(imagePath).toExternalForm()));
         this.isPause = false;
         this.answer = answer;
 
         double bulletWidth = 0;
         double bulletHeight = 0;
         if (this.answer.equals("A")) {
-            bulletWidth = Base.MONSTER_A_BULLET_WIDTH.getInfo();
-            bulletHeight = Base.MONSTER_A_BULLET_HEIGHT.getInfo();
-            damage = Base.MONSTER_A_DAMAGE.getInfo();
+            bulletWidth = NumSetting.MONSTER_A_BULLET_WIDTH.getNum();
+            bulletHeight = NumSetting.MONSTER_A_BULLET_HEIGHT.getNum();
+            damage = NumSetting.MONSTER_A_DAMAGE.getNum();
         }
         else if (this.answer.equals("B")) {
-            bulletWidth = Base.MONSTER_B_BULLET_WIDTH.getInfo();
-            bulletHeight = Base.MONSTER_B_BULLET_HEIGHT.getInfo();
-            damage = Base.MONSTER_B_DAMAGE.getInfo();
+            bulletWidth = NumSetting.MONSTER_B_BULLET_WIDTH.getNum();
+            bulletHeight = NumSetting.MONSTER_B_BULLET_HEIGHT.getNum();
+            damage = NumSetting.MONSTER_B_DAMAGE.getNum();
         }
         else if (this.answer.equals("C")) {
-            bulletWidth = Base.MONSTER_C_BULLET_WIDTH.getInfo();
-            bulletHeight = Base.MONSTER_C_BULLET_HEIGHT.getInfo();
-            damage = Base.MONSTER_C_DAMAGE.getInfo();
+            bulletWidth = NumSetting.MONSTER_C_BULLET_WIDTH.getNum();
+            bulletHeight = NumSetting.MONSTER_C_BULLET_HEIGHT.getNum();
+            damage = NumSetting.MONSTER_C_DAMAGE.getNum();
         }
         else if (this.answer.equals("D")) {
             bulletWidth = 0;
