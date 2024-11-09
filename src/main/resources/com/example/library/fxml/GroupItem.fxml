@@ -19,7 +19,7 @@
                         <Label fx:id="Author" prefHeight="17.0" prefWidth="255.0" text="Author" />
                         <Pane prefHeight="40.0" prefWidth="252.0">
                             <children>
-                                <Button fx:id="View1" layoutX="45.0" layoutY="9.0" mnemonicParsing="false" styleClass="ItemButton" text="View" />
+                                <Button fx:id="View1" layoutX="45.0" layoutY="9.0" mnemonicParsing="false" onAction="#viewBook" styleClass="ItemButton" text="View" />
                             </children>
                         </Pane>
                     </children>

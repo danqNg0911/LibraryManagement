@@ -44,7 +44,7 @@ public class BlackMythWukongController {
     private ImageView rightHit;
     private boolean isRight;
 
-    private static final String QUESTION_FILE_PATH = "C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\data\\QuestionInGame.txt";
+    private static final String QUESTION_FILE_PATH = "D:\\LibraryManagement\\LibraryManagement\\data\\QuestionInGame.txt";
 
     private Timeline gameTimer; // Biến để lưu timeline của bộ đếm
     private int gameTime = Base.TIME.getInfo();

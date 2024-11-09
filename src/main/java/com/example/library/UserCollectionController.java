@@ -116,7 +116,13 @@ public class UserCollectionController {
 
     @FXML
     private VBox collectionBookContainer;
+
     private List<Book> books = new ArrayList<>();
+
+    private boolean TitleSorting = false;
+    private boolean AuthorSorting = false;
+
+
     private Map<Character, List<Book>> sortByTitle(List<Book> books) {
         Map<Character, List<Book>> ListByTitle = new TreeMap<Character, List<Book>>();
         for (Book book : books) {
@@ -125,6 +131,8 @@ public class UserCollectionController {
         }
         return ListByTitle;
     }
+
+
     public void showData(ActionEvent actionEvent) throws IOException, SQLException {
         loadingIndicator.setVisible(true);
         mainSce.setEffect(new GaussianBlur(4));
