@@ -2,14 +2,11 @@ package com.example.library;
 
 import java.sql.*;
 
-public class UserJDBC extends BaseJDBC{
-    private static final String databaseURL = "jdbc:mysql://localhost:3307/useraccount";
-    private static final String databaseUser = "root";
-    private static final String databasePassword = "bongbibo9";
+public class UserJDBC extends BaseJDBC implements LinkJDBC {
 
     @Override
     protected String getDatabaseURL() {
-        return databaseURL;
+        return databaseUserURL;
     }
 
     @Override
@@ -19,14 +16,14 @@ public class UserJDBC extends BaseJDBC{
 
     @Override
     protected String getDatabasePassword() {
-        return databasePassword;
+        return databaseUserPassword;
     }
 
     @Override
     protected Connection connectToDatabase() {
         try {
             if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+                connection = DriverManager.getConnection(databaseUserURL, databaseUser, databaseUserPassword);
             }
         } catch (SQLException e) {
             e.printStackTrace();

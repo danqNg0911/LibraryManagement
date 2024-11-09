@@ -15,7 +15,7 @@ public class Main extends Application {
 
         //WindowManager.addFxmlCss("fxml/BeginScene.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 400, 300);
 
-        WindowManager.addFxml("/com/example/game/fxml/BlackMythWukong.fxml",800, 800);
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukong.fxml", 800, 800);
 
         if (userJDBC.testDatabaseConnection()) {
             System.out.println("Successful UserDatabase Connection");

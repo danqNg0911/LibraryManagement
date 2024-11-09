@@ -4,33 +4,30 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Manager extends BaseJDBC {
+public class Manager extends BaseJDBC implements LinkJDBC{
 
-    private static final String databaseURL = "jdbc:mysql://localhost:3307/manageraccount";
-    private static final String databaseUser = "root";
-    private static final String databasePassword = "bongbibo9";
-    private static final String MANAGER_DATA_FILE_PATH = "C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\data\\ListOfManagers.txt";
+    private static final String MANAGER_DATA_FILE_PATH = LinkSetting.MANAGER_LIST_FILE_PATH.getLink();
 
     @Override
     protected String getDatabaseURL() {
-        return databaseURL;
+        return databaseManagerURL;
     }
 
     @Override
     protected String getDatabaseUser() {
-        return databaseUser;
+        return databaseManager;
     }
 
     @Override
     protected String getDatabasePassword() {
-        return databasePassword;
+        return databaseManagerPassword;
     }
 
     @Override
     protected Connection connectToDatabase() {
         try {
             if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection(databaseURL, databaseUser, databasePassword);
+                connection = DriverManager.getConnection(databaseManagerURL, databaseManager, databaseManagerPassword);
             }
         } catch (SQLException e) {
             e.printStackTrace();

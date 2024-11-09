@@ -3,22 +3,16 @@ package com.example.library;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ViewItemController {
 
@@ -126,7 +120,7 @@ public class ViewItemController {
             Image image = new Image(book.getImageUrl());
             coverImage.setImage(image);
         } else {
-            Image nullImage = new Image("file:/F:/OOP/LibraryManagement_Ulib/LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png");
+            Image nullImage = new Image(LinkSetting.IMAGE_NULL.getLink());
             coverImage.setImage(nullImage);
         }
     }
