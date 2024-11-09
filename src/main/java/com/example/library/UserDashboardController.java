@@ -21,6 +21,7 @@ import java.io.IOException;
 
 public class UserDashboardController {
 
+    public Button gameButton;
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
     User user = new User();
@@ -216,5 +217,9 @@ public class UserDashboardController {
         currentUserameLabel.setText(user.getUsername());
         currentPhoneLabel.setText(user.getPhone(user.getUsername()));
         currentEmailLabel.setText(user.getEmail(user.getUsername()));
+    }
+
+    public void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukong.fxml", 800, 800);
     }
 }

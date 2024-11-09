@@ -15,8 +15,8 @@
       </ImageView>
       <Button fx:id="start" layoutX="142.0" layoutY="211.0" mnemonicParsing="false" onAction="#moveToLogin" prefHeight="26.0" prefWidth="116.0" text="Start App">
          <stylesheets>
-            <URL value="@../stylesheet%20(css)/style.css" />
-            <URL value="@../stylesheet%20(css)/login.css" />
+            <URL value="@../stylesheet (css)/style.css" />
+            <URL value="@../stylesheet (css)/login.css" />
          </stylesheets>
       </Button>
    </children>
