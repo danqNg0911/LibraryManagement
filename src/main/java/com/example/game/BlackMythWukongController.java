@@ -43,6 +43,7 @@ public class BlackMythWukongController {
     private ImageView leftHit;
     private ImageView rightHit;
     private boolean isRight;
+    private boolean deathSound;
 
     private static final String QUESTION_FILE_PATH = LinkSetting.QUESTION_PATH.getLink();
 
@@ -124,6 +125,7 @@ public class BlackMythWukongController {
         isPaused = false; // Đảm bảo game bắt đầu ở trạng thái không pause
         isLose = false;
         isWin = false;
+        deathSound = false;
 
         pauseOverlay.setVisible(false);
         gameOverOverlay.setVisible(false);
@@ -210,6 +212,11 @@ public class BlackMythWukongController {
                 sprite_num.setText("Sprite: " + bNums);
                 robot_num.setText("Robot: " + cNums);
                 troll_num.setText("Troll: " + dNums);
+                if (!deathSound && player.getHealth() <= 0) {
+                    Sound.playPlayerDeathSound();
+                    deathSound = true;
+                }
+
                 if (!isLose && !isWin && (player.getHealth() == 0 || conditionToLose())) {
                     isLose = true;
                     setGameOverOverlay();

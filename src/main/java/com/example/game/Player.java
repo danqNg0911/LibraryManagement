@@ -48,7 +48,7 @@ public class Player {
             // Xử lý khi người chơi hết máu, ví dụ: kết thúc trò chơi hoặc thông báo thua cuộc
             //this.bottomPane.getChildren().remove(player);
             health = 0;
-            Sound.playPlayerDeathSound();
+
             System.out.println("Player is defeated!");
         }
         else {

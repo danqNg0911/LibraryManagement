@@ -6,6 +6,7 @@ import javafx.scene.media.MediaPlayer;
 public class Sound {
     private static MediaPlayer backgroundMusicPlayer;
     private static MediaPlayer hitSoundPlayer;
+    private static MediaPlayer playerDeathSoundPlayer;
     private static MediaPlayer shootSoundPlayer;
     private static MediaPlayer monsterDeathSoundPlayer;
 
@@ -66,7 +67,7 @@ public class Sound {
     // Phương thức phát âm thanh khi người chơi chết
     public static void playPlayerDeathSound() {
         Media playerDeathSound = new Media(Sound.class.getResource(LinkSetting.PLAYER_SOUND_DEATH.getLink()).toExternalForm());
-        MediaPlayer playerDeathSoundPlayer = new MediaPlayer(playerDeathSound);
+        playerDeathSoundPlayer = new MediaPlayer(playerDeathSound);
         playerDeathSoundPlayer.setVolume(1.0);
         playerDeathSoundPlayer.play();
     }

@@ -3,7 +3,7 @@ package com.example.game;
 public enum LinkSetting {
 
     // Câu hỏi
-    QUESTION_PATH("C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\data\\QuestionInGame.txt"),
+    QUESTION_PATH("C:\\YEAR 2\\OOP\\JavaFX\\CLONE2\\data\\QuestionInGame.txt"),
 
     // Ảnh nền
     BACKGROUND_IMAGE("/com/example/game/assets/sky_night/1.png"),
