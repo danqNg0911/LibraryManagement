@@ -16,6 +16,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import java.io.IOException;
+import com.example.game.*;
 import java.util.*;
 
 public class BlackMythWukongController {
@@ -48,7 +50,7 @@ public class BlackMythWukongController {
     private static final String QUESTION_FILE_PATH = LinkSetting.QUESTION_PATH.getLink();
 
     private Timeline gameTimer; // Biến để lưu timeline của bộ đếm
-    private int gameTime = NumSetting.TIME.getNum();
+    private int gameTime;
 
     private boolean isPaused = false;
     private boolean isLose = false;
@@ -104,9 +106,28 @@ public class BlackMythWukongController {
     public void initialize() throws Exception {
         questions = Question.loadQuestionsFromFile(QUESTION_FILE_PATH); // Đường dẫn file
         loadNextQuestion();
+
+        isPaused = false; // Đảm bảo game bắt đầu ở trạng thái không pause
+        isLose = false;
+        isWin = false;
+        deathSound = false;
+
+        pauseOverlay.setVisible(false);
+        gameOverOverlay.setVisible(false);
+        gameWinARoundOverlay.setVisible(false);
+
+        try {
+            // Đọc file bmw_round và cập nhật các giá trị trong enum
+            Map<String, Integer> config = GameRound.loadConfig(1);
+            NumSetting.updateSettingsFromConfig(config);  // Cập nhật enum từ file bmw_round
+        } catch (Exception e) {
+            System.out.println("Không thể tải file bmw_round");
+        }
         
         bg = new Background(bottomPane);
         bg.start();
+
+        gameTime = NumSetting.TIME.getNum();
 
         startGameTimer();
         Sound.playBackgroundMusic();
@@ -121,15 +142,6 @@ public class BlackMythWukongController {
         monsterInAnswers[1] = monsB;
         monsterInAnswers[2] = monsC;
         monsterInAnswers[3] = monsD;
-
-        isPaused = false; // Đảm bảo game bắt đầu ở trạng thái không pause
-        isLose = false;
-        isWin = false;
-        deathSound = false;
-
-        pauseOverlay.setVisible(false);
-        gameOverOverlay.setVisible(false);
-        gameWinARoundOverlay.setVisible(false);
 
 
         aCnt = NumSetting.MONSTER_A_SPAWN_NUMBER.getNum();
@@ -588,7 +600,7 @@ public class BlackMythWukongController {
                     bottomPane.getChildren().add(hitImageView); // Thêm vào giao diện
 
                     // Thiết lập Timeline để xóa hitImageView sau ms
-                    Timeline hitTimeline = new Timeline(new KeyFrame(Duration.millis(NumSetting.PlAYER_HIT_TIME.getNum()), new EventHandler<ActionEvent>() {
+                    Timeline hitTimeline = new Timeline(new KeyFrame(Duration.millis(NumSetting.PLAYER_HIT_TIME.getNum()), new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
                             bottomPane.getChildren().remove(hitImageView); // Xóa hitImageView
@@ -793,23 +805,6 @@ public class BlackMythWukongController {
         timeline.play();
     }
 
-
-    // Phương thức bắn đạn từ vị trí của monster về phía playerView
-    private void fireBulletTowardsPlayer(String bulletPath, double startX, double startY, double playerX, double playerY) {
-        // Tính khoảng cách giữa monster và playerView
-        double deltaX = playerX - startX;
-        double deltaY = playerY - startY;
-        double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        // Tính tốc độ của đạn trên mỗi trục (X, Y) theo hướng playerView
-        double speed = 5; // Tốc độ đạn
-        double speedX = (deltaX / distance) * speed;
-        double speedY = (deltaY / distance) * speed;
-
-        // Khởi tạo viên đạn và thêm nó vào màn hình
-        //Bullet bullet = new Bullet(bulletPath, startX, startY, speedX, speedY, bottomPane);
-        //bottomPane.getChildren().add(bullet.getBulletImage()); // bottomPane là bố cục chứa tất cả các đối tượng trong game
-    }
 
 }
 

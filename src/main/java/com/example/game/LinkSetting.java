@@ -5,6 +5,9 @@ public enum LinkSetting {
     // Câu hỏi
     QUESTION_PATH("C:\\YEAR 2\\OOP\\JavaFX\\CLONE2\\data\\QuestionInGame.txt"),
 
+    // Dữ liệu trận đấu
+    GAME_ROUND_PATH("C:\\YEAR 2\\OOP\\JavaFX\\CLONE\\data\\bmw_round_"),
+
     // Ảnh nền
     BACKGROUND_IMAGE("/com/example/game/assets/sky_night/1.png"),
 
