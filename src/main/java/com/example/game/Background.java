@@ -15,27 +15,34 @@ public class Background {
     private static final double BACKGROUND_SPEED = NumSetting.BACKGROUND_SPEED.getNum(); // Tốc độ di chuyển
     private ImageView bg1;
     private ImageView bg2;
-    private boolean isPause = false;
+    private boolean isPause;
     private Timeline timeline;
     private Pane bottomPane;
 
     public Background(Pane bottomPane) {
         this.bottomPane = bottomPane;
+        this.isPause = false;
+        timeline = new Timeline(new KeyFrame(Duration.millis(10), new BackgroundHandler()));
+        bg1 = new ImageView();
+        bg2 = new ImageView();
     }
 
-    public void start() {
+    public void start(int roundCount) {
+        this.isPause = false;
+        //System.out.println(isPause);
 
         // Tạo hai ImageView cho nền
         ImageView backgroundImageView = null;
         try {
-            Image backgroundImage = new Image(getClass().getResource(LinkSetting.BACKGROUND_IMAGE.getLink()).toExternalForm()); // Đường dẫn đến hình nền
+            System.out.println("roundCount in BG: " + roundCount);
+            Image backgroundImage = new Image(getClass().getResource(LinkSetting.BACKGROUND_IMAGE.getLink() + roundCount + ".png").toExternalForm()); // Đường dẫn đến hình nền
             backgroundImageView = new ImageView(backgroundImage);
             backgroundImageView.setLayoutY(0);
             backgroundImageView.setFitHeight(400);
             backgroundImageView.setFitWidth(800);
 
-            bg1 = new ImageView(backgroundImage);
-            bg2 = new ImageView(backgroundImage);
+            bg1.setImage(backgroundImage);
+            bg2.setImage(backgroundImage);
 
             // Đặt kích thước và vị trí cho nền
             bg1.setFitHeight(SCREEN_HEIGHT);
@@ -47,15 +54,18 @@ public class Background {
             bg1.setLayoutX(0);
             bg2.setLayoutX(SCREEN_WIDTH);
         } catch (Exception e) {
-            System.out.println("Loi file background....");
+            System.out.println("Loi file background...." + LinkSetting.BACKGROUND_IMAGE.getLink() + 1 + ".png");
         }
 
         if (bg1 != null && bg2 != null) {
-            if (!bottomPane.getChildren().contains(bg1)) {
+            if (true) {
+                System.out.println("hihi");
+                bottomPane.getChildren().remove(bg1);
                 bottomPane.getChildren().add(bg1);
                 bg1.toBack();
             }
-            if (!bottomPane.getChildren().contains(bg2)) {
+            if (true) {
+                bottomPane.getChildren().remove(bg2);
                 bottomPane.getChildren().add(bg2);
                 bg2.toBack();
             }
@@ -65,9 +75,9 @@ public class Background {
 
 
         // Timeline để di chuyển nền
-        timeline = new Timeline(new KeyFrame(Duration.millis(10), new BackgroundHandler()));
         timeline.setCycleCount(Timeline.INDEFINITE);
 
+        setIsPause(false);
         // Chạy timeline nếu không phải đang ở trạng thái tạm dừng
         if (!isPause) {
             timeline.play();
@@ -96,8 +106,8 @@ public class Background {
 
     public void setIsPause(boolean isPause) {
         this.isPause = isPause;
-        if (isPause) {
-            timeline.pause(); // Tạm dừng Timeline khi Pause
+        if (this.isPause) {
+            timeline.play(); // Tạm dừng Timeline khi Pause
         } else {
             timeline.play(); // Tiếp tục Timeline khi Resume
         }

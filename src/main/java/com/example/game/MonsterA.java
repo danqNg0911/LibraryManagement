@@ -30,16 +30,18 @@ public class MonsterA extends Monster {
         this.isDead = false;
 
 
-        // Khởi tạo Timeline để điều khiển di chuyển
-        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_BULLET_TIME.getNum()), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //Sound.playMonsterSound("A");
-                shootMultiple(); // Bắn sau mỗi 2 giây
-            }
-        }));
-        moveTimeline.setCycleCount(Timeline.INDEFINITE); // Lặp lại vô hạn
-        moveTimeline.play(); // Bắt đầu Timeline
+            // Khởi tạo Timeline để điều khiển di chuyển
+            moveTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_BULLET_TIME.getNum()), new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    if (bottomPane.getChildren().contains(monster)) {
+                        //Sound.playMonsterSound("A");
+                        shootMultiple(); // Bắn sau mỗi 2 giây
+                    }
+                }
+            }));
+            moveTimeline.setCycleCount(Timeline.INDEFINITE); // Lặp lại vô hạn
+            moveTimeline.play(); // Bắt đầu Timeline
     }
 
 

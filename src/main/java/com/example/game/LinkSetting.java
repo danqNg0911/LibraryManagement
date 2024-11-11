@@ -9,7 +9,7 @@ public enum LinkSetting {
     GAME_ROUND_PATH("C:\\YEAR 2\\OOP\\JavaFX\\CLONE\\data\\bmw_round_"),
 
     // Ảnh nền
-    BACKGROUND_IMAGE("/com/example/game/assets/sky_night/1.png"),
+    BACKGROUND_IMAGE("/com/example/game/assets/sky_night/"),
 
     // Ảnh nhân vật phải, trái
     PLAYER_IMAGE_RIGHT("/com/example/game/assets/wukong/right/wukong_right.png"),

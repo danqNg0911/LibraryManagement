@@ -7,6 +7,7 @@ public class GameRound {
 
     public static Map<String, Integer> loadConfig(int round) throws Exception {
         Map<String, Integer> config = new HashMap<>();
+        config.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(GAME_FILE_PATH + (round) + ".txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {

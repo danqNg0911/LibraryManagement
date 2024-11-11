@@ -102,7 +102,7 @@ abstract class Monster extends ImageView{
 
     // Phương thức xóa quái vật khỏi bottomPane
     public void removeMonster() {
-        bottomPane.getChildren().remove(monster);  // Loại bỏ quái vật khỏi giao diện
+        bottomPane.getChildren().remove(monster); // Loại bỏ quái vật khỏi giao diện
     }
 
     protected abstract void dieAnimation();

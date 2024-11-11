@@ -220,6 +220,6 @@ public class UserDashboardController {
     }
 
     public void handleGameButton(ActionEvent event) throws IOException {
-        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukong.fxml", 800, 800);
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 }

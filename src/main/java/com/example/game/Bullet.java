@@ -130,7 +130,7 @@ public class Bullet {
     public void removeBullet() {
         if (bulletImage != null) {
             bottomPane.getChildren().remove(bulletImage);
-            bulletImage = null;
+            //bulletImage = null;
         }
     }
 

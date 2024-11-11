@@ -35,35 +35,65 @@
             </ImageView>
 
             <!-- Hiển thị câu hỏi -->
-            <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="50.0" prefHeight="100.0" prefWidth="700.0" textFill="#fbffc6" wrapText="true">
+            <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="50.0" prefHeight="100.0" prefWidth="700.0" textFill="#28252b" wrapText="true">
                 <font>
                     <Font name="System Bold" size="24.0" /> <!-- Kích thước font lớn hơn -->
                 </font>
+         <graphic>
+            <ImageView fx:id="questionImage" fitHeight="100.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/wood.png" />
+            </ImageView>
+         </graphic>
             </Label>
-            <Label fx:id="answerLabel_A" contentDisplay="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="80.0" prefWidth="220.0" textFill="#0fff4f">
+            <Label fx:id="answerLabel_A" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="80.0" prefWidth="220.0">
                 <font>
-                    <Font name="System Bold" size="13.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font>
+         <graphic>
+            <ImageView fx:id="answerAImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/wood.png" />
+            </ImageView>
+         </graphic>
             </Label>
-            <Label fx:id="answerLabel_B" contentDisplay="CENTER" layoutX="530.0" layoutY="170.0" prefHeight="80.0" prefWidth="220.0" textFill="#4fff5d">
+            <Label fx:id="answerLabel_B" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="170.0" prefHeight="80.0" prefWidth="220.0">
                 <font>
-                    <Font name="System Bold" size="13.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font>
+         <graphic>
+            <ImageView fx:id="answerBImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/wood.png" />
+            </ImageView>
+         </graphic>
             </Label>
-            <Label fx:id="answerLabel_C" contentDisplay="CENTER" layoutX="130.0" layoutY="270.0" prefHeight="80.0" prefWidth="220.0" textFill="#5fff7a">
+            <Label fx:id="answerLabel_C" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="270.0" prefHeight="80.0" prefWidth="220.0">
                 <font>
-                    <Font name="System Bold" size="13.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font>
+         <graphic>
+            <ImageView fx:id="answerCImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/wood.png" />
+            </ImageView>
+         </graphic>
             </Label>
-            <Label fx:id="answerLabel_D" contentDisplay="CENTER" layoutX="530.0" layoutY="270.0" prefHeight="80.0" prefWidth="220.0" textFill="#75fb7b">
+            <Label fx:id="answerLabel_D" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="270.0" prefHeight="80.0" prefWidth="220.0">
                 <font>
-                    <Font size="13.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font>
+         <graphic>
+            <ImageView fx:id="answerDImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/wood.png" />
+            </ImageView>
+         </graphic>
             </Label>
-            <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="345.0" prefHeight="50.0" prefWidth="150.0" textFill="#ff0202">
+            <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="345.0" prefHeight="50.0" prefWidth="160.0" textFill="WHITE">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold" size="18.0" />
                 </font>
+         <graphic>
+            <ImageView fx:id="timeImage" fitHeight="30.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/green_sign.jpg" />
+            </ImageView>
+         </graphic>
             </Label>
         </Pane>
 
@@ -77,31 +107,36 @@
 
             <!-- Hiển thị Player -->
             <ImageView fx:id="playerView" fitHeight="70.0" fitWidth="70.0" layoutX="315.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="player_lives" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="96.0" textFill="RED">
+            <Label fx:id="player_lives" layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="110.0" textFill="RED">
                 <font>
                     <Font name="System Bold" size="18.0" />
                 </font>
             </Label>
-            <Label fx:id="bat_num" layoutX="656.0" layoutY="7.0" prefHeight="37.0" prefWidth="113.0" textFill="#f21b1b">
+            <Label fx:id="bat_num" alignment="CENTER" contentDisplay="CENTER" layoutX="656.0" layoutY="7.0" prefHeight="37.0" prefWidth="113.0" textFill="#f21b1b">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
-            <Label fx:id="sprite_num" layoutX="656.0" layoutY="51.0" prefHeight="37.0" prefWidth="113.0" textFill="#f22626">
+            <Label fx:id="sprite_num" alignment="CENTER" contentDisplay="CENTER" layoutX="656.0" layoutY="51.0" prefHeight="37.0" prefWidth="113.0" textFill="#f22626">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
-            <Label fx:id="robot_num" layoutX="656.0" layoutY="88.0" prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
+            <Label fx:id="robot_num" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="7.0" prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
-            <Label fx:id="troll_num" layoutX="656.0" layoutY="125.0" prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
+            <Label fx:id="troll_num" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="51.0" prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
+      <Label fx:id="roundLabel" layoutX="14.0" layoutY="64.0" prefHeight="50.0" prefWidth="110.0" textFill="#ff0202">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
             <!--            <Image url="@../assets/wukong/right/wukong_right.png" />-->
             <!--        </ImageView>-->
         </Pane>

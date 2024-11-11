@@ -1,4 +1,5 @@
 package com.example.game;
+import com.example.library.WindowManager;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
@@ -40,12 +41,14 @@ public class BlackMythWukongController {
     public Label answerLabel_D;
     public Label questionLabel;
     public Label timeLabel;
+    public Label roundLabel;
     private Image playerLeftImage;
     private Image playerRightImage;
     private ImageView leftHit;
     private ImageView rightHit;
     private boolean isRight;
     private boolean deathSound;
+    private static int roundCount;
 
     private static final String QUESTION_FILE_PATH = LinkSetting.QUESTION_PATH.getLink();
 
@@ -59,6 +62,11 @@ public class BlackMythWukongController {
     private List<Question> questions;
     private Question currentQuestion;
     private String correctAnswerText; // Biến lưu đáp án đúng của câu hỏi hiện tại
+
+    private Timeline spawnATimeline;
+    private Timeline spawnBTimeline;
+    private Timeline spawnCTimeline;
+    private Timeline spawnDTimeline;
 
 
     @FXML
@@ -116,16 +124,18 @@ public class BlackMythWukongController {
         gameOverOverlay.setVisible(false);
         gameWinARoundOverlay.setVisible(false);
 
+        roundCount = 1;
+
         try {
             // Đọc file bmw_round và cập nhật các giá trị trong enum
-            Map<String, Integer> config = GameRound.loadConfig(1);
+            Map<String, Integer> config = GameRound.loadConfig(roundCount);
             NumSetting.updateSettingsFromConfig(config);  // Cập nhật enum từ file bmw_round
         } catch (Exception e) {
             System.out.println("Không thể tải file bmw_round");
         }
         
         bg = new Background(bottomPane);
-        bg.start();
+        bg.start(1);
 
         gameTime = NumSetting.TIME.getNum();
 
@@ -181,6 +191,12 @@ public class BlackMythWukongController {
                                 restartGame(); // Gọi phương thức restartGame()
                                 event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
                             }
+                            if (isWin && event.getCode() == KeyCode.N) {
+                                roundCount++;
+                                restartGame();
+                                event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
+                            }
+
                             if (!isPaused && !isLose) {
                                 handleKeyPress(event);
                             }
@@ -198,10 +214,10 @@ public class BlackMythWukongController {
         //monsterMovements();
 
         // Khởi tạo các Timeline riêng cho từng loại quái vật
-        Timeline spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_SPAWN_TIME.getNum()), new SpawnMonsterAHandler()));
-        Timeline spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_SPAWN_TIME.getNum()), new SpawnMonsterBHandler()));
-        Timeline spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_SPAWN_TIME.getNum()), new SpawnMonsterCHandler()));
-        Timeline spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_SPAWN_TIME.getNum()), new SpawnMonsterDHandler()));
+        spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_SPAWN_TIME.getNum()), new SpawnMonsterAHandler()));
+        spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_SPAWN_TIME.getNum()), new SpawnMonsterBHandler()));
+        spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_SPAWN_TIME.getNum()), new SpawnMonsterCHandler()));
+        spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_SPAWN_TIME.getNum()), new SpawnMonsterDHandler()));
 
         // Thiết lập chu kỳ vô hạn cho mỗi Timeline
         spawnATimeline.setCycleCount(Timeline.INDEFINITE);
@@ -219,11 +235,21 @@ public class BlackMythWukongController {
         Timeline updateLabelsTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if (roundCount == 6) {
+                    try {
+                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", 800, 800);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
                 player_lives.setText("Lives: " + player.getHealth());
+                roundLabel.setText("Round: " + roundCount);
                 bat_num.setText("Bat: " + aNums);
                 sprite_num.setText("Sprite: " + bNums);
                 robot_num.setText("Robot: " + cNums);
                 troll_num.setText("Troll: " + dNums);
+
                 if (!deathSound && player.getHealth() <= 0) {
                     Sound.playPlayerDeathSound();
                     deathSound = true;
@@ -282,7 +308,9 @@ public class BlackMythWukongController {
         if (!questions.isEmpty()) {
             // Lấy ngẫu nhiên câu hỏi và xóa khỏi danh sách
             currentQuestion = Question.getRandomQuestion(questions);
-            questions.remove(currentQuestion);
+            if (isWin) {
+                questions.remove(currentQuestion);
+            }
 
             questionLabel.setText(currentQuestion.getQuestion());
 
@@ -353,8 +381,20 @@ public class BlackMythWukongController {
 
         Sound.restartBackgroundMusic();
 
-        questions = Question.loadQuestionsFromFile(QUESTION_FILE_PATH); // Đường dẫn file
+        //questions = Question.loadQuestionsFromFile(QUESTION_FILE_PATH); // Đường dẫn file
         loadNextQuestion();
+
+
+        // Dừng và khởi tạo lại đối tượng bg với hình nền mới
+
+        try {
+            // Đọc file bmw_round và cập nhật các giá trị trong enum
+            Map<String, Integer> config = GameRound.loadConfig(roundCount);
+            System.out.println(roundCount);
+            NumSetting.updateSettingsFromConfig(config);  // Cập nhật enum từ file bmw_round
+        } catch (Exception e) {
+            System.out.println("Không thể tải file bmw_round");
+        }
 
         // Khôi phục lại trạng thái pause, ẩn overlay pause
         isPaused = false;
@@ -364,6 +404,10 @@ public class BlackMythWukongController {
         gameOverOverlay.setVisible(false);
         gameWinARoundOverlay.setVisible(false);
         gameTime = NumSetting.TIME.getNum();
+
+        bg = new Background(bottomPane);
+        System.out.println(NumSetting.BACKGROUND_IMAGE.getNum());
+        bg.start(1);
 
         // Reset các quái vật
         for (int i = 0; i < monsterList.size(); i++) {
@@ -393,11 +437,17 @@ public class BlackMythWukongController {
         // Khởi tạo lại các quái vật mới
         monsterAnswers(); // Hàm này sẽ spawn lại các quái vật
 
+        // Reset lại các Timeline spawn quái vật với thời gian spawn quy định
+        spawnATimeline.stop();
+        spawnBTimeline.stop();
+        spawnCTimeline.stop();
+        spawnDTimeline.stop();
+
         // Khởi tạo các Timeline riêng cho từng loại quái vật
-        Timeline spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_SPAWN_TIME.getNum()), new SpawnMonsterAHandler()));
-        Timeline spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_SPAWN_TIME.getNum()), new SpawnMonsterBHandler()));
-        Timeline spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_SPAWN_TIME.getNum()), new SpawnMonsterCHandler()));
-        Timeline spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_SPAWN_TIME.getNum()), new SpawnMonsterDHandler()));
+        spawnATimeline.getKeyFrames().setAll(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_SPAWN_TIME.getNum()), new SpawnMonsterAHandler()));
+        spawnBTimeline.getKeyFrames().setAll(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_SPAWN_TIME.getNum()), new SpawnMonsterBHandler()));
+        spawnCTimeline.getKeyFrames().setAll(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_SPAWN_TIME.getNum()), new SpawnMonsterCHandler()));
+        spawnDTimeline.getKeyFrames().setAll(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_SPAWN_TIME.getNum()), new SpawnMonsterDHandler()));
 
         // Thiết lập chu kỳ vô hạn cho mỗi Timeline
         spawnATimeline.setCycleCount(Timeline.INDEFINITE);
@@ -423,6 +473,7 @@ public class BlackMythWukongController {
         pauseTransition.play();
 
     }
+
 
     public void setGameWinARoundOverlay() {
         gameWinARoundOverlay.setVisible(true);
