@@ -14,8 +14,10 @@ module com.example.library {
     requires java.desktop;
     requires okhttp3;
     requires com.google.gson;
+    requires java.sql;
 
     opens com.example.library to javafx.fxml;
-    exports com.example.library;
     opens com.example.library.fxml to javafx.fxml;
+    opens com.example.game to javafx.fxml; // Thêm dòng này để giải quyết lỗi
+    exports com.example.library;
 }

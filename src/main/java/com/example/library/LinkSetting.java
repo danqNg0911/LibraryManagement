@@ -14,6 +14,10 @@ public enum LinkSetting {
 
     MANAGER_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\ListOfManagers.txt"),
 
+    BOOKS_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\ListOfBooks.txt"),
+
+    USERS_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\ListOfUsers.txt"),
+
     IMAGE_NULL("file:/D:\\LibraryManagement\\LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png"),
 
     SOUND_CLICK_MOUSE("D:\\LibraryManagement\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mouse-click-153941.mp3");

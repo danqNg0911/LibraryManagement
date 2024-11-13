@@ -3,11 +3,10 @@ package com.example.game;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
-
 public class Sound {
     private static MediaPlayer backgroundMusicPlayer;
     private static MediaPlayer hitSoundPlayer;
+    private static MediaPlayer playerDeathSoundPlayer;
     private static MediaPlayer shootSoundPlayer;
     private static MediaPlayer monsterDeathSoundPlayer;
 
@@ -16,7 +15,7 @@ public class Sound {
         // Chỉ khởi tạo lại MediaPlayer khi chưa có hoặc đã dừng lại
         try {
             if (backgroundMusicPlayer == null || backgroundMusicPlayer.getStatus() == MediaPlayer.Status.STOPPED) {
-                Media backgroundMusic = new Media(Sound.class.getResource("/com/example/game/sound/background_" + Base.BACKGROUND_MUSIC.getInfo() + ".mp3").toExternalForm());
+                Media backgroundMusic = new Media(Sound.class.getResource(LinkSetting.BACKGROUND_SOUND.getLink()).toExternalForm());
 
                 backgroundMusicPlayer = new MediaPlayer(backgroundMusic);
                 backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Lặp lại nhạc nền
@@ -39,7 +38,7 @@ public class Sound {
     public static void playHitSound() {
         try {
             // Tạo đối tượng Media từ tệp âm thanh
-            Media hitSound = new Media(Sound.class.getResource("/com/example/game/sound/player_hit_" + Base.PLAYER_HIT_MUSIC.getInfo() + ".mp3").toExternalForm());
+            Media hitSound = new Media(Sound.class.getResource(LinkSetting.PLAYER_SOUND_HIT.getLink()).toExternalForm());
             hitSoundPlayer = new MediaPlayer(hitSound);
             hitSoundPlayer.setVolume(1.0);
 
@@ -54,7 +53,7 @@ public class Sound {
     public static void playIsHitSound() {
         try {
             // Tạo đối tượng Media từ tệp âm thanh
-            Media hitSound = new Media(Sound.class.getResource("/com/example/game/sound/player_isHit_" + Base.PLAYER_IS_HIT_MUSIC.getInfo() + ".mp3").toExternalForm());
+            Media hitSound = new Media(Sound.class.getResource(LinkSetting.PLAYER_SOUTD_IS_HIT.getLink()).toExternalForm());
             hitSoundPlayer = new MediaPlayer(hitSound);
             hitSoundPlayer.setVolume(1.0);
 
@@ -67,8 +66,8 @@ public class Sound {
 
     // Phương thức phát âm thanh khi người chơi chết
     public static void playPlayerDeathSound() {
-        Media playerDeathSound = new Media(Sound.class.getResource("/com/example/game/sound/player_die_" + Base.PLAYER_DIE_MUSIC.getInfo() + ".mp3").toExternalForm());
-        MediaPlayer playerDeathSoundPlayer = new MediaPlayer(playerDeathSound);
+        Media playerDeathSound = new Media(Sound.class.getResource(LinkSetting.PLAYER_SOUND_DEATH.getLink()).toExternalForm());
+        playerDeathSoundPlayer = new MediaPlayer(playerDeathSound);
         playerDeathSoundPlayer.setVolume(1.0);
         playerDeathSoundPlayer.play();
     }
@@ -78,16 +77,16 @@ public class Sound {
     public static void playMonsterSound(String answer) {
         String musicPath = "";
         if (answer.equals("A")) {
-            musicPath = "/com/example/game/sound/monster_A_hit_" + Base.MONSTER_A_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_A_SOUND_BULLET.getLink();
         }
         else if (answer.equals("B")) {
-            musicPath = "/com/example/game/sound/monster_B_hit_" + Base.MONSTER_B_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_B_SOUND_BULLET.getLink();
         }
         else if (answer.equals("C")) {
-            musicPath = "/com/example/game/sound/monster_C_hit_" + Base.MONSTER_C_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_C_SOUND_BULLET.getLink();
         }
         else if (answer.equals("D")) {
-            musicPath = "/com/example/game/sound/monster_D_hit_" + Base.MONSTER_D_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_D_SOUND_BULLET.getLink();
         }
 
         Media shootSound = new Media(Sound.class.getResource(musicPath).toExternalForm());
@@ -100,16 +99,16 @@ public class Sound {
     public static void playMonsterDeathSound(String answer) {
         String musicPath = "";
         if (answer.equals("A")) {
-            musicPath = "/com/example/game/sound/monster_A_die_" + Base.MONSTER_A_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_A_SOUND_DEATH.getLink();
         }
         else if (answer.equals("B")) {
-            musicPath = "/com/example/game/sound/monster_B_die_" + Base.MONSTER_B_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_B_SOUND_DEATH.getLink();
         }
         else if (answer.equals("C")) {
-            musicPath = "/com/example/game/sound/monster_C_die_" + Base.MONSTER_C_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_B_SOUND_DEATH.getLink();
         }
         else if (answer.equals("D")) {
-            musicPath = "/com/example/game/sound/monster_D_die_" + Base.MONSTER_D_HIT_MUSIC.getInfo() + ".mp3";
+            musicPath = LinkSetting.MONSTER_D_SOUND_DEATH.getLink();
         }
 
         Media deathSound = new Media(Sound.class.getResource(musicPath).toExternalForm());

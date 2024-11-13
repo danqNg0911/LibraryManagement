@@ -27,8 +27,9 @@ public class CharacterAnimation {
         if (die) {
             this.imageView = imageView;
             loadImages(path, numberOfImages, answer);
+
             double second = 400;
-            if (answer.equals("B")) {
+            if (answer.equals("D")) {
                 second = 3000;
             }
             initAnimation(false, second);
@@ -37,24 +38,24 @@ public class CharacterAnimation {
 
     private void loadImages(String path, int numberOfImages, String answer) {
         for (int i = 0; i < numberOfImages; i++) {
-            String imagePath = "/com/example/game/assets/"; // Tên ảnh: "_1.png", "_2.png", ...
+            String imagePath = LinkSetting.MONSTER_ANIMATION.getLink(); // Tên ảnh: "_1.png", "_2.png", ...
             if (answer.equals("A")) {
                 imagePath = imagePath + path + "/Bat_" + i + ".png";
-                Image image = new Image(imagePath);
+                Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                 images.add(image);
             }
             else if (answer.equals("B")) {
                 imagePath = imagePath + path + "/sprite_" + i + ".png";
-                Image image = new Image(imagePath);
+                Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                 images.add(image);
             }
             else if (answer.equals("C")) {
-                Image image = new Image(imagePath);
+                Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                 images.add(image);
             }
             else if (answer.equals("D")){
                 imagePath = imagePath + path + "/troll_" + (i + 1) + ".png";
-                Image image = new Image(imagePath);
+                Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                 images.add(image);
             }
         }

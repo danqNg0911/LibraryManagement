@@ -43,11 +43,12 @@ public class BlackMythWukongController {
     private ImageView leftHit;
     private ImageView rightHit;
     private boolean isRight;
+    private boolean deathSound;
 
-    private static final String QUESTION_FILE_PATH = "D:\\LibraryManagement\\LibraryManagement\\data\\QuestionInGame.txt";
+    private static final String QUESTION_FILE_PATH = LinkSetting.QUESTION_PATH.getLink();
 
     private Timeline gameTimer; // Biến để lưu timeline của bộ đếm
-    private int gameTime = Base.TIME.getInfo();
+    private int gameTime = NumSetting.TIME.getNum();
 
     private boolean isPaused = false;
     private boolean isLose = false;
@@ -80,7 +81,7 @@ public class BlackMythWukongController {
 
     private final Random random = new Random();
 
-    private static int playerLives = Base.PLAYER_LIVES.getInfo();
+    private static int playerLives = NumSetting.PLAYER_LIVES.getNum();
 
     private int aCnt = 0;
     private int bCnt = 0;
@@ -104,8 +105,8 @@ public class BlackMythWukongController {
         questions = Question.loadQuestionsFromFile(QUESTION_FILE_PATH); // Đường dẫn file
         loadNextQuestion();
         
-        bg = new Background();
-        bg.start(bottomPane);
+        bg = new Background(bottomPane);
+        bg.start();
 
         startGameTimer();
         Sound.playBackgroundMusic();
@@ -124,27 +125,32 @@ public class BlackMythWukongController {
         isPaused = false; // Đảm bảo game bắt đầu ở trạng thái không pause
         isLose = false;
         isWin = false;
+        deathSound = false;
 
         pauseOverlay.setVisible(false);
         gameOverOverlay.setVisible(false);
         gameWinARoundOverlay.setVisible(false);
 
 
-        aCnt = Base.MONSTER_A_SPAWN_NUMBER.getInfo();
-        bCnt = Base.MONSTER_B_SPAWN_NUMBER.getInfo();
-        cCnt = Base.MONSTER_C_SPAWN_NUMBER.getInfo();
-        dCnt = Base.MONSTER_D_SPAWN_NUMBER.getInfo();
+        aCnt = NumSetting.MONSTER_A_SPAWN_NUMBER.getNum();
+        bCnt = NumSetting.MONSTER_B_SPAWN_NUMBER.getNum();
+        cCnt = NumSetting.MONSTER_C_SPAWN_NUMBER.getNum();
+        dCnt = NumSetting.MONSTER_D_SPAWN_NUMBER.getNum();
 
-        aNums = Base.MONSTER_A_SPAWN_NUMBER.getInfo();
-        bNums = Base.MONSTER_B_SPAWN_NUMBER.getInfo();
-        cNums = Base.MONSTER_C_SPAWN_NUMBER.getInfo();
-        dNums = Base.MONSTER_D_SPAWN_NUMBER.getInfo();
+        aNums = NumSetting.MONSTER_A_SPAWN_NUMBER.getNum();
+        bNums = NumSetting.MONSTER_B_SPAWN_NUMBER.getNum();
+        cNums = NumSetting.MONSTER_C_SPAWN_NUMBER.getNum();
+        dNums = NumSetting.MONSTER_D_SPAWN_NUMBER.getNum();
 
         player = new Player(bottomPane, playerView);
 
 
-        playerLeftImage = getImagePath("/com/example/game/assets/wukong/left/wukong_left.png");
-        playerRightImage = getImagePath("/com/example/game/assets/wukong/right/wukong_right.png");
+        try {
+            playerRightImage = new Image(getClass().getResource(LinkSetting.PLAYER_IMAGE_RIGHT.getLink()).toExternalForm());
+            playerLeftImage = new Image(getClass().getResource(LinkSetting.PLAYER_IMAGE_LEFT.getLink()).toExternalForm());
+        } catch (Exception e) {
+            System.out.println("Loi class BMW. Line = 150");
+        }
 
         // Gán sự kiện khi nhấn phím để điều khiển Wukong và tạm dừng
         Platform.runLater(new Runnable() {
@@ -180,10 +186,10 @@ public class BlackMythWukongController {
         //monsterMovements();
 
         // Khởi tạo các Timeline riêng cho từng loại quái vật
-        Timeline spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_A_SPAWN_TIME.getInfo()), new SpawnMonsterAHandler()));
-        Timeline spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_B_SPAWN_TIME.getInfo()), new SpawnMonsterBHandler()));
-        Timeline spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_C_SPAWN_TIME.getInfo()), new SpawnMonsterCHandler()));
-        Timeline spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_D_SPAWN_TIME.getInfo()), new SpawnMonsterDHandler()));
+        Timeline spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_SPAWN_TIME.getNum()), new SpawnMonsterAHandler()));
+        Timeline spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_SPAWN_TIME.getNum()), new SpawnMonsterBHandler()));
+        Timeline spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_SPAWN_TIME.getNum()), new SpawnMonsterCHandler()));
+        Timeline spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_SPAWN_TIME.getNum()), new SpawnMonsterDHandler()));
 
         // Thiết lập chu kỳ vô hạn cho mỗi Timeline
         spawnATimeline.setCycleCount(Timeline.INDEFINITE);
@@ -206,6 +212,11 @@ public class BlackMythWukongController {
                 sprite_num.setText("Sprite: " + bNums);
                 robot_num.setText("Robot: " + cNums);
                 troll_num.setText("Troll: " + dNums);
+                if (!deathSound && player.getHealth() <= 0) {
+                    Sound.playPlayerDeathSound();
+                    deathSound = true;
+                }
+
                 if (!isLose && !isWin && (player.getHealth() == 0 || conditionToLose())) {
                     isLose = true;
                     setGameOverOverlay();
@@ -340,7 +351,7 @@ public class BlackMythWukongController {
         pauseOverlay.setVisible(false);
         gameOverOverlay.setVisible(false);
         gameWinARoundOverlay.setVisible(false);
-        gameTime = Base.TIME.getInfo();
+        gameTime = NumSetting.TIME.getNum();
 
         // Reset các quái vật
         for (int i = 0; i < monsterList.size(); i++) {
@@ -351,17 +362,17 @@ public class BlackMythWukongController {
         monsterList.clear(); // Xóa tất cả các quái vật hiện tại trong danh sách
 
         // Khôi phục số lượng mạng sống của người chơi
-        player.setHealth(Base.PLAYER_LIVES.getInfo()); // Giả sử phương thức setHealth được định nghĩa trong lớp Player
+        player.setHealth(NumSetting.PLAYER_LIVES.getNum()); // Giả sử phương thức setHealth được định nghĩa trong lớp Player
         // Khôi phục số lượng quái vật
-        aCnt = Base.MONSTER_A_SPAWN_NUMBER.getInfo();
-        bCnt = Base.MONSTER_B_SPAWN_NUMBER.getInfo();
-        cCnt = Base.MONSTER_C_SPAWN_NUMBER.getInfo();
-        dCnt = Base.MONSTER_D_SPAWN_NUMBER.getInfo();
+        aCnt = NumSetting.MONSTER_A_SPAWN_NUMBER.getNum();
+        bCnt = NumSetting.MONSTER_B_SPAWN_NUMBER.getNum();
+        cCnt = NumSetting.MONSTER_C_SPAWN_NUMBER.getNum();
+        dCnt = NumSetting.MONSTER_D_SPAWN_NUMBER.getNum();
 
-        aNums = Base.MONSTER_A_SPAWN_NUMBER.getInfo();
-        bNums = Base.MONSTER_B_SPAWN_NUMBER.getInfo();
-        cNums = Base.MONSTER_C_SPAWN_NUMBER.getInfo();
-        dNums = Base.MONSTER_D_SPAWN_NUMBER.getInfo();
+        aNums = NumSetting.MONSTER_A_SPAWN_NUMBER.getNum();
+        bNums = NumSetting.MONSTER_B_SPAWN_NUMBER.getNum();
+        cNums = NumSetting.MONSTER_C_SPAWN_NUMBER.getNum();
+        dNums = NumSetting.MONSTER_D_SPAWN_NUMBER.getNum();
 
         // Khởi tạo lại các quái vật, người chơi, vv.
         playerView.setLayoutX(100); // Vị trí ban đầu của người chơi
@@ -371,10 +382,10 @@ public class BlackMythWukongController {
         monsterAnswers(); // Hàm này sẽ spawn lại các quái vật
 
         // Khởi tạo các Timeline riêng cho từng loại quái vật
-        Timeline spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_A_SPAWN_TIME.getInfo()), new SpawnMonsterAHandler()));
-        Timeline spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_B_SPAWN_TIME.getInfo()), new SpawnMonsterBHandler()));
-        Timeline spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_C_SPAWN_TIME.getInfo()), new SpawnMonsterCHandler()));
-        Timeline spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_D_SPAWN_TIME.getInfo()), new SpawnMonsterDHandler()));
+        Timeline spawnATimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_A_SPAWN_TIME.getNum()), new SpawnMonsterAHandler()));
+        Timeline spawnBTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_SPAWN_TIME.getNum()), new SpawnMonsterBHandler()));
+        Timeline spawnCTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_SPAWN_TIME.getNum()), new SpawnMonsterCHandler()));
+        Timeline spawnDTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_SPAWN_TIME.getNum()), new SpawnMonsterDHandler()));
 
         // Thiết lập chu kỳ vô hạn cho mỗi Timeline
         spawnATimeline.setCycleCount(Timeline.INDEFINITE);
@@ -389,7 +400,7 @@ public class BlackMythWukongController {
         spawnDTimeline.play();
 
         // Tạo một PauseTransition chỉ để chờ đợi để người chơi tiếp tục
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(Base.PLAYER_SET_PAUSE_TIME.getInfo())); // Chỉ chờ 1 giây, có thể điều chỉnh
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(NumSetting.PLAYER_SET_PAUSE_TIME.getNum())); // Chỉ chờ ... giây, có thể điều chỉnh
         pauseTransition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -503,7 +514,7 @@ public class BlackMythWukongController {
 
     private Image getImagePath(String path) throws Exception {
         if (path == null) {
-            throw new Exception("Hinh anh khong hop le");
+            throw new Exception("Loi class BMW. Line = 506");
         }
         return new Image(Objects.requireNonNull(getClass().getResource(path)).toExternalForm());
     }
@@ -516,112 +527,110 @@ public class BlackMythWukongController {
             return;
         }
 
-        // Lấy tọa độ hiện tại của playerView và kích thước màn hình
-        double currentX = playerView.getLayoutX();
-        double currentY = playerView.getLayoutY();
-        double playerWidth = playerView.getFitWidth();
-        double playerHeight = playerView.getFitHeight();
-        double screenWidth = 800; // Đặt chiều rộng của màn hình
-        double screenHeight = 400; // Đặt chiều cao của màn hình
-        double borderTopSize = 9;
-        double borderBottomSize = 9;
-        double borderLeftSize = 8;
-        double borderRightSize = 8;
-        double moving = 10;
+        try {
+            // Lấy tọa độ hiện tại của playerView và kích thước màn hình
+            double currentX = playerView.getLayoutX();
+            double currentY = playerView.getLayoutY();
+            double playerWidth = playerView.getFitWidth();
+            double playerHeight = playerView.getFitHeight();
+            double screenWidth = 800; // Đặt chiều rộng của màn hình
+            double screenHeight = 400; // Đặt chiều cao của màn hình
+            double borderTopSize = 9;
+            double borderBottomSize = 9;
+            double borderLeftSize = 8;
+            double borderRightSize = 8;
+            double moving = 10;
 
-
-        // Xử lý các phím di chuyển
-        switch (event.getCode()) {
-            case W:
-                // Kiểm tra để không cho phép playerView đi lên trên viền màn hình
-                if (currentY - moving >= borderTopSize) {
-                    playerView.setLayoutY(currentY - moving);
-                }
-                //System.out.println("W");
-                break;
-            case S:
-                // Kiểm tra để không cho phép playerView đi xuống dưới viền màn hình
-                if (currentY + moving + playerHeight <= screenHeight - borderBottomSize) {
-                    playerView.setLayoutY(currentY + moving);
-                    //System.out.println(playerView.getLayoutY());
-                }
-                //System.out.println("S");
-                break;
-            case A:
-                isRight = false;
-                playerView.setImage(playerLeftImage);
-                // Kiểm tra để không cho phép playerView đi sang trái viền màn hình
-                if (currentX - moving >= borderLeftSize) {
-                    playerView.setLayoutX(currentX - moving);
-                }
-                //System.out.println("A");
-                break;
-            case D:
-                isRight = true;
-                playerView.setImage(playerRightImage);
-                // Kiểm tra để không cho phép playerView đi sang phải viền màn hình
-                if (currentX + moving + playerWidth <= screenWidth - borderRightSize) {
-                    playerView.setLayoutX(currentX + moving);
-                }
-                //System.out.println("D");
-                break;
-            case SPACE:
-                // Tạo và thêm hitImageView tương ứng với hướng của playerView
-                ImageView hitImageView = new ImageView();
-                hitImageView.setFitHeight(50);
-                hitImageView.setFitWidth(50);
-                Sound.playHitSound();
-                if (isRight) {
-                    hitImageView.setImage(new Image("com/example/game/assets/wukong/right/hit1.png"));
-                    hitImageView.setLayoutX(currentX + playerWidth / 2 + 1); // Vị trí bên phải
-                } else {
-                    hitImageView.setImage(new Image("com/example/game/assets/wukong/left/hit1.png"));
-                    hitImageView.setLayoutX(currentX - 5 - hitImageView.getFitWidth() / 2); // Vị trí bên trái
-                }
-                hitImageView.setLayoutY(currentY + 4); // Đặt Y để nằm ngang với playerView
-                bottomPane.getChildren().add(hitImageView); // Thêm vào giao diện
-
-                // Thiết lập Timeline để xóa hitImageView sau ms
-                Timeline hitTimeline = new Timeline(new KeyFrame(Duration.millis(Base.PlAYER_HIT_TIME.getInfo()), new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        bottomPane.getChildren().remove(hitImageView); // Xóa hitImageView
+            // Xử lý các phím di chuyển
+            switch (event.getCode()) {
+                case W:
+                    // Kiểm tra để không cho phép playerView đi lên trên viền màn hình
+                    if (currentY - moving >= borderTopSize) {
+                        playerView.setLayoutY(currentY - moving);
                     }
-                }));
+                    break;
+                case S:
+                    // Kiểm tra để không cho phép playerView đi xuống dưới viền màn hình
+                    if (currentY + moving + playerHeight <= screenHeight - borderBottomSize) {
+                        playerView.setLayoutY(currentY + moving);
+                    }
+                    break;
+                case A:
+                    isRight = false;
+                    playerView.setImage(playerLeftImage);
+                    // Kiểm tra để không cho phép playerView đi sang trái viền màn hình
+                    if (currentX - moving >= borderLeftSize) {
+                        playerView.setLayoutX(currentX - moving);
+                    }
+                    break;
+                case D:
+                    isRight = true;
+                    playerView.setImage(playerRightImage);
+                    // Kiểm tra để không cho phép playerView đi sang phải viền màn hình
+                    if (currentX + moving + playerWidth <= screenWidth - borderRightSize) {
+                        playerView.setLayoutX(currentX + moving);
+                    }
+                    break;
+                case SPACE:
+                    // Tạo và thêm hitImageView tương ứng với hướng của playerView
+                    ImageView hitImageView = new ImageView();
+                    hitImageView.setFitHeight(50);
+                    hitImageView.setFitWidth(50);
+                    Sound.playHitSound();
+                    if (isRight) {
+                        hitImageView.setImage(new Image(getClass().getResource(LinkSetting.PLAYER_IMAGE_HIT_RIGHT.getLink()).toExternalForm()));
+                        hitImageView.setLayoutX(currentX + playerWidth / 2 + 1); // Vị trí bên phải
+                    } else {
+                        hitImageView.setImage(new Image(getClass().getResource(LinkSetting.PLAYER_IMAGE_HIT_LEFT.getLink()).toExternalForm()));
+                        hitImageView.setLayoutX(currentX - 5 - hitImageView.getFitWidth() / 2); // Vị trí bên trái
+                    }
+                    hitImageView.setLayoutY(currentY + 4); // Đặt Y để nằm ngang với playerView
+                    bottomPane.getChildren().add(hitImageView); // Thêm vào giao diện
 
-                List<Monster> monstersToRemove = new ArrayList<>();
-                // Kiểm tra va chạm với các monster
-                for (Monster monster : monsterList) {
-                    if (monster != null && IsHit(playerView, monster.getMonsterImageView())) {
-                        System.out.println("Hit !!!");
-                        (monster).reduceHealth();
-                        if (aNums >= 0 && monster.isDead() && monster instanceof MonsterA) {
-                            aNums--;
-                            monstersToRemove.add(monster);
+                    // Thiết lập Timeline để xóa hitImageView sau ms
+                    Timeline hitTimeline = new Timeline(new KeyFrame(Duration.millis(NumSetting.PlAYER_HIT_TIME.getNum()), new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            bottomPane.getChildren().remove(hitImageView); // Xóa hitImageView
                         }
-                        if (bNums >= 0 && monster.isDead() && monster instanceof MonsterB) {
-                            bNums--;
-                            monstersToRemove.add(monster);
-                        }
-                        if (cNums >= 0 && monster.isDead() && monster instanceof MonsterC) {
-                            cNums--;
-                            monstersToRemove.add(monster);
-                        }
-                        if (dNums >= 0 && monster.isDead() && monster instanceof MonsterD) {
-                            dNums--;
-                            monstersToRemove.add(monster);
+                    }));
+
+                    List<Monster> monstersToRemove = new ArrayList<>();
+                    // Kiểm tra va chạm với các monster
+                    for (Monster monster : monsterList) {
+                        if (monster != null && IsHit(playerView, monster.getMonsterImageView())) {
+                            System.out.println("Hit !!!");
+                            (monster).reduceHealth();
+                            if (aNums >= 0 && monster.isDead() && monster instanceof MonsterA) {
+                                aNums--;
+                                monstersToRemove.add(monster);
+                            }
+                            if (bNums >= 0 && monster.isDead() && monster instanceof MonsterB) {
+                                bNums--;
+                                monstersToRemove.add(monster);
+                            }
+                            if (cNums >= 0 && monster.isDead() && monster instanceof MonsterC) {
+                                cNums--;
+                                monstersToRemove.add(monster);
+                            }
+                            if (dNums >= 0 && monster.isDead() && monster instanceof MonsterD) {
+                                dNums--;
+                                monstersToRemove.add(monster);
+                            }
                         }
                     }
-                }
-                monsterList.removeAll(monstersToRemove);
-                hitTimeline.play(); // Bắt đầu Timeline
-                //System.out.println("SPACE");
-                //System.out.println("Player :  " + playerView.getLayoutX() + "  " + playerView.getLayoutY());
-                break;
-            default:
-                break; // Bỏ qua các phím khác
+                    monsterList.removeAll(monstersToRemove);
+                    hitTimeline.play(); // Bắt đầu Timeline
+                    break;
+                default:
+                    break; // Bỏ qua các phím khác
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi trong quá trình xử lý phím. Line = 618");
+            //e.printStackTrace(); // In ra thông tin chi tiết của lỗi
         }
     }
+
 
     private boolean IsHit(ImageView player, ImageView monster) {
         // Đặt khoảng cách cho phép (khoảng cách rất nhỏ)
@@ -678,14 +687,14 @@ public class BlackMythWukongController {
 
     private String getBulletPath(String answer) {
         if (answer.equals("A")) {
-            return "/com/example/game/assets/monsters/A/left/bullet_left.png";
+            return LinkSetting.MONSTER_A_BULLET.getLink();
         } else if (answer.equals("B")) {
-            return "/com/example/game/assets/monsters/B/bullet.png";
+            return LinkSetting.MONSTER_B_BULLET.getLink();
         } else if (answer.equals("C")) {
-            return "/com/example/game/assets/monsters/C/bullet_left.png";
+            return LinkSetting.MONSTER_C_BULLET.getLink();
         } else if (answer.equals("D")) {
             //return "/com/example/game/assets/monsters/D";
-            return "/com/example/game/assets/monsters/C/bullet_left.png";
+            return LinkSetting.MONSTER_D_BULLET.getLink();
             //return "";
         }
         return "";
@@ -701,59 +710,63 @@ public class BlackMythWukongController {
         double fitWidth = 0;
         double fitHeight = 0;
 
-        //System.out.println("hihi ????");
-        if (answer.equals("A")) {
-            bulletPath = getBulletPath("A");
-            //System.out.println("hihi ????");
-            monsterImage = new Image("com/example/game/assets/monsters/A/left/01-Idle/Bat_0.png");
-            layoutX = 805;
-            layoutY = 15 + Math.random() * (270 - 15);
-            bulletSpeedX = -1 * Base.MONSTER_A_BULLET_SPEED.getInfo();
-            bulletSpeedY = 0;
-            fitWidth = Base.MONSTER_A_WIDTH.getInfo();
-            fitHeight = Base.MONSTER_A_HEIGHT.getInfo();
-        } else if (answer.equals("B")) {
-            bulletPath = getBulletPath("B");
-            monsterImage = new Image("com/example/game/assets/monsters/B/left/round ghost walk/sprite_0.png");
-            layoutX = 805;
-            layoutY = 20 + Math.random() * (270 - 20);
-            bulletSpeedX = -1 * Base.MONSTER_B_BULLET_SPEED.getInfo();
-            bulletSpeedY = 0;
-            fitWidth = Base.MONSTER_B_WIDTH.getInfo();
-            fitHeight = Base.MONSTER_B_HEIGHT.getInfo();
-        } else if (answer.equals("C")) {
-            bulletPath = getBulletPath("C");
-            monsterImage = new Image("com/example/game/assets/monsters/C/robot_left.png");
-            layoutX = 550 + Math.random() * (700 - 550);
-            layoutY = 320;
-            bulletSpeedX = -1 * Base.MONSTER_C_BULLET_SPEED.getInfo();
-            bulletSpeedY = 0;
-            fitWidth = Base.MONSTER_C_WIDTH.getInfo();
-            fitHeight = Base.MONSTER_C_HEIGHT.getInfo();
-        } else if (answer.equals("D")) {
-            bulletPath = getBulletPath("D");
-            monsterImage = new Image("com/example/game/assets/monsters/D/left/troll_1.png");
-            layoutX = 805;
-            layoutY = 270 + Math.random() * (320 - 290);
-            bulletSpeedX = -1 * Base.MONSTER_D_BULLET_SPEED.getInfo();
-            bulletSpeedY = 0;
-            fitWidth = Base.MONSTER_D_WIDTH.getInfo();
-            fitHeight = Base.MONSTER_D_HEIGHT.getInfo();
+        try {
+            if (answer.equals("A")) {
+                bulletPath = getBulletPath("A");
+                monsterImage = new Image(getClass().getResource(LinkSetting.MONSTER_ANIMATION.getLink() + "monsters/A/left/01-Idle/Bat_0.png").toExternalForm());
+                layoutX = 805;
+                layoutY = 15 + Math.random() * (270 - 15);
+                bulletSpeedX = -1 * NumSetting.MONSTER_A_BULLET_SPEED.getNum();
+                bulletSpeedY = 0;
+                fitWidth = NumSetting.MONSTER_A_WIDTH.getNum();
+                fitHeight = NumSetting.MONSTER_A_HEIGHT.getNum();
+            } else if (answer.equals("B")) {
+                bulletPath = getBulletPath("B");
+                monsterImage = new Image(getClass().getResource( LinkSetting.MONSTER_ANIMATION.getLink() + "monsters/B/left/round ghost walk/sprite_0.png").toExternalForm());
+                layoutX = 805;
+                layoutY = 20 + Math.random() * (270 - 20);
+                bulletSpeedX = -1 * NumSetting.MONSTER_B_BULLET_SPEED.getNum();
+                bulletSpeedY = 0;
+                fitWidth = NumSetting.MONSTER_B_WIDTH.getNum();
+                fitHeight = NumSetting.MONSTER_B_HEIGHT.getNum();
+            } else if (answer.equals("C")) {
+                bulletPath = getBulletPath("C");
+                monsterImage = new Image(getClass().getResource(LinkSetting.MONSTER_ANIMATION.getLink() + "monsters/C/robot_left.png").toExternalForm());
+                layoutX = 550 + Math.random() * (700 - 550);
+                layoutY = 320;
+                bulletSpeedX = -1 * NumSetting.MONSTER_C_BULLET_SPEED.getNum();
+                bulletSpeedY = 0;
+                fitWidth = NumSetting.MONSTER_C_WIDTH.getNum();
+                fitHeight = NumSetting.MONSTER_C_HEIGHT.getNum();
+            } else if (answer.equals("D")) {
+                bulletPath = getBulletPath("D");
+                monsterImage = new Image(getClass().getResource(LinkSetting.MONSTER_ANIMATION.getLink() + "monsters/D/left/troll_1.png").toExternalForm());
+                layoutX = 805;
+                layoutY = 270 + Math.random() * (320 - 290);
+                bulletSpeedX = -1 * NumSetting.MONSTER_D_BULLET_SPEED.getNum();
+                bulletSpeedY = 0;
+                fitWidth = NumSetting.MONSTER_D_WIDTH.getNum();
+                fitHeight = NumSetting.MONSTER_D_HEIGHT.getNum();
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Không thể tải hình ảnh quái vật. Line = 744");
         }
 
-        //System.out.println("Spawning Monster...");
+        if (monsterImage == null) {
+            System.out.println("Không thể tải hình ảnh quái vật.");
+            return;  // Nếu hình ảnh không tải được, thoát khỏi phương thức
+        }
 
         final ImageView monsterImageView = new ImageView();
         monsterImageView.setFitWidth(fitWidth);
         monsterImageView.setFitHeight(fitHeight);
-
         monsterImageView.setImage(monsterImage);
-        monsterImageView.setLayoutX(layoutX); // Vị trí X
-        monsterImageView.setLayoutY(layoutY); // Vị trí Y
-
+        monsterImageView.setLayoutX(layoutX);
+        monsterImageView.setLayoutY(layoutY);
         bottomPane.getChildren().add(monsterImageView);
 
-        Monster m = null;
+        final Monster m;  // Make the variable `final`
         if (answer.equals("A")) {
             m = new MonsterA(monsterImageView, player, bulletPath, bulletSpeedX, bulletSpeedY, bottomPane);
         } else if (answer.equals("B")) {
@@ -762,28 +775,24 @@ public class BlackMythWukongController {
             m = new MonsterC(monsterImageView, player, bulletPath, bulletSpeedX, bulletSpeedY, bottomPane);
         } else if (answer.equals("D")) {
             m = new MonsterD(monsterImageView, player, bulletPath, bulletSpeedX, bulletSpeedY, bottomPane);
+        } else {
+            return;
         }
-        //System.out.println("Monster spawned at position: (" + monsterImageView.getLayoutX() + ", " + monsterImageView.getLayoutY() + ")");
 
-
-        Monster finalM = m;
-        monsterList.add(finalM);
-
+        monsterList.add(m);
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(300), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                finalM.movement(event, player, 800, 800);
+                m.movement(event, player, 800, 800);
                 if (monsterImageView.getLayoutX() + monsterImageView.getFitWidth() <= 8) {
                     bottomPane.getChildren().remove(monsterImageView);
                 }
-
-                //System.out.println("Monster spawned at position: (" + monsterImageView.getLayoutX() + ", " + monsterImageView.getLayoutY() + ")");
             }
         }));
-
-        timeline.setCycleCount(Timeline.INDEFINITE); // Lặp vô hạn
-        timeline.play(); // Bắt đầu Timeline
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
+
 
     // Phương thức bắn đạn từ vị trí của monster về phía playerView
     private void fireBulletTowardsPlayer(String bulletPath, double startX, double startY, double playerX, double playerY) {

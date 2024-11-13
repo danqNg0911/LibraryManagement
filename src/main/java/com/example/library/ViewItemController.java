@@ -126,12 +126,12 @@ public class ViewItemController {
     }
 
     public void deleteBook(ActionEvent event) {
-       if (BookJDBC.checkBook(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor())) {
-           BookJDBC.deleteBookFromDatabase(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor() );
-           WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book is successfully removed", "stylesheet (css)/login_alert.css");
-       } else {
-           WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "You had already removed this book", "stylesheet (css)/login_alert.css");
-       }
+        if (BookJDBC.checkBook(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor())) {
+            BookJDBC.deleteBookFromDatabase(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor() );
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book is successfully removed", "stylesheet (css)/login_alert.css");
+        } else {
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
+        }
     }
 
     public void showAnimationDas(MouseEvent event) {

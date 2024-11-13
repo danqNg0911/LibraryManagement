@@ -34,6 +34,9 @@ public class UserCollectionController {
     private VBox accVBox;
 
     @FXML
+    private VBox sortBox;
+
+    @FXML
     private Button accountButton;
 
     @FXML
@@ -117,29 +120,78 @@ public class UserCollectionController {
     @FXML
     private VBox collectionBookContainer;
 
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
+    private TextField categoryField;
+
     private List<Book> books = new ArrayList<>();
 
-    private boolean TitleSorting = false;
-    private boolean AuthorSorting = false;
+    private boolean TitleSorting = true;
 
 
-    private Map<Character, List<Book>> sortByTitle(List<Book> books) {
+    private Map<Character, List<Book>> sortBooks(List<Book> books) {
         Map<Character, List<Book>> ListByTitle = new TreeMap<Character, List<Book>>();
-        for (Book book : books) {
-            char first = book.getTitle().toLowerCase().charAt(0);
-            ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+        if (TitleSorting) {
+            for (Book book : books) {
+                char first = book.getTitle().toLowerCase().charAt(0);
+                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+            }
+        } else {
+            for (Book book : books) {
+                char first = book.getAuthor().toLowerCase().charAt(0);
+                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+            }
         }
         return ListByTitle;
     }
 
+    public void sortByTitle(MouseEvent mouseEvent) {
+        this.TitleSorting = true;
+        try {
+            showData();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sortByAuthor(MouseEvent mouseEvent) {
+        this.TitleSorting = false;
+        try {
+            showData();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void showData(ActionEvent actionEvent) throws IOException, SQLException {
-        loadingIndicator.setVisible(true);
-        mainSce.setEffect(new GaussianBlur(4));
+        showData();
+    }
+
+    public void showData() throws IOException, SQLException {
+        //loadingIndicator.setVisible(true);
+        //mainSce.setEffect(new GaussianBlur(4));
         books.clear();
         collectionBookContainer.getChildren().clear();
-        books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
-        Map<Character, List<Book>> BooksSortByTitle = sortByTitle(books);
+
+        String titleSearch = titleField.getText().trim();
+        String authorSearch = authorField.getText().trim();
+        String categorySearch = categoryField.getText().trim();
+
+        if (titleSearch.isEmpty() && authorSearch.isEmpty() && categorySearch.isEmpty()) {
+            books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
+        } else {
+            books = BookJDBC.searchBooksFromDatabase(user.getUsername(), titleSearch, authorSearch, categorySearch);
+        }
+
+        if (books.isEmpty()) {
+            WindowManager.alertWindow(Alert.AlertType.ERROR, "Announcement", "There's no thing to show from your library", "stylesheet (css)/login_alert.css");
+        } else {
+        Map<Character, List<Book>> BooksSortByTitle = sortBooks(books);
         for (Map.Entry<Character, List<Book>> entry : BooksSortByTitle.entrySet()) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/Group.fxml"));
@@ -157,10 +209,10 @@ public class UserCollectionController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        } }
 
-        loadingIndicator.setVisible(false);
-        mainSce.setEffect(null);
+        //loadingIndicator.setVisible(false);
+        //mainSce.setEffect(null);
     }
 
     // Di chuột vào hiện hiệu ứng và ngược lại
@@ -247,9 +299,19 @@ public class UserCollectionController {
         WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
+    public void moveToAddBook(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/AddBook.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+    }
+
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         accVBox.setVisible(!accVBox.isVisible());
+    }
+
+    public void showSortBox(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        sortBox.setVisible(!sortBox.isVisible());
     }
 
     public void showCltOption(ActionEvent actionEvent) throws IOException {

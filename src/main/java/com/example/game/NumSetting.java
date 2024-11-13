@@ -1,6 +1,6 @@
 package com.example.game;
 
-public enum Base {
+public enum NumSetting {
 
     TIME(60), // Thời gian 1 ván đấu (đơn vị giây)
 
@@ -99,11 +99,11 @@ public enum Base {
 
     private final int info;
 
-    Base(int info) {
+    NumSetting(int info) {
         this.info = info;
     }
 
-    public int getInfo() {
+    public int getNum() {
         return info;
     }
 

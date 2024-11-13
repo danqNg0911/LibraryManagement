@@ -170,7 +170,7 @@
       </Pane>
     </children>
     <stylesheets>
-        <URL value="@../stylesheet (css)/userStyles.css" />
-        <URL value="@../stylesheet (css)/userLibStyle.css" />
+        <URL value="@../stylesheet%20(css)/userStyles.css" />
+        <URL value="@../stylesheet%20(css)/userLibStyle.css" />
     </stylesheets>
 </AnchorPane>

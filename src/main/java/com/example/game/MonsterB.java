@@ -24,7 +24,7 @@ public class MonsterB extends Monster {
     private boolean isMovingDown = true; // Trạng thái di chuyển dọc (xuống)
     private static final int MAX_ZIGZAG_STEPS = 5; // Số bước ziczac
 
-    private static final int INITIAL_HEALTH = Base.MONSTER_B_LIVES.getInfo();
+    private static final int INITIAL_HEALTH = NumSetting.MONSTER_B_LIVES.getNum();
 
 
     public MonsterB(ImageView monster, Player player, String bulletImagePath, double bulletSpeedX, double bulletSpeedY, Pane bottomPane) {
@@ -39,7 +39,7 @@ public class MonsterB extends Monster {
         this.isDead = false;
 
         // Khởi tạo Timeline để điều khiển di chuyển
-        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_B_BULLET_TIME.getInfo()), new EventHandler<ActionEvent>() {
+        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_B_BULLET_TIME.getNum()), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 shootMultiple(); // Bắn sau mỗi ... giây
@@ -60,7 +60,7 @@ public class MonsterB extends Monster {
         }
 
         isShooting = true;
-        for (int i = 0; i <= Base.MONSTER_B_NUMBER_OF_BULLET_PER_TURN.getInfo(); i++) {
+        for (int i = 0; i <= NumSetting.MONSTER_B_NUMBER_OF_BULLET_PER_TURN.getNum(); i++) {
             // Tạo một Timeline cho từng viên đạn
             Timeline shootTimeline = new Timeline(new KeyFrame(Duration.millis(i * SHOOT_COOLDOWN), new EventHandler<ActionEvent>() {
                 @Override
@@ -128,7 +128,7 @@ public class MonsterB extends Monster {
             return; // Nếu quái vật đã gần người chơi, dừng lại
         }
 
-        int move = Base.MONSTER_B_MOVE_SPEED.getInfo();
+        int move = NumSetting.MONSTER_B_MOVE_SPEED.getNum();
 
         // Kiểm tra hướng di chuyển ngang
         if (isMovingRight) {

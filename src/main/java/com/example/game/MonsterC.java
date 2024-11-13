@@ -21,7 +21,7 @@ public class MonsterC extends Monster{
     private boolean isUp = false;
     private double moveSpeedY = -10; // Tốc độ di chuyển theo trục Y (có thể điều chỉnh)
 
-    private static final int INITIAL_HEALTH = Base.MONSTER_C_LIVES.getInfo();
+    private static final int INITIAL_HEALTH = NumSetting.MONSTER_C_LIVES.getNum();
 
     public MonsterC(ImageView monster, Player player, String bulletImagePath, double bulletSpeedX, double bulletSpeedY, Pane bottomPane) {
         super(monster, player, bulletImagePath, bulletSpeedX, bulletSpeedY, bottomPane);
@@ -32,7 +32,7 @@ public class MonsterC extends Monster{
         this.isDead = false;
 
         // Khởi tạo Timeline để điều khiển di chuyển
-        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_C_BULLET_TIME.getInfo()), new EventHandler<ActionEvent>() {
+        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_C_BULLET_TIME.getNum()), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 shootMultiple(); // Bắn sau mỗi 2 giây
@@ -82,7 +82,7 @@ public class MonsterC extends Monster{
         }
 
         isShooting = true;
-        for (int i = 0; i <= Base.MONSTER_C_NUMBER_OF_BULLET_PER_TURN.getInfo(); i++) {
+        for (int i = 0; i <= NumSetting.MONSTER_C_NUMBER_OF_BULLET_PER_TURN.getNum(); i++) {
             // Tạo một Timeline cho từng viên đạn
             Timeline shootTimeline = new Timeline(new KeyFrame(Duration.millis(i * SHOOT_COOLDOWN), new EventHandler<ActionEvent>() {
                 @Override
@@ -168,7 +168,7 @@ public class MonsterC extends Monster{
             return;
         }
 
-        int move = Base.MONSTER_C_MOVE_SPEED.getInfo();
+        int move = NumSetting.MONSTER_C_MOVE_SPEED.getNum();
         // Kiểm tra nếu chạm mép trên hoặc mép dưới của Pane để thay đổi hướng
         if (monsterY <= move) {
             isUp = true;

@@ -23,7 +23,7 @@ public class MonsterD extends Monster {
     private boolean isTemporarilyAttacking = false; // Đang tấn công tạm thời
 
 
-    private static final int INITIAL_HEALTH = Base.MONSTER_D_LIVES.getInfo();
+    private static final int INITIAL_HEALTH = NumSetting.MONSTER_D_LIVES.getNum();
 
     public MonsterD(ImageView monster, Player player, String bulletImagePath, double bulletSpeedX, double bulletSpeedY, Pane bottomPane) {
         super(monster, player, bulletImagePath, bulletSpeedX, bulletSpeedY, bottomPane);
@@ -33,7 +33,7 @@ public class MonsterD extends Monster {
         this.isDead = false;
 
         // Khởi tạo Timeline để điều khiển hành vi di chuyển tạm thời và trở lại
-        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_D_TELEPORT_TIME.getInfo()), new EventHandler<ActionEvent>() {
+        moveTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_TELEPORT_TIME.getNum()), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 startTemporaryAttack(); // Bắt đầu tấn công tạm thời mỗi ... giây
@@ -121,7 +121,7 @@ public class MonsterD extends Monster {
         monster.setLayoutY(player.getLayoutY()); // Căn chỉnh trục Y với người chơif
 
         // Khởi động lại trạng thái tấn công
-        Timeline attackTimeline = new Timeline(new KeyFrame(Duration.seconds(Base.MONSTER_D_NUMBER_OF_HIT_PER_TURN.getInfo()), new EventHandler<ActionEvent>() {
+        Timeline attackTimeline = new Timeline(new KeyFrame(Duration.seconds(NumSetting.MONSTER_D_NUMBER_OF_HIT_PER_TURN.getNum()), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (monster == null) {
@@ -129,11 +129,11 @@ public class MonsterD extends Monster {
                 }
 
                 if (monster.getLayoutY() == player.getLayoutY()) {
-                    player.decreaseHealth(Base.MONSTER_D_DAMAGE.getInfo());
+                    player.decreaseHealth(NumSetting.MONSTER_D_DAMAGE.getNum());
                 }
                 monster.setLayoutX(originalX); // Quay lại vị trí ban đầu
                 monster.setLayoutY(originalY);
-                monster.setImage(new Image("/com/example/game/assets/monsters/D/left/troll_1.png"));
+                monster.setImage(new Image(getClass().getResource("/com/example/game/assets/monsters/D/left/troll_1.png").toExternalForm()));
                 isTemporarilyAttacking = false; // Kết thúc trạng thái tấn công
             }
         }));
@@ -234,7 +234,7 @@ public class MonsterD extends Monster {
             return; // Kết thúc hàm
         } else {
             // Di chuyển quái vật từ phải sang trái
-            monster.setLayoutX(monster.getLayoutX() - Base.MONSTER_D_MOVE_SPEED.getInfo()); // Di chuyển quái vật
+            monster.setLayoutX(monster.getLayoutX() - NumSetting.MONSTER_D_MOVE_SPEED.getNum()); // Di chuyển quái vật
             if (aniA != null && aniA.isRunning()) { // Chỉ khởi động hoạt ảnh nếu chưa chạy
                 aniA.stop();
             }
@@ -244,7 +244,7 @@ public class MonsterD extends Monster {
 
     private void animation() {
         if (aniA == null || !aniA.isRunning()) { // Chỉ khởi động hoạt ảnh nếu chưa chạy
-            aniA = new CharacterAnimation(monster, "monsters/D/left/", 4, "D");
+            aniA = new CharacterAnimation(monster, "monsters/D/left", 4, "D");
             aniA.start();
         }
     }

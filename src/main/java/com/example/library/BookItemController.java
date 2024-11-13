@@ -13,7 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookItemController {
     User user = new User();
@@ -34,6 +39,8 @@ public class BookItemController {
 
     @FXML
     private Button backButton;
+
+    private static final String booksListFile = LinkSetting.BOOKS_LIST_FILE_PATH.getLink();
 
     public void setBook(Book book) {
         this.book = book;
@@ -82,20 +89,56 @@ public class BookItemController {
         String username = user.getUsername();
         if (!BookJDBC.checkBook(username, title, author)) {
             BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description);
+            addBookToFile(title, author, category, description, imageUrl);
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
         }
     }
+
+    private void addBookToFile(String title, String author, String category, String description, String imageUrl) {
+        try (FileWriter writer = new FileWriter(booksListFile, true)) {
+            writer.write(title + "|" + author + "|" + category + "|" + description + "|" + imageUrl + "|" + user.getUsername() + System.lineSeparator());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void deleteBook(ActionEvent event) {
         String username = user.getUsername();
         String title = book.getTitle();
         String author = book.getAuthor();
         if (!BookJDBC.checkBook(username, title, author)) {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
+            deleteBookFromFile(title, author);
         } else {
             BookJDBC.deleteBookFromDatabase(username, title, author);
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "Successfully removing this book from your library", "stylesheet (css)/login_alert.css");
+        }
+    }
+
+    private void deleteBookFromFile(String title, String author) {
+        List<String> bookList = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(booksListFile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Check if the line does not match the title and author, then add it to the list
+                if (!line.startsWith(title + "|" + author)) {
+                    bookList.add(line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (FileWriter writer = new FileWriter(booksListFile, false)) {
+            for (String book : bookList) {
+                writer.write(book + System.lineSeparator());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
