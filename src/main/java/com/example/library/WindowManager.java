@@ -1,4 +1,5 @@
 package com.example.library;
+import com.example.game.Sound;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
