@@ -134,4 +134,54 @@ public class BookJDBC implements LinkJDBC {
         }
         return false;
     }
+
+    public static List<Book> searchBooksFromDatabase(String username, String title, String author, String category) throws SQLException {
+        List<Book> books = new ArrayList<>();
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM books WHERE username = ?");
+
+        if (title != null && !title.isEmpty()) {
+            queryBuilder.append(" AND title LIKE ?");
+        }
+        if (author != null && !author.isEmpty()) {
+            queryBuilder.append(" AND author LIKE ?");
+        }
+        if (category != null && !category.isEmpty()) {
+            queryBuilder.append(" AND category LIKE ?");
+        }
+
+        String query = queryBuilder.toString();
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username);
+
+            int index = 2; // Bắt đầu đặt các tham số khác từ vị trí 2
+            if (title != null && !title.isEmpty()) {
+                sqlStatement.setString(index++, "%" + title + "%");
+            }
+            if (author != null && !author.isEmpty()) {
+                sqlStatement.setString(index++, "%" + author + "%");
+            }
+            if (category != null && !category.isEmpty()) {
+                sqlStatement.setString(index, "%" + category + "%");
+            }
+
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String resultTitle = resultSet.getString("title");
+                    String resultAuthor = resultSet.getString("author");
+                    String resultCategory = resultSet.getString("category");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    String description = resultSet.getString("description");
+
+                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description);
+                    books.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
 }

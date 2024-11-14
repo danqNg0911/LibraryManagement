@@ -18,26 +18,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
-public class UserCollectionController {
-
-    UserJDBC userJDBC = new UserJDBC();
-    ManagerJDBC managerJDBC = new ManagerJDBC();
-    User user = new User();
-
+public class UserCollectionController extends UserController {
     @FXML
-    private Button accHelpsButton;
-
-    @FXML
-    private Button accSetButton;
-
-    @FXML
-    private VBox accVBox;
-
-    @FXML
-    private Button accountButton;
-
-    @FXML
-    private Label accountName;
+    private VBox sortBox;
 
     @FXML
     private Button addNewClt;
@@ -49,55 +32,10 @@ public class UserCollectionController {
     private VBox cltOptionVBox;
 
     @FXML
-    private Button collectionButton;
-
-    @FXML
-    private ImageView collectionPic;
-
-    @FXML
     private Label collectionTitle;
 
     @FXML
-    private ImageView currentAvatar;
-
-    @FXML
-    private Button dashboardButton;
-
-    @FXML
-    private ImageView dashboardPic;
-
-    @FXML
-    private ImageView dashboardPic11;
-
-    @FXML
-    private Button helpsButton;
-
-    @FXML
-    private Button libraryButton;
-
-    @FXML
-    private ImageView libraryPic;
-
-    @FXML
-    private ImageView libraryPic11;
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private AnchorPane mainSce;
-
-    @FXML
     private Button selectCltButton;
-
-    @FXML
-    private Button settingButton;
-
-    @FXML
-    private ImageView settingPic;
 
     @FXML
     private Button sortButton;
@@ -109,29 +47,83 @@ public class UserCollectionController {
     private Button titleSortButton;
 
     @FXML
-    private Button upgradeButton;
-
-    @FXML
     private ProgressIndicator loadingIndicator;
 
     @FXML
     private VBox collectionBookContainer;
+
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
+    private TextField categoryField;
+
     private List<Book> books = new ArrayList<>();
-    private Map<Character, List<Book>> sortByTitle(List<Book> books) {
+
+    private boolean TitleSorting = true;
+
+
+    private Map<Character, List<Book>> sortBooks(List<Book> books) {
         Map<Character, List<Book>> ListByTitle = new TreeMap<Character, List<Book>>();
-        for (Book book : books) {
-            char first = book.getTitle().toLowerCase().charAt(0);
-            ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+        if (TitleSorting) {
+            for (Book book : books) {
+                char first = book.getTitle().toLowerCase().charAt(0);
+                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+            }
+        } else {
+            for (Book book : books) {
+                char first = book.getAuthor().toLowerCase().charAt(0);
+                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
+            }
         }
         return ListByTitle;
     }
+
+    public void sortByTitle(MouseEvent mouseEvent) {
+        this.TitleSorting = true;
+        try {
+            showData();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sortByAuthor(MouseEvent mouseEvent) {
+        this.TitleSorting = false;
+        try {
+            showData();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showData(ActionEvent actionEvent) throws IOException, SQLException {
-        loadingIndicator.setVisible(true);
-        mainSce.setEffect(new GaussianBlur(4));
+        showData();
+    }
+
+    public void showData() throws IOException, SQLException {
+        //loadingIndicator.setVisible(true);
+        //mainSce.setEffect(new GaussianBlur(4));
         books.clear();
         collectionBookContainer.getChildren().clear();
-        books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
-        Map<Character, List<Book>> BooksSortByTitle = sortByTitle(books);
+
+        String titleSearch = titleField.getText().trim();
+        String authorSearch = authorField.getText().trim();
+        String categorySearch = categoryField.getText().trim();
+
+        if (titleSearch.isEmpty() && authorSearch.isEmpty() && categorySearch.isEmpty()) {
+            books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
+        } else {
+            books = BookJDBC.searchBooksFromDatabase(user.getUsername(), titleSearch, authorSearch, categorySearch);
+        }
+
+        if (books.isEmpty()) {
+            WindowManager.alertWindow(Alert.AlertType.ERROR, "Announcement", "There's no thing to show from your library", "stylesheet (css)/login_alert.css");
+        } else {
+        Map<Character, List<Book>> BooksSortByTitle = sortBooks(books);
         for (Map.Entry<Character, List<Book>> entry : BooksSortByTitle.entrySet()) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/Group.fxml"));
@@ -149,118 +141,32 @@ public class UserCollectionController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        } }
 
-        loadingIndicator.setVisible(false);
-        mainSce.setEffect(null);
+        //loadingIndicator.setVisible(false);
+        //mainSce.setEffect(null);
     }
 
-    // Di chuột vào hiện hiệu ứng và ngược lại
-    public void showAnimationDas(MouseEvent event) {
-        WindowManager.showPic(event, dashboardButton, dashboardPic);
+    public void moveToAddBook(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/AddBook.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
-    public void unshowAnimationDas(MouseEvent event) {
-        WindowManager.unshowPic(event, dashboardButton, dashboardPic);
+    public void showSortBox(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        sortBox.setVisible(!sortBox.isVisible());
     }
 
-    public void showAnimationLib(MouseEvent event) {
-        WindowManager.showPic(event, libraryButton, libraryPic);
-    }
-
-    public void unshowAnimationLib(MouseEvent event) {
-        WindowManager.unshowPic(event, libraryButton, libraryPic);
-    }
-
-    /*public void showAnimationClt(MouseEvent event) {
-        WindowManager.showPic(event, collectionButton, collectionPic);
+    public void showAnimationClt(MouseEvent event) {
+        return;
     }
 
     public void unshowAnimationClt(MouseEvent event) {
-        WindowManager.unshowPic(event, collectionButton, collectionPic);
-    }*/
-
-    public void showAnimationStg(MouseEvent event) {
-        WindowManager.showPic(event, settingButton, settingPic);
+        return;
     }
 
-    public void unshowAnimationStg(MouseEvent event) {
-        WindowManager.unshowPic(event, settingButton, settingPic);
-    }
-
-    public void showAnimationHelps(MouseEvent event) {
-        WindowManager.showPic(event, helpsButton, dashboardPic11);
-    }
-
-    public void unshowAnimationHelps(MouseEvent event) {
-        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
-    }
-
-    public void showAnimationUpg(MouseEvent event) {
-        WindowManager.showPic(event, upgradeButton, libraryPic11);
-    }
-
-    public void unshowAnimationUpg(MouseEvent event) {
-        WindowManager.unshowPic(event, upgradeButton, libraryPic11);
-    }
-    // Chuyen den trang khac
-    public void moveToLibrary(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToDashboard(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToHelps(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToAccHelps(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        accVBox.setVisible(!accVBox.isVisible());
-    }
-
-    public void showCltOption(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        cltOptionVBox.setVisible(!cltOptionVBox.isVisible());
-    }
-
-    public void showSortOption(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        sortOptionVBox.setVisible(!sortOptionVBox.isVisible());
-    }
-
-    //log out
-    public void logOut(ActionEvent event) throws IOException {
-        WindowManager.playButtonSound();
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-        user.closeConnection();
-        pause.play();
+    public void moveToCollection(ActionEvent actionEvent) throws IOException {
+        return;
     }
 
     @FXML

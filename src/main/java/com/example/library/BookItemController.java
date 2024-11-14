@@ -13,7 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookItemController {
     User user = new User();
@@ -87,6 +92,7 @@ public class BookItemController {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
         }
     }
+
     public void deleteBook(ActionEvent event) {
         String username = user.getUsername();
         String title = book.getTitle();

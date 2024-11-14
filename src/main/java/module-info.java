@@ -14,6 +14,7 @@ module com.example.library {
     requires java.desktop;
     requires okhttp3;
     requires com.google.gson;
+    requires java.sql;
 
     opens com.example.library to javafx.fxml;
     opens com.example.library.fxml to javafx.fxml;
