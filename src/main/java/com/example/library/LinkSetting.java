@@ -16,7 +16,7 @@ public enum LinkSetting {
 
     IMAGE_NULL("file:/C:/YEAR 2/OOP/JavaFX/Bai tap lon _ Thu VIen/src/main/resources/com/example/library/assets/Picture_is_not_available.png"),
 
-    SOUND_CLICK_MOUSE("C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\src\\main\\resources\\com\\example\\library\\assets\\mouse-click-153941.mp3");
+    SOUND_CLICK_MOUSE("/com/example/library/assets/sound_click_mouse.wav");
     private final String str;
 
     LinkSetting(String str) {

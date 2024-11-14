@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,6 +138,7 @@ public class UserLibraryController {
             loadingSearching.setVisible(true);
             // làm mờ khi tìm kiếm
             mainSce.setEffect(new GaussianBlur(4));
+
             // Sử dụng Task để tìm kiếm sách trên luồng nền
             Task<String> searchTask = new Task<>() {
                 @Override
@@ -197,6 +199,9 @@ public class UserLibraryController {
             String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
             String imageUrl = getImageUrl(volumeInfo);
 
+            // Cung cấp giá trị cho timestamp (ví dụ như thời gian hiện tại)
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/com/example/library/fxml/bookItem.fxml"));
 
@@ -205,7 +210,7 @@ public class UserLibraryController {
                 HBox bookItem = loader.load();
 
                 BookItemController controller = loader.getController();
-                controller.setBook(new Book(title, authors, categories, imageUrl, description));
+                controller.setBook(new Book(title, authors, categories, imageUrl, description, timestamp));
                 booksContainer.getChildren().add(bookItem);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -213,32 +218,6 @@ public class UserLibraryController {
         }
         loadingSearching.setVisible(false);
     }
-
-    /*private String getISBN(JsonObject volumeInfo) {
-        if (volumeInfo.has("industryIdentifiers")) {
-            JsonArray industryIdentifiers = volumeInfo.getAsJsonArray("industryIdentifiers");
-            String isbn10 = null;
-            String isbn13 = null;
-            for (JsonElement identifier : industryIdentifiers) {
-                JsonObject id = identifier.getAsJsonObject();
-                String type = id.get("type").getAsString();
-                if (type.equals("ISBN_13")) {
-                    isbn13 = id.get("identifier").getAsString();
-                }
-                if (type.equals("ISBN_10")) {
-                    isbn10 = id.get("identifier").getAsString();
-                }
-            }
-            if (isbn10 != null && isbn13 != null) {
-                return "ISBN13: " + isbn13 + "    " + "ISBN10: " + isbn10;
-            } else if (isbn10 != null) {
-                return "ISBN13: " + isbn13;
-            } else if (isbn13 != null) {
-                return "ISBN10: " + isbn10;
-            }
-        }
-        return "ISBN does not exist";
-    }*/
 
     private String getAuthors(JsonObject volumeInfo) {
         if (volumeInfo.has("authors")) {

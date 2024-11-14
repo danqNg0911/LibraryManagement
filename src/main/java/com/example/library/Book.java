@@ -1,18 +1,22 @@
 package com.example.library;
 
+import java.sql.Timestamp;
+
 public class Book {
     private String title;
     private String author;
     private String category;
     private String imageUrl;
     private String description;
+    private Timestamp addedDate; // Thêm trường ngày tháng
 
-    public Book(String title, String author, String category, String imageUrl, String description) {
+    public Book(String title, String author, String category, String imageUrl, String description, Timestamp addedDate) {
         this.title = title;
         this.author = author;
         this.category = category;
         this.imageUrl = imageUrl;
         this.description = description;
+        this.addedDate = addedDate;
     }
 
     public String getTitle() {
@@ -33,5 +37,13 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public Timestamp getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(Timestamp addedDate) {
+        this.addedDate = addedDate;
     }
 }

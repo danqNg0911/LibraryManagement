@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,8 +14,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ProgressIndicator?>
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserCollectionController">
+    <children>
+
+    </children>
     <children>
         <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -72,11 +75,6 @@
                         <Font name="System Bold" size="34.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="944.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/Sorted.png" />
-                    </image>
-                </ImageView>
             <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
             <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,16 +82,6 @@
                </image>
             </ImageView>
             <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <Button fx:id="sortButton" layoutX="857.0" layoutY="235.0" mnemonicParsing="false" onAction="#showSortOption" prefHeight="36.0" prefWidth="83.0" text="Sort by">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="showCollectionBook" layoutX="857.0" layoutY="170.0" mnemonicParsing="false" onAction="#showData" prefHeight="40.0" prefWidth="112.0" text="Show Collection">
-            fHeight="36.0" prefWidth="83.0" text="Sort by">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
                 <ScrollPane layoutY="190.0" prefHeight="614.0" prefWidth="851.0">
                     <content>
                         <VBox fx:id="collectionBookContainer" fillWidth="false" prefHeight="606.0" prefWidth="837.0" />

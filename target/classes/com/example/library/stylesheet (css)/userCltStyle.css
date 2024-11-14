@@ -45,3 +45,76 @@
     -fx-font-weight: bold;
     -fx-font-style: italic;
 }
+
+.cltButton {
+    -fx-font-size: 14px;   /* Cỡ chữ: 14px */
+    -fx-background-color: transparent; /* Màu nền: trong suốt */
+    -fx-background-color: #38b1ff;  /*  Màu nền: #00c4cc  */
+    -fx-text-fill: #fff; /* Màu chữ: #fff */
+    -fx-font-weight: bold; /* Nét chữ: Đậm */
+    -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
+    -fx-transition: opacity 0.2 ease; /* Độ mờ khi trỏ vào button */
+    -fx-background-radius: 30px;
+}
+
+.cltButton:pressed {
+    -fx-background-color: #ff6694;
+}
+
+.cltButton:hover {
+    -fx-transition: opacity 0.2 ease; /* Độ mờ khi trỏ vào button */
+}
+
+/* Tùy chỉnh toàn bộ TitledPane filters*/
+.filters {
+    -fx-border-width: 0px;
+    -fx-padding: 0px;
+    -fx-background-radius: 30px;
+}
+
+/* Tùy chỉnh phần tiêu đề của TitledPane filters*/
+.filters > .title {
+    -fx-background-color: #38b1ff; /* Màu nền cho tiêu đề */
+    -fx-text-fill: white;         /* Màu chữ */
+    -fx-font-size: 14px;          /* Cỡ chữ */
+    -fx-background-radius: 30px;
+}
+
+/* Tùy chỉnh phần nội dung của TitledPane filters*/
+.filters > .content {
+    -fx-background-color: #ffffff; /* Màu nền cho nội dung */
+    -fx-text-fill: white;
+    -fx-border-color: #38b1ff;
+}
+
+
+/* Toàn bộ RadioButton */
+.radio-button {
+    -fx-text-fill: #333;            /* Màu chữ */
+    -fx-font-size: 12px;           /* Kích thước chữ */
+    -fx-color: #fff;
+    -fx-font-weight: 680;
+}
+
+/* Phần vòng tròn (circle) */
+.radio-button > .radio {
+    -fx-mark-color: #ff6694;       /* Màu dấu bên trong khi được chọn */
+    -fx-background-radius: 50%;
+}
+
+/* Khi RadioButton được chọn */
+.radio-button:selected {
+
+}
+
+/* Khi hover */
+.radio-button:hover {
+    -fx-background-color: #fcf9f9; /* Màu nền khi hover */
+}
+
+/* Tùy chỉnh khi không được chọn */
+.radio-button > .radio:empty {
+    -fx-border-color: #999;        /* Màu viền vòng tròn khi không được chọn */
+    -fx-background-color: #fff;   /* Màu nền bên trong vòng tròn */
+}
+
