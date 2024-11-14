@@ -73,7 +73,7 @@
                         <Font name="System Bold" size="34.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="927.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="934.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/Sorted.png" />
                     </image>
@@ -85,7 +85,7 @@
                     </image>
                 </ImageView>
                 <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-                <Button fx:id="sortButton" layoutX="821.0" layoutY="525.0" mnemonicParsing="false" onAction="#showSortBox" prefHeight="28.0" prefWidth="105.0" styleClass="ItemButton" text="Sort by">
+                <Button fx:id="sortButton" layoutX="821.0" layoutY="518.0" mnemonicParsing="false" onAction="#showSortBox" prefHeight="35.0" prefWidth="112.0" styleClass="ItemButton" text="Sort by">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -242,7 +242,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <VBox fx:id="sortBox" layoutX="832.0" layoutY="557.0" prefHeight="53.0" prefWidth="112.0" viewOrder="0.0" visible="false">
+                <VBox fx:id="sortBox" layoutX="822.0" layoutY="557.0" prefHeight="53.0" prefWidth="112.0" viewOrder="0.0" visible="false">
                     <children>
                         <Button fx:id="TitleSortButton" mnemonicParsing="false" onMouseClicked="#sortByTitle" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Sort By Title" />
                         <Button fx:id="AuthorSortButton" mnemonicParsing="false" onMouseClicked="#sortByAuthor" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Sort By Author" />

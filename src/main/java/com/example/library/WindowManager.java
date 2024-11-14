@@ -27,6 +27,7 @@ public class WindowManager {
     private static Stage stage;
     private static Scene scene;
     private static final Stack<Scene> sceneStack = new Stack<>();
+    private static MediaPlayer mediaPlayer;
 
     public static void setStage(Stage newStage) {
         stage =  newStage;
@@ -163,5 +164,24 @@ public class WindowManager {
         Media sound = new Media(new File(soundFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+    }
+
+    public static void playMusic(String filePath) {
+        // Nếu đã có nhạc đang phát, dừng lại
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+
+        // Tạo và phát nhạc từ file mới
+        Media media = new Media(new File(filePath).toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Lặp lại
+        mediaPlayer.play();
+    }
+
+    public static void stopMusic() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
     }
 }

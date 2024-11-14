@@ -182,7 +182,35 @@
                 </TitledPane>
                 <TitledPane fx:id="personalitiesTitledPane" text="Personalities">
                   <content>
-                    <AnchorPane fx:id="personalities" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane fx:id="personalities" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Accordion layoutX="31.0" prefHeight="527.0" prefWidth="803.0">
+                                <panes>
+                                  <TitledPane animated="false" text="untitled 1">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                    </content>
+                                  </TitledPane>
+                                  <TitledPane animated="false" text="Music Playlist">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Label layoutX="105.0" layoutY="85.0" prefHeight="17.0" prefWidth="399.0" text="Label" />
+                                                <Button fx:id="buttonMusic1" layoutX="555.0" layoutY="81.0" mnemonicParsing="false" onAction="#playMusic1" text="Choose" />
+                                                <Label layoutX="99.0" layoutY="146.0" prefHeight="17.0" prefWidth="399.0" text="Label" />
+                                                <Button fx:id="buttonMusic2" layoutX="549.0" layoutY="142.0" mnemonicParsing="false" onAction="#playMusic2" text="Choose" />
+                                                <Label layoutX="99.0" layoutY="216.0" prefHeight="17.0" prefWidth="399.0" text="Label" />
+                                                <Button fx:id="buttonMusic3" layoutX="549.0" layoutY="212.0" mnemonicParsing="false" onAction="#playMusic3" text="Choose" />
+                                                <Label layoutX="30.0" layoutY="25.0" text="You can press &quot;Choose&quot; to play/change theme music " />
+                                                <Label layoutX="30.0" layoutY="54.0" text="You can press &quot;Stop&quot; to stop music" />
+                                                <Button fx:id="buttonStop" layoutX="373.0" layoutY="334.0" mnemonicParsing="false" onAction="#stopMusic" text="Stop" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </TitledPane>
+                                </panes>
+                              </Accordion>
+                           </children></AnchorPane>
                   </content>
                 </TitledPane>
               </panes>
