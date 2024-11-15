@@ -140,7 +140,8 @@ public class BookJDBC implements LinkJDBC {
                     String username = resultSet.getString("username");
                     String source = resultSet.getString("source");
                     Date date = resultSet.getDate("date");
-                    Book book = new Book(title, author, category, imageUrl, description, username, source, date);
+                    int id = resultSet.getInt("id");
+                    Book book = new Book(title, author, category, imageUrl, description, username, source, date, id);
                     books.add(book);
                 }
             }

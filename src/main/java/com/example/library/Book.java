@@ -29,7 +29,7 @@ public class Book {
         this.description = description;
     }
 
-    public Book(String title, String author, String category, String imageUrl, String description, String username, String source, Date date) {
+    public Book(String title, String author, String category, String imageUrl, String description, String username, String source, Date date, int id) {
         this.title = title;
         this.author = author;
         this.category = category;
@@ -38,6 +38,7 @@ public class Book {
         this.username = username;
         this.source = source;
         this.date = date;
+        this.id = id;
     }
 
     public Book(String title, String author, String category, String imageUrl, String description, int id) {
