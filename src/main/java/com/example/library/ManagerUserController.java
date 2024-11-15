@@ -1,25 +1,33 @@
 package com.example.library;
 
-import javafx.animation.PauseTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ManagerUserController extends ManagerController {
+    @FXML
+    private TableView<UserAccount> userTable;
+
+    @FXML
+    private TableColumn<UserAccount, String> nameColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> usernameColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> emailColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> phonenumColumn;
+
 
     public void showAnimationMU(MouseEvent event) {
         return;
@@ -33,10 +41,28 @@ public class ManagerUserController extends ManagerController {
         return;
     }
 
+    public void loadUserAccounts() {
+        User userDB = new User(); // Tạo đối tượng User để truy cập cơ sở dữ liệu user
+        List<UserAccount> userAccounts = userDB.getAllUserAccounts(); // Lấy tất cả user
+
+        // Chuyển đổi List sang ObservableList và đưa vào TableView
+        ObservableList<UserAccount> observableUserList = FXCollections.observableArrayList(userAccounts);
+        userTable.setItems(observableUserList);
+    }
+
+
     @FXML
     public void initialize() {
         // Hiển thị username
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        phonenumColumn.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        // Load dữ liệu
+        loadUserAccounts();
     }
 }

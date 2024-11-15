@@ -86,7 +86,7 @@ public class BookItemController {
         String imageUrl = book.getImageUrl();
         String username = user.getUsername();
         if (!BookJDBC.checkBook(username, title, author)) {
-            BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description);
+            BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description, "borrowed");
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
@@ -97,10 +97,11 @@ public class BookItemController {
         String username = user.getUsername();
         String title = book.getTitle();
         String author = book.getAuthor();
+        int id = book.getId();
         if (!BookJDBC.checkBook(username, title, author)) {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
         } else {
-            BookJDBC.deleteBookFromDatabase(username, title, author);
+            BookJDBC.deleteBookFromDatabase(username, title, author, id);
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "Successfully removing this book from your library", "stylesheet (css)/login_alert.css");
         }
     }

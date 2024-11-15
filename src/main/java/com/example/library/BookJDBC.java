@@ -1,8 +1,10 @@
 package com.example.library;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class BookJDBC implements LinkJDBC {
     private Connection connection;
@@ -56,8 +58,8 @@ public class BookJDBC implements LinkJDBC {
     }
 
     // Them sach vao database
-    public static boolean addBookToDatabase(String username, String isbn, String title, String author, String category, String imageUrl, String description) {
-        String query = "INSERT INTO `books` (username, isbn, title, author, category, imageUrl, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public static boolean addBookToDatabase(String username, String isbn, String title, String author, String category, String imageUrl, String description, String source) {
+        String query = "INSERT INTO `books` (username, isbn, title, author, category, imageUrl, description, source, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             sqlStatement.setString(2, isbn);
@@ -66,6 +68,10 @@ public class BookJDBC implements LinkJDBC {
             sqlStatement.setString(5, category);
             sqlStatement.setString(6, imageUrl);
             sqlStatement.setString(7, description);
+            sqlStatement.setString(8, source);
+
+            LocalDate date = LocalDate.now();
+            sqlStatement.setDate(9, java.sql.Date.valueOf(date));
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -109,7 +115,8 @@ public class BookJDBC implements LinkJDBC {
                     String category = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
-                    Book book = new Book(title, author, category, imageUrl, description);
+                    int id = resultSet.getInt("id");
+                    Book book = new Book(title, author, category, imageUrl, description, id);
                     books.add(book);
                 }
             }
@@ -119,13 +126,39 @@ public class BookJDBC implements LinkJDBC {
         return books;
     }
 
-    public static boolean deleteBookFromDatabase(String username, String title, String author) {
-        String query = "DELETE FROM books where username=? and title=? and author=?";
+    public static List<Book> getAllBooksFromAllUser() throws SQLException {
+        List<Book> books = new ArrayList<>();
+        String query = "SELECT * FROM books";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String title = resultSet.getString("title");
+                    String author = resultSet.getString("author");
+                    String category = resultSet.getString("category");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    String description = resultSet.getString("description");
+                    String username = resultSet.getString("username");
+                    String source = resultSet.getString("source");
+                    Date date = resultSet.getDate("date");
+                    int id = resultSet.getInt("id");
+                    Book book = new Book(title, author, category, imageUrl, description, username, source, date, id);
+                    books.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
+
+    public static boolean deleteBookFromDatabase(String username, String title, String author, int id) {
+        String query = "DELETE FROM books where username=? and title=? and author=? and id=?";
 
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             sqlStatement.setString(2, title);
             sqlStatement.setString(3, author);
+            sqlStatement.setInt(4, id);
 
             int rowsAfterDeletion = sqlStatement.executeUpdate();
             return rowsAfterDeletion > 0;
@@ -174,8 +207,9 @@ public class BookJDBC implements LinkJDBC {
                     String resultCategory = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
+                    int id = resultSet.getInt("id");
 
-                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description);
+                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, id);
                     books.add(book);
                 }
             }
