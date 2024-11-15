@@ -1,8 +1,8 @@
 package com.example.library;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User extends BaseJDBC implements LinkJDBC {
 
@@ -82,4 +82,28 @@ public class User extends BaseJDBC implements LinkJDBC {
         }
     }
 
+    public List<UserAccount> getAllUserAccounts() {
+        List<UserAccount> userList = new ArrayList<>();
+        String query = "SELECT name, username, phonenum, email FROM accounts";
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query);
+             ResultSet resultSet = sqlStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String username = resultSet.getString("username");
+                String phonenum = resultSet.getString("phonenum");
+                String email = resultSet.getString("email");
+
+                // Tạo đối tượng UserAccount từ kết quả và thêm vào danh sách
+                UserAccount user = new UserAccount(name, username, phonenum, email);
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
 }

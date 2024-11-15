@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +47,63 @@ public class UserHelpsController extends UserController {
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        int avatarId = user.getAvatar(user.getUsername());
+        switch (avatarId) {
+            case 1: {
+                javafx.scene.image.Image ava1Img = new javafx.scene.image.Image(LinkSetting.AVATAR_1.getLink());
+                currentAvatar.setImage(ava1Img);
+                break;
+            }
+            case 2: {
+                javafx.scene.image.Image ava2Img = new javafx.scene.image.Image(LinkSetting.AVATAR_2.getLink());
+                currentAvatar.setImage(ava2Img);
+                break;
+            }
+            case 3: {
+                javafx.scene.image.Image ava3Img = new javafx.scene.image.Image(LinkSetting.AVATAR_3.getLink());
+                currentAvatar.setImage(ava3Img);
+                break;
+            }
+            case 4: {
+                javafx.scene.image.Image ava4Img = new javafx.scene.image.Image(LinkSetting.AVATAR_4.getLink());
+                currentAvatar.setImage(ava4Img);
+                break;
+            }
+            case 5: {
+                javafx.scene.image.Image ava5Img = new javafx.scene.image.Image(LinkSetting.AVATAR_5.getLink());
+                currentAvatar.setImage(ava5Img);
+                break;
+            }
+            case 6: {
+                javafx.scene.image.Image ava6Img = new javafx.scene.image.Image(LinkSetting.AVATAR_6.getLink());
+                currentAvatar.setImage(ava6Img);
+                break;
+            }
+            case 7: {
+                javafx.scene.image.Image ava7Img = new javafx.scene.image.Image(LinkSetting.AVATAR_7.getLink());
+                currentAvatar.setImage(ava7Img);
+                break;
+            }
+            case 8: {
+                javafx.scene.image.Image ava8Img = new javafx.scene.image.Image(LinkSetting.AVATAR_8.getLink());
+                currentAvatar.setImage(ava8Img);
+                break;
+            }
+            case 9: {
+                javafx.scene.image.Image ava9Img = new javafx.scene.image.Image(LinkSetting.AVATAR_9.getLink());
+                currentAvatar.setImage(ava9Img);
+                break;
+            }
+            case 0: {
+                javafx.scene.image.Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
+                currentAvatar.setImage(ava0Img);
+                break;
+            }
+            default:
+                System.out.println("Unknown avatar id: " + avatarId);
+        }
+        System.out.println("Avatar updated to ID: " + avatarId);
     }
 
     public void openYouTubeChannel(ActionEvent actionEvent) throws IOException {

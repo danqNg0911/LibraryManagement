@@ -27,6 +27,9 @@ public class UserSettingController extends UserController {
     private static final String mainSound1 = LinkSetting.MAIN_SOUND_1.getLink();
     private static final String mainSound2 = LinkSetting.MAIN_SOUND_2.getLink();
     private static final String mainSound3 = LinkSetting.MAIN_SOUND_3.getLink();
+    private static final String mainSound4 = LinkSetting.MAIN_SOUND_4.getLink();
+    private static final String mainSound5 = LinkSetting.MAIN_SOUND_5.getLink();
+    private int selectedAvatarId = -1;
 
     @FXML
     private TextField Q1Field;
@@ -142,6 +145,38 @@ public class UserSettingController extends UserController {
     @FXML
     private Label settingTitle;
 
+    @FXML
+    private Button ava0;
+
+    @FXML
+    private Button ava1;
+
+    @FXML
+    private Button ava2;
+
+    @FXML
+    private Button ava3;
+
+    @FXML
+    private Button ava4;
+
+    @FXML
+    private Button ava5;
+
+    @FXML
+    private Button ava6;
+
+    @FXML
+    private Button ava7;
+
+    @FXML
+    private Button ava8;
+
+    @FXML
+    private Button ava9;
+
+    @FXML
+    private Button changeAvaButton;
 
     @FXML
     public void initialize() {
@@ -149,6 +184,62 @@ public class UserSettingController extends UserController {
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
         currentNameLabel.setText(user.getName(user.getUsername()));
+        int avatarId = user.getAvatar(user.getUsername());
+        switch (avatarId) {
+            case 1: {
+                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
+                currentAvatar.setImage(ava1Img);
+                break;
+            }
+            case 2: {
+                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
+                currentAvatar.setImage(ava2Img);
+                break;
+            }
+            case 3: {
+                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
+                currentAvatar.setImage(ava3Img);
+                break;
+            }
+            case 4: {
+                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
+                currentAvatar.setImage(ava4Img);
+                break;
+            }
+            case 5: {
+                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
+                currentAvatar.setImage(ava5Img);
+                break;
+            }
+            case 6: {
+                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
+                currentAvatar.setImage(ava6Img);
+                break;
+            }
+            case 7: {
+                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
+                currentAvatar.setImage(ava7Img);
+                break;
+            }
+            case 8: {
+                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
+                currentAvatar.setImage(ava8Img);
+                break;
+            }
+            case 9: {
+                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
+                currentAvatar.setImage(ava9Img);
+                break;
+            }
+            case 0: {
+                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
+                currentAvatar.setImage(ava0Img);
+                break;
+            }
+            default:
+                System.out.println("Unknown avatar id: " + avatarId);
+        }
+        System.out.println("Avatar updated to ID: " + avatarId);
     }
 
     @FXML
@@ -357,8 +448,95 @@ public class UserSettingController extends UserController {
         WindowManager.playMusic(mainSound3);
     }
 
+    public void playMusic4(ActionEvent event) {
+        WindowManager.playMusic(mainSound4);
+    }
+
+    public void playMusic5(ActionEvent event) {
+        WindowManager.playMusic(mainSound5);
+    }
+
     public void stopMusic(ActionEvent event) {
         WindowManager.stopMusic();
+    }
+
+    public void updateAvatar(int avatarId) {
+        user.avatarUpdate(user.getUsername(), avatarId);
+        switch (avatarId) {
+            case 1: {
+                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
+                currentAvatar.setImage(ava1Img);
+                break;
+            }
+            case 2: {
+                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
+                currentAvatar.setImage(ava2Img);
+                break;
+            }
+            case 3: {
+                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
+                currentAvatar.setImage(ava3Img);
+                break;
+            }
+            case 4: {
+                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
+                currentAvatar.setImage(ava4Img);
+                break;
+            }
+            case 5: {
+                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
+                currentAvatar.setImage(ava5Img);
+                break;
+            }
+            case 6: {
+                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
+                currentAvatar.setImage(ava6Img);
+                break;
+            }
+            case 7: {
+                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
+                currentAvatar.setImage(ava7Img);
+                break;
+            }
+            case 8: {
+                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
+                currentAvatar.setImage(ava8Img);
+                break;
+            }
+            case 9: {
+                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
+                currentAvatar.setImage(ava9Img);
+                break;
+            }
+            case 0: {
+                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
+                currentAvatar.setImage(ava0Img);
+                break;
+            }
+            default:
+                System.out.println("Unknown avatar id: " + avatarId);
+        }
+        System.out.println("Avatar updated to ID: " + avatarId);
+    }
+
+    @FXML
+    public void handleAvatarClick(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        selectedAvatarId = Integer.parseInt(clickedButton.getText());
+
+        System.out.println("Selected Avatar ID: " + selectedAvatarId);
+    }
+
+    public void handleChangeAvatar(ActionEvent event) {
+        if (selectedAvatarId != -1) {
+            String username = user.getUsername();
+            updateAvatar(selectedAvatarId);
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Avatar Changed",
+                    "Your avatar has been successfully updated!", "stylesheet (css)/login_alert.css");
+        } else {
+            WindowManager.alertWindow(Alert.AlertType.WARNING, "Avatar Not Selected",
+                    "Please select an avatar first!", "stylesheet (css)/login_alert.css");
+        }
     }
 
 }
