@@ -17,7 +17,16 @@ public class Book {
     private String status;
     private int id;
 
-    public Book(String title, String author, String category, String imageUrl, String description, Timestamp date) {
+    public Book(String title, String author, String category, String imageUrl, String description, Date date) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.date = date;
+    }
+
+    public Book(String title, String author, String category, String imageUrl, String description) {
         this.title = title;
         this.author = author;
         this.category = category;

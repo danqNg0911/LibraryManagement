@@ -57,7 +57,7 @@ public class ViewItemController extends UserController {
             Image image = new Image(book.getImageUrl());
             coverImage.setImage(image);
         } else {
-            Image nullImage = new Image(LinkSetting.IMAGE_NULL.getLink());
+            Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
             coverImage.setImage(nullImage);
         }
     }

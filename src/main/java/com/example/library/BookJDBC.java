@@ -2,7 +2,7 @@ package com.example.library;
 
 import java.sql.*;
 import java.sql.Date;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.*;
 
 public class BookJDBC implements LinkJDBC {
@@ -69,8 +69,8 @@ public class BookJDBC implements LinkJDBC {
             sqlStatement.setString(7, description);
             sqlStatement.setString(8, source);
 
-            LocalDate date = LocalDate.now();
-            sqlStatement.setDate(9, java.sql.Date.valueOf(date));
+            Date date = new Date(Timestamp.from(Instant.now()).getTime());
+            sqlStatement.setDate(9, date);
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -137,8 +137,8 @@ public class BookJDBC implements LinkJDBC {
                     String category = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
-                    Timestamp addedDate = resultSet.getTimestamp("date"); // Lấy ngày tháng
-                    Book book = new Book(title, author, category, imageUrl, description, addedDate); // Giả sử Book có constructor phù hợp
+                    Date date = new Date(resultSet.getTimestamp("date").getTime()); // Lấy ngày tháng
+                    Book book = new Book(title, author, category, imageUrl, description, date); // Giả sử Book có constructor phù hợp
                     books.add(book);
                 }
             }
@@ -267,13 +267,13 @@ public class BookJDBC implements LinkJDBC {
 
     public static Map<String, Integer> getBooksByDay(String username) throws SQLException {
         Map<String, Integer> booksByDay = new LinkedHashMap<>();  // Dùng LinkedHashMap để giữ thứ tự theo ngày
-        String query = "SELECT DATE(added_date) AS added_day, COUNT(*) FROM books WHERE username=? GROUP BY added_day ORDER BY added_day";
+        String query = "SELECT date, COUNT(*) FROM books WHERE username=? GROUP BY date ORDER BY date";
 
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             try (ResultSet resultSet = sqlStatement.executeQuery()) {
                 while (resultSet.next()) {
-                    String addedDay = resultSet.getString("added_day");  // Ngày dưới định dạng YYYY-MM-DD
+                    String addedDay = resultSet.getString("date");  // Ngày dưới định dạng YYYY-MM-DD
                     int count = resultSet.getInt("COUNT(*)");
                     booksByDay.put(addedDay, count);  // Lưu vào Map với key là ngày, value là số lượng sách
                 }

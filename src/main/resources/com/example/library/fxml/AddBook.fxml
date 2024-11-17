@@ -147,8 +147,8 @@
         </Pane>
     </children>
    <stylesheets>
-      <URL value="@../stylesheet%20(css)/userStyles.css" />
-      <URL value="@../stylesheet%20(css)/userCltStyle.css" />
-      <URL value="@../stylesheet%20(css)/addBook.css" />
+      <URL value="@../stylesheet (css)/userStyles.css" />
+      <URL value="@../stylesheet (css)/userCltStyle.css" />
+      <URL value="@../stylesheet (css)/addBook.css" />
    </stylesheets>
 </AnchorPane>

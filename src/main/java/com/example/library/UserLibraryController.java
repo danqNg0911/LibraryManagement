@@ -23,7 +23,9 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +134,7 @@ public class UserLibraryController extends UserController {
             String imageUrl = getImageUrl(volumeInfo);
 
             // Cung cấp giá trị cho timestamp (ví dụ như thời gian hiện tại)
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            Date date = new Date(Timestamp.from(Instant.now()).getTime());
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/com/example/library/fxml/bookItem.fxml"));
@@ -142,7 +144,7 @@ public class UserLibraryController extends UserController {
                 HBox bookItem = loader.load();
 
                 BookItemController controller = loader.getController();
-                controller.setBook(new Book(title, authors, categories, imageUrl, description, timestamp));
+                controller.setBook(new Book(title, authors, categories, imageUrl, description, date));
                 booksContainer.getChildren().add(bookItem);
             } catch (IOException e) {
                 e.printStackTrace();
