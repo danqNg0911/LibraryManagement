@@ -330,37 +330,38 @@
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font></Label>
-                                                                <Button fx:id="buttonMusic1" layoutX="549.0" layoutY="131.0" mnemonicParsing="false" onAction="#playMusic1" styleClass="changeButton" text="Choose" />
+                                                                <Button fx:id="buttonMusic1" layoutX="549.0" layoutY="131.0" mnemonicParsing="false" onAction="#playMusic1" prefHeight="25.0" prefWidth="60.0" styleClass="changeButton" text="Play" />
                                                                 <Label layoutX="212.0" layoutY="178.0" prefHeight="20.0" prefWidth="235.0" text="2. Jingle bells - James S. Pierpont">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font></Label>
-                                                                <Button fx:id="buttonMusic2" layoutX="549.0" layoutY="172.0" mnemonicParsing="false" onAction="#playMusic2" styleClass="changeButton" text="Choose" />
+                                                                <Button fx:id="buttonMusic2" layoutX="549.0" layoutY="172.0" mnemonicParsing="false" onAction="#playMusic2" prefHeight="25.0" prefWidth="60.0" styleClass="changeButton" text="Play" />
                                                                 <Label layoutX="212.0" layoutY="218.0" prefHeight="20.0" prefWidth="321.0" text="3. Ngày xuân long phụng sum vầy - Quang Huy">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font></Label>
-                                                                <Button fx:id="buttonMusic3" layoutX="549.0" layoutY="212.0" mnemonicParsing="false" onAction="#playMusic3" styleClass="changeButton" text="Choose" />
+                                                                <Button fx:id="buttonMusic3" layoutX="549.0" layoutY="212.0" mnemonicParsing="false" onAction="#playMusic3" prefHeight="25.0" prefWidth="60.0" styleClass="changeButton" text="Play" />
                                                                 <Label layoutX="55.0" layoutY="24.0" text="You can press &quot;Choose&quot; to play/change theme music " />
                                                                 <Label layoutX="55.0" layoutY="53.0" text="You can press &quot;Stop&quot; to stop music" />
-                                                                <Button fx:id="buttonStop" layoutX="373.0" layoutY="351.0" mnemonicParsing="false" onAction="#stopMusic" styleClass="changeButton" text="Stop" />
+                                                                <Button fx:id="buttonStop" layoutX="425.0" layoutY="351.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="25.0" prefWidth="75.0" styleClass="changeButton" text="Stop" />
                                                                 <Label layoutX="212.0" layoutY="258.0" prefHeight="20.0" prefWidth="236.0" text="4. See you again - Charlie Puth">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Button fx:id="buttonMusic4" layoutX="549.0" layoutY="253.0" mnemonicParsing="false" onAction="#playMusic4" styleClass="changeButton" text="Choose" />
+                                                                <Button fx:id="buttonMusic4" layoutX="549.0" layoutY="253.0" mnemonicParsing="false" onAction="#playMusic4" prefHeight="25.0" prefWidth="60.0" styleClass="changeButton" text="Play" />
                                                                 <Label layoutX="212.0" layoutY="298.0" prefHeight="20.0" prefWidth="236.0" text="5. River flows in you - Yiruma">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Button fx:id="buttonMusic5" layoutX="549.0" layoutY="295.0" mnemonicParsing="false" onAction="#playMusic5" styleClass="changeButton" text="Choose" />
+                                                                <Button fx:id="buttonMusic5" layoutX="549.0" layoutY="295.0" mnemonicParsing="false" onAction="#playMusic5" prefHeight="25.0" prefWidth="60.0" styleClass="changeButton" text="Play" />
                                                                 <Label layoutX="158.0" layoutY="89.0" text="Playlist">
                                                                     <font>
                                                                         <Font name="System Bold Italic" size="16.0" />
                                                                     </font>
                                                                 </Label>
+                                                <Button fx:id="buttonPause" layoutX="310.0" layoutY="351.0" mnemonicParsing="false" onAction="#pauseMusic" prefHeight="25.0" prefWidth="75.0" styleClass="changeButton" text="Pause" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
