@@ -1,148 +1,93 @@
 package com.example.library;
 
-import javafx.animation.PauseTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
 
-public class ManagerBookController {
-
-    UserJDBC userJDBC = new UserJDBC();
-    ManagerJDBC managerJDBC = new ManagerJDBC();
-    Manager manager = new Manager();
+public class ManagerBookController extends ManagerController{
+    @FXML
+    private TableView<Book> bookTable;
 
     @FXML
-    private ImageView MBPic;
+    private TableColumn<Book, String> usernameColumn;
 
     @FXML
-    private ImageView MUPic;
+    private TableColumn<Book, String> titleColumn;
 
     @FXML
-    private Button accSetButton;
+    private TableColumn<Book, String> authorColumn;
 
     @FXML
-    private VBox accVBox;
+    private TableColumn<Book, String> dateColumn;
 
     @FXML
-    private Button accountButton;
+    private TableColumn<Book, String> statusColumn;
 
-    @FXML
-    private Label accountName;
-
-    @FXML
-    private ImageView currentAvatar;
-
-    @FXML
-    private ImageView dashboardPic11;
-
-    @FXML
-    private Label dashboardTitle;
-
-    @FXML
-    private Button helpsButton;
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private AnchorPane mainSce;
-
-    @FXML
-    private Button manageBooksButton;
-
-    @FXML
-    private Button manageUsersButton;
-
-    @FXML
-    private Button settingButton;
-
-    @FXML
-    private ImageView settingPic;
-
-    // Di chuột vào hiện hiệu ứng và ngược lại
-    /*public void showAnimationDsb(MouseEvent event) {
-        WindowManager.showPic(event, dashboardButton, dashboardPic);
+    public void showAnimationMB(MouseEvent event) {
+        return;
     }
 
-    public void unshowAnimationDsb(MouseEvent event) {
-        WindowManager.unshowPic(event, dashboardButton, dashboardPic);
-    }*/
-
-    public void showAnimationMU(MouseEvent event) {
-        WindowManager.showPic(event, manageUsersButton, MUPic);
+    public void unshowAnimationMB(MouseEvent event) {
+        return;
     }
 
-    public void unshowAnimationMU(MouseEvent event) {
-        WindowManager.unshowPic(event, manageUsersButton, MUPic);
+    public void moveToManageBooks(ActionEvent actionEvent) throws IOException {
+        return;
     }
 
-    public void showAnimationStg(MouseEvent event) {
-        WindowManager.showPic(event, settingButton, settingPic);
+    public void loadBooksAccounts() throws SQLException {
+        List<Book> listOfBooks = BookJDBC.getAllBooksFromAllUser();
+
+        for (Book book : listOfBooks) {
+            Date borrowedDate = book.getDate();
+            if (borrowedDate != null) {
+                if (book.getSource().equals("borrowed")) {
+                    LocalDate localDate = borrowedDate.toLocalDate();
+                    if (localDate.minusDays(7).isAfter(LocalDate.now())) {
+                        book.setStatus("Overdue");
+                    } else {
+                       book.setStatus("Available");
+                    }
+                } else {
+                    book.setStatus("Owner");
+                }
+            } else {
+                book.setStatus("Unknown");
+            }
+
+        }
+
+        ObservableList<Book> observableUserList = FXCollections.observableArrayList(listOfBooks);
+        bookTable.setItems(observableUserList);
     }
 
-    public void unshowAnimationStg(MouseEvent event) {
-        WindowManager.unshowPic(event, settingButton, settingPic);
-    }
-
-    public void showAnimationHelps(MouseEvent event) {
-        WindowManager.showPic(event, helpsButton, dashboardPic11);
-    }
-
-    public void unshowAnimationHelps(MouseEvent event) {
-        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
-    }
-
-    // Chuyen den trang khac
-    public void moveToManageUsers(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerUser.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerUserStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerSetting.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToHelps(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerHelps.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerHelpsStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerSetting.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        accVBox.setVisible(!accVBox.isVisible());
-    }
-
-    //log out
-    public void logOut(ActionEvent event) throws IOException {
-        WindowManager.playButtonSound();
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-        manager.closeConnection();
-        pause.play();
-    }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         // Hiển thị username
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        // Load dữ liệu
+        loadBooksAccounts();
     }
 }

@@ -22,6 +22,7 @@ public class SecurityQuestionController {
     private String phonenumber;
     private String email;
     private boolean isReader;
+    private int avaID;
 
     UserJDBC userJDBC = new UserJDBC();
     ManagerJDBC managerJDBC = new ManagerJDBC();
@@ -62,6 +63,7 @@ public class SecurityQuestionController {
         String Q1 = Q1Field.getText();
         String Q2 = Q2Field.getText();
         String Q3 = Q3Field.getText();
+        int avaID = -1;
 
         // Check thông tin bỏ trống
         if (birthdate.isEmpty() || Q1.isEmpty() || Q2.isEmpty() || Q3.isEmpty()) {
@@ -70,13 +72,13 @@ public class SecurityQuestionController {
 
         // them vao User Database
         else if (this.isReader){
-            userJDBC.addAccountToDatabase(this.name, this.username, this.password, this.phonenumber, this.email, birthdate, Q1, Q2, Q3);
+            userJDBC.addAccountToDatabase(this.name, this.username, this.password, this.phonenumber, this.email, birthdate, Q1, Q2, Q3, avaID);
             successfulLabel.setText("Congratulation! You have successfully registered");
             WindowManager.moveToAnotherScene(event, "fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 2,600, 500);
         }
         else {
             if (managerJDBC.checkManagerNameWithBirthdate(this.username, birthdate)) {
-                managerJDBC.addAccountToDatabase(this.name, this.username, this.password, this.phonenumber, this.email, birthdate, Q1, Q2, Q3);
+                managerJDBC.addAccountToDatabase(this.name, this.username, this.password, this.phonenumber, this.email, birthdate, Q1, Q2, Q3, avaID);
                 successfulLabel.setText("Congratulation! You have successfully registered");
                 WindowManager.moveToAnotherScene(event, "fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 2, 600, 500);
             }

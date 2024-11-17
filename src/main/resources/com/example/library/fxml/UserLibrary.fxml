@@ -73,11 +73,6 @@
                     </image>
                 </ImageView>
                 <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-                <VBox fx:id="cltOptionVBox" layoutX="51.0" layoutY="259.0" prefHeight="50.0" prefWidth="100.0" visible="false">
-                    <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Button" />
-                    </children>
-                </VBox>
                 <Label layoutX="44.0" layoutY="286.0" text="ISBN">
                     <font>
                         <Font name="System Bold" size="13.0" />
@@ -92,7 +87,7 @@
                 <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                     <children>
                         <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
+                        <Button fx:id="accHelpsButton" mnemonicParsing="false" onAction="#moveToAccHelps" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
                         <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                     </children>
                 </VBox>
@@ -170,7 +165,7 @@
       </Pane>
     </children>
     <stylesheets>
-        <URL value="@../stylesheet (css)/userStyles.css" />
-        <URL value="@../stylesheet (css)/userLibStyle.css" />
+        <URL value="@../stylesheet%20(css)/userStyles.css" />
+        <URL value="@../stylesheet%20(css)/userLibStyle.css" />
     </stylesheets>
 </AnchorPane>

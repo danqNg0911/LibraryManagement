@@ -1,6 +1,8 @@
 package com.example.library;
 
-import java.sql.Timestamp;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Book {
     private String title;
@@ -8,15 +10,49 @@ public class Book {
     private String category;
     private String imageUrl;
     private String description;
-    private Timestamp addedDate; // Thêm trường ngày tháng
 
-    public Book(String title, String author, String category, String imageUrl, String description, Timestamp addedDate) {
+    private String username;
+    private String source;
+    private Date date;
+    private String status;
+    private int id;
+
+    public Book(String title, String author, String category, String imageUrl, String description, Date date) {
         this.title = title;
         this.author = author;
         this.category = category;
         this.imageUrl = imageUrl;
         this.description = description;
-        this.addedDate = addedDate;
+        this.date = date;
+    }
+
+    public Book(String title, String author, String category, String imageUrl, String description) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.description = description;
+    }
+
+    public Book(String title, String author, String category, String imageUrl, String description, String username, String source, Date date, int id) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.username = username;
+        this.source = source;
+        this.date = date;
+        this.id = id;
+    }
+
+    public Book(String title, String author, String category, String imageUrl, String description, int id) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -39,11 +75,31 @@ public class Book {
         return description;
     }
 
-    public Timestamp getAddedDate() {
-        return addedDate;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAddedDate(Timestamp addedDate) {
-        this.addedDate = addedDate;
+    public String getSource() {
+        return source;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

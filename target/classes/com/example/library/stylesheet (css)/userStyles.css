@@ -145,6 +145,14 @@
     -fx-border-radius: 50;
 }
 
+#deleteBook {
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color: #ff5757;
+    -fx-text-fill: #ffff;
+}
+
 #Description {
     -fx-alignment: top-left;
 }

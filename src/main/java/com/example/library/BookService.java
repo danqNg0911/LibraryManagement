@@ -5,7 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,10 +100,10 @@ public class BookService {
                         String imageUrl = getImageUrl(volumeInfo);
 
                         // Tạo đối tượng Timestamp hiện tại
-                        Timestamp addedDate = new Timestamp(System.currentTimeMillis());
+                        Date date = new Date(Timestamp.from(Instant.now()).getTime());
 
                         // Tạo đối tượng Book đầy đủ
-                        books.add(new Book(title, authors, categories, imageUrl, description, addedDate));
+                        books.add(new Book(title, authors, categories, imageUrl, description, date));
                     }
                 }
             } catch (Exception e) {

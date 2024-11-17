@@ -138,7 +138,7 @@ public class UserDashboardController {
             Map<String, Integer> books = BookJDBC.getBooksByDay(user.getUsername());
 
             // Tạo dữ liệu ngẫu nhiên cho tất cả các ngày trong tháng 9/2024
-            Map<String, Integer> fullData = new HashMap<>(books);
+            Map<String, Number> fullData = new HashMap<>(books);
             LocalDate startDate = LocalDate.of(2024, 9, 1);
             LocalDate endDate = LocalDate.of(2024, 9, 5);
 
@@ -150,13 +150,13 @@ public class UserDashboardController {
             }
 
             // Sắp xếp dữ liệu theo ngày
-            List<Map.Entry<String, Integer>> sortedData = new ArrayList<>(fullData.entrySet());
+            List<Map.Entry<String, Number>> sortedData = new ArrayList<>(fullData.entrySet());
             sortedData.sort(Map.Entry.comparingByKey());
 
             // Thêm dữ liệu vào series
-            for (Map.Entry<String, Integer> entry : sortedData) {
+            for (Map.Entry<String, Number> entry : sortedData) {
                 String day = entry.getKey();
-                int count = entry.getValue();
+                Number count = entry.getValue();
 
                 // Tạo đối tượng Data với giá trị Y ban đầu là 0
                 XYChart.Data<String, Number> data = new XYChart.Data<>(day, 0);
