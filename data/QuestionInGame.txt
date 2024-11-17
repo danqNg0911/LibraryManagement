@@ -1,34 +1,59 @@
-Besides being gay, is Hieu crazy ?
-Yes
-&Maybe
-No
-Never
+Which book is the most published in the world?
+Don Quixote
+Gone with the Wind
+Dracula
+&The Bible
 //
-Besides eating shit, Dang also likes eating vegetables, right ?
-&Yes
-Maybe
-No
-Never
+Which work is considered the longest novel ever published?
+War and Peace
+&In Search of Lost Time
+Don Quixote
+The Lord of the Rings
 //
-Do you like eating human meat ?
-Yes
-Absolute yes
-&I will try
-Never
+Which book has been translated into the most languages worldwide?
+Oliver Twist
+&The Bible
+Harry Potter
+Gone with the Wind
 //
-1 + 1 = ?
-1
-0
-5
-&3
+Which book series is the best-selling in history?
+&Harry Potter
+The Lord of the Rings
+Percy Jackson
+The Chronicles of Narnia
 //
-6 + 6 = ?
-1
-0
-5
-&9
-How many hours per day ?
-1
-0
-5
-&25
+Which novel has been adapted into films the most times?
+Dracula
+Frankenstein
+&Sherlock Holmes
+Oliver Twist
+//
+From which type of class can a derived class not be created?
+abstract
+public
+static
+&final
+//
+Which technique is used to hide information inside a class, preventing direct access from the outside?
+&Polymorphism
+Encapsulation
+Inheritance
+Composition
+//
+Which of the following is not a characteristic of OOP?
+Abstraction
+Inheritance
+&Directness
+Encapsulation
+//
+ Who is the author of the book "The Old Man and the Sea"?
+Mark Twain
+F. Scott Fitzgerald
+&Ernest Hemingway
+Charles Dickens
+//
+Which of the following novels is considered a classic of Russian literature?
+To Kill a Mockingbird
+Les Misérables
+&War and Peace
+The Great Gatsby

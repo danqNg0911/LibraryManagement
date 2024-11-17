@@ -1,11 +1,7 @@
 package com.example.library;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 public class Book {
@@ -21,7 +17,7 @@ public class Book {
     private String status;
     private int id;
 
-    public Book(String title, String author, String category, String imageUrl, String description) {
+    public Book(String title, String author, String category, String imageUrl, String description, Timestamp date) {
         this.title = title;
         this.author = author;
         this.category = category;

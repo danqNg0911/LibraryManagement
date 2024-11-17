@@ -162,7 +162,7 @@ public class WindowManager {
     // Phương thức phát âm thanh
     public static void playButtonSound() {
         String soundFile = LinkSetting.SOUND_CLICK_MOUSE.getLink();
-        Media sound = new Media(new File(soundFile).toURI().toString());
+        Media sound = new Media(WindowManager.class.getResource(soundFile).toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
@@ -174,7 +174,7 @@ public class WindowManager {
         }
 
         // Tạo và phát nhạc từ file mới
-        Media media = new Media(new File(filePath).toURI().toString());
+        Media media = new Media(WindowManager.class.getResource(filePath).toExternalForm());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Lặp lại
         mediaPlayer.play();

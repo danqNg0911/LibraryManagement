@@ -10,7 +10,10 @@ public class BlackMythWukongMenuController {
     public Button openButton;
 
     {
-        Sound.playBackgroundMusic();
+        if (!Sound.isBackgroundMusicPlaying()) {
+            Sound.playBackgroundMusic();
+            System.out.println("hihi");
+        }
     }
 
     @FXML

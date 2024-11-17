@@ -51,57 +51,57 @@ public class UserHelpsController extends UserController {
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
             case 1: {
-                javafx.scene.image.Image ava1Img = new javafx.scene.image.Image(LinkSetting.AVATAR_1.getLink());
+                javafx.scene.image.Image ava1Img = new Image(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
                 currentAvatar.setImage(ava1Img);
                 break;
             }
             case 2: {
-                javafx.scene.image.Image ava2Img = new javafx.scene.image.Image(LinkSetting.AVATAR_2.getLink());
+                javafx.scene.image.Image ava2Img = new Image(getClass().getResource(LinkSetting.AVATAR_2.getLink()).toExternalForm());
                 currentAvatar.setImage(ava2Img);
                 break;
             }
             case 3: {
-                javafx.scene.image.Image ava3Img = new javafx.scene.image.Image(LinkSetting.AVATAR_3.getLink());
+                javafx.scene.image.Image ava3Img = new Image(getClass().getResource(LinkSetting.AVATAR_3.getLink()).toExternalForm());
                 currentAvatar.setImage(ava3Img);
                 break;
             }
             case 4: {
-                javafx.scene.image.Image ava4Img = new javafx.scene.image.Image(LinkSetting.AVATAR_4.getLink());
+                javafx.scene.image.Image ava4Img = new Image(getClass().getResource(LinkSetting.AVATAR_4.getLink()).toExternalForm());
                 currentAvatar.setImage(ava4Img);
                 break;
             }
             case 5: {
-                javafx.scene.image.Image ava5Img = new javafx.scene.image.Image(LinkSetting.AVATAR_5.getLink());
+                javafx.scene.image.Image ava5Img = new Image(getClass().getResource(LinkSetting.AVATAR_5.getLink()).toExternalForm());
                 currentAvatar.setImage(ava5Img);
                 break;
             }
             case 6: {
-                javafx.scene.image.Image ava6Img = new javafx.scene.image.Image(LinkSetting.AVATAR_6.getLink());
+                javafx.scene.image.Image ava6Img = new Image(getClass().getResource(LinkSetting.AVATAR_6.getLink()).toExternalForm());
                 currentAvatar.setImage(ava6Img);
                 break;
             }
             case 7: {
-                javafx.scene.image.Image ava7Img = new javafx.scene.image.Image(LinkSetting.AVATAR_7.getLink());
+                javafx.scene.image.Image ava7Img = new Image(getClass().getResource(LinkSetting.AVATAR_7.getLink()).toExternalForm());
                 currentAvatar.setImage(ava7Img);
                 break;
             }
             case 8: {
-                javafx.scene.image.Image ava8Img = new javafx.scene.image.Image(LinkSetting.AVATAR_8.getLink());
+                javafx.scene.image.Image ava8Img = new Image(getClass().getResource(LinkSetting.AVATAR_8.getLink()).toExternalForm());
                 currentAvatar.setImage(ava8Img);
                 break;
             }
             case 9: {
-                javafx.scene.image.Image ava9Img = new javafx.scene.image.Image(LinkSetting.AVATAR_9.getLink());
+                javafx.scene.image.Image ava9Img = new Image(getClass().getResource(LinkSetting.AVATAR_9.getLink()).toExternalForm());
                 currentAvatar.setImage(ava9Img);
                 break;
             }
             case 0: {
-                javafx.scene.image.Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
+                javafx.scene.image.Image ava0Img = new Image(getClass().getResource(LinkSetting.AVATAR_0.getLink()).toExternalForm());
                 currentAvatar.setImage(ava0Img);
                 break;
             }
             default:
-                System.out.println("Unknown avatar id: " + avatarId);
+                System.out.println("UserHelpsController, Line = 104");
         }
         System.out.println("Avatar updated to ID: " + avatarId);
     }

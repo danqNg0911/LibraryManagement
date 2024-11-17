@@ -24,12 +24,12 @@
         </ImageView>
         <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
             <children>
-                <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="548.0" layoutY="165.0" prefHeight="266.0" prefWidth="376.0" title="Unique items added by rolling year">
+                <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="82.0" layoutY="442.0" prefHeight="282.0" prefWidth="780.0" styleClass="chart" title="Unique items added by rolling year">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis side="LEFT" />
+                        <NumberAxis prefHeight="201.0" prefWidth="1.0" side="LEFT" />
                     </yAxis>
                 </BarChart>
                 <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="190.0" text="Dashboards">
@@ -93,15 +93,12 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="88.0" layoutY="492.0" prefHeight="294.0" prefWidth="240.0" />
-            <Pane layoutX="385.0" layoutY="492.0" prefHeight="294.0" prefWidth="240.0" />
-            <Pane layoutX="670.0" layoutY="492.0" prefHeight="294.0" prefWidth="240.0" />
             <Label layoutX="214.0" layoutY="165.0" text="Your infomation">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="88.0" layoutY="438.0" text="Top favourite">
+            <Label layoutX="670.0" layoutY="165.0" text="Top favourite">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -113,7 +110,17 @@
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>
-            <Button fx:id="gameButton" layoutX="346.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleGameButton" text="Game " />
+            <Button fx:id="gameButton" layoutX="896.0" layoutY="718.0" mnemonicParsing="false" onAction="#handleGameButton" prefHeight="60.0" prefWidth="60.0" styleClass="gameButton">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" styleClass="gameButton">
+                      <Image url="@../assets/play_button.png" />
+                  </ImageView>
+               </graphic></Button>
+            <Label fx:id="gameLabel" layoutX="818.0" layoutY="735.0" prefHeight="25.0" prefWidth="75.0" textFill="#26c1ff">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
@@ -121,11 +128,9 @@
          <children>
             <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
-                  <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Dasb.png" />
-                     </image>
-                  </ImageView>
+                   <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                       <Image url="@../assets/Dasb.png" />
+                   </ImageView>
                   <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
                </children>
             </HBox>

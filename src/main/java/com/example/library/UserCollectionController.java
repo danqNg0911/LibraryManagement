@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,218 +18,225 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
-public class UserCollectionController extends UserController {
-    @FXML
-    private VBox sortBox;
+public class UserCollectionController {
+
+    UserJDBC userJDBC = new UserJDBC();
+    ManagerJDBC managerJDBC = new ManagerJDBC();
+    User user = new User();
 
     @FXML
-    private Button addNewClt;
+    protected Button accHelpsButton;
 
     @FXML
-    private Button addedDateSortButton;
+    protected Button accSetButton;
 
     @FXML
-    private VBox cltOptionVBox;
+    protected VBox accVBox;
 
     @FXML
-    private Label collectionTitle;
+    protected Button accountButton;
 
     @FXML
-    private Button selectCltButton;
+    public Label accountName;
 
     @FXML
-    private Button sortButton;
+    protected Button addNewClt;
 
     @FXML
-    private VBox sortOptionVBox;
+    protected Button addedDateSortButton;
 
     @FXML
-    private Button titleSortButton;
+    protected VBox cltOptionVBox;
 
     @FXML
-    private ProgressIndicator loadingIndicator;
+    protected Button collectionButton;
 
     @FXML
-    private VBox collectionBookContainer;
+    protected ImageView collectionPic;
 
     @FXML
-    private TextField titleField;
+    protected Label collectionTitle;
 
     @FXML
-    private TextField authorField;
+    protected ImageView currentAvatar;
 
     @FXML
-    private TextField categoryField;
+    protected Button dashboardButton;
 
-    private List<Book> books = new ArrayList<>();
+    @FXML
+    protected ImageView dashboardPic;
 
-    private boolean TitleSorting = true;
+    @FXML
+    protected ImageView dashboardPic11;
 
+    @FXML
+    protected Button helpsButton;
 
-    private Map<Character, List<Book>> sortBooks(List<Book> books) {
-        Map<Character, List<Book>> ListByTitle = new TreeMap<Character, List<Book>>();
-        if (TitleSorting) {
-            for (Book book : books) {
-                char first = book.getTitle().toLowerCase().charAt(0);
-                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
-            }
-        } else {
-            for (Book book : books) {
-                char first = book.getAuthor().toLowerCase().charAt(0);
-                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
-            }
-        }
-        return ListByTitle;
+    @FXML
+    protected Button libraryButton;
+
+    @FXML
+    protected ImageView libraryPic;
+
+    @FXML
+    protected ImageView libraryPic11;
+
+    @FXML
+    protected ImageView logo;
+
+    @FXML
+    protected Button logoutButton;
+
+    @FXML
+    protected AnchorPane mainSce;
+
+    @FXML
+    protected Button selectCltButton;
+
+    @FXML
+    protected Button settingButton;
+
+    @FXML
+    protected ImageView settingPic;
+
+    @FXML
+    protected Button sortButton;
+
+    @FXML
+    protected VBox sortOptionVBox;
+
+    @FXML
+    protected Button titleSortButton;
+
+    @FXML
+    protected Button upgradeButton;
+
+    @FXML
+    protected ProgressIndicator loadingIndicator;
+
+    @FXML
+    protected VBox collectionBookContainer;
+
+    protected List<Book> books = new ArrayList<>();
+
+    public void showDefaultCollectionData() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/UserDefaultCollection.fxml"));
+        collectionBookContainer.getChildren().add((Node) loader.load());
     }
 
-    public void sortByTitle(MouseEvent mouseEvent) {
-        this.TitleSorting = true;
-        try {
-            showData();
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
+    // Di chuột vào hiện hiệu ứng và ngược lại
+    public void showAnimationDas(MouseEvent event) {
+        WindowManager.showPic(event, dashboardButton, dashboardPic);
     }
 
-    public void sortByAuthor(MouseEvent mouseEvent) {
-        this.TitleSorting = false;
-        try {
-            showData();
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
+    public void unshowAnimationDas(MouseEvent event) {
+        WindowManager.unshowPic(event, dashboardButton, dashboardPic);
     }
 
-    public void showData(ActionEvent actionEvent) throws IOException, SQLException {
-        showData();
+    public void showAnimationLib(MouseEvent event) {
+        WindowManager.showPic(event, libraryButton, libraryPic);
     }
 
-    public void showData() throws IOException, SQLException {
-        //loadingIndicator.setVisible(true);
-        //mainSce.setEffect(new GaussianBlur(4));
-        books.clear();
-        collectionBookContainer.getChildren().clear();
-
-        String titleSearch = titleField.getText().trim();
-        String authorSearch = authorField.getText().trim();
-        String categorySearch = categoryField.getText().trim();
-
-        if (titleSearch.isEmpty() && authorSearch.isEmpty() && categorySearch.isEmpty()) {
-            books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
-        } else {
-            books = BookJDBC.searchBooksFromDatabase(user.getUsername(), titleSearch, authorSearch, categorySearch);
-        }
-
-        if (books.isEmpty()) {
-            WindowManager.alertWindow(Alert.AlertType.ERROR, "Announcement", "There's no thing to show from your library", "stylesheet (css)/login_alert.css");
-        } else {
-        Map<Character, List<Book>> BooksSortByTitle = sortBooks(books);
-        for (Map.Entry<Character, List<Book>> entry : BooksSortByTitle.entrySet()) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/Group.fxml"));
-                Node collectionGroupNode = loader.load();
-                CollectionGroupController collectionGroupController = loader.getController();
-                collectionGroupController.addGroupCharacter(entry.getKey());
-                for (Book book : entry.getValue()) {
-                    FXMLLoader itemLoader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/GroupItem.fxml"));
-                    Node bookItemNode = itemLoader.load();
-                    GroupItemController bookItemController = itemLoader.getController();
-                    bookItemController.setGroupItem(book);
-                    collectionGroupController.addBookItem(bookItemNode);
-                }
-                collectionBookContainer.getChildren().add(collectionGroupNode);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } }
-
-        //loadingIndicator.setVisible(false);
-        //mainSce.setEffect(null);
+    public void unshowAnimationLib(MouseEvent event) {
+        WindowManager.unshowPic(event, libraryButton, libraryPic);
     }
 
-    public void moveToAddBook(ActionEvent actionEvent) throws IOException {
+//    public void showAnimationClt(MouseEvent event) {
+//        WindowManager.showPic(event, collectionButton, collectionPic);
+//    }
+//
+//    public void unshowAnimationClt(MouseEvent event) {
+//        WindowManager.unshowPic(event, collectionButton, collectionPic);
+//    }
+
+    public void showAnimationStg(MouseEvent event) {
+        WindowManager.showPic(event, settingButton, settingPic);
+    }
+
+    public void unshowAnimationStg(MouseEvent event) {
+        WindowManager.unshowPic(event, settingButton, settingPic);
+    }
+
+    public void showAnimationHelps(MouseEvent event) {
+        WindowManager.showPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void unshowAnimationHelps(MouseEvent event) {
+        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
+    }
+
+    public void showAnimationUpg(MouseEvent event) {
+        WindowManager.showPic(event, upgradeButton, libraryPic11);
+    }
+
+    public void unshowAnimationUpg(MouseEvent event) {
+        WindowManager.unshowPic(event, upgradeButton, libraryPic11);
+    }
+    // Chuyen den trang khac
+    public void moveToLibrary(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/AddBook.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+        WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
     }
 
-    public void showSortBox(ActionEvent actionEvent) throws IOException {
+    public void moveToDashboard(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
-        sortBox.setVisible(!sortBox.isVisible());
+        WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
-    public void showAnimationClt(MouseEvent event) {
-        return;
+    public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
-    public void unshowAnimationClt(MouseEvent event) {
-        return;
+    public void moveToHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
-    public void moveToCollection(ActionEvent actionEvent) throws IOException {
-        return;
+    public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToAccHelps(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        accVBox.setVisible(!accVBox.isVisible());
+    }
+
+    public void showCltOption(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        cltOptionVBox.setVisible(!cltOptionVBox.isVisible());
+    }
+
+    public void showSortOption(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        sortOptionVBox.setVisible(!sortOptionVBox.isVisible());
+    }
+
+    //log out
+    public void logOut(ActionEvent event) throws IOException {
+        WindowManager.playButtonSound();
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
+        user.closeConnection();
+        pause.play();
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
-
-        int avatarId = user.getAvatar(user.getUsername());
-        switch (avatarId) {
-            case 1: {
-                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
-                currentAvatar.setImage(ava1Img);
-                break;
-            }
-            case 2: {
-                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
-                currentAvatar.setImage(ava2Img);
-                break;
-            }
-            case 3: {
-                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
-                currentAvatar.setImage(ava3Img);
-                break;
-            }
-            case 4: {
-                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
-                currentAvatar.setImage(ava4Img);
-                break;
-            }
-            case 5: {
-                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
-                currentAvatar.setImage(ava5Img);
-                break;
-            }
-            case 6: {
-                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
-                currentAvatar.setImage(ava6Img);
-                break;
-            }
-            case 7: {
-                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
-                currentAvatar.setImage(ava7Img);
-                break;
-            }
-            case 8: {
-                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
-                currentAvatar.setImage(ava8Img);
-                break;
-            }
-            case 9: {
-                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
-                currentAvatar.setImage(ava9Img);
-                break;
-            }
-            case 0: {
-                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
-                currentAvatar.setImage(ava0Img);
-                break;
-            }
-            default:
-                System.out.println("Unknown avatar id: " + avatarId);
-        }
-        System.out.println("Avatar updated to ID: " + avatarId);
+        showDefaultCollectionData();
     }
 }

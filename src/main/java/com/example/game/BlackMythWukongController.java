@@ -63,6 +63,7 @@ public class BlackMythWukongController {
     private Question currentQuestion;
     private String correctAnswerText; // Biến lưu đáp án đúng của câu hỏi hiện tại
 
+    private Timeline updateLabelsTimeline;
     private Timeline spawnATimeline;
     private Timeline spawnBTimeline;
     private Timeline spawnCTimeline;
@@ -187,6 +188,15 @@ public class BlackMythWukongController {
                                 togglePause();
                                 event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
                             }
+                            if (isPaused && event.getCode() == KeyCode.M) {
+                                try {
+                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
+                                    Sound.restartBackgroundMusic();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                return;
+                            }
                             if (event.getCode() == KeyCode.R) { // Phím R để restart game
                                 restartGame(); // Gọi phương thức restartGame()
                                 event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
@@ -232,12 +242,14 @@ public class BlackMythWukongController {
         spawnDTimeline.play();
 
         // Khởi tạo Timeline để cập nhật số lượng lives và số lượng quái vật
-        Timeline updateLabelsTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), new EventHandler<ActionEvent>() {
+        updateLabelsTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (roundCount == 6) {
+                    updateLabelsTimeline.stop();
                     try {
                         WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", 800, 800);
+                        return;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -379,7 +391,10 @@ public class BlackMythWukongController {
             return; // Không thực hiện restart nếu game chưa tạm dừng
         }
 
-        Sound.restartBackgroundMusic();
+//
+//        if (!isWin) {
+//            Sound.restartBackgroundMusic();
+//        }
 
         //questions = Question.loadQuestionsFromFile(QUESTION_FILE_PATH); // Đường dẫn file
         loadNextQuestion();
@@ -662,7 +677,7 @@ public class BlackMythWukongController {
                     // Kiểm tra va chạm với các monster
                     for (Monster monster : monsterList) {
                         if (monster != null && IsHit(playerView, monster.getMonsterImageView())) {
-                            System.out.println("Hit !!!");
+                            //System.out.println("Hit !!!");
                             (monster).reduceHealth();
                             if (aNums >= 0 && monster.isDead() && monster instanceof MonsterA) {
                                 aNums--;

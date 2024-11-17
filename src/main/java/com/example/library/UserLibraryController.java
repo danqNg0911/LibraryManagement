@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,7 @@ public class UserLibraryController extends UserController {
             loadingSearching.setVisible(true);
             // làm mờ khi tìm kiếm
             mainSce.setEffect(new GaussianBlur(4));
+
             // Sử dụng Task để tìm kiếm sách trên luồng nền
             Task<String> searchTask = new Task<>() {
                 @Override
@@ -129,6 +131,9 @@ public class UserLibraryController extends UserController {
             String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
             String imageUrl = getImageUrl(volumeInfo);
 
+            // Cung cấp giá trị cho timestamp (ví dụ như thời gian hiện tại)
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/com/example/library/fxml/bookItem.fxml"));
 
@@ -137,7 +142,7 @@ public class UserLibraryController extends UserController {
                 HBox bookItem = loader.load();
 
                 BookItemController controller = loader.getController();
-                controller.setBook(new Book(title, authors, categories, imageUrl, description));
+                controller.setBook(new Book(title, authors, categories, imageUrl, description, timestamp));
                 booksContainer.getChildren().add(bookItem);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -198,52 +203,52 @@ public class UserLibraryController extends UserController {
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
             case 1: {
-                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
+                Image ava1Img = new Image(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
                 currentAvatar.setImage(ava1Img);
                 break;
             }
             case 2: {
-                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
+                Image ava2Img = new Image(getClass().getResource(LinkSetting.AVATAR_2.getLink()).toExternalForm());
                 currentAvatar.setImage(ava2Img);
                 break;
             }
             case 3: {
-                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
+                Image ava3Img = new Image(getClass().getResource(LinkSetting.AVATAR_3.getLink()).toExternalForm());
                 currentAvatar.setImage(ava3Img);
                 break;
             }
             case 4: {
-                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
+                Image ava4Img = new Image(getClass().getResource(LinkSetting.AVATAR_4.getLink()).toExternalForm());
                 currentAvatar.setImage(ava4Img);
                 break;
             }
             case 5: {
-                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
+                Image ava5Img = new Image(getClass().getResource(LinkSetting.AVATAR_5.getLink()).toExternalForm());
                 currentAvatar.setImage(ava5Img);
                 break;
             }
             case 6: {
-                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
+                Image ava6Img = new Image(getClass().getResource(LinkSetting.AVATAR_6.getLink()).toExternalForm());
                 currentAvatar.setImage(ava6Img);
                 break;
             }
             case 7: {
-                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
+                Image ava7Img = new Image(getClass().getResource(LinkSetting.AVATAR_7.getLink()).toExternalForm());
                 currentAvatar.setImage(ava7Img);
                 break;
             }
             case 8: {
-                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
+                Image ava8Img = new Image(getClass().getResource(LinkSetting.AVATAR_8.getLink()).toExternalForm());
                 currentAvatar.setImage(ava8Img);
                 break;
             }
             case 9: {
-                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
+                Image ava9Img = new Image(getClass().getResource(LinkSetting.AVATAR_9.getLink()).toExternalForm());
                 currentAvatar.setImage(ava9Img);
                 break;
             }
             case 0: {
-                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
+                Image ava0Img = new Image(getClass().getResource(LinkSetting.AVATAR_0.getLink()).toExternalForm());
                 currentAvatar.setImage(ava0Img);
                 break;
             }
