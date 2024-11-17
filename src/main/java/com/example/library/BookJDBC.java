@@ -1,10 +1,9 @@
 package com.example.library;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.*;
 
 public class BookJDBC implements LinkJDBC {
     private Connection connection;
@@ -58,8 +57,8 @@ public class BookJDBC implements LinkJDBC {
     }
 
     // Them sach vao database
-    public static boolean addBookToDatabase(String username, String isbn, String title, String author, String category, String imageUrl, String description) {
-        String query = "INSERT INTO `books` (username, isbn, title, author, category, imageUrl, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public static boolean addBookToDatabase(String username, String isbn, String title, String author, String category, String imageUrl, String description, String source) {
+        String query = "INSERT INTO `books` (username, isbn, title, author, category, imageUrl, description, source, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             sqlStatement.setString(2, isbn);
@@ -68,6 +67,10 @@ public class BookJDBC implements LinkJDBC {
             sqlStatement.setString(5, category);
             sqlStatement.setString(6, imageUrl);
             sqlStatement.setString(7, description);
+            sqlStatement.setString(8, source);
+
+            LocalDate date = LocalDate.now();
+            sqlStatement.setDate(9, java.sql.Date.valueOf(date));
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -101,7 +104,7 @@ public class BookJDBC implements LinkJDBC {
 
     public static List<Book> getAllBooksFromDatabase(String username) throws SQLException {
         List<Book> books = new ArrayList<>();
-        String query = "SELECT * FROM books WHERE username=?";
+        String query = "SELECT * FROM books where username=?";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             try (ResultSet resultSet = sqlStatement.executeQuery()) {
@@ -111,8 +114,8 @@ public class BookJDBC implements LinkJDBC {
                     String category = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
-                    Timestamp addedDate = resultSet.getTimestamp("added_date"); // Lấy ngày tháng
-                    Book book = new Book(title, author, category, imageUrl, description, addedDate); // Giả sử Book có constructor phù hợp
+                    int id = resultSet.getInt("id");
+                    Book book = new Book(title, author, category, imageUrl, description, id);
                     books.add(book);
                 }
             }
@@ -134,7 +137,7 @@ public class BookJDBC implements LinkJDBC {
                     String category = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
-                    Timestamp addedDate = resultSet.getTimestamp("added_date"); // Lấy ngày tháng
+                    Timestamp addedDate = resultSet.getTimestamp("date"); // Lấy ngày tháng
                     Book book = new Book(title, author, category, imageUrl, description, addedDate); // Giả sử Book có constructor phù hợp
                     books.add(book);
                 }
@@ -169,13 +172,39 @@ public class BookJDBC implements LinkJDBC {
     }
 
 
-    public static boolean deleteBookFromDatabase(String username, String title, String author) {
-        String query = "DELETE FROM books where username=? and title=? and author=?";
+    public static List<Book> getAllBooksFromAllUser() throws SQLException {
+        List<Book> books = new ArrayList<>();
+        String query = "SELECT * FROM books";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String title = resultSet.getString("title");
+                    String author = resultSet.getString("author");
+                    String category = resultSet.getString("category");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    String description = resultSet.getString("description");
+                    String username = resultSet.getString("username");
+                    String source = resultSet.getString("source");
+                    Date date = resultSet.getDate("date");
+                    int id = resultSet.getInt("id");
+                    Book book = new Book(title, author, category, imageUrl, description, username, source, date, id);
+                    books.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
+
+    public static boolean deleteBookFromDatabase(String username, String title, String author, int id) {
+        String query = "DELETE FROM books where username=? and title=? and author=? and id=?";
 
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             sqlStatement.setString(2, title);
             sqlStatement.setString(3, author);
+            sqlStatement.setInt(4, id);
 
             int rowsAfterDeletion = sqlStatement.executeUpdate();
             return rowsAfterDeletion > 0;
@@ -183,6 +212,57 @@ public class BookJDBC implements LinkJDBC {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static List<Book> searchBooksFromDatabase(String username, String title, String author, String category) throws SQLException {
+        List<Book> books = new ArrayList<>();
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM books WHERE username = ?");
+
+        if (title != null && !title.isEmpty()) {
+            queryBuilder.append(" AND title LIKE ?");
+        }
+        if (author != null && !author.isEmpty()) {
+            queryBuilder.append(" AND author LIKE ?");
+        }
+        if (category != null && !category.isEmpty()) {
+            queryBuilder.append(" AND category LIKE ?");
+        }
+
+        String query = queryBuilder.toString();
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username);
+
+            int index = 2; // Bắt đầu đặt các tham số khác từ vị trí 2
+            if (title != null && !title.isEmpty()) {
+                sqlStatement.setString(index++, "%" + title + "%");
+            }
+            if (author != null && !author.isEmpty()) {
+                sqlStatement.setString(index++, "%" + author + "%");
+            }
+            if (category != null && !category.isEmpty()) {
+                sqlStatement.setString(index, "%" + category + "%");
+            }
+
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String resultTitle = resultSet.getString("title");
+                    String resultAuthor = resultSet.getString("author");
+                    String resultCategory = resultSet.getString("category");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    String description = resultSet.getString("description");
+                    int id = resultSet.getInt("id");
+
+                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, id);
+                    books.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
 
     public static Map<String, Integer> getBooksByDay(String username) throws SQLException {
@@ -203,5 +283,4 @@ public class BookJDBC implements LinkJDBC {
         }
         return booksByDay;
     }
-
 }

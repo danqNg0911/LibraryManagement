@@ -26,7 +26,6 @@
 }
 .ItemButton {
     -fx-background-color: #38b1ff;  /*  Màu nền: #00c4cc  */
-    -fx-text-fill: #fff; /* Màu chữ: #fff */
     -fx-font-weight: bold; /* Nét chữ: Đậm */
     -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
     -fx-transition: opacity 0.2 ease;
@@ -93,7 +92,6 @@
     -fx-text-fill: #333;            /* Màu chữ */
     -fx-font-size: 12px;           /* Kích thước chữ */
     -fx-color: #fff;
-    -fx-font-weight: 680;
 }
 
 /* Phần vòng tròn (circle) */
@@ -118,3 +116,17 @@
     -fx-background-color: #fff;   /* Màu nền bên trong vòng tròn */
 }
 
+
+
+.textField {
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+    -fx-border-color: #696969;
+    -fx-border-radius: 50;
+}
+
+.textField:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 50;
+}

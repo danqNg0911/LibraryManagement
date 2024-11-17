@@ -108,3 +108,15 @@
     -fx-border-color: transparent #696969 transparent transparent  ;
     -fx-border-width: 1px;
 }
+
+#buttonStop {
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color: #ff5757;
+    -fx-text-fill: #ffff;
+}
+
+#buttonStop:pressed {
+    -fx-background-color: #ff6694;
+}

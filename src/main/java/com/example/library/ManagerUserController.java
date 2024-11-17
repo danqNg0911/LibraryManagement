@@ -1,158 +1,68 @@
 package com.example.library;
 
-import javafx.animation.PauseTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.List;
 
-public class ManagerUserController {
-
-    UserJDBC userJDBC = new UserJDBC();
-    ManagerJDBC managerJDBC = new ManagerJDBC();
-    Manager manager = new Manager();
+public class ManagerUserController extends ManagerController {
+    @FXML
+    private TableView<UserAccount> userTable;
 
     @FXML
-    private ImageView MBPic;
+    private TableColumn<UserAccount, String> nameColumn;
 
     @FXML
-    private ImageView MUPic;
+    private TableColumn<UserAccount, String> usernameColumn;
 
     @FXML
-    private Button accSetButton;
+    private TableColumn<UserAccount, String> emailColumn;
 
     @FXML
-    private VBox accVBox;
+    private TableColumn<UserAccount, String> phonenumColumn;
 
-    @FXML
-    private Button accountButton;
 
-    @FXML
-    private Label accountName;
-
-    @FXML
-    private ImageView currentAvatar;
-
-    @FXML
-    private ImageView dashboardPic11;
-
-    @FXML
-    private Label dashboardTitle;
-
-    @FXML
-    private Button helpsButton;
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private AnchorPane mainSce;
-
-    @FXML
-    private Button manageBooksButton;
-
-    @FXML
-    private Button manageUsersButton;
-
-    @FXML
-    private Button settingButton;
-
-    @FXML
-    private ImageView settingPic;
-
-    // Di chuột vào hiện hiệu ứng và ngược lại
-        /*public void showAnimationMU(MouseEvent event) {
-        WindowManager.showPic(event, manageUsersButton, MUPic);
+    public void showAnimationMU(MouseEvent event) {
+        return;
     }
 
     public void unshowAnimationMU(MouseEvent event) {
-        WindowManager.unshowPic(event, manageUsersButton, MUPic);
-    }*/
-
-    public void showAnimationMB(MouseEvent event) {
-        WindowManager.showPic(event, manageBooksButton, MBPic);
+        return;
     }
 
-    public void unshowAnimationMB(MouseEvent event) {
-        WindowManager.unshowPic(event, manageBooksButton, MBPic);
+    public void moveToManageUsers(ActionEvent actionEvent) throws IOException {
+        return;
     }
 
-    public void showAnimationStg(MouseEvent event) {
-        WindowManager.showPic(event, settingButton, settingPic);
+    public void loadUserAccounts() {
+        User userDB = new User(); // Tạo đối tượng User để truy cập cơ sở dữ liệu user
+        List<UserAccount> userAccounts = userDB.getAllUserAccounts(); // Lấy tất cả user
+
+        // Chuyển đổi List sang ObservableList và đưa vào TableView
+        ObservableList<UserAccount> observableUserList = FXCollections.observableArrayList(userAccounts);
+        userTable.setItems(observableUserList);
     }
 
-    public void unshowAnimationStg(MouseEvent event) {
-        WindowManager.unshowPic(event, settingButton, settingPic);
-    }
-
-    public void showAnimationHelps(MouseEvent event) {
-        WindowManager.showPic(event, helpsButton, dashboardPic11);
-    }
-
-    public void unshowAnimationHelps(MouseEvent event) {
-        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
-    }
-
-    // Chuyen den trang khac
-    /*public void moveToManageUsers(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/MangerUser.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/mangerUserStyle.css", 1200, 800, actionEvent);
-    }*/
-
-    public void moveToManageBooks(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerBook.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerBookStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerSetting.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToHelps(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerHelps.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerHelpsStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerSetting.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        accVBox.setVisible(!accVBox.isVisible());
-    }
-
-    //log out
-    public void logOut(ActionEvent event) throws IOException {
-        WindowManager.playButtonSound();
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-        manager.closeConnection();
-        pause.play();
-    }
 
     @FXML
     public void initialize() {
         // Hiển thị username
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        phonenumColumn.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        // Load dữ liệu
+        loadUserAccounts();
     }
 }

@@ -13,7 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookItemController {
     User user = new User();
@@ -81,20 +86,22 @@ public class BookItemController {
         String imageUrl = book.getImageUrl();
         String username = user.getUsername();
         if (!BookJDBC.checkBook(username, title, author)) {
-            BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description);
+            BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description, "borrowed");
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
         }
     }
+
     public void deleteBook(ActionEvent event) {
         String username = user.getUsername();
         String title = book.getTitle();
         String author = book.getAuthor();
+        int id = book.getId();
         if (!BookJDBC.checkBook(username, title, author)) {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
         } else {
-            BookJDBC.deleteBookFromDatabase(username, title, author);
+            BookJDBC.deleteBookFromDatabase(username, title, author, id);
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "Successfully removing this book from your library", "stylesheet (css)/login_alert.css");
         }
     }

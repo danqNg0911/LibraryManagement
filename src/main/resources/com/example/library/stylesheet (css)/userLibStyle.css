@@ -36,6 +36,11 @@
     -fx-text-fill: #ffff;
 }
 
+#deleteBook {
+    -fx-background-color: #ff5757;
+    -fx-text-fill: #ffff;
+}
+
 #viewItemButton {
     -fx-background-color: #38b1ff;
     -fx-text-fill: #ffff;

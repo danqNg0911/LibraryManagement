@@ -16,17 +16,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class ManagerSettingController {
-
-    UserJDBC userJDBC = new UserJDBC();
-    ManagerJDBC managerJDBC = new ManagerJDBC();
-    Manager manager = new Manager();
-
-    @FXML
-    private ImageView MBPic;
-
-    @FXML
-    private ImageView MUPic;
+public class ManagerSettingController extends ManagerController {
 
     @FXML
     private TextField Q1Field;
@@ -36,18 +26,6 @@ public class ManagerSettingController {
 
     @FXML
     private TextField Q3Field;
-
-    @FXML
-    private Button accSetButton;
-
-    @FXML
-    private VBox accVBox;
-
-    @FXML
-    private Button accountButton;
-
-    @FXML
-    private Label accountName;
 
     @FXML
     private TitledPane avatarTitledPane;
@@ -74,9 +52,6 @@ public class ManagerSettingController {
     private Label confirmPassWarning;
 
     @FXML
-    private ImageView currentAvatar;
-
-    @FXML
     private Label currentNameLabel;
 
     @FXML
@@ -97,29 +72,6 @@ public class ManagerSettingController {
     @FXML
     private Label currentPassWarning2;
 
-    @FXML
-    private ImageView dashboardPic11;
-
-    @FXML
-    private Label dashboardTitle;
-
-    @FXML
-    private Button helpsButton;
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private AnchorPane mainSce;
-
-    @FXML
-    private Button manageBooksButton;
-
-    @FXML
-    private Button manageUsersButton;
 
     @FXML
     private TitledPane nameTitledPane;
@@ -149,12 +101,6 @@ public class ManagerSettingController {
     private Label question3Warning;
 
     @FXML
-    private Button settingButton;
-
-    @FXML
-    private ImageView settingPic;
-
-    @FXML
     private Button uploadImageButton;
 
     // Di chuột vào hiện hiệu ứng và ngược lại
@@ -166,63 +112,16 @@ public class ManagerSettingController {
         WindowManager.unshowPic(event, dashboardButton, dashboardPic);
     }*/
 
-    public void showAnimationMU(MouseEvent event) {
-        WindowManager.showPic(event, manageUsersButton, MUPic);
+    public void showAnimationStg(MouseEvent event) {
+        return;
     }
 
-    public void unshowAnimationMU(MouseEvent event) {
-        WindowManager.unshowPic(event, manageUsersButton, MUPic);
+    public void unshowAnimationStg(MouseEvent event) {
+        return;
     }
 
-    public void showAnimationMB(MouseEvent event) {
-        WindowManager.showPic(event, manageBooksButton, MBPic);
-    }
-
-    public void unshowAnimationMB(MouseEvent event) {
-        WindowManager.unshowPic(event, manageBooksButton, MBPic);
-    }
-
-    public void showAnimationHelps(MouseEvent event) {
-        WindowManager.showPic(event, helpsButton, dashboardPic11);
-    }
-
-    public void unshowAnimationHelps(MouseEvent event) {
-        WindowManager.unshowPic(event, helpsButton, dashboardPic11);
-    }
-
-    // Chuyen den trang khac
-    public void moveToManageUsers(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerUser.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerUserStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToManageBooks(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerBook.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerBookStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToHelps(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerHelps.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerHelpsStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/ManagerSetting.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void showOptionAccount(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        accVBox.setVisible(!accVBox.isVisible());
-    }
-
-    //log out
-    public void logOut(ActionEvent event) throws IOException {
-        WindowManager.playButtonSound();
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-        manager.closeConnection();
-        pause.play();
+    public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        return;
     }
 
     @FXML
