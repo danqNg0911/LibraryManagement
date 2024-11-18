@@ -24,12 +24,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class UserSettingController extends UserController {
+    private boolean isPause = false;
+    private boolean isPlay = false;
     private static final String mainSound1 = LinkSetting.MAIN_SOUND_1.getLink();
     private static final String mainSound2 = LinkSetting.MAIN_SOUND_2.getLink();
     private static final String mainSound3 = LinkSetting.MAIN_SOUND_3.getLink();
     private static final String mainSound4 = LinkSetting.MAIN_SOUND_4.getLink();
     private static final String mainSound5 = LinkSetting.MAIN_SOUND_5.getLink();
+
     private int selectedAvatarId = -1;
+
+    @FXML
+    public Button buttonPause;
 
     @FXML
     private TextField Q1Field;
@@ -438,26 +444,57 @@ public class UserSettingController extends UserController {
 
     public void playMusic1(ActionEvent event) {
         WindowManager.playMusic(mainSound1);
+        isPlay = true;
+        isPause = false;
+        buttonPause.setText("Pause");
     }
 
     public void playMusic2(ActionEvent event) {
         WindowManager.playMusic(mainSound2);
+        isPlay = true;
+        isPause = false;
+        buttonPause.setText("Pause");
     }
 
     public void playMusic3(ActionEvent event) {
         WindowManager.playMusic(mainSound3);
+        isPlay = true;
+        isPause = false;
+        buttonPause.setText("Pause");
     }
 
     public void playMusic4(ActionEvent event) {
         WindowManager.playMusic(mainSound4);
+        isPlay = true;
+        isPause = false;
+        buttonPause.setText("Pause");
     }
 
     public void playMusic5(ActionEvent event) {
         WindowManager.playMusic(mainSound5);
+        isPlay = true;
+        isPause = false;
+        buttonPause.setText("Pause");
+    }
+
+    public void pauseMusic(ActionEvent event) {
+        if (!isPause && isPlay) { // Nếu đang phát -> tạm dừng
+            WindowManager.pauseMusic();
+            buttonPause.setText("Resume");
+            isPause = true;
+        } else if (isPause && isPlay) { // Nếu đang tạm dừng -> tiếp tục phát
+            WindowManager.resumeMusic();
+            buttonPause.setText("Pause");
+            isPause = false;
+        }
     }
 
     public void stopMusic(ActionEvent event) {
         WindowManager.stopMusic();
+        isPlay = false;
+        isPause = false;
+        buttonPause.setText("Pause");
+        pauseMusic(event);
     }
 
     public void updateAvatar(int avatarId) {
@@ -538,5 +575,4 @@ public class UserSettingController extends UserController {
                     "Please select an avatar first!", "stylesheet (css)/login_alert.css");
         }
     }
-
 }

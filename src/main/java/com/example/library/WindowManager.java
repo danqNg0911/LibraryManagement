@@ -180,6 +180,18 @@ public class WindowManager {
         mediaPlayer.play();
     }
 
+    public static void pauseMusic() {
+        if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+            mediaPlayer.pause();
+        }
+    }
+
+    public static void resumeMusic() {
+        if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
+            mediaPlayer.play();
+        }
+    }
+
     public static void stopMusic() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
