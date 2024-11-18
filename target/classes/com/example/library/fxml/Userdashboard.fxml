@@ -110,17 +110,6 @@
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>
-            <Button fx:id="gameButton" layoutX="896.0" layoutY="718.0" mnemonicParsing="false" onAction="#handleGameButton" prefHeight="60.0" prefWidth="60.0" styleClass="gameButton">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" styleClass="gameButton">
-                      <Image url="@../assets/play_button.png" />
-                  </ImageView>
-               </graphic></Button>
-            <Label fx:id="gameLabel" layoutX="818.0" layoutY="735.0" prefHeight="25.0" prefWidth="75.0" textFill="#26c1ff">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
             </children>
         </AnchorPane>
         <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
@@ -188,6 +177,15 @@
                   <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade" onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0" prefWidth="186.0" text="Upgrade" />
                </children>
             </HBox>
+            <Button fx:id="gameButton" layoutX="36.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleGameButton" prefHeight="40.0" prefWidth="186.0" styleClass="gameButton">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="false" styleClass="gameButton">
+                      <Image url="@../assets/play_button.png" />
+                  </ImageView>
+               </graphic></Button>
+            <ImageView fx:id="gamePic" fitHeight="40.0" fitWidth="40.0" layoutY="303.0" pickOnBounds="true" preserveRatio="false">
+                <Image url="@../assets/wukong_face.png" />
+            </ImageView>
          </children>
       </Pane>
     </children>

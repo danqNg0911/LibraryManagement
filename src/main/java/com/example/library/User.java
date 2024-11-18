@@ -84,7 +84,7 @@ public class User extends BaseJDBC implements LinkJDBC {
 
     public List<UserAccount> getAllUserAccounts() {
         List<UserAccount> userList = new ArrayList<>();
-        String query = "SELECT name, username, phonenum, email FROM accounts";
+        String query = "SELECT name, username, phonenum, email, avatar FROM accounts";
 
         try (Connection databaseConnect = connectToDatabase();
              PreparedStatement sqlStatement = databaseConnect.prepareStatement(query);
@@ -95,9 +95,10 @@ public class User extends BaseJDBC implements LinkJDBC {
                 String username = resultSet.getString("username");
                 String phonenum = resultSet.getString("phonenum");
                 String email = resultSet.getString("email");
+                int avatar = resultSet.getInt("avatar");
 
                 // Tạo đối tượng UserAccount từ kết quả và thêm vào danh sách
-                UserAccount user = new UserAccount(name, username, phonenum, email);
+                UserAccount user = new UserAccount(name, username, phonenum, email, avatar);
                 userList.add(user);
             }
 
@@ -106,4 +107,5 @@ public class User extends BaseJDBC implements LinkJDBC {
         }
         return userList;
     }
+
 }

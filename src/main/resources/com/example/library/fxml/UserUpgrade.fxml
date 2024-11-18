@@ -206,6 +206,15 @@
                   <Button fx:id="upgradeButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Upgrade" />
                </children>
             </HBox>
+            <Button fx:id="gameButton" layoutX="36.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleGameButton" prefHeight="40.0" prefWidth="186.0" styleClass="gameButton">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="false" styleClass="gameButton">
+                     <Image url="@../assets/play_button.png" />
+                  </ImageView>
+               </graphic></Button>
+            <ImageView fx:id="gamePic" fitHeight="40.0" fitWidth="40.0" layoutY="303.0" pickOnBounds="true" preserveRatio="false">
+               <Image url="@../assets/wukong_face.png" />
+            </ImageView>
          </children>
       </Pane>
    </children>
