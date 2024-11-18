@@ -18,6 +18,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class UserUpgradeController extends UserController {
+    public ImageView gamePic;
+    public Button gameButton;
     @FXML
     private Label dashboardTitle;
 
@@ -50,6 +52,22 @@ public class UserUpgradeController extends UserController {
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        gamePic.setVisible(false);
+
+        // Sự kiện khi di chuột vào gameButton
+        gameButton.setOnMouseEntered(event -> {
+
+            // Hiển thị label khi chuột trỏ vào button
+            gamePic.setVisible(true);
+        });
+
+        // Sự kiện khi chuột rời khỏi gameButton
+        gameButton.setOnMouseExited(event -> {
+
+            // Ẩn label khi chuột rời khỏi button
+            gamePic.setVisible(false);
+        });
 
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
@@ -112,5 +130,9 @@ public class UserUpgradeController extends UserController {
     public void showThanks(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Thanks support", "Thanks for your suppport!!\nCheck your email!!", "stylesheet (css)/login_alert.css");
+    }
+
+    public void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 }

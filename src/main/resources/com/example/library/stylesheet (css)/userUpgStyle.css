@@ -35,3 +35,20 @@
 #donateButton:pressed {
     -fx-background-color: #ff6694;
 }
+
+.gameButton {
+    -fx-background-color: transparent; /* Xóa màu nền */
+    -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */
+    -fx-transition: opacity 0.2 ease; /* Độ mờ khi trỏ vào button */
+    -fx-border-radius: 50%; /* Tạo hình tròn */
+    -fx-background-radius: 50;
+}
+
+.gameButton:pressed {
+    -fx-background-color: #ffd1de;
+}
+
+.gameLabel {
+    -fx-font-size: 13px;
+    -fx-background-color: #fff;
+}

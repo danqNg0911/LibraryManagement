@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class UserSettingController extends UserController {
+    public Button gameButton;
+    public ImageView gamePic;
     private boolean isPause = false;
     private boolean isPlay = false;
     private static final String mainSound1 = LinkSetting.MAIN_SOUND_1.getLink();
@@ -190,55 +192,72 @@ public class UserSettingController extends UserController {
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
         currentNameLabel.setText(user.getName(user.getUsername()));
+
+        gamePic.setVisible(false);
+
+        // Sự kiện khi di chuột vào gameButton
+        gameButton.setOnMouseEntered(event -> {
+
+            // Hiển thị label khi chuột trỏ vào button
+            gamePic.setVisible(true);
+        });
+
+        // Sự kiện khi chuột rời khỏi gameButton
+        gameButton.setOnMouseExited(event -> {
+
+            // Ẩn label khi chuột rời khỏi button
+            gamePic.setVisible(false);
+        });
+
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
             case 1: {
-                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
+                Image ava1Img = new Image(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
                 currentAvatar.setImage(ava1Img);
                 break;
             }
             case 2: {
-                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
+                Image ava2Img = new Image(getClass().getResource(LinkSetting.AVATAR_2.getLink()).toExternalForm());
                 currentAvatar.setImage(ava2Img);
                 break;
             }
             case 3: {
-                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
+                Image ava3Img = new Image(getClass().getResource(LinkSetting.AVATAR_3.getLink()).toExternalForm());
                 currentAvatar.setImage(ava3Img);
                 break;
             }
             case 4: {
-                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
+                Image ava4Img = new Image(getClass().getResource(LinkSetting.AVATAR_4.getLink()).toExternalForm());
                 currentAvatar.setImage(ava4Img);
                 break;
             }
             case 5: {
-                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
+                Image ava5Img = new Image(getClass().getResource(LinkSetting.AVATAR_5.getLink()).toExternalForm());
                 currentAvatar.setImage(ava5Img);
                 break;
             }
             case 6: {
-                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
+                Image ava6Img = new Image(getClass().getResource(LinkSetting.AVATAR_6.getLink()).toExternalForm());
                 currentAvatar.setImage(ava6Img);
                 break;
             }
             case 7: {
-                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
+                Image ava7Img = new Image(getClass().getResource(LinkSetting.AVATAR_7.getLink()).toExternalForm());
                 currentAvatar.setImage(ava7Img);
                 break;
             }
             case 8: {
-                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
+                Image ava8Img = new Image(getClass().getResource(LinkSetting.AVATAR_8.getLink()).toExternalForm());
                 currentAvatar.setImage(ava8Img);
                 break;
             }
             case 9: {
-                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
+                Image ava9Img = new Image(getClass().getResource(LinkSetting.AVATAR_9.getLink()).toExternalForm());
                 currentAvatar.setImage(ava9Img);
                 break;
             }
             case 0: {
-                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
+                Image ava0Img = new Image(getClass().getResource(LinkSetting.AVATAR_0.getLink()).toExternalForm());
                 currentAvatar.setImage(ava0Img);
                 break;
             }
@@ -574,5 +593,9 @@ public class UserSettingController extends UserController {
             WindowManager.alertWindow(Alert.AlertType.WARNING, "Avatar Not Selected",
                     "Please select an avatar first!", "stylesheet (css)/login_alert.css");
         }
+    }
+
+    public void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 }
