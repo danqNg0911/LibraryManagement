@@ -137,4 +137,9 @@ public class Sound {
             backgroundMusicPlayer.play();
         }
     }
+
+    // Phương thức kiểm tra nhạc nền có đang chạy hay không
+    public static boolean isBackgroundMusicPlaying() {
+        return backgroundMusicPlayer != null && backgroundMusicPlayer.getStatus() == MediaPlayer.Status.PLAYING;
+    }
 }

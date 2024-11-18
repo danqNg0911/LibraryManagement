@@ -1,11 +1,7 @@
 package com.example.library;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 public class Book {
@@ -20,6 +16,15 @@ public class Book {
     private Date date;
     private String status;
     private int id;
+
+    public Book(String title, String author, String category, String imageUrl, String description, Date date) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.date = date;
+    }
 
     public Book(String title, String author, String category, String imageUrl, String description) {
         this.title = title;

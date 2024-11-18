@@ -42,7 +42,7 @@ public class Player {
         if (isPause) {
             return;
         }
-        System.out.println("-" + amount);
+        //System.out.println("-" + amount);
 
         if (health <= 0) {
             // Xử lý khi người chơi hết máu, ví dụ: kết thúc trò chơi hoặc thông báo thua cuộc

@@ -17,6 +17,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.DatabaseMetaData;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +53,7 @@ public class BookItemController {
             Image image = new Image(book.getImageUrl());
             bookCover.setImage(image);
         } else {
-            Image nullImage = new Image(LinkSetting.IMAGE_NULL.getLink());
+            Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
             bookCover.setImage(nullImage);
         }
     }
@@ -85,6 +89,8 @@ public class BookItemController {
         String description = book.getDescription();
         String imageUrl = book.getImageUrl();
         String username = user.getUsername();
+        Date date = new Date(Timestamp.from(Instant.now()).getTime());
+
         if (!BookJDBC.checkBook(username, title, author)) {
             BookJDBC.addBookToDatabase(username, "", title, author, category, imageUrl, description, "borrowed");
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
