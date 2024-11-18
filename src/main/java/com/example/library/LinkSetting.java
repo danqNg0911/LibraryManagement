@@ -14,25 +14,25 @@ public enum LinkSetting {
 
     MANAGER_LIST_FILE_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\ListOfManagers.txt"),
 
-    IMAGE_NULL("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement/src/main/resources/com/example/library/assets/Picture_is_not_available.png"),
+    IMAGE_NULL("/com/example/library/assets/Picture_is_not_available.png"),
 
-    SOUND_CLICK_MOUSE("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mouse-click-153941.mp3"),
-    MAIN_SOUND_1("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mainSound1.mp3"),
-    MAIN_SOUND_2("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mainSound2.mp3"),
-    MAIN_SOUND_3("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mainSound3.mp3"),
-    MAIN_SOUND_4("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mainSound4.mp3"),
-    MAIN_SOUND_5("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\mainSound5.mp3"),
+    SOUND_CLICK_MOUSE("/com/example/library/assets/mouse-click-153941.mp3"),
+    MAIN_SOUND_1("/com/example/library/assets/mainSound1.mp3"),
+    MAIN_SOUND_2("/com/example/library/assets/mainSound2.mp3"),
+    MAIN_SOUND_3("/com/example/library/assets/mainSound3.mp3"),
+    MAIN_SOUND_4("/com/example/library/assets/mainSound4.mp3"),
+    MAIN_SOUND_5("/com/example/library/assets/mainSound5.mp3"),
 
-    AVATAR_1("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava1.gif"),
-    AVATAR_2("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava2.gif"),
-    AVATAR_3("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava3.gif"),
-    AVATAR_4("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava4.gif"),
-    AVATAR_5("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava5.gif"),
-    AVATAR_6("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava6.gif"),
-    AVATAR_7("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava7.gif"),
-    AVATAR_8("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava8.gif"),
-    AVATAR_9("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava9.gif"),
-    AVATAR_0("file:/F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\src\\main\\resources\\com\\example\\library\\assets\\ava0.gif");
+    AVATAR_1("/com/example/library/assets/ava1.gif"),
+    AVATAR_2("/com/example/library/assets/ava2.gif"),
+    AVATAR_3("/com/example/library/assets/ava3.gif"),
+    AVATAR_4("/com/example/library/assets/ava4.gif"),
+    AVATAR_5("/com/example/library/assets/ava5.gif"),
+    AVATAR_6("/com/example/library/assets/ava6.gif"),
+    AVATAR_7("/com/example/library/assets/ava7.gif"),
+    AVATAR_8("/com/example/library/assets/ava8.gif"),
+    AVATAR_9("/com/example/library/assets/ava9.gif"),
+    AVATAR_0("/com/example/library/assets/ava0.gif");
 
     private final String str;
 
