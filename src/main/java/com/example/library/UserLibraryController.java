@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserLibraryController extends UserController {
+    public Button gameButton;
+    public ImageView gamePic;
     @FXML
     private TextField authorField;
 
@@ -184,23 +186,27 @@ public class UserLibraryController extends UserController {
         return null;
     }
 
-    public void showAnimationLib(MouseEvent event) {
-       return;
-    }
-
-    public void unshowAnimationLib(MouseEvent event) {
-        return;
-    }
-
-    public void moveToLibrary(ActionEvent actionEvent) throws IOException {
-        return;
-    }
-
     @FXML
     public void initialize() {
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+
+        gamePic.setVisible(false);
+
+        // Sự kiện khi di chuột vào gameButton
+        gameButton.setOnMouseEntered(event -> {
+
+            // Hiển thị label khi chuột trỏ vào button
+            gamePic.setVisible(true);
+        });
+
+        // Sự kiện khi chuột rời khỏi gameButton
+        gameButton.setOnMouseExited(event -> {
+
+            // Ẩn label khi chuột rời khỏi button
+            gamePic.setVisible(false);
+        });
 
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
@@ -258,5 +264,9 @@ public class UserLibraryController extends UserController {
                 System.out.println("Unknown avatar id: " + avatarId);
         }
         System.out.println("Avatar updated to ID: " + avatarId);
+    }
+
+    public void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 }

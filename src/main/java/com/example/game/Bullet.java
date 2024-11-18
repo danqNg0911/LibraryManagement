@@ -94,6 +94,7 @@ public class Bullet {
             @Override
             public void handle(ActionEvent event) {
                 if (isPause || monster == null) {
+                    removeBullet();
                     return;
                 }
                 // Cập nhật vị trí viên đạn theo vận tốc

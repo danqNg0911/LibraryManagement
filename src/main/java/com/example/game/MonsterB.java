@@ -51,11 +51,8 @@ public class MonsterB extends Monster {
 
 
     private void shootMultiple() {
-        if (isPause) {
-            return;
-        }
 
-        if (isDead) {
+        if (monster == null || isPause || isDead) {
             return;
         }
 
@@ -65,6 +62,9 @@ public class MonsterB extends Monster {
             Timeline shootTimeline = new Timeline(new KeyFrame(Duration.millis(i * SHOOT_COOLDOWN), new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    if (isPause || isDead) {
+                        return;
+                    }
                     shoot(); // Bắn viên đạn
                 }
             }));
