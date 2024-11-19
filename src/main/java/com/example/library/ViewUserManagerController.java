@@ -1,14 +1,24 @@
 package com.example.library;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ViewUserManagerController extends ManagerController {
 
@@ -36,15 +46,17 @@ public class ViewUserManagerController extends ManagerController {
     private Label currentOverdueLabel;
 
     @FXML
-    private BarChart<?, ?> rollingYearChart;
+    private BarChart<String, Number> rollingYearChart;
 
 
-    public void setUserDetails(UserAccount account) {
+    public void setUserDetails(UserAccount account) throws SQLException {
         selectedAccount = account;
         currentName1Label.setText(account.getName());
         currentUserameLabel.setText(account.getUsername());
         currentEmailLabel.setText(account.getEmail());
         currentPhoneLabel.setText(account.getPhonenum());
+        currentBorrowedLabel.setText(Integer.toString(BookJDBC.getTotalBorrowedBooks(account.getUsername())));
+        showBarChart(account);
         if (account.getAvatar() > 0) {
             int avatarId = account.getAvatar();
             switch (avatarId) {
@@ -107,6 +119,60 @@ public class ViewUserManagerController extends ManagerController {
     public void backToPreviousStage(ActionEvent event) throws IOException {
         //WindowManager.addFxmlCss("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800);
         WindowManager.goBack();
+    }
+
+    public void showBarChart(UserAccount account) {
+        System.out.println(account.getUsername());
+
+        // Xóa dữ liệu cũ nếu có
+        rollingYearChart.getData().clear();
+
+        // Tạo series dữ liệu
+        XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
+        dataSeries.setName("Number of books added by days");
+
+        try {
+            // Lấy dữ liệu từ cơ sở dữ liệu
+            Map<String, Integer> books = BookJDBC.getBooksByDay(account.getUsername());
+
+
+            Map<String, Number> fullData = new HashMap<>(books);
+
+            // Sắp xếp dữ liệu theo ngày
+            List<Map.Entry<String, Number>> sortedData = new ArrayList<>(fullData.entrySet());
+            sortedData.sort(Map.Entry.comparingByKey());
+
+            // Thêm dữ liệu vào series
+            for (Map.Entry<String, Number> entry : sortedData) {
+                String day = entry.getKey();
+                Number count = entry.getValue();
+                //System.out.println(day + "  " + count);
+
+                // Tạo đối tượng Data với giá trị Y ban đầu là 0
+                XYChart.Data<String, Number> data = new XYChart.Data<>(day, 0);
+                dataSeries.getData().add(data);
+
+//                // Tạo animation tăng giá trị từ 0 đến giá trị thực
+                Timeline timeline = new Timeline();
+                KeyValue kv = new KeyValue(data.YValueProperty(), count);
+                KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+                timeline.getKeyFrames().add(kf);
+                timeline.setCycleCount(1);
+                timeline.play();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Thêm series vào biểu đồ
+        rollingYearChart.getData().add(dataSeries);
+
+        // Đảm bảo trục Y tự động điều chỉnh theo dữ liệu
+        rollingYearChart.getYAxis().setAutoRanging(true);
+
+        // Đảm bảo trục X hiển thị đầy đủ các ngày
+        rollingYearChart.getXAxis().setAutoRanging(true);
     }
 
     public void initialize() {

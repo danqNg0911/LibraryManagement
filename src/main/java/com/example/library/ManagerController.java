@@ -17,6 +17,7 @@ abstract class ManagerController {
     protected UserJDBC userJDBC = new UserJDBC();
     protected ManagerJDBC managerJDBC = new ManagerJDBC();
     protected Manager manager = new Manager();
+    protected User user = new User();
 
     @FXML
     protected ImageView MBPic;
