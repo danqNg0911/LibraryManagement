@@ -2,28 +2,19 @@ package com.example.library;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
 
-abstract class UserController {
+abstract class UserController extends BaseController {
 
-    protected UserJDBC userJDBC = new UserJDBC();
-    protected ManagerJDBC managerJDBC = new ManagerJDBC();
-    protected User user = new User();
 
     @FXML
     protected Button accHelpsButton;
@@ -36,9 +27,6 @@ abstract class UserController {
 
     @FXML
     protected Button accountButton;
-
-    @FXML
-    protected Label accountName;
 
     @FXML
     protected Button collectionButton;
@@ -87,6 +75,12 @@ abstract class UserController {
 
     @FXML
     protected Button upgradeButton;
+
+    @FXML
+    public Button gameButton;
+
+    @FXML
+    public ImageView gamePic;
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
@@ -183,13 +177,9 @@ abstract class UserController {
         accVBox.setVisible(!accVBox.isVisible());
     }
 
-    //log out
-    public void logOut(ActionEvent event) throws IOException {
-        WindowManager.playButtonSound();
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-        user.closeConnection();
-        WindowManager.stopMusic();
-        pause.play();
+    @FXML
+    protected void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
+
 }

@@ -10,63 +10,79 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="body_security_question" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.SecurityQuestionController">
-   <children>
-      <Label layoutX="210.0" layoutY="67.0" text="SECURITY QUESTION">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="190.0" layoutY="97.0" prefHeight="19.0" prefWidth="219.0" text="Ulib Library Manger | Security Question" textFill="#0000007c" />
-      <Label layoutX="123.0" layoutY="125.0" prefHeight="18.0" prefWidth="372.0" text="We have some questions about you. Your answers can help you in account security. " textFill="#605656">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="74.0" layoutY="221.0" text="Question 1 : What is your favourite color?">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <TextField fx:id="Q1Field" layoutX="100.0" layoutY="248.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;red&quot;" styleClass="field" />
-      <Label layoutX="74.0" layoutY="285.0" text="Question 2 : What is your first pet name?">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <TextField fx:id="Q2Field" layoutX="100.0" layoutY="312.0" prefHeight="26.0" prefWidth="426.0" promptText="Eg : &quot;Teddy&quot;" styleClass="field" />
-      <Label layoutX="74.0" layoutY="182.0" text="Your birthdate">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <DatePicker fx:id="birthdateField" layoutX="174.0" layoutY="178.0" />
-      <Label layoutX="74.0" layoutY="348.0" text="Question 3 : What is the most impressive movie you have ever seen?">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <TextField fx:id="Q3Field" layoutX="100.0" layoutY="375.0" prefHeight="30.0" prefWidth="426.0" promptText="Eg : &quot;Di giua troi ruc ro&quot;" styleClass="field" />
-      <Button fx:id="buttonRegister" layoutX="256.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="26.0" prefWidth="113.0" text="Register" />
-      <Label layoutX="199.0" layoutY="143.0" prefHeight="18.0" prefWidth="219.0" text="Please give unique answer and don't forge! them!" textFill="#605656">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="logo" fitHeight="67.0" fitWidth="98.0" layoutX="51.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Ulib_logo.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="questionLabel" alignment="CENTER" layoutX="100.0" layoutY="411.0" prefHeight="17.0" prefWidth="426.0" textFill="#ff0909">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="successfulLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="459.0" prefHeight="18.0" prefWidth="307.0" textFill="#037707">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
-   </children>
-   <stylesheets>
-      <URL value="@../stylesheet (css)/login.css" />
-      <URL value="@../stylesheet (css)/login.css" />
-   </stylesheets>
+<AnchorPane fx:id="body_security_question" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.SecurityQuestionController">
+    <children>
+        <Label layoutX="210.0" layoutY="67.0" text="SECURITY QUESTION">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="190.0" layoutY="97.0" prefHeight="19.0" prefWidth="219.0"
+               text="Ulib Library Manger | Security Question" textFill="#0000007c"/>
+        <Label layoutX="123.0" layoutY="125.0" prefHeight="18.0" prefWidth="372.0"
+               text="We have some questions about you. Your answers can help you in account security. "
+               textFill="#605656">
+            <font>
+                <Font name="System Italic" size="10.0"/>
+            </font>
+        </Label>
+        <Label layoutX="74.0" layoutY="221.0" text="Question 1 : What is your favourite color?">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="Q1Field" layoutX="100.0" layoutY="248.0" prefHeight="26.0" prefWidth="426.0"
+                   promptText="Eg : &quot;red&quot;" styleClass="field"/>
+        <Label layoutX="74.0" layoutY="285.0" text="Question 2 : What is your first pet name?">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="Q2Field" layoutX="100.0" layoutY="312.0" prefHeight="26.0" prefWidth="426.0"
+                   promptText="Eg : &quot;Teddy&quot;" styleClass="field"/>
+        <Label layoutX="74.0" layoutY="182.0" text="Your birthdate">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <DatePicker fx:id="birthdateField" layoutX="174.0" layoutY="178.0"/>
+        <Label layoutX="74.0" layoutY="348.0" text="Question 3 : What is the most impressive movie you have ever seen?">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="Q3Field" layoutX="100.0" layoutY="375.0" prefHeight="30.0" prefWidth="426.0"
+                   promptText="Eg : &quot;Di giua troi ruc ro&quot;" styleClass="field"/>
+        <Button fx:id="buttonRegister" layoutX="256.0" layoutY="428.0" mnemonicParsing="false"
+                onAction="#handleRegisterButton" prefHeight="26.0" prefWidth="113.0" text="Register"/>
+        <Label layoutX="199.0" layoutY="143.0" prefHeight="18.0" prefWidth="219.0"
+               text="Please give unique answer and don't forge! them!" textFill="#605656">
+            <font>
+                <Font name="System Italic" size="10.0"/>
+            </font>
+        </Label>
+        <ImageView fx:id="logo" fitHeight="67.0" fitWidth="98.0" layoutX="51.0" layoutY="33.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../assets/Ulib_logo.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="questionLabel" alignment="CENTER" layoutX="100.0" layoutY="411.0" prefHeight="17.0"
+               prefWidth="426.0" textFill="#ff0909">
+            <font>
+                <Font name="System Bold" size="11.0"/>
+            </font>
+        </Label>
+        <Label fx:id="successfulLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="459.0"
+               prefHeight="18.0" prefWidth="307.0" textFill="#037707">
+            <font>
+                <Font size="11.0"/>
+            </font>
+        </Label>
+    </children>
+    <stylesheets>
+        <URL value="@../stylesheet (css)/login.css"/>
+        <URL value="@../stylesheet (css)/login.css"/>
+    </stylesheets>
 </AnchorPane>

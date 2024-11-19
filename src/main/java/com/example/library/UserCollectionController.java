@@ -21,99 +21,6 @@ import java.util.*;
 
 public class UserCollectionController extends  UserController {
 
-    public Button gameButton;
-    public ImageView gamePic;
-    UserJDBC userJDBC = new UserJDBC();
-    ManagerJDBC managerJDBC = new ManagerJDBC();
-    User user = new User();
-
-    @FXML
-    protected Button accHelpsButton;
-
-    @FXML
-    protected Button accSetButton;
-
-    @FXML
-    protected VBox accVBox;
-
-    @FXML
-    protected Button accountButton;
-
-    @FXML
-    public Label accountName;
-
-    @FXML
-    protected Button addNewClt;
-
-    @FXML
-    protected Button addedDateSortButton;
-
-    @FXML
-    protected VBox cltOptionVBox;
-
-    @FXML
-    protected Button collectionButton;
-
-    @FXML
-    protected ImageView collectionPic;
-
-    @FXML
-    protected Label collectionTitle;
-
-    @FXML
-    protected ImageView currentAvatar;
-
-    @FXML
-    protected Button dashboardButton;
-
-    @FXML
-    protected ImageView dashboardPic;
-
-    @FXML
-    protected ImageView dashboardPic11;
-
-    @FXML
-    protected Button helpsButton;
-
-    @FXML
-    protected Button libraryButton;
-
-    @FXML
-    protected ImageView libraryPic;
-
-    @FXML
-    protected ImageView libraryPic11;
-
-    @FXML
-    protected ImageView logo;
-
-    @FXML
-    protected Button logoutButton;
-
-    @FXML
-    protected AnchorPane mainSce;
-
-    @FXML
-    protected Button selectCltButton;
-
-    @FXML
-    protected Button settingButton;
-
-    @FXML
-    protected ImageView settingPic;
-
-    @FXML
-    protected Button sortButton;
-
-    @FXML
-    protected VBox sortOptionVBox;
-
-    @FXML
-    protected Button titleSortButton;
-
-    @FXML
-    protected Button upgradeButton;
-
     @FXML
     protected ProgressIndicator loadingIndicator;
 
@@ -125,10 +32,6 @@ public class UserCollectionController extends  UserController {
     public void showDefaultCollectionData() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/UserDefaultCollection.fxml"));
         collectionBookContainer.getChildren().add((Node) loader.load());
-    }
-
-    public void handleGameButton(ActionEvent event) throws IOException {
-        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 
     @FXML

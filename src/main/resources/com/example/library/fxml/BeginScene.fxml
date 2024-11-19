@@ -6,18 +6,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="beginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.BeginScenceController">
-   <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Ulib-GIF.gif" />
-         </image>
-      </ImageView>
-      <Button fx:id="start" layoutX="142.0" layoutY="211.0" mnemonicParsing="false" onAction="#moveToLogin" prefHeight="26.0" prefWidth="116.0" text="Start App">
-         <stylesheets>
-            <URL value="@../stylesheet (css)/style.css" />
-            <URL value="@../stylesheet (css)/login.css" />
-         </stylesheets>
-      </Button>
-   </children>
+<AnchorPane fx:id="beginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.library.BeginScenceController">
+    <children>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="63.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../assets/Ulib-GIF.gif"/>
+            </image>
+        </ImageView>
+        <Button fx:id="start" layoutX="142.0" layoutY="211.0" mnemonicParsing="false" onAction="#moveToLogin"
+                prefHeight="26.0" prefWidth="116.0" text="Start App">
+            <stylesheets>
+                <URL value="@../stylesheet (css)/style.css"/>
+                <URL value="@../stylesheet (css)/login.css"/>
+            </stylesheets>
+        </Button>
+    </children>
 </AnchorPane>

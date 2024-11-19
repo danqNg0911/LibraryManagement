@@ -15,11 +15,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserDashboardController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserDashboardController">
     <children>
-        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@../assets/Ulib_logo.png" />
+                <Image url="@../assets/Ulib_logo.png"/>
             </image>
         </ImageView>
         <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
@@ -123,85 +125,113 @@
                 </children>
             </VBox>
         </AnchorPane>
-        <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094" startY="135.2928924560547" />
-      <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                   <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                       <Image url="@../assets/Dasb.png" />
-                   </ImageView>
-                  <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
-               </children>
-            </HBox>
-            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Lib.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
-               </children>
-            </HBox>
-            <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Collection.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
-               </children>
-            </HBox>
-            <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Setting.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Help.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" text="Helps" />
-               </children>
-            </HBox>
-            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="libraryPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Upgrade.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade" onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0" prefWidth="186.0" text="Upgrade" />
-               </children>
-            </HBox>
-            <Button fx:id="gameButton" layoutX="36.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleGameButton" prefHeight="40.0" prefWidth="186.0" styleClass="gameButton">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="false" styleClass="gameButton">
-                      <Image url="@../assets/play_button.png" />
-                  </ImageView>
-               </graphic></Button>
-            <ImageView fx:id="gamePic" fitHeight="40.0" fitWidth="40.0" layoutY="303.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/wukong_face.png" />
-            </ImageView>
-         </children>
-      </Pane>
+        <Line endX="1207.4000244140625" endY="135.2928924560547" startX="220.99998474121094"
+              startY="135.2928924560547"/>
+        <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
+            <children>
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <Image url="@../assets/Dasb.png"/>
+                        </ImageView>
+                        <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0"
+                                text="Dashboard"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Lib.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary"
+                                onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0"
+                                prefWidth="186.0" text="Library"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Collection.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection"
+                                onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0"
+                                prefWidth="186.0" text="Collection"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Setting.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting"
+                                onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0"
+                                prefWidth="186.0" text="Setting"/>
+                    </children>
+                </HBox>
+            </children>
+        </Pane>
+        <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
+            <children>
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Help.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps"
+                                onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps"
+                                prefHeight="40.0" prefWidth="186.0" text="Helps"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="libraryPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Upgrade.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade"
+                                onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0"
+                                prefWidth="186.0" text="Upgrade"/>
+                    </children>
+                </HBox>
+                <Button fx:id="gameButton" layoutX="36.0" layoutY="303.0" mnemonicParsing="false"
+                        onAction="#handleGameButton" prefHeight="40.0" prefWidth="186.0" styleClass="gameButton">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="false"
+                                   styleClass="gameButton">
+                            <Image url="@../assets/play_button.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <ImageView fx:id="gamePic" fitHeight="40.0" fitWidth="40.0" layoutY="303.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wukong_face.png"/>
+                </ImageView>
+            </children>
+        </Pane>
     </children>
-   <stylesheets>
-      <URL value="@../stylesheet (css)/userStyles.css" />
-      <URL value="@../stylesheet (css)/userDashStyle.css" />
-   </stylesheets>
+    <stylesheets>
+        <URL value="@../stylesheet (css)/userStyles.css"/>
+        <URL value="@../stylesheet (css)/userDashStyle.css"/>
+    </stylesheets>
 </AnchorPane>
