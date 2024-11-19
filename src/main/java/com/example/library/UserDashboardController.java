@@ -372,7 +372,4 @@ public class UserDashboardController extends UserController{
         System.out.println("Avatar updated to ID: " + avatarId);
     }
 
-    public void handleGameButton(ActionEvent event) throws IOException {
-        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
-    }
 }

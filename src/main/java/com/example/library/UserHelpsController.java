@@ -146,7 +146,4 @@ public class UserHelpsController extends UserController {
         WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Thanks support", "Thanks for your suppport!!\nCheck your email!!", "stylesheet (css)/login_alert.css");
     }
 
-    public void handleGameButton(ActionEvent event) throws IOException {
-        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
-    }
 }

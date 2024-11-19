@@ -80,9 +80,10 @@ public class WindowManager {
     }
 
     // Truyền file FXML và CSS
-    public static void addGameFxml(String fxmlFile, int width, int height) throws IOException {
+    public static void addGameFxml(String fxmlFile, String cssFile, int width, int height) throws IOException {
         FXMLLoader Loader = new FXMLLoader(Main.class.getResource(fxmlFile));
         Scene scene = new Scene(Loader.load(), width, height);
+        scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource(cssFile)).toExternalForm());
         WindowManager.navigateTo(scene);
         stage.setTitle("Black Myth Wukong");
         //stage.setScene(scene);
