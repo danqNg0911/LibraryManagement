@@ -12,88 +12,115 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ManagerHelpsController">
-   <children>
-      <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Ulib_logo.png" />
-         </image>
-      </ImageView>
-      <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
-         <children>
-            <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="102.0" text="Helps">
-               <font>
-                  <Font name="System Bold" size="34.0" />
-               </font>
-            </Label>
-            <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
-            <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/defaultManagerAva.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
-               <children>
-                  <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
-                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <Line endX="1207.4000244140625" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094" startY="135.2928924560547" />
-      <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="MUPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/mUsers.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="manageUsersButton" mnemonicParsing="false" onAction="#moveToManageUsers" onMouseEntered="#showAnimationMU" onMouseExited="#unshowAnimationMU" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Users" />
-               </children>
-            </HBox>
-            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/mDash.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="manageBooksButton" mnemonicParsing="false" onAction="#moveToManageBooks" onMouseEntered="#showAnimationMB" onMouseExited="#unshowAnimationMB" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Books" />
-               </children>
-            </HBox>
-            <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/mSetting.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Setting" />
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/mHelp.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="helpsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps" />
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-   </children>
-   <stylesheets>
-      <URL value="@../stylesheet (css)/managerStyles.css" />
-      <URL value="@../stylesheet (css)/managerHelpsStyle.css" />
-   </stylesheets>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.library.ManagerHelpsController">
+    <children>
+        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../assets/Ulib_logo.png"/>
+            </image>
+        </ImageView>
+        <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
+            <children>
+                <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="102.0"
+                       text="Helps">
+                    <font>
+                        <Font name="System Bold" size="34.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0"
+                       text="Acc name"/>
+                <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/defaultManagerAva.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false"
+                        onAction="#showOptionAccount" text="Account"/>
+                <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0"
+                      visible="false">
+                    <children>
+                        <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting"
+                                prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting"/>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton"
+                                text="Helps"/>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0"
+                                prefWidth="138.0" styleClass="accButton" text="Log Out"/>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <Line endX="1207.4000244140625" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094"
+              startY="135.2928924560547"/>
+        <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
+            <children>
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="MUPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/mUsers.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="manageUsersButton" mnemonicParsing="false" onAction="#moveToManageUsers"
+                                onMouseEntered="#showAnimationMU" onMouseExited="#unshowAnimationMU" prefHeight="40.0"
+                                prefWidth="186.0" styleClass="sceneButton" text="Manage Users"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/mDash.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="manageBooksButton" mnemonicParsing="false" onAction="#moveToManageBooks"
+                                onMouseEntered="#showAnimationMB" onMouseExited="#unshowAnimationMB" prefHeight="40.0"
+                                prefWidth="186.0" styleClass="sceneButton" text="Manage Books"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/mSetting.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting"
+                                onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0"
+                                prefWidth="186.0" styleClass="sceneButton" text="Setting"/>
+                    </children>
+                </HBox>
+            </children>
+        </Pane>
+        <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
+            <children>
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/mHelp.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="helpsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0"
+                                styleClass="sceneButton" text="Helps"/>
+                    </children>
+                </HBox>
+            </children>
+        </Pane>
+    </children>
+    <stylesheets>
+        <URL value="@../stylesheet (css)/managerStyles.css"/>
+        <URL value="@../stylesheet (css)/managerHelpsStyle.css"/>
+    </stylesheets>
 </AnchorPane>

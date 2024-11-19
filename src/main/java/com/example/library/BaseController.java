@@ -4,6 +4,9 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -14,6 +17,7 @@ public abstract class BaseController extends BaseSettingController {
     protected ManagerJDBC managerJDBC = new ManagerJDBC();
     protected Manager manager = new Manager();
     protected User user = new User();
+
 
     @FXML
     protected Label accountName;

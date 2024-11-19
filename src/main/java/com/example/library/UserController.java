@@ -76,6 +76,12 @@ abstract class UserController extends BaseController {
     @FXML
     protected Button upgradeButton;
 
+    @FXML
+    public Button gameButton;
+
+    @FXML
+    public ImageView gamePic;
+
     // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         WindowManager.showPic(event, dashboardButton, dashboardPic);
@@ -169,6 +175,11 @@ abstract class UserController extends BaseController {
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         accVBox.setVisible(!accVBox.isVisible());
+    }
+
+    @FXML
+    protected void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 
 }
