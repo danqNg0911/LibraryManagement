@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -36,6 +38,12 @@ public abstract class UserCollectionCltController extends  UserCollectionControl
     protected boolean isMostRecent;
     protected boolean isMostAdded;
     protected boolean isMostView;
+
+    public void baseCltInitialize() throws IOException {
+        baseInitialize();
+        filters.setExpanded(false);
+        showCollectionData(new ActionEvent());
+    }
 
     @FXML
     protected void handleConfirmButton(ActionEvent actionEvent) throws IOException, SQLException {

@@ -134,7 +134,7 @@ public class BlackMythWukongController {
         } catch (Exception e) {
             System.out.println("Không thể tải file bmw_round");
         }
-        
+
         bg = new Background(bottomPane);
         bg.start(1);
 
@@ -197,7 +197,7 @@ public class BlackMythWukongController {
                                     monsterD = null;
                                     Sound.stopBackgroundMusic();
                                     Sound.restartBackgroundMusic();
-                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
+                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 600, 333);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -253,8 +253,9 @@ public class BlackMythWukongController {
             public void handle(ActionEvent event) {
                 if (roundCount == 6) {
                     updateLabelsTimeline.stop();
+                    stopGame();
                     try {
-                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", 800, 800);
+                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", "stylesheet (css)/game.css", 600, 333);
                         return;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -268,10 +269,10 @@ public class BlackMythWukongController {
                 robot_num.setText("Robot: " + cNums);
                 troll_num.setText("Troll: " + dNums);
 
-                if (!deathSound && player.getHealth() <= 0) {
+                /*if (!deathSound && player.getHealth() <= 0) {
                     Sound.playPlayerDeathSound();
                     deathSound = true;
-                }
+                }*/
 
                 if (!isLose && !isWin && (player.getHealth() == 0 || conditionToLose())) {
                     isLose = true;
@@ -319,8 +320,6 @@ public class BlackMythWukongController {
             }
         }
     }
-
-
 
     private void loadNextQuestion() {
         if (!questions.isEmpty()) {
@@ -879,6 +878,26 @@ public class BlackMythWukongController {
         timeline.play();
     }
 
+    private void stopGame() {
+        // Dừng tất cả Timeline
+        if (gameTimer != null) gameTimer.stop();
+        if (updateLabelsTimeline != null) updateLabelsTimeline.stop();
+        if (spawnATimeline != null) spawnATimeline.stop();
+        if (spawnBTimeline != null) spawnBTimeline.stop();
+        if (spawnCTimeline != null) spawnCTimeline.stop();
+        if (spawnDTimeline != null) spawnDTimeline.stop();
+
+        // Dừng tất cả quái vật
+        for (Monster monster : monsterList) {
+            if (monster != null) monster.setIsPause(true);
+        }
+
+        // Dừng background và player
+        if (bg != null) bg.setIsPause(true);
+        if (player != null) player.setIsPause(true);
+
+        // Dừng âm thanh
+        Sound.stopAllSounds(); // Nếu bạn đã thêm phương thức này trong lớp Sound
+    }
 
 }
-

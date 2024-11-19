@@ -19,7 +19,6 @@ import java.io.IOException;
 public class ManagerSettingController extends ManagerController {
 
 
-
     @FXML
     private ImageView newAvatar;
 
@@ -32,15 +31,6 @@ public class ManagerSettingController extends ManagerController {
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
     }
-
-    // Di chuột vào hiện hiệu ứng và ngược lại
-    /*public void showAnimationDsb(MouseEvent event) {
-        WindowManager.showPic(event, dashboardButton, dashboardPic);
-    }
-
-    public void unshowAnimationDsb(MouseEvent event) {
-        WindowManager.unshowPic(event, dashboardButton, dashboardPic);
-    }*/
 
     public void showAnimationStg(MouseEvent event) {
         return;

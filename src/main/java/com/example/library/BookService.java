@@ -15,19 +15,11 @@ public class BookService {
 
     // Các danh sách từ khóa
     private static final List<String> KEYWORDS_LIST_0 = List.of(
-            "Java Programming",
-            "Data Science",
-            "Artificial Intelligence",
-            "Machine Learning",
-            "Deep Learning"
+            ""
     );
 
     private static final List<String> KEYWORDS_LIST_1 = List.of(
-            "To Kill a Mockingbird",
-            "1984",
-            "Pride and Prejudice",
-            "The Great Gatsby",
-            "Moby Dick"
+            ""
     );
 
     private static final List<String> KEYWORDS_LIST_2 = List.of(

@@ -28,25 +28,7 @@ Frankenstein
 &Sherlock Holmes
 Oliver Twist
 //
-From which type of class can a derived class not be created?
-abstract
-public
-static
-&final
-//
-Which technique is used to hide information inside a class, preventing direct access from the outside?
-&Polymorphism
-Encapsulation
-Inheritance
-Composition
-//
-Which of the following is not a characteristic of OOP?
-Abstraction
-Inheritance
-&Directness
-Encapsulation
-//
- Who is the author of the book "The Old Man and the Sea"?
+Who is the author of the book "The Old Man and the Sea"?
 Mark Twain
 F. Scott Fitzgerald
 &Ernest Hemingway
@@ -57,3 +39,33 @@ To Kill a Mockingbird
 Les Misérables
 &War and Peace
 The Great Gatsby
+//
+What is considered the first science fiction novel?
+&Frankenstein
+20,000 Leagues Under the Sea
+The War of the Worlds
+The Time Machine
+//
+Who wrote the dystopian novel 1984?
+Aldous Huxley
+Ray Bradbury
+&George Orwell
+Kurt Vonnegut
+//
+Which Vietnamese novel is considered a masterpiece of classical literature?
+&The Tale of Kieu
+Vu Nhat Tuan
+The Sorrow of War
+Dumb Luck
+//
+Who wrote the Vietnamese novel Dumb Luck (Số đỏ)?
+&Vu Trong Phung
+Nam Cao
+Nguyen Du
+Bao Ninh
+//
+Which book tells the story of a boy raised by wolves in the jungle?
+&The Jungle Book
+White Fang
+Life of Pi
+The Call of the Wild
