@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class UserSettingController extends UserController {
+    public Button gameButton;
+    public ImageView gamePic;
     private boolean isPause = false;
     private boolean isPlay = false;
     private static final String mainSound1 = LinkSetting.MAIN_SOUND_1.getLink();
@@ -190,6 +192,23 @@ public class UserSettingController extends UserController {
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
         currentNameLabel.setText(user.getName(user.getUsername()));
+
+        gamePic.setVisible(false);
+
+        // Sự kiện khi di chuột vào gameButton
+        gameButton.setOnMouseEntered(event -> {
+
+            // Hiển thị label khi chuột trỏ vào button
+            gamePic.setVisible(true);
+        });
+
+        // Sự kiện khi chuột rời khỏi gameButton
+        gameButton.setOnMouseExited(event -> {
+
+            // Ẩn label khi chuột rời khỏi button
+            gamePic.setVisible(false);
+        });
+
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
             case 1: {
@@ -574,5 +593,9 @@ public class UserSettingController extends UserController {
             WindowManager.alertWindow(Alert.AlertType.WARNING, "Avatar Not Selected",
                     "Please select an avatar first!", "stylesheet (css)/login_alert.css");
         }
+    }
+
+    public void handleGameButton(ActionEvent event) throws IOException {
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
     }
 }

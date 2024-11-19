@@ -141,7 +141,8 @@ public class BlackMythWukongController {
         gameTime = NumSetting.TIME.getNum();
 
         startGameTimer();
-        Sound.playBackgroundMusic();
+
+        //Sound.playBackgroundMusic();
 
         // Gán các quái vật vào mảng
         monsters[0] = monsterA;
@@ -188,10 +189,15 @@ public class BlackMythWukongController {
                                 togglePause();
                                 event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
                             }
-                            if (isPaused && event.getCode() == KeyCode.M) {
+                            if ((isPaused || isLose || isWin) && event.getCode() == KeyCode.M) {
                                 try {
-                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
+                                    monsterA = null;
+                                    monsterB = null;
+                                    monsterC = null;
+                                    monsterD = null;
+                                    Sound.stopBackgroundMusic();
                                     Sound.restartBackgroundMusic();
+                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -575,10 +581,12 @@ public class BlackMythWukongController {
         boolean pause;
         if (isPaused) {
             pause = true;
-            Sound.pauseBackgroundMusic();
-        } else {
+            //Sound.pauseBackgroundMusic();
+        }
+
+        else {
             pause = false;
-            Sound.resumeBackgroundMusic();
+            //Sound.resumeBackgroundMusic();
         }
 
         pauseOverlay.setVisible(pause); // Hiển thị/ẩn cửa sổ Pause khi tạm dừng
