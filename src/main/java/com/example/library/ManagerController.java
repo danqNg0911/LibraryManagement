@@ -13,11 +13,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-abstract class ManagerController {
-    protected UserJDBC userJDBC = new UserJDBC();
-    protected ManagerJDBC managerJDBC = new ManagerJDBC();
-    protected Manager manager = new Manager();
-    protected User user = new User();
+abstract class ManagerController extends BaseController {
 
     @FXML
     protected ImageView MBPic;
@@ -131,14 +127,5 @@ abstract class ManagerController {
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         accVBox.setVisible(!accVBox.isVisible());
-    }
-
-    //log out
-    public void logOut(ActionEvent event) throws IOException {
-        WindowManager.playButtonSound();
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-        WindowManager.addFxmlCss("fxml/SignIn.fxml", "stylesheet (css)/style.css", "stylesheet (css)/login.css", 600, 500);
-        manager.closeConnection();
-        pause.play();
     }
 }
