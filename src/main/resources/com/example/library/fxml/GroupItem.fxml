@@ -7,24 +7,28 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.GroupItemController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0"
+      prefWidth="240.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.library.GroupItemController">
     <children>
         <HBox prefHeight="290.0" prefWidth="240.0">
             <children>
-                <Pane prefHeight="290.0" prefWidth="14.0" />
+                <Pane prefHeight="290.0" prefWidth="14.0"/>
                 <VBox prefHeight="290.0" prefWidth="199.0">
                     <children>
-                        <ImageView fx:id="Cover" fitHeight="215.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="Title" prefHeight="17.0" prefWidth="252.0" text="Title" />
-                        <Label fx:id="Author" prefHeight="17.0" prefWidth="255.0" text="Author" />
+                        <ImageView fx:id="Cover" fitHeight="215.0" fitWidth="213.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
+                        <Label fx:id="Title" prefHeight="17.0" prefWidth="252.0" text="Title"/>
+                        <Label fx:id="Author" prefHeight="17.0" prefWidth="255.0" text="Author"/>
                         <Pane prefHeight="40.0" prefWidth="252.0">
                             <children>
-                                <Button fx:id="View1" layoutX="45.0" layoutY="9.0" mnemonicParsing="false" onAction="#viewBook" styleClass="ItemButton" text="View" />
+                                <Button fx:id="View1" layoutX="45.0" layoutY="9.0" mnemonicParsing="false"
+                                        onAction="#viewBook" styleClass="ItemButton" text="View"/>
                             </children>
                         </Pane>
                     </children>
                 </VBox>
-                <Pane prefHeight="290.0" prefWidth="20.0" />
+                <Pane prefHeight="290.0" prefWidth="20.0"/>
             </children>
         </HBox>
     </children>
