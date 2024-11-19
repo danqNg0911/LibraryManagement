@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
-public class UserCollectionClt1Controller extends UserController implements UserCollectionCltController{
+public class UserCollectionClt1Controller extends UserController implements UserCollectionCltController {
 
     public RadioButton radioButton2;
     public RadioButton radioButton3;

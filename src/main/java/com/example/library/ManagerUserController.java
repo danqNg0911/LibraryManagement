@@ -15,9 +15,12 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class ManagerUserController extends ManagerController {
+
     @FXML
     private TableView<UserAccount> userTable;
 
@@ -80,9 +83,18 @@ public class ManagerUserController extends ManagerController {
                     }
 
                     ViewUserManagerController controller = loader.getController();
-                    controller.setUserDetails(selectedUser);
+
+                    try {
+                        controller.setUserDetails(selectedUser);
+                    } catch (SQLException e) {
+                        System.out.println("loi BookJDBC.getTotalBorrowedBooks(...)");
+                    }
+                    //controller.showBarChart(selectedUser);
 
                     Scene scene = new Scene(root, 1200, 800);
+                    scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet (css)/managerStyles.css")).toExternalForm());
+                    scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/library/stylesheet (css)/managerUserStyle.css")).toExternalForm());
+
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     WindowManager.navigateTo(scene);
                     stage.setScene(scene);

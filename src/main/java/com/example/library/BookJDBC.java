@@ -283,4 +283,21 @@ public class BookJDBC implements LinkJDBC {
         }
         return booksByDay;
     }
+
+    public static int getTotalBorrowedBooks(String username) throws SQLException {
+        int  totalBooks = 0;
+        String query = "SELECT COUNT(*) FROM books WHERE username=? GROUP BY username";
+
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                if (resultSet.next()) {  // Nếu có kết quả
+                    totalBooks = resultSet.getInt("COUNT(*)");  // Truy xuất giá trị COUNT(*) qua alias
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalBooks;
+    }
 }

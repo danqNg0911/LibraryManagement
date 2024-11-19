@@ -29,9 +29,6 @@ public class UserDashboardController extends UserController{
 
     public Button gameButton;
     public ImageView gamePic;
-    UserJDBC userJDBC = new UserJDBC();
-    ManagerJDBC managerJDBC = new ManagerJDBC();
-    User user = new User();
 
     @FXML
     private Button accHelpsButton;

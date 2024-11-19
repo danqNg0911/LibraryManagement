@@ -15,209 +15,245 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1211.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ViewUserManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1211.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.library.ViewUserManagerController">
     <children>
-        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@../assets/Ulib_logo.png" />
+                <Image url="@../assets/Ulib_logo.png"/>
             </image>
         </ImageView>
         <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
             <children>
-                <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="263.0" text="Manager Users">
+                <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="263.0"
+                       text="Manager Users">
                     <font>
-                        <Font name="System Bold" size="34.0" />
+                        <Font name="System Bold" size="34.0"/>
                     </font>
                 </Label>
-                <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
-                <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0"
+                       text="Acc name"/>
+                <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0"
+                           pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../assets/defaultManagerAva.png" />
+                        <Image url="@../assets/defaultManagerAva.png"/>
                     </image>
                 </ImageView>
-                <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-                <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
+                <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false"
+                        onAction="#showOptionAccount" text="Account"/>
+                <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0"
+                      visible="false">
                     <children>
-                        <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
+                        <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting"
+                                prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting"/>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton"
+                                text="Helps"/>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0"
+                                prefWidth="138.0" styleClass="accButton" text="Log Out"/>
                     </children>
                 </VBox>
                 <Pane layoutY="142.0" prefHeight="658.0" prefWidth="989.0">
                     <children>
                         <Label layoutX="690.0" layoutY="37.0" text="Send email">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="System Bold" size="16.0"/>
                             </font>
                         </Label>
                         <Pane fx:id="sendmailpane" layoutX="546.0" layoutY="74.0" prefHeight="202.0" prefWidth="386.0">
                             <children>
                                 <Label layoutX="45.0" layoutY="38.0" text="Your email">
                                     <font>
-                                        <Font name="System Bold" size="16.0" />
+                                        <Font name="System Bold" size="16.0"/>
                                     </font>
                                 </Label>
                                 <Label layoutX="141.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Label">
                                     <font>
-                                        <Font size="15.0" />
+                                        <Font size="15.0"/>
                                     </font>
                                 </Label>
                                 <Label layoutX="45.0" layoutY="93.0" text="Their email">
                                     <font>
-                                        <Font name="System Bold" size="15.0" />
+                                        <Font name="System Bold" size="15.0"/>
                                     </font>
                                 </Label>
                                 <Label layoutX="141.0" layoutY="93.0" prefHeight="17.0" prefWidth="192.0" text="Label">
                                     <font>
-                                        <Font size="15.0" />
+                                        <Font size="15.0"/>
                                     </font>
                                 </Label>
-                                <Button layoutX="165.0" layoutY="150.0" mnemonicParsing="false" text="Button" />
+                                <Button layoutX="165.0" layoutY="150.0" mnemonicParsing="false" text="Button"/>
                             </children>
                         </Pane>
-                        <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="197.0" layoutY="339.0" prefHeight="266.0" prefWidth="611.0" title="Unique items added by rolling year">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" />
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis side="LEFT" />
-                            </yAxis>
-                        </BarChart>
-                        <Button fx:id="backButton" layoutX="870.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToPreviousStage" text="← Back">
+                        <Button fx:id="backButton" layoutX="870.0" layoutY="25.0" mnemonicParsing="false"
+                                onAction="#backToPreviousStage" text="← Back">
                             <font>
-                                <Font size="11.0" />
+                                <Font size="11.0"/>
                             </font>
                         </Button>
                     </children>
                 </Pane>
                 <Pane layoutX="80.0" layoutY="202.0" prefHeight="245.0" prefWidth="446.0" styleClass="infoPane">
                     <children>
-                        <ImageView fx:id="currentAvatar1" fitHeight="80.0" fitWidth="80.0" layoutX="13.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="currentAvatar1" fitHeight="80.0" fitWidth="80.0" layoutX="13.0" layoutY="23.0"
+                                   pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../assets/defaultUserAva.png" />
+                                <Image url="@../assets/defaultUserAva.png"/>
                             </image>
                         </ImageView>
                         <Label layoutX="147.0" layoutY="30.0" text="Name">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="currentName1Label" layoutX="211.0" layoutY="30.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentName1Label" layoutX="211.0" layoutY="30.0" prefHeight="20.0"
+                               prefWidth="192.0" text="Label">
                             <font>
-                                <Font name="System Italic" size="13.0" />
+                                <Font name="System Italic" size="13.0"/>
                             </font>
                         </Label>
                         <Label layoutX="119.0" layoutY="60.0" text="Username">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </Label>
                         <Label layoutX="93.0" layoutY="120.0" text="Phone number ">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </Label>
                         <Label layoutX="148.0" layoutY="90.0" text="Email">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </Label>
                         <Label layoutX="87.0" layoutY="150.0" text="Total borrowed">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </Label>
                         <Label layoutX="97.0" layoutY="180.0" text="Total overdue">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="60.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="60.0" prefHeight="20.0"
+                               prefWidth="192.0" text="Label">
                             <font>
-                                <Font name="System Italic" size="13.0" />
+                                <Font name="System Italic" size="13.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0"
+                               prefWidth="192.0" text="Label">
                             <font>
-                                <Font name="System Italic" size="13.0" />
+                                <Font name="System Italic" size="13.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="120.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="120.0" prefHeight="20.0"
+                               prefWidth="192.0" text="Label">
                             <font>
-                                <Font name="System Italic" size="13.0" />
+                                <Font name="System Italic" size="13.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="currentBorrowedLabel" layoutX="211.0" layoutY="150.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentBorrowedLabel" layoutX="211.0" layoutY="150.0" prefHeight="20.0"
+                               prefWidth="192.0" text="Label">
                             <font>
-                                <Font name="System Italic" size="13.0" />
+                                <Font name="System Italic" size="13.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="currentOverdueLabel" layoutX="211.0" layoutY="180.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentOverdueLabel" layoutX="211.0" layoutY="180.0" prefHeight="20.0"
+                               prefWidth="192.0" text="Label">
                             <font>
-                                <Font name="System Italic" size="13.0" />
+                                <Font name="System Italic" size="13.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
                 <Label layoutX="224.0" layoutY="175.0" text="User infomation">
                     <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="16.0"/>
                     </font>
                 </Label>
+                <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="50.0" layoutY="500.0" prefHeight="266.0"
+                          prefWidth="741.0" styleClass="chart" title="Unique items added by rolling year">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis prefHeight="201.0" prefWidth="1.0" side="LEFT"/>
+                    </yAxis>
+                </BarChart>
             </children>
         </AnchorPane>
-        <Line endX="1211.5999755859375" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094" startY="135.2928924560547" />
+        <Line endX="1211.5999755859375" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094"
+              startY="135.2928924560547"/>
         <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
             <children>
-                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
                     <children>
-                        <ImageView fx:id="MUPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="MUPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../assets/mUsers.png" />
+                                <Image url="@../assets/mUsers.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="manageUsersButton" mnemonicParsing="false" onAction="#moveToManageUsers" onMouseEntered="#showAnimationMU" onMouseExited="#unshowAnimationMU" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Users" />
+                        <Button fx:id="manageUsersButton" mnemonicParsing="false" onAction="#moveToManageUsers"
+                                onMouseEntered="#showAnimationMU" onMouseExited="#unshowAnimationMU" prefHeight="40.0"
+                                prefWidth="186.0" styleClass="sceneButton" text="Manage Users"/>
                     </children>
                 </HBox>
-                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
                     <children>
-                        <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
                             <image>
-                                <Image url="@../assets/mDash.png" />
+                                <Image url="@../assets/mDash.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="manageBooksButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Books" />
+                        <Button fx:id="manageBooksButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0"
+                                styleClass="sceneButton" text="Manage Books"/>
                     </children>
                 </HBox>
-                <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+                <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
                     <children>
-                        <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
                             <image>
-                                <Image url="@../assets/mSetting.png" />
+                                <Image url="@../assets/mSetting.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Setting" />
+                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting"
+                                onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0"
+                                prefWidth="186.0" styleClass="sceneButton" text="Setting"/>
                     </children>
                 </HBox>
             </children>
         </Pane>
         <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
             <children>
-                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
                     <children>
-                        <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
                             <image>
-                                <Image url="@../assets/mHelp.png" />
+                                <Image url="@../assets/mHelp.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps" />
+                        <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps"
+                                onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps"
+                                prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps"/>
                     </children>
                 </HBox>
             </children>
         </Pane>
     </children>
     <stylesheets>
-        <URL value="@../stylesheet (css)/managerStyles.css" />
-        <URL value="@../stylesheet (css)/managerUserStyle.css" />
+        <URL value="@../stylesheet (css)/managerStyles.css"/>
+        <URL value="@../stylesheet (css)/managerUserStyle.css"/>
     </stylesheets>
 </AnchorPane>

@@ -38,3 +38,19 @@
 .table-row-cell {
     -fx-cell-size: 30px;  /* Đặt chiều cao hàng là 40 pixels */
 }
+
+.chart-bar {
+    -fx-bar-fill: #ff6694; /* Màu cột */
+    -fx-bar-radius: 30px;
+}
+
+.chart-legend {
+    -fx-background-color: #f3f3f3;
+    -fx-font-weight: bold;
+}
+
+.chart-title {
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
