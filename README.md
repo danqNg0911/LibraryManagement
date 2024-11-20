@@ -4,7 +4,7 @@
 2. Phạm Huy Hiếu - 23020535
 3. Phạm Việt Hưng - 23020542
 # 💡Mô tả
-# Ngôn ngữ và công cụ lập trình 
+# ⚔Ngôn ngữ và công cụ lập trình 
 <table align="center">
   <tr>
     <!-- Java -->
@@ -45,10 +45,10 @@
 
 # ❄️Sơ đồ UML
 # 🚀Hướng dẫn cài đặt
-# Hướng dẫn sử dụng
+# 🔰Hướng dẫn sử dụng
 # 🐸Minh họa dự án 
-# 💦Cải tiến trong tương lai
-# Trạng thái dự án 
+# 🔭Cải tiến trong tương lai
+# ⚛Trạng thái dự án 
 Dự án đã được hoàn thiện 
 # 📧Liên hệ
 
