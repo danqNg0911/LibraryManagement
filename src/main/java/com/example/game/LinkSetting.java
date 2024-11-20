@@ -33,7 +33,7 @@ public enum LinkSetting {
 
     // Âm thanh người chơi
     PLAYER_SOUND_HIT("/com/example/game/sound/player_hit_1.mp3"),
-    PLAYER_SOUTD_IS_HIT("/com/example/game/sound/player_isHit_1.mp3"),
+    PLAYER_SOUTD_IS_HIT("/com/example/game/sound/player_isHit_2.mp3"),
     PLAYER_SOUND_DEATH("/com/example/game/sound/player_die_1.mp3"),
 
     // Âm thanh quái vật gây sát thương
