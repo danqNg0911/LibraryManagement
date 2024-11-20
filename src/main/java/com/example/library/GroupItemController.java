@@ -40,7 +40,7 @@ public class GroupItemController {
     }
 
     public void viewBook(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/ViewItem.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/viewItem.fxml"));
         Parent root = null;
         try {
             root = loader.load();

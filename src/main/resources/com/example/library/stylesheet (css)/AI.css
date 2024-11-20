@@ -1,0 +1,18 @@
+
+#returnButton {
+    -fx-font-size: 15px;
+    -fx-background-color: #fff;
+    -fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #e70346, #047e85);
+    -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #ff6694, #00c4cc);
+    -fx-background-radius: 50;
+    -fx-font-weight: bold;
+    -fx-cursor: pointer;
+    -fx-transition: opacity 0.2 ease;
+    -fx-padding: 5px;
+    -fx-border-radius: 50;
+}
+
+#returnButton:pressed {
+    -fx-text-fill: #fff;
+    -fx-background-color: #00c4cc;
+}

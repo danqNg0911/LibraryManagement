@@ -1,9 +1,6 @@
 package com.example.library;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
@@ -17,6 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -25,7 +24,20 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.*;
 
-public class UserDashboardController extends UserController{
+public class UserDashboardController extends UserController {
+
+    private final List<Image> images = new ArrayList<>();
+    private int currentIndex = 0;
+    SequentialTransition sequentialTransition;
+
+    @FXML
+    public Label introLabel;
+
+    @FXML
+    public Button introButton;
+
+    @FXML
+    public ImageView intro;
 
     @FXML
     private Label currentEmailLabel;
@@ -43,13 +55,41 @@ public class UserDashboardController extends UserController{
     private BarChart<String, Number> rollingYearChart;
 
     @FXML
-    public void initialize()  {
+    public void initialize() {
         baseInitialize();
+
+        introLabel.setVisible(false);
+
+        // Sự kiện khi di chuột vào introButton
+        introButton.setOnMouseEntered(event -> {
+
+            // Hiển thị label khi chuột trỏ vào button
+            introLabel.setVisible(true);
+        });
+
+        // Sự kiện khi chuột rời khỏi introButton
+        introButton.setOnMouseExited(event -> {
+
+            // Ẩn label khi chuột rời khỏi button
+            introLabel.setVisible(false);
+        });
+
         currentName1Label.setText(user.getName(user.getUsername()));
         currentUserameLabel.setText(user.getUsername());
         currentPhoneLabel.setText(user.getPhone(user.getUsername()));
         currentEmailLabel.setText(user.getEmail(user.getUsername()));
         showBarChart();
+
+        // Thêm các đường dẫn ảnh vào danh sách
+        images.add(new Image(getClass().getResource("/com/example/library/assets/intro_ulib.png").toExternalForm()));
+        images.add(new Image(getClass().getResource("/com/example/library/assets/intro_new_update.png").toExternalForm()));
+        images.add(new Image(getClass().getResource("/com/example/library/assets/intro_bmw.jpg").toExternalForm()));
+        images.add(new Image(getClass().getResource("/com/example/library/assets/intro_coin.png").toExternalForm()));
+        images.add(new Image(getClass().getResource("/com/example/library/assets/intro_upgrade.png").toExternalForm()));
+        images.add(new Image(getClass().getResource("/com/example/library/assets/intro_ai.png").toExternalForm()));
+
+        // Bắt đầu vòng lặp hiển thị ảnh
+        startImageLoop();
     }
 
 
@@ -65,6 +105,49 @@ public class UserDashboardController extends UserController{
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
         return;
     }
+
+    public void handleIntroButton(ActionEvent actionEvent) throws IOException {
+        WindowManager.handlemoveButton("fxml/Intro.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/intro.css", 640, 500, actionEvent);
+    }
+
+    private void startImageLoop() {
+        if (images.isEmpty()) return;
+
+        // Tạo Transition mờ dần ảnh cũ
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), intro);
+        fadeOut.setFromValue(1.0); // Ảnh rõ nét
+        fadeOut.setToValue(0.6);   // Ảnh mờ hoàn toàn
+
+        // Tạo Transition rõ dần ảnh mới
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), intro);
+        fadeIn.setFromValue(0.6);  // Ảnh mờ hoàn toàn
+        fadeIn.setToValue(1.0);    // Ảnh rõ nét
+
+        // Thay đổi ảnh trong fadeOut và fadeIn
+        fadeOut.setOnFinished(event -> {
+            // Chuyển sang ảnh tiếp theo
+            currentIndex = (currentIndex + 1) % images.size();
+            intro.setImage(images.get(currentIndex));
+        });
+
+        // Tạo khoảng chờ giữa hai lần chuyển ảnh
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+
+        // Kết hợp fadeOut -> fadeIn -> pause thành một chuỗi
+        sequentialTransition = new SequentialTransition(
+                fadeOut,
+                fadeIn,
+                pause
+        );
+
+        // Lặp lại mãi mãi
+        sequentialTransition.setCycleCount(SequentialTransition.INDEFINITE);
+        sequentialTransition.play();
+    }
+
+
+
+
 
     public void showBarChart() {
         // Xóa dữ liệu cũ nếu có

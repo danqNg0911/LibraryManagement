@@ -13,7 +13,6 @@ public class API {
     private static final String API_KEY = LinkSetting.API_URL.getLink();
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
-    // Hàm lấy dữ liệu sách từ Google Books API
     public static String searchBooks(String title, String author, String category, String isbn) throws Exception {
         OkHttpClient client = new OkHttpClient();
         StringBuilder query = new StringBuilder();
