@@ -72,7 +72,6 @@ public class Sound {
         playerDeathSoundPlayer.play();
     }
 
-
     // Phương thức phát âm thanh khi monster bắn đạn
     public static void playMonsterSound(String answer) {
         String musicPath = "";
@@ -135,6 +134,33 @@ public class Sound {
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.stop();
             backgroundMusicPlayer.play();
+        }
+    }
+
+    // Phương thức kiểm tra nhạc nền có đang chạy hay không
+    public static boolean isBackgroundMusicPlaying() {
+        return backgroundMusicPlayer != null && backgroundMusicPlayer.getStatus() == MediaPlayer.Status.PLAYING;
+    }
+
+    public static void stopAllSounds() {
+        if (hitSoundPlayer != null) {
+            hitSoundPlayer.stop();
+            hitSoundPlayer = null;
+        }
+
+        if (monsterDeathSoundPlayer != null) {
+            monsterDeathSoundPlayer.stop();
+            monsterDeathSoundPlayer = null;
+        }
+
+        if (playerDeathSoundPlayer != null) {
+            playerDeathSoundPlayer.stop();
+            playerDeathSoundPlayer = null;
+        }
+
+        if (playerDeathSoundPlayer != null) {
+            playerDeathSoundPlayer.stop();
+            playerDeathSoundPlayer = null;
         }
     }
 }

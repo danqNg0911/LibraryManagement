@@ -58,6 +58,9 @@ public class MonsterA extends Monster {
             Timeline shootTimeline = new Timeline(new KeyFrame(Duration.millis(i * SHOOT_COOLDOWN), new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    if (isPause || isDead) {
+                        return;
+                    }
                     shoot(); // Bắn viên đạn
                 }
             }));

@@ -63,6 +63,7 @@ public class BlackMythWukongController {
     private Question currentQuestion;
     private String correctAnswerText; // Biến lưu đáp án đúng của câu hỏi hiện tại
 
+    private Timeline updateLabelsTimeline;
     private Timeline spawnATimeline;
     private Timeline spawnBTimeline;
     private Timeline spawnCTimeline;
@@ -133,14 +134,15 @@ public class BlackMythWukongController {
         } catch (Exception e) {
             System.out.println("Không thể tải file bmw_round");
         }
-        
+
         bg = new Background(bottomPane);
         bg.start(1);
 
         gameTime = NumSetting.TIME.getNum();
 
         startGameTimer();
-        Sound.playBackgroundMusic();
+
+        //Sound.playBackgroundMusic();
 
         // Gán các quái vật vào mảng
         monsters[0] = monsterA;
@@ -187,6 +189,20 @@ public class BlackMythWukongController {
                                 togglePause();
                                 event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
                             }
+                            if ((isPaused || isLose || isWin) && event.getCode() == KeyCode.M) {
+                                try {
+                                    monsterA = null;
+                                    monsterB = null;
+                                    monsterC = null;
+                                    monsterD = null;
+                                    Sound.stopBackgroundMusic();
+                                    Sound.restartBackgroundMusic();
+                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 600, 333);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                return;
+                            }
                             if (event.getCode() == KeyCode.R) { // Phím R để restart game
                                 restartGame(); // Gọi phương thức restartGame()
                                 event.consume(); // Ngừng sự kiện không lan truyền ra ngoài
@@ -232,12 +248,15 @@ public class BlackMythWukongController {
         spawnDTimeline.play();
 
         // Khởi tạo Timeline để cập nhật số lượng lives và số lượng quái vật
-        Timeline updateLabelsTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), new EventHandler<ActionEvent>() {
+        updateLabelsTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (roundCount == 6) {
+                    updateLabelsTimeline.stop();
+                    stopGame();
                     try {
-                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", 800, 800);
+                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", "stylesheet (css)/game.css", 600, 333);
+                        return;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -250,10 +269,10 @@ public class BlackMythWukongController {
                 robot_num.setText("Robot: " + cNums);
                 troll_num.setText("Troll: " + dNums);
 
-                if (!deathSound && player.getHealth() <= 0) {
+                /*if (!deathSound && player.getHealth() <= 0) {
                     Sound.playPlayerDeathSound();
                     deathSound = true;
-                }
+                }*/
 
                 if (!isLose && !isWin && (player.getHealth() == 0 || conditionToLose())) {
                     isLose = true;
@@ -301,8 +320,6 @@ public class BlackMythWukongController {
             }
         }
     }
-
-
 
     private void loadNextQuestion() {
         if (!questions.isEmpty()) {
@@ -379,7 +396,10 @@ public class BlackMythWukongController {
             return; // Không thực hiện restart nếu game chưa tạm dừng
         }
 
-        Sound.restartBackgroundMusic();
+//
+//        if (!isWin) {
+//            Sound.restartBackgroundMusic();
+//        }
 
         //questions = Question.loadQuestionsFromFile(QUESTION_FILE_PATH); // Đường dẫn file
         loadNextQuestion();
@@ -560,10 +580,12 @@ public class BlackMythWukongController {
         boolean pause;
         if (isPaused) {
             pause = true;
-            Sound.pauseBackgroundMusic();
-        } else {
+            //Sound.pauseBackgroundMusic();
+        }
+
+        else {
             pause = false;
-            Sound.resumeBackgroundMusic();
+            //Sound.resumeBackgroundMusic();
         }
 
         pauseOverlay.setVisible(pause); // Hiển thị/ẩn cửa sổ Pause khi tạm dừng
@@ -662,7 +684,7 @@ public class BlackMythWukongController {
                     // Kiểm tra va chạm với các monster
                     for (Monster monster : monsterList) {
                         if (monster != null && IsHit(playerView, monster.getMonsterImageView())) {
-                            System.out.println("Hit !!!");
+                            //System.out.println("Hit !!!");
                             (monster).reduceHealth();
                             if (aNums >= 0 && monster.isDead() && monster instanceof MonsterA) {
                                 aNums--;
@@ -856,6 +878,26 @@ public class BlackMythWukongController {
         timeline.play();
     }
 
+    private void stopGame() {
+        // Dừng tất cả Timeline
+        if (gameTimer != null) gameTimer.stop();
+        if (updateLabelsTimeline != null) updateLabelsTimeline.stop();
+        if (spawnATimeline != null) spawnATimeline.stop();
+        if (spawnBTimeline != null) spawnBTimeline.stop();
+        if (spawnCTimeline != null) spawnCTimeline.stop();
+        if (spawnDTimeline != null) spawnDTimeline.stop();
+
+        // Dừng tất cả quái vật
+        for (Monster monster : monsterList) {
+            if (monster != null) monster.setIsPause(true);
+        }
+
+        // Dừng background và player
+        if (bg != null) bg.setIsPause(true);
+        if (player != null) player.setIsPause(true);
+
+        // Dừng âm thanh
+        Sound.stopAllSounds(); // Nếu bạn đã thêm phương thức này trong lớp Sound
+    }
 
 }
-

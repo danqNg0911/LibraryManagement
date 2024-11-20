@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManagerJDBC extends BaseJDBC implements LinkJDBC{
+public class ManagerJDBC extends BaseJDBC implements LinkJDBC {
     private static final String MANAGER_DATA_FILE_PATH = LinkSetting.MANAGER_LIST_FILE_PATH.getLink();
 
     public final List<String> listOfManager = new ArrayList<>();

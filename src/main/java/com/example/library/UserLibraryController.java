@@ -60,6 +60,24 @@ public class UserLibraryController extends UserController {
     @FXML
     private ProgressIndicator loadingSearching;
 
+    @FXML
+    public void initialize() throws IOException {
+        baseInitialize();
+    }
+
+    // Di chuột vào hiện hiệu ứng và ngược lại
+    public void showAnimationLib(MouseEvent event) {
+        return;
+    }
+
+    public void unshowAnimationLib(MouseEvent event) {
+        return;
+    }
+
+    public void moveToLibrary(ActionEvent actionEvent) throws IOException {
+        return;
+    }
+
     public void onSearch(ActionEvent event) {
         String isbn = isbnField.getText().trim();
         String title = titleField.getText().trim();
@@ -72,6 +90,7 @@ public class UserLibraryController extends UserController {
             loadingSearching.setVisible(true);
             // làm mờ khi tìm kiếm
             mainSce.setEffect(new GaussianBlur(4));
+
             // Sử dụng Task để tìm kiếm sách trên luồng nền
             Task<String> searchTask = new Task<>() {
                 @Override
@@ -132,6 +151,7 @@ public class UserLibraryController extends UserController {
             String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
             String imageUrl = getImageUrl(volumeInfo);
 
+            // Cung cấp giá trị cho timestamp (ví dụ như thời gian hiện tại)
             Date date = new Date(Timestamp.from(Instant.now()).getTime());
 
             FXMLLoader loader = new FXMLLoader();
@@ -180,81 +200,5 @@ public class UserLibraryController extends UserController {
             return volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
         }
         return null;
-    }
-
-    public void showAnimationLib(MouseEvent event) {
-       return;
-    }
-
-    public void unshowAnimationLib(MouseEvent event) {
-        return;
-    }
-
-    public void moveToLibrary(ActionEvent actionEvent) throws IOException {
-        return;
-    }
-
-    @FXML
-    public void initialize() {
-        // Hiển thị username
-        accountName.setText(user.getName(user.getUsername()));
-        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
-
-        int avatarId = user.getAvatar(user.getUsername());
-        switch (avatarId) {
-            case 1: {
-                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
-                currentAvatar.setImage(ava1Img);
-                break;
-            }
-            case 2: {
-                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
-                currentAvatar.setImage(ava2Img);
-                break;
-            }
-            case 3: {
-                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
-                currentAvatar.setImage(ava3Img);
-                break;
-            }
-            case 4: {
-                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
-                currentAvatar.setImage(ava4Img);
-                break;
-            }
-            case 5: {
-                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
-                currentAvatar.setImage(ava5Img);
-                break;
-            }
-            case 6: {
-                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
-                currentAvatar.setImage(ava6Img);
-                break;
-            }
-            case 7: {
-                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
-                currentAvatar.setImage(ava7Img);
-                break;
-            }
-            case 8: {
-                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
-                currentAvatar.setImage(ava8Img);
-                break;
-            }
-            case 9: {
-                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
-                currentAvatar.setImage(ava9Img);
-                break;
-            }
-            case 0: {
-                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
-                currentAvatar.setImage(ava0Img);
-                break;
-            }
-            default:
-                System.out.println("Unknown avatar id: " + avatarId);
-        }
-        System.out.println("Avatar updated to ID: " + avatarId);
     }
 }

@@ -5,6 +5,7 @@ public class UserAccount {
     private String username;
     private String phonenum;
     private String email;
+    private int avatar;
 
     // Constructor
     public UserAccount(String name, String username, String phonenum, String email) {
@@ -12,6 +13,15 @@ public class UserAccount {
         this.username = username;
         this.phonenum = phonenum;
         this.email = email;
+    }
+
+    // Constructor
+    public UserAccount(String name, String username, String phonenum, String email, int avatar) {
+        this.name = name;
+        this.username = username;
+        this.phonenum = phonenum;
+        this.email = email;
+        this.avatar = avatar;
     }
 
     // Getters and setters
@@ -26,4 +36,12 @@ public class UserAccount {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public int getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(int avaID) {
+        this.avatar = avaID;
+    }
 }

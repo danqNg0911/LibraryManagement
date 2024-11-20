@@ -2,7 +2,7 @@ package com.example.library;
 
 import java.sql.*;
 import java.sql.Date;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.*;
 
 public class BookJDBC implements LinkJDBC {
@@ -69,8 +69,8 @@ public class BookJDBC implements LinkJDBC {
             sqlStatement.setString(7, description);
             sqlStatement.setString(8, source);
 
-            Date date = new Date(Timestamp.from(Instant.now()).getTime());
-            sqlStatement.setDate(9, date);
+            LocalDate date = LocalDate.now();
+            sqlStatement.setDate(9, java.sql.Date.valueOf(date));
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -171,7 +171,6 @@ public class BookJDBC implements LinkJDBC {
         return books;
     }
 
-
     public static List<Book> getAllBooksFromAllUser() throws SQLException {
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books";
@@ -253,7 +252,6 @@ public class BookJDBC implements LinkJDBC {
                     String resultCategory = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
-                    String source = resultSet.getString("source");
                     int id = resultSet.getInt("id");
 
                     Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, id);
@@ -367,5 +365,22 @@ public class BookJDBC implements LinkJDBC {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public static int getTotalBorrowedBooks(String username) throws SQLException {
+        int  totalBooks = 0;
+        String query = "SELECT COUNT(*) FROM books WHERE username=? GROUP BY username";
+
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                if (resultSet.next()) {  // Nếu có kết quả
+                    totalBooks = resultSet.getInt("COUNT(*)");  // Truy xuất giá trị COUNT(*) qua alias
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalBooks;
     }
 }

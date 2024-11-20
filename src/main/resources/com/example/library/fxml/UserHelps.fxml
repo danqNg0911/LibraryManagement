@@ -13,150 +13,203 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserHelpsController">
-   <children>
-      <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Ulib_logo.png" />
-         </image>
-      </ImageView>
-      <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="977.0">
-         <children>
-            <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="190.0" text="Helps">
-               <font>
-                  <Font name="System Bold" size="34.0" />
-               </font>
-            </Label>
-            <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
-            <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/defaultUserAva.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
-               <children>
-                  <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
-                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
-               </children>
-            </VBox>
-            <Line endX="1207.4000244140625" endY="135.2928924560547" layoutX="-221.0" layoutY="9.0" startX="220.99998474121094" startY="135.2928924560547" />
-            <Label layoutX="554.0" layoutY="267.0" text="You can watch the instruction in our Youtube channel">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="656.0" layoutY="297.0" text="Remeber to subcribe us!! Thank you!!">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </Label>
-            <Button layoutX="727.0" layoutY="507.0" mnemonicParsing="false" onAction="#openYouTubeChannel" styleClass="hbutton" text="Open" />
-            <ImageView fitHeight="170.0" fitWidth="250.0" layoutX="628.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/video.png" />
-               </image>
-            </ImageView>
-            <Pane layoutX="39.0" layoutY="202.0" prefHeight="530.0" prefWidth="482.0" styleClass="opPane">
-               <children>
-                  <TextField layoutX="52.0" layoutY="136.0" prefHeight="331.0" prefWidth="378.0" styleClass="field" />
-                  <Button fx:id="sendButton" layoutX="362.0" layoutY="80.0" mnemonicParsing="false" onAction="#sendOpinion" prefHeight="27.0" prefWidth="68.0" styleClass="hbutton" text="Send" />
-                  <Label layoutX="52.0" layoutY="65.0" text="Your opinions about the app">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="55.0" layoutY="93.0" text="This is useful for us to develop more!!!">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="174.0" layoutY="14.0" text="Your opinions">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label layoutX="706.0" layoutY="209.0" text="Instruction">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Dasb.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard" onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0" prefWidth="186.0" text="Dashboard" />
-               </children>
-            </HBox>
-            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Lib.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
-               </children>
-            </HBox>
-            <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Collection.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection" onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0" prefWidth="186.0" text="Collection" />
-               </children>
-            </HBox>
-            <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Setting.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" text="Setting" />
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Help.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="helpsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" text="Helps" />
-               </children>
-            </HBox>
-            <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="libraryPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/Upgrade.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade" onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0" prefWidth="186.0" text="Upgrade" />
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-   </children>
-   <stylesheets>
-      <URL value="@../stylesheet (css)/userStyles.css" />
-      <URL value="@../stylesheet (css)/userHelpsStyle.css" />
-   </stylesheets>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.library.UserHelpsController">
+    <children>
+        <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../assets/Ulib_logo.png"/>
+            </image>
+        </ImageView>
+        <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="977.0">
+            <children>
+                <Label fx:id="dashboardTitle" layoutX="44.0" layoutY="57.0" prefHeight="50.0" prefWidth="190.0"
+                       text="Helps">
+                    <font>
+                        <Font name="System Bold" size="34.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0"
+                       text="Acc name"/>
+                <ImageView fx:id="currentAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="743.0" layoutY="47.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/defaultUserAva.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false"
+                        onAction="#showOptionAccount" text="Account"/>
+                <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0"
+                      visible="false">
+                    <children>
+                        <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting"
+                                prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting"/>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton"
+                                text="Helps"/>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0"
+                                prefWidth="138.0" styleClass="accButton" text="Log Out"/>
+                    </children>
+                </VBox>
+                <Line endX="1207.4000244140625" endY="135.2928924560547" layoutX="-221.0" layoutY="9.0"
+                      startX="220.99998474121094" startY="135.2928924560547"/>
+                <Label layoutX="554.0" layoutY="267.0" text="You can watch the instruction in our Youtube channel">
+                    <font>
+                        <Font name="System Bold" size="15.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="656.0" layoutY="297.0" text="Remeber to subcribe us!! Thank you!!">
+                    <font>
+                        <Font name="System Italic" size="12.0"/>
+                    </font>
+                </Label>
+                <Button layoutX="727.0" layoutY="507.0" mnemonicParsing="false" onAction="#openYouTubeChannel"
+                        styleClass="hbutton" text="Open"/>
+                <ImageView fitHeight="170.0" fitWidth="250.0" layoutX="628.0" layoutY="315.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/video.png"/>
+                    </image>
+                </ImageView>
+                <Pane layoutX="39.0" layoutY="202.0" prefHeight="530.0" prefWidth="482.0" styleClass="opPane">
+                    <children>
+                        <TextField layoutX="52.0" layoutY="136.0" prefHeight="331.0" prefWidth="378.0"
+                                   styleClass="field"/>
+                        <Button fx:id="sendButton" layoutX="362.0" layoutY="80.0" mnemonicParsing="false"
+                                onAction="#sendOpinion" prefHeight="27.0" prefWidth="68.0" styleClass="hbutton"
+                                text="Send"/>
+                        <Label layoutX="52.0" layoutY="65.0" text="Your opinions about the app">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="55.0" layoutY="93.0" text="This is useful for us to develop more!!!">
+                            <font>
+                                <Font name="System Italic" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="14.0" text="Your opinions">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Label layoutX="706.0" layoutY="209.0" text="Instruction">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
+            <children>
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="dashboardPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Dasb.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#moveToDashboard"
+                                onMouseEntered="#showAnimationDas" onMouseExited="#unshowAnimationDas" prefHeight="40.0"
+                                prefWidth="186.0" text="Dashboard"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="libraryPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Lib.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary"
+                                onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0"
+                                prefWidth="186.0" text="Library"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="collectionPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Collection.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="collectionButton" mnemonicParsing="false" onAction="#moveToCollection"
+                                onMouseEntered="#showAnimationClt" onMouseExited="#unshowAnimationClt" prefHeight="40.0"
+                                prefWidth="186.0" text="Collection"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Setting.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting"
+                                onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0"
+                                prefWidth="186.0" text="Setting"/>
+                    </children>
+                </HBox>
+            </children>
+        </Pane>
+        <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
+            <children>
+                <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0"
+                      prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/Help.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="helpsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0"
+                                text="Helps"/>
+                    </children>
+                </HBox>
+                <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0"
+                      prefHeight="40.0" prefWidth="222.0">
+                    <children>
+                        <ImageView fx:id="libraryPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true"
+                                   preserveRatio="true" visible="false">
+                            <image>
+                                <Image url="@../assets/Upgrade.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#moveToUpgrade"
+                                onMouseEntered="#showAnimationUpg" onMouseExited="#unshowAnimationUpg" prefHeight="40.0"
+                                prefWidth="186.0" text="Upgrade"/>
+                    </children>
+                </HBox>
+                <Button fx:id="gameButton" layoutX="36.0" layoutY="303.0" mnemonicParsing="false"
+                        onAction="#handleGameButton" prefHeight="40.0" prefWidth="186.0" styleClass="gameButton">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="false"
+                                   styleClass="gameButton">
+                            <Image url="@../assets/play_button.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <ImageView fx:id="gamePic" fitHeight="40.0" fitWidth="40.0" layoutY="303.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wukong_face.png"/>
+                </ImageView>
+            </children>
+        </Pane>
+    </children>
+    <stylesheets>
+        <URL value="@../stylesheet (css)/userStyles.css"/>
+        <URL value="@../stylesheet (css)/userHelpsStyle.css"/>
+    </stylesheets>
 </AnchorPane>

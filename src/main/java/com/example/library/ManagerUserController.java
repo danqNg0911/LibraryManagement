@@ -3,16 +3,24 @@ package com.example.library;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class ManagerUserController extends ManagerController {
+
     @FXML
     private TableView<UserAccount> userTable;
 
@@ -61,6 +69,39 @@ public class ManagerUserController extends ManagerController {
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         phonenumColumn.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        userTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                UserAccount selectedUser = userTable.getSelectionModel().getSelectedItem();
+                if (selectedUser != null) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/ViewUserManager.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    ViewUserManagerController controller = loader.getController();
+
+                    try {
+                        controller.setUserDetails(selectedUser);
+                    } catch (SQLException e) {
+                        System.out.println("loi BookJDBC.getTotalBorrowedBooks(...)");
+                    }
+                    //controller.showBarChart(selectedUser);
+
+                    Scene scene = new Scene(root, 1200, 800);
+                    scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet (css)/managerStyles.css")).toExternalForm());
+                    scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/library/stylesheet (css)/managerUserStyle.css")).toExternalForm());
+
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    WindowManager.navigateTo(scene);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+        });
 
         // Load dữ liệu
         loadUserAccounts();

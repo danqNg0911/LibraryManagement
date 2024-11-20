@@ -20,12 +20,15 @@ public class API {
         if (!isbn.isEmpty()) {
             query.append("isbn:").append(isbn);
         }
+
         if (!title.isEmpty()) {
             query.append("intitle:").append(title).append("+");
         }
+
         if (!author.isEmpty()) {
                 query.append("inauthor:").append(author).append("+");
         }
+
         if (!category.isEmpty()) {
             query.append("subject:").append(category).append("+");
         }

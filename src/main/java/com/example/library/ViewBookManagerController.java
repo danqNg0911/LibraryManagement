@@ -59,7 +59,7 @@ public class ViewBookManagerController extends ManagerController {
             if (selectedBook.getImageUrl() != null) {
                 coverImage.setImage(new Image(selectedBook.getImageUrl()));
             } else {
-                Image nullImage = new Image(LinkSetting.IMAGE_NULL.getLink());
+                Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
                 coverImage.setImage(nullImage);
             }
 

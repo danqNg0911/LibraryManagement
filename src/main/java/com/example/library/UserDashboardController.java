@@ -1,12 +1,13 @@
 package com.example.library;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -19,10 +20,12 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.*;
 
-public class UserDashboardController extends UserController {
-    @FXML
-    private ImageView currentAvatar1;
+public class UserDashboardController extends UserController{
 
     @FXML
     private Label currentEmailLabel;
@@ -37,11 +40,20 @@ public class UserDashboardController extends UserController {
     private Label currentUserameLabel;
 
     @FXML
-    private Label dashboardTitle;
+    private BarChart<String, Number> rollingYearChart;
 
     @FXML
-    private BarChart<?, ?> rollingYearChart;
+    public void initialize()  {
+        baseInitialize();
+        currentName1Label.setText(user.getName(user.getUsername()));
+        currentUserameLabel.setText(user.getUsername());
+        currentPhoneLabel.setText(user.getPhone(user.getUsername()));
+        currentEmailLabel.setText(user.getEmail(user.getUsername()));
+        showBarChart();
+    }
 
+
+    // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationDas(MouseEvent event) {
         return;
     }
@@ -54,85 +66,53 @@ public class UserDashboardController extends UserController {
         return;
     }
 
-    @FXML
-    public void initialize() {
-        // Hiển thị username
-        accountName.setText(user.getName(user.getUsername()));
-        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        currentName1Label.setText(user.getName(user.getUsername()));
-        currentUserameLabel.setText(user.getUsername());
-        currentPhoneLabel.setText(user.getPhone(user.getUsername()));
-        currentEmailLabel.setText(user.getEmail(user.getUsername()));
+    public void showBarChart() {
+        // Xóa dữ liệu cũ nếu có
+        rollingYearChart.getData().clear();
 
-        int avatarId = user.getAvatar(user.getUsername());
-        switch (avatarId) {
-            case 1: {
-                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
-                currentAvatar.setImage(ava1Img);
-                currentAvatar1.setImage(ava1Img);
-                break;
+        // Tạo series dữ liệu
+        XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
+        dataSeries.setName("Number of books added by days");
+
+        try {
+            // Lấy dữ liệu từ cơ sở dữ liệu
+            Map<String, Integer> books = BookJDBC.getBooksByDay(user.getUsername());
+
+            Map<String, Number> fullData = new HashMap<>(books);
+
+            // Sắp xếp dữ liệu theo ngày
+            List<Map.Entry<String, Number>> sortedData = new ArrayList<>(fullData.entrySet());
+            sortedData.sort(Map.Entry.comparingByKey());
+
+            // Thêm dữ liệu vào series
+            for (Map.Entry<String, Number> entry : sortedData) {
+                String day = entry.getKey();
+                Number count = entry.getValue();
+
+                // Tạo đối tượng Data với giá trị Y ban đầu là 0
+                XYChart.Data<String, Number> data = new XYChart.Data<>(day, 0);
+                dataSeries.getData().add(data);
+
+                // Tạo animation tăng giá trị từ 0 đến giá trị thực
+                Timeline timeline = new Timeline();
+                KeyValue kv = new KeyValue(data.YValueProperty(), count);
+                KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+                timeline.getKeyFrames().add(kf);
+                timeline.setCycleCount(1);
+                timeline.play();
             }
-            case 2: {
-                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
-                currentAvatar.setImage(ava2Img);
-                currentAvatar1.setImage(ava2Img);
-                break;
-            }
-            case 3: {
-                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
-                currentAvatar.setImage(ava3Img);
-                currentAvatar1.setImage(ava3Img);
-                break;
-            }
-            case 4: {
-                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
-                currentAvatar.setImage(ava4Img);
-                currentAvatar1.setImage(ava4Img);
-                break;
-            }
-            case 5: {
-                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
-                currentAvatar.setImage(ava5Img);
-                currentAvatar1.setImage(ava5Img);
-                break;
-            }
-            case 6: {
-                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
-                currentAvatar.setImage(ava6Img);
-                currentAvatar1.setImage(ava6Img);
-                break;
-            }
-            case 7: {
-                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
-                currentAvatar.setImage(ava7Img);
-                currentAvatar1.setImage(ava7Img);
-                break;
-            }
-            case 8: {
-                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
-                currentAvatar.setImage(ava8Img);
-                currentAvatar1.setImage(ava8Img);
-                break;
-            }
-            case 9: {
-                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
-                currentAvatar.setImage(ava9Img);
-                currentAvatar1.setImage(ava9Img);
-                break;
-            }
-            case 0: {
-                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
-                currentAvatar.setImage(ava0Img);
-                currentAvatar1.setImage(ava0Img);
-                break;
-            }
-            default:
-                System.out.println("Unknown avatar id: " + avatarId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        System.out.println("Avatar updated to ID: " + avatarId);
-    }
 
-    public void handleGameButton(ActionEvent event) throws IOException {
-        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", 800, 800);
+        // Thêm series vào biểu đồ
+        rollingYearChart.getData().add(dataSeries);
+
+        // Đảm bảo trục Y tự động điều chỉnh theo dữ liệu
+        rollingYearChart.getYAxis().setAutoRanging(true);
+
+        // Đảm bảo trục X hiển thị đầy đủ các ngày
+        rollingYearChart.getXAxis().setAutoRanging(true);
     }
 }

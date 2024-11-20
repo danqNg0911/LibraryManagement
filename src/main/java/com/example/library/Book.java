@@ -1,11 +1,7 @@
 package com.example.library;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 public class Book {
@@ -28,6 +24,14 @@ public class Book {
         this.imageUrl = imageUrl;
         this.description = description;
         this.date = date;
+    }
+
+    public Book(String title, String author, String category, String imageUrl, String description) {
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.description = description;
     }
 
     public Book(String title, String author, String category, String imageUrl, String description, String username, String source, Date date, int id) {
@@ -98,6 +102,4 @@ public class Book {
     public void setId(int id) {
         this.id = id;
     }
-
-
 }

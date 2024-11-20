@@ -80,9 +80,10 @@ public class WindowManager {
     }
 
     // Truyền file FXML và CSS
-    public static void addGameFxml(String fxmlFile, int width, int height) throws IOException {
+    public static void addGameFxml(String fxmlFile, String cssFile, int width, int height) throws IOException {
         FXMLLoader Loader = new FXMLLoader(Main.class.getResource(fxmlFile));
         Scene scene = new Scene(Loader.load(), width, height);
+        scene.getStylesheets().add(Objects.requireNonNull(WindowManager.class.getResource(cssFile)).toExternalForm());
         WindowManager.navigateTo(scene);
         stage.setTitle("Black Myth Wukong");
         //stage.setScene(scene);
@@ -162,7 +163,7 @@ public class WindowManager {
     // Phương thức phát âm thanh
     public static void playButtonSound() {
         String soundFile = LinkSetting.SOUND_CLICK_MOUSE.getLink();
-        Media sound = new Media(new File(soundFile).toURI().toString());
+        Media sound = new Media(WindowManager.class.getResource(soundFile).toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
@@ -174,10 +175,22 @@ public class WindowManager {
         }
 
         // Tạo và phát nhạc từ file mới
-        Media media = new Media(new File(filePath).toURI().toString());
+        Media media = new Media(WindowManager.class.getResource(filePath).toExternalForm());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Lặp lại
         mediaPlayer.play();
+    }
+
+    public static void pauseMusic() {
+        if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+            mediaPlayer.pause();
+        }
+    }
+
+    public static void resumeMusic() {
+        if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
+            mediaPlayer.play();
+        }
     }
 
     public static void stopMusic() {

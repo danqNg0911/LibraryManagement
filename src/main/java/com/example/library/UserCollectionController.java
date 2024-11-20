@@ -20,144 +20,28 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class UserCollectionController extends UserController {
-    @FXML
-    private VBox sortBox;
 
     @FXML
-    private Button addNewClt;
+    protected ProgressIndicator loadingIndicator;
 
     @FXML
-    private Button addedDateSortButton;
+    protected VBox collectionBookContainer;
+
+    protected List<Book> books = new ArrayList<>();
 
     @FXML
-    private VBox cltOptionVBox;
-
-    @FXML
-    private Label collectionTitle;
-
-    @FXML
-    private Button selectCltButton;
-
-    @FXML
-    private Button sortButton;
-
-    @FXML
-    private VBox sortOptionVBox;
-
-    @FXML
-    private Button titleSortButton;
-
-    @FXML
-    private ProgressIndicator loadingIndicator;
-
-    @FXML
-    private VBox collectionBookContainer;
-
-    @FXML
-    private TextField titleField;
-
-    @FXML
-    private TextField authorField;
-
-    @FXML
-    private TextField categoryField;
-
-    private List<Book> books = new ArrayList<>();
-
-    private boolean TitleSorting = true;
-
-
-    private Map<Character, List<Book>> sortBooks(List<Book> books) {
-        Map<Character, List<Book>> ListByTitle = new TreeMap<Character, List<Book>>();
-        if (TitleSorting) {
-            for (Book book : books) {
-                char first = book.getTitle().toLowerCase().charAt(0);
-                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
-            }
-        } else {
-            for (Book book : books) {
-                char first = book.getAuthor().toLowerCase().charAt(0);
-                ListByTitle.computeIfAbsent(first, k -> new ArrayList<>()).add(book);
-            }
-        }
-        return ListByTitle;
-    }
-
-    public void sortByTitle(MouseEvent mouseEvent) {
-        this.TitleSorting = true;
+    public void initialize()  {
+        baseInitialize();
+        System.out.println(user.getName(user.getUsername()));
         try {
-            showData();
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            showDefaultCollectionData();
+        } catch (IOException e) {
+            System.out.println("class userCollectionController, line = 39");
+            //e.printStackTrace();
         }
     }
 
-    public void sortByAuthor(MouseEvent mouseEvent) {
-        this.TitleSorting = false;
-        try {
-            showData();
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showData(ActionEvent actionEvent) throws IOException, SQLException {
-        showData();
-    }
-
-    public void showData() throws IOException, SQLException {
-        //loadingIndicator.setVisible(true);
-        //mainSce.setEffect(new GaussianBlur(4));
-        books.clear();
-        collectionBookContainer.getChildren().clear();
-
-        String titleSearch = titleField.getText().trim();
-        String authorSearch = authorField.getText().trim();
-        String categorySearch = categoryField.getText().trim();
-
-        if (titleSearch.isEmpty() && authorSearch.isEmpty() && categorySearch.isEmpty()) {
-            books = BookJDBC.getAllBooksFromDatabase(user.getUsername());
-        } else {
-            books = BookJDBC.searchBooksFromDatabase(user.getUsername(), titleSearch, authorSearch, categorySearch);
-        }
-
-        if (books.isEmpty()) {
-            WindowManager.alertWindow(Alert.AlertType.ERROR, "Announcement", "There's no thing to show from your library", "stylesheet (css)/login_alert.css");
-        } else {
-        Map<Character, List<Book>> BooksSortByTitle = sortBooks(books);
-        for (Map.Entry<Character, List<Book>> entry : BooksSortByTitle.entrySet()) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/Group.fxml"));
-                Node collectionGroupNode = loader.load();
-                CollectionGroupController collectionGroupController = loader.getController();
-                collectionGroupController.addGroupCharacter(entry.getKey());
-                for (Book book : entry.getValue()) {
-                    FXMLLoader itemLoader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/GroupItem.fxml"));
-                    Node bookItemNode = itemLoader.load();
-                    GroupItemController bookItemController = itemLoader.getController();
-                    bookItemController.setGroupItem(book);
-                    collectionGroupController.addBookItem(bookItemNode);
-                }
-                collectionBookContainer.getChildren().add(collectionGroupNode);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } }
-
-        //loadingIndicator.setVisible(false);
-        //mainSce.setEffect(null);
-    }
-
-    public void moveToAddBook(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/AddBook.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
-    }
-
-    public void showSortBox(ActionEvent actionEvent) throws IOException {
-        WindowManager.playButtonSound();
-        sortBox.setVisible(!sortBox.isVisible());
-    }
-
+    // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationClt(MouseEvent event) {
         return;
     }
@@ -170,67 +54,8 @@ public class UserCollectionController extends UserController {
         return;
     }
 
-    @FXML
-    public void initialize() {
-        // Hiển thị username
-        accountName.setText(user.getName(user.getUsername()));
-        accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
-
-        int avatarId = user.getAvatar(user.getUsername());
-        switch (avatarId) {
-            case 1: {
-                Image ava1Img = new Image(LinkSetting.AVATAR_1.getLink());
-                currentAvatar.setImage(ava1Img);
-                break;
-            }
-            case 2: {
-                Image ava2Img = new Image(LinkSetting.AVATAR_2.getLink());
-                currentAvatar.setImage(ava2Img);
-                break;
-            }
-            case 3: {
-                Image ava3Img = new Image(LinkSetting.AVATAR_3.getLink());
-                currentAvatar.setImage(ava3Img);
-                break;
-            }
-            case 4: {
-                Image ava4Img = new Image(LinkSetting.AVATAR_4.getLink());
-                currentAvatar.setImage(ava4Img);
-                break;
-            }
-            case 5: {
-                Image ava5Img = new Image(LinkSetting.AVATAR_5.getLink());
-                currentAvatar.setImage(ava5Img);
-                break;
-            }
-            case 6: {
-                Image ava6Img = new Image(LinkSetting.AVATAR_6.getLink());
-                currentAvatar.setImage(ava6Img);
-                break;
-            }
-            case 7: {
-                Image ava7Img = new Image(LinkSetting.AVATAR_7.getLink());
-                currentAvatar.setImage(ava7Img);
-                break;
-            }
-            case 8: {
-                Image ava8Img = new Image(LinkSetting.AVATAR_8.getLink());
-                currentAvatar.setImage(ava8Img);
-                break;
-            }
-            case 9: {
-                Image ava9Img = new Image(LinkSetting.AVATAR_9.getLink());
-                currentAvatar.setImage(ava9Img);
-                break;
-            }
-            case 0: {
-                Image ava0Img = new Image(LinkSetting.AVATAR_0.getLink());
-                currentAvatar.setImage(ava0Img);
-                break;
-            }
-            default:
-                System.out.println("Unknown avatar id: " + avatarId);
-        }
-        System.out.println("Avatar updated to ID: " + avatarId);
+    public void showDefaultCollectionData() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/UserDefaultCollection.fxml"));
+        collectionBookContainer.getChildren().add((Node) loader.load());
     }
 }
