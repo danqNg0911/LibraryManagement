@@ -39,10 +39,15 @@ public abstract class UserCollectionCltController extends  UserCollectionControl
     protected boolean isMostAdded;
     protected boolean isMostView;
 
-    public void baseCltInitialize() throws IOException {
+    public void baseCltInitialize() {
         baseInitialize();
         filters.setExpanded(false);
-        showCollectionData(new ActionEvent());
+
+        try {
+            showCollectionData(new ActionEvent());
+        } catch (IOException e) {
+            System.out.println("class userCollectionCotroller, line = 124");
+        }
     }
 
     @FXML

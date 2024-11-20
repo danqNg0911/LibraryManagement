@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
-public class UserCollectionController extends  UserController {
+public class UserCollectionController extends UserController {
 
     @FXML
     protected ProgressIndicator loadingIndicator;
@@ -30,9 +30,15 @@ public class UserCollectionController extends  UserController {
     protected List<Book> books = new ArrayList<>();
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize()  {
         baseInitialize();
-        showDefaultCollectionData();
+        System.out.println(user.getName(user.getUsername()));
+        try {
+            showDefaultCollectionData();
+        } catch (IOException e) {
+            System.out.println("class userCollectionController, line = 39");
+            //e.printStackTrace();
+        }
     }
 
     // Di chuột vào hiện hiệu ứng và ngược lại

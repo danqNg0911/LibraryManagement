@@ -61,7 +61,7 @@ public class UserLibraryController extends UserController {
     private ProgressIndicator loadingSearching;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         baseInitialize();
     }
 

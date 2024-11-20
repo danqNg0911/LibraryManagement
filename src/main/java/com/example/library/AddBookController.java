@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 
+import java.io.IOException;
+
 public class AddBookController extends UserCollectionCltController {
     @FXML
     private TextField titleField;

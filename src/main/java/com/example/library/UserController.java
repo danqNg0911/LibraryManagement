@@ -17,7 +17,6 @@ import java.io.IOException;
 
 abstract class UserController extends BaseController {
 
-
     @FXML
     protected Button accHelpsButton;
 
@@ -79,13 +78,12 @@ abstract class UserController extends BaseController {
     protected Button upgradeButton;
 
     @FXML
-    public Button gameButton;
+    protected Button gameButton;
 
     @FXML
-    public ImageView gamePic;
+    protected ImageView gamePic;
 
-    @FXML
-    public void baseInitialize() {
+    protected void baseInitialize()  {
 
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
