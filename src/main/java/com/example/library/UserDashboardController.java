@@ -43,7 +43,7 @@ public class UserDashboardController extends UserController{
     private BarChart<String, Number> rollingYearChart;
 
     @FXML
-    public void initialize() {
+    public void initialize()  {
         baseInitialize();
         currentName1Label.setText(user.getName(user.getUsername()));
         currentUserameLabel.setText(user.getUsername());

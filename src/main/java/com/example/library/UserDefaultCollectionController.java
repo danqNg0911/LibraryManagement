@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class UserDefaultCollectionController extends UserCollectionController {
+public class UserDefaultCollectionController extends UserController {
     public Button clt1Button;
     public ImageView clt1Image;
     public Button clt2Button;

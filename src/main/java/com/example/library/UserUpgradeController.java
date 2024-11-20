@@ -35,7 +35,7 @@ public class UserUpgradeController extends UserController {
     private ToggleGroup term;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         baseInitialize();
     }
 

@@ -16,9 +16,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserCollectionController">
-    <children>
 
-    </children>
     <children>
         <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true"
                    preserveRatio="true">
