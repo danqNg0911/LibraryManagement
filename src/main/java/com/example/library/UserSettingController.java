@@ -95,8 +95,8 @@ public class UserSettingController extends UserController {
     private Button changeAvaButton;
 
     @FXML
-    public void initialize() {
-       baseInitialize();
+    public void initialize() throws IOException {
+        baseInitialize();
         currentNameLabel.setText(user.getName(user.getUsername()));
     }
 

@@ -29,7 +29,7 @@ public class UserHelpsController extends UserController {
     private Button sendButton;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         baseInitialize();
     }
 

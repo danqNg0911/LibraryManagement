@@ -19,7 +19,7 @@ import java.util.*;
 
 public class UserCollectionClt1Controller extends UserCollectionCltController {
 
-    public void initialize() throws IOException {
+    public void initialize() {
         baseCltInitialize();
     }
 
