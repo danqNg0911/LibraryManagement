@@ -1,10 +1,10 @@
 # Ulib Library Management - Ứng dụng quản lý thư viện
-# Tác giả
+# 🐋Tác giả
 1. Nguyễn Hữu Hải Đăng - 23020524
 2. Phạm Huy Hiếu - 23020535
 3. Phạm Việt Hưng - 23020542
-# Mô tả
-# Ngôn ngữ lập trình
+# 💡Mô tả
+# Ngôn ngữ và công cụ lập trình 
 <table align="center">
   <tr>
     <!-- Java -->
@@ -42,12 +42,12 @@
 
 
 
-# Sơ đồ UML
-# Hướng dẫn cài đặt
+# ❄️Sơ đồ UML
+# 🚀Hướng dẫn cài đặt
 # Hướng dẫn sử dụng
-# Minh họa dự án 
-# Cải tiến trong tương lai
+# 🐸Minh họa dự án 
+# 💦Cải tiến trong tương lai
 # Trạng thái dự án 
 Dự án đã được hoàn thiện 
-# Liên hệ
-# Ghi chú
+# 📧Liên hệ
+# ✏️Ghi chú
