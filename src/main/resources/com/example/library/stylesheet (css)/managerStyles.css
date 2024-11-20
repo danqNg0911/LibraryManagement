@@ -59,7 +59,19 @@
     -fx-background-color: #ff6694;
 }
 
-.scroll-pane {
+.table-view .virtual-flow .scroll-pane {
     -fx-hbar-policy: never;
-    -fx-vbar-policy: never;
+    /*-fx-vbar-policy: never;*/
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-pane .scroll-bar {
+    -fx-background-color: transparent;   /* Nền thanh cuộn trong suốt */
+}
+
+.table-view .virtual-flow .scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #ff6694;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
 }

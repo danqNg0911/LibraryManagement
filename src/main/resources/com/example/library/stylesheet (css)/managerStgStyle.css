@@ -5,3 +5,46 @@
     -fx-padding: 0px 10px 0px 50px;
     -fx-alignment: center-left;
 }
+
+#info {
+    -fx-border-color: transparent transparent #696969 transparent;
+    -fx-border-width: 1px;
+}
+
+.changeButton {
+    -fx-font-size: 13px;
+    -fx-background-color: #ff6694;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+.changeButton:pressed {
+    -fx-background-color: #38b1ff;
+}
+
+.field {
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+}
+
+.field:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 50;
+}
+
+.title {
+    -fx-background-color: #ff6694;
+}
+
+.content {
+    -fx-background-color: #f5f5f5;
+}
+
+.changeVb {
+    -fx-border-color: #696969 ;
+    -fx-border-width: 0.5px;
+}
+
