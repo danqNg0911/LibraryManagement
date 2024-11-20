@@ -19,6 +19,12 @@ import java.io.IOException;
 public class ManagerSettingController extends ManagerController {
 
     @FXML
+    private ImageView MBPic;
+
+    @FXML
+    private ImageView MUPic;
+
+    @FXML
     private TextField Q1Field;
 
     @FXML
@@ -28,13 +34,28 @@ public class ManagerSettingController extends ManagerController {
     private TextField Q3Field;
 
     @FXML
-    private TitledPane avatarTitledPane;
+    private Button accSetButton;
+
+    @FXML
+    private VBox accVBox;
+
+    @FXML
+    private Button accountButton;
+
+    @FXML
+    private Label accountName;
+
+    @FXML
+    private Button answerButton;
+
+    @FXML
+    private VBox answersVbox;
 
     @FXML
     private Button changeAnswerButton;
 
     @FXML
-    private Button changeAvatarButton;
+    private Button changeEmailButton;
 
     @FXML
     private Button changeNameButton;
@@ -43,13 +64,37 @@ public class ManagerSettingController extends ManagerController {
     private Label changeNameSuccessedLabel;
 
     @FXML
+    private Label changeNameSuccessedLabel1;
+
+    @FXML
+    private Label changeNameSuccessedLabel11;
+
+    @FXML
+    private Label changeNameSuccessedLabel111;
+
+    @FXML
     private Button changePassButton;
+
+    @FXML
+    private Button changePhoneButton;
 
     @FXML
     private PasswordField confirmNewPass;
 
     @FXML
     private Label confirmPassWarning;
+
+    @FXML
+    private ImageView currentAvatar;
+
+    @FXML
+    private ImageView currentAvatar1;
+
+    @FXML
+    private Label currentEmailLabel;
+
+    @FXML
+    private Label currentName1Label;
 
     @FXML
     private Label currentNameLabel;
@@ -64,6 +109,9 @@ public class ManagerSettingController extends ManagerController {
     private PasswordField currentPass2;
 
     @FXML
+    private PasswordField currentPass3;
+
+    @FXML
     private Label currentPassWarning;
 
     @FXML
@@ -72,12 +120,50 @@ public class ManagerSettingController extends ManagerController {
     @FXML
     private Label currentPassWarning2;
 
+    @FXML
+    private Label currentPassWarning3;
 
     @FXML
-    private TitledPane nameTitledPane;
+    private Label currentPhoneLabel;
 
     @FXML
-    private ImageView newAvatar;
+    private Label currentUserameLabel;
+
+    @FXML
+    private ImageView dashboardPic11;
+
+    @FXML
+    private Label dashboardTitle;
+
+    @FXML
+    private Button helpsButton;
+
+    @FXML
+    private ImageView logo;
+
+    @FXML
+    private Button logoutButton;
+
+    @FXML
+    private AnchorPane mainSce;
+
+    @FXML
+    private Button manageBooksButton;
+
+    @FXML
+    private Button manageUsersButton;
+
+    @FXML
+    private Button nameButton;
+
+    @FXML
+    private VBox nameVbox;
+
+    @FXML
+    private TextField newEmailField;
+
+    @FXML
+    private Label newEmailWarning;
 
     @FXML
     private TextField newNameField;
@@ -89,7 +175,22 @@ public class ManagerSettingController extends ManagerController {
     private Label newPassWarning;
 
     @FXML
-    private TitledPane passTitledPane;
+    private TextField newPhoneField;
+
+    @FXML
+    private Label newPhoneWarning;
+
+    @FXML
+    private Button passButton;
+
+    @FXML
+    private VBox passVbox;
+
+    @FXML
+    private Button phonemailButton;
+
+    @FXML
+    private VBox phonemailVbox;
 
     @FXML
     private Label question1Warning;
@@ -101,7 +202,11 @@ public class ManagerSettingController extends ManagerController {
     private Label question3Warning;
 
     @FXML
-    private Button uploadImageButton;
+    private Button settingButton;
+
+    @FXML
+    private ImageView settingPic;
+
 
     // Di chuột vào hiện hiệu ứng và ngược lại
     /*public void showAnimationDsb(MouseEvent event) {
@@ -129,6 +234,10 @@ public class ManagerSettingController extends ManagerController {
         // Hiển thị username
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        currentName1Label.setText(manager.getName(manager.getUsername()));
+        currentUserameLabel.setText(manager.getUsername());
+        currentPhoneLabel.setText(manager.getPhone(manager.getUsername()));
+        currentEmailLabel.setText(manager.getEmail(manager.getUsername()));
     }
 
     @FXML
@@ -253,5 +362,92 @@ public class ManagerSettingController extends ManagerController {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change security answers", "Your security answers has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
         }
+    }
+
+    // Thay phone number
+    public void handleChangePhone(ActionEvent event) {
+        WindowManager.playButtonSound();
+        String newPhonenum = newPhoneField.getText();
+        String currentPassword = currentPass3.getText();
+
+        boolean passwordCheck = false;
+        // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
+        boolean success = manager.phoneNumUpdate(manager.getUsername(),newPhonenum); // Cập nhật tên trong DBif (newName.isEmpty()) {
+
+        // check password hiện tại
+        if (!currentPassword.equals(manager.getPassword(manager.getUsername()))) {
+            WindowManager.RedWarningLabel(currentPassWarning3, "Password is incorrect", 2);
+        } else {
+            passwordCheck = true;
+        }
+
+        if (success && passwordCheck) {
+            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
+            PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
+
+        } else {
+
+            WindowManager.RedWarningLabel(newPhoneWarning, "This phone is invalid", 2);
+        }
+    }
+
+    // Thay phone number
+    public void handleChangeEmail(ActionEvent event) {
+        WindowManager.playButtonSound();
+        String newEmail = newEmailField.getText();
+        String currentPassword = currentPass3.getText();
+
+        boolean passwordCheck = false;
+        // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
+        boolean success = manager.emailUpdate(manager.getUsername(),newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
+
+        // check password hiện tại
+        if (!currentPassword.equals(manager.getPassword(manager.getUsername()))) {
+            WindowManager.RedWarningLabel(currentPassWarning3, "Password is incorrect", 2);
+        } else {
+            passwordCheck = true;
+        }
+
+        if (success && passwordCheck) {
+            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Email", "Your email has been successfully changed", "stylesheet (css)/login_alert.css");
+            PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
+
+        } else {
+            WindowManager.RedWarningLabel(newEmailWarning, "This email is invalid", 2);
+        }
+    }
+
+    public void handleName(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        nameVbox.setVisible(!nameVbox.isVisible());
+        passVbox.setVisible(false);
+        answersVbox.setVisible(false);
+        phonemailVbox.setVisible(false);
+    }
+
+    public void handlePass(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        nameVbox.setVisible(false);
+        passVbox.setVisible(!passVbox.isVisible());
+        answersVbox.setVisible(false);
+        phonemailVbox.setVisible(false);
+    }
+
+    public void handleAnswer(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        nameVbox.setVisible(false);
+        passVbox.setVisible(false);
+        answersVbox.setVisible(!answersVbox.isVisible());
+        phonemailVbox.setVisible(false);
+    }
+
+    public void handlePhonemail(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        nameVbox.setVisible(false);
+        passVbox.setVisible(false);
+        answersVbox.setVisible(false);
+        phonemailVbox.setVisible(!phonemailVbox.isVisible());
     }
 }

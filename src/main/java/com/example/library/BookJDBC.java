@@ -1,10 +1,9 @@
 package com.example.library;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.sql.Date;
+import java.time.Instant;
+import java.util.*;
 
 public class BookJDBC implements LinkJDBC {
     private Connection connection;
@@ -70,8 +69,8 @@ public class BookJDBC implements LinkJDBC {
             sqlStatement.setString(7, description);
             sqlStatement.setString(8, source);
 
-            LocalDate date = LocalDate.now();
-            sqlStatement.setDate(9, java.sql.Date.valueOf(date));
+            Date date = new Date(Timestamp.from(Instant.now()).getTime());
+            sqlStatement.setDate(9, date);
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -125,6 +124,53 @@ public class BookJDBC implements LinkJDBC {
         }
         return books;
     }
+
+    public static List<Book> getAllBooksFromDatabase(String username, boolean isMostRecent, boolean isMostAdded, boolean isMostView) throws SQLException {
+        List<Book> books = new ArrayList<>();
+        String query = "SELECT * FROM books WHERE username=?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String title = resultSet.getString("title");
+                    String author = resultSet.getString("author");
+                    String category = resultSet.getString("category");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    String description = resultSet.getString("description");
+                    Date date = new Date(resultSet.getTimestamp("date").getTime()); // Lấy ngày tháng
+                    Book book = new Book(title, author, category, imageUrl, description, date); // Giả sử Book có constructor phù hợp
+                    books.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        List<Book> filteredBooks = new ArrayList<>();
+
+        for (int i = books.size() - 1; i >= 0; i--) {
+            boolean shouldRemove = false;
+
+            if (isMostRecent && i % 2 == 0) {
+                shouldRemove = true;
+            }
+            else if (isMostAdded && (i == books.size() - 1 || i == books.size() - 2 || i == books.size() - 3 || i == books.size() - 4 || i == books.size() - 5)) {
+                shouldRemove = true;
+            }
+            else if (isMostView && i % 2 != 0) {
+                shouldRemove = true;
+            }
+
+            if (!shouldRemove) {
+                filteredBooks.add(books.get(i)); // Thêm phần tử không bị xóa vào danh sách mới
+            }
+        }
+
+        books = filteredBooks;
+
+        return books;
+    }
+
 
     public static List<Book> getAllBooksFromAllUser() throws SQLException {
         List<Book> books = new ArrayList<>();
@@ -207,6 +253,7 @@ public class BookJDBC implements LinkJDBC {
                     String resultCategory = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
+                    String source = resultSet.getString("source");
                     int id = resultSet.getInt("id");
 
                     Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, id);
@@ -217,5 +264,108 @@ public class BookJDBC implements LinkJDBC {
             e.printStackTrace();
         }
         return books;
+    }
+
+    public static List<Book> searchBooksFromDatabase(String username, String title, String author, String category, Date date) throws SQLException {
+        List<Book> books = new ArrayList<>();
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM books WHERE 1=1");
+
+        List<Object> parameters = new ArrayList<>();
+
+        if (username != null && !username.isEmpty()) {
+            queryBuilder.append(" AND username LIKE ?");
+            parameters.add("%" + username + "%");
+        }
+
+        if (title != null && !title.isEmpty()) {
+            queryBuilder.append(" AND title LIKE ?");
+            parameters.add("%" + title + "%");
+        }
+
+        if (author != null && !author.isEmpty()) {
+            queryBuilder.append(" AND author LIKE ?");
+            parameters.add("%" + author + "%");
+        }
+
+        if (category != null && !category.isEmpty()) {
+            queryBuilder.append(" AND category LIKE ?");
+            parameters.add("%" + category + "%");
+        }
+
+        if (date != null) {
+            queryBuilder.append(" AND date = ?");
+            parameters.add(new java.sql.Date(date.getTime()));
+        }
+
+        String query = queryBuilder.toString();
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            // Gán tham số vào PreparedStatement
+            for (int i = 0; i < parameters.size(); i++) {
+                sqlStatement.setObject(i + 1, parameters.get(i));
+            }
+
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String resultTitle = resultSet.getString("title");
+                    String resultAuthor = resultSet.getString("author");
+                    String resultCategory = resultSet.getString("category");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    String description = resultSet.getString("description");
+                    String source = resultSet.getString("source");
+                    String resultUsername = resultSet.getString("username");
+                    Date resultDate = resultSet.getDate("date");
+                    int id = resultSet.getInt("id");
+
+                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, resultUsername, source, resultDate, id);
+                    books.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return books;
+    }
+
+
+    public static Map<String, Integer> getBooksByDay(String username) throws SQLException {
+        Map<String, Integer> booksByDay = new LinkedHashMap<>();  // Dùng LinkedHashMap để giữ thứ tự theo ngày
+        String query = "SELECT date, COUNT(*) FROM books WHERE username=? GROUP BY date ORDER BY date";
+
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String addedDay = resultSet.getString("date");  // Ngày dưới định dạng YYYY-MM-DD
+                    int count = resultSet.getInt("COUNT(*)");
+                    booksByDay.put(addedDay, count);  // Lưu vào Map với key là ngày, value là số lượng sách
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return booksByDay;
+    }
+
+    public static int getNumberOfBorrowers(String username, String title, String author) throws SQLException {
+        String query = "SELECT COUNT(*) FROM books where title=? and author=? and source=?";
+
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, title);
+            sqlStatement.setString(2, author);
+            sqlStatement.setString(3, "borrowed");
+
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ManagerBookController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ViewBookManagerController">
    <children>
       <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -43,58 +43,72 @@
             </VBox>
             <Pane layoutY="142.0" prefHeight="658.0" prefWidth="989.0">
                <children>
-                  <ImageView fx:id="coverImage" fitHeight="287.0" fitWidth="222.0" layoutX="33.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
-                  <ScrollPane layoutX="269.0" layoutY="1.0" prefHeight="658.0" prefWidth="720.0">
+                  <ImageView fx:id="coverImage" fitHeight="279.0" fitWidth="212.0" layoutX="59.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+                  <ScrollPane layoutX="320.0" layoutY="1.0" prefHeight="658.0" prefWidth="669.0">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="654.0" prefWidth="719.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="654.0" prefWidth="748.0">
                            <children>
-                              <Label fx:id="BookTitle" layoutX="30.0" layoutY="42.0" prefHeight="50.0" prefWidth="675.0" text="Book title" wrapText="true">
+                              <Label fx:id="bookTitle" layoutX="29.0" layoutY="30.0" prefHeight="50.0" prefWidth="581.0" text="Book title" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Authors" layoutX="30.0" layoutY="79.0" prefHeight="26.0" prefWidth="670.0" text="Authors" wrapText="true">
+                              <Label fx:id="authors" layoutX="29.0" layoutY="80.0" prefHeight="26.0" prefWidth="581.0" text="Authors" wrapText="true">
                                  <font>
-                                    <Font name="System Italic" size="17.0" />
+                                    <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Category" layoutX="30.0" layoutY="105.0" prefHeight="34.0" prefWidth="673.0" text="Category:" wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="CopiesNumber" layoutX="30.0" layoutY="139.0" prefHeight="21.0" prefWidth="658.0" text="Source">
+                              <Label fx:id="category" layoutX="29.0" layoutY="112.0" prefHeight="26.0" prefWidth="581.0" text="Category:" wrapText="true">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="30.0" layoutY="195.0" text="Description">
+                              <Label fx:id="borrowersNumber" layoutX="29.0" layoutY="148.0" prefHeight="21.0" prefWidth="581.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="29.0" layoutY="186.0" text="Description">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Description" layoutX="30.0" layoutY="220.0" prefHeight="432.0" prefWidth="610.0" text="Label" wrapText="true" />
-                              <Button fx:id="backButton" layoutX="632.0" layoutY="18.0" mnemonicParsing="false" onAction="#backToPreviousStage" text="← Back">
+                              <Button fx:id="backButton" layoutX="554.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToPreviousStage" text="← Back">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
                               </Button>
+                              <Label fx:id="description" layoutX="29.0" layoutY="211.0" prefHeight="417.0" prefWidth="614.0" text="Label" wrapText="true" />
                            </children>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-                  <Button fx:id="deleteBook" layoutX="104.0" layoutY="409.0" mnemonicParsing="false" onAction="#deleteBook" styleClass="libButton" text="Delete Book" />
-                  <Label layoutX="97.0" layoutY="318.0" prefHeight="25.0" prefWidth="95.0" text="Username" />
-                  <Label fx:id="CopiesNumber11" layoutX="93.0" layoutY="345.0" prefHeight="21.0" prefWidth="118.0" text="Borrowed date">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="CopiesNumber1" layoutX="89.0" layoutY="372.0" prefHeight="21.0" prefWidth="112.0" text="Return date ??">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                  <Pane fx:id="infoPane" layoutX="14.0" layoutY="329.0" prefHeight="318.0" prefWidth="293.0">
+                     <children>
+                        <Label fx:id="username" layoutX="3.0" layoutY="14.0" prefHeight="26.0" prefWidth="287.0" text="Username">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="borrowedDate" layoutX="3.0" layoutY="47.0" prefHeight="21.0" prefWidth="287.0" text="Borrowed date">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="statusText" layoutX="3.0" layoutY="80.0" prefHeight="21.0" prefWidth="46.0" text="Status:" visible="false">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteBook" layoutX="88.0" layoutY="159.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="33.0" prefWidth="116.0" styleClass="libButton" text="Delete Book" />
+                        <Label fx:id="status" layoutX="51.0" layoutY="80.0" prefHeight="21.0" prefWidth="244.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="viewUserButton" layoutX="84.0" layoutY="201.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="126.0" styleClass="account" text="View User's Details" />
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children>
