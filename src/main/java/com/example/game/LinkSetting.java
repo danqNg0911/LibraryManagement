@@ -3,10 +3,10 @@ package com.example.game;
 public enum LinkSetting {
 
     // Câu hỏi
-    QUESTION_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\QuestionInGame.txt"),
+    QUESTION_PATH("C:\\YEAR 2\\OOP\\JavaFX\\CLONE\\data\\QuestionInGame.txt"),
 
     // Dữ liệu trận đấu
-    GAME_ROUND_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\bmw_round_"),
+    GAME_ROUND_PATH("C:\\YEAR 2\\OOP\\JavaFX\\CLONE\\data\\bmw_round_"),
 
     // Ảnh nền
     BACKGROUND_IMAGE("/com/example/game/assets/sky_night/"),
@@ -33,7 +33,7 @@ public enum LinkSetting {
 
     // Âm thanh người chơi
     PLAYER_SOUND_HIT("/com/example/game/sound/player_hit_1.mp3"),
-    PLAYER_SOUTD_IS_HIT("/com/example/game/sound/player_isHit_1.mp3"),
+    PLAYER_SOUTD_IS_HIT("/com/example/game/sound/player_isHit_2.mp3"),
     PLAYER_SOUND_DEATH("/com/example/game/sound/player_die_1.mp3"),
 
     // Âm thanh quái vật gây sát thương

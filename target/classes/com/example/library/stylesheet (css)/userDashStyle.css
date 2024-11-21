@@ -6,6 +6,14 @@
     -fx-alignment: center-left;
 }
 
+#introButton {
+    -fx-background-color: transparent; /* Loại bỏ nền */
+    -fx-border-color: transparent;    /* Loại bỏ viền */
+    -fx-text-fill: transparent;       /* Làm ẩn văn bản */
+    -fx-cursor: default;              /* Loại bỏ hiệu ứng con trỏ */
+}
+
+
 .gameButton {
     -fx-background-color: transparent; /* Xóa màu nền */
     -fx-cursor: pointer; /* Con trỏ chuột khi trỏ vào button: có thay đổi */

@@ -30,6 +30,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserLibraryController extends UserController {
+
+    @FXML
+    public ImageView libImage;
+
     @FXML
     private TextField authorField;
 
@@ -63,6 +67,7 @@ public class UserLibraryController extends UserController {
     @FXML
     public void initialize() throws IOException {
         baseInitialize();
+        libImage.setImage(new Image(getClass().getResource("/com/example/library/assets/lib (2).png").toExternalForm()));
     }
 
     // Di chuột vào hiện hiệu ứng và ngược lại

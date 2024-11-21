@@ -255,7 +255,7 @@ public class BlackMythWukongController {
                     updateLabelsTimeline.stop();
                     stopGame();
                     try {
-                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", "stylesheet (css)/game.css", 600, 333);
+                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", "stylesheet (css)/game.css", 1100, 600);
                         return;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -323,11 +323,13 @@ public class BlackMythWukongController {
 
     private void loadNextQuestion() {
         if (!questions.isEmpty()) {
-            // Lấy ngẫu nhiên câu hỏi và xóa khỏi danh sách
-            currentQuestion = Question.getRandomQuestion(questions);
+
             if (isWin) {
                 questions.remove(currentQuestion);
             }
+
+            // Lấy ngẫu nhiên câu hỏi và xóa khỏi danh sách
+            currentQuestion = Question.getRandomQuestion(questions);
 
             questionLabel.setText(currentQuestion.getQuestion());
 
@@ -503,6 +505,7 @@ public class BlackMythWukongController {
         bg.setIsPause(true);
         player.setIsPause(true);
     }
+
 
     public void setGameOverOverlay() {
         gameOverOverlay.setVisible(true);
