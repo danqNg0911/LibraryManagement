@@ -113,14 +113,14 @@ public class UserSettingController extends UserController {
     public void initialize() throws IOException {
         baseInitialize();
         currentNameLabel.setText(user.getName(user.getUsername()));
-        score.setText(String.valueOf(user.getScore(user.getUsername()) - 1));
-        if (user.getScore(user.getUsername()) >= 1 && user.getScore(user.getUsername()) < 3) {
+        if (user.getScore(user.getUsername()) == 0) {
+            score.setText(String.valueOf(0));
+        } else {
+            score.setText(String.valueOf(user.getScore(user.getUsername()) - 1));
             gift1.setVisible(true);
             buttonMusic1.setVisible(true);
         }
-        if (user.getScore(user.getUsername()) >= 3) {
-            gift1.setVisible(true);
-            buttonMusic1.setVisible(true);
+        if (user.getScore(user.getUsername()) > 3) {
             gift2.setVisible(true);
             buttonMusic2.setVisible(true);
         }
