@@ -1,9 +1,17 @@
-# Ulib Library Management - Ứng dụng quản lý thư viện
+# Ulib Library Manager - Ứng dụng quản lý thư viện điện tử Ulib
 # 🐋Tác giả
 1. Nguyễn Hữu Hải Đăng - 23020524
 2. Phạm Huy Hiếu - 23020535
 3. Phạm Việt Hưng - 23020542
 # 💡Mô tả
+Ulib Library Manager là giải pháp tối ưu cho việc số hóa và quản lý thư viện một cách hiệu quả. Với giao diện thân thiện cùng các tính năng đa dạng, ứng dụng hỗ trợ từ quản lý kho sách, phân loại tác giả, thể loại đến theo dõi giao dịch mượn trả, giúp mọi hoạt động trở nên nhanh chóng và chính xác.
+
+Điểm mạnh của Ulib Library Manager nằm ở khả năng tự động hóa và tinh gọn quy trình, từ tổ chức dữ liệu đến phân tích, báo cáo trực quan. Ứng dụng không chỉ giảm thiểu sai sót mà còn tiết kiệm thời gian đáng kể, mang lại sự tiện lợi tối đa cho người quản lý.
+
+Không chỉ giới hạn trong các thư viện truyền thống, Ulib Library Manager còn phù hợp với nhiều mô hình khác như trường học, doanh nghiệp, và tổ chức phi lợi nhuận, đáp ứng nhu cầu lưu trữ tài liệu lớn một cách khoa học và dễ tiếp cận.
+
+Với Ulib Library Manager, quản lý thư viện không chỉ là công việc, mà còn là trải nghiệm hiện đại, tiện nghi và đầy cảm hứng.
+
 # ⚔Ngôn ngữ và công cụ lập trình 
 <table align="center">
   <tr>
