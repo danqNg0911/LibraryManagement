@@ -18,6 +18,14 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class UserCollectionClt1Controller extends UserCollectionCltController {
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
+    private TextField categoryField;
 
     public void initialize() {
         baseCltInitialize();
@@ -35,7 +43,16 @@ public class UserCollectionClt1Controller extends UserCollectionCltController {
             @Override
             protected Void call() throws Exception {
                 books.clear();
-                books = BookJDBC.getAllBooksFromDatabase(user.getUsername(), isMostRecent, isMostAdded, isMostView); // Lấy sách từ cơ sở dữ liệu
+
+                String titleSearch = titleField.getText().trim();
+                String authorSearch = authorField.getText().trim();
+                String categorySearch = categoryField.getText().trim();
+
+                if (titleSearch.isEmpty() && authorSearch.isEmpty() && categorySearch.isEmpty()) {
+                    books = BookJDBC.getAllBooksFromDatabase(user.getUsername(), isMostRecent, isMostAdded, isMostView); // Lấy sách từ cơ sở dữ liệu
+                } else {
+                    books = BookJDBC.searchBooksFromDatabase(user.getUsername(), titleSearch, authorSearch, categorySearch, isMostRecent, isMostAdded, isMostView);
+                }
                 return null;
             }
         };
@@ -78,5 +95,10 @@ public class UserCollectionClt1Controller extends UserCollectionCltController {
 
         // Chạy task trong một thread riêng
         new Thread(loadDataTask).start();
+    }
+
+    public void moveToAddBook(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/AddBook.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 }
