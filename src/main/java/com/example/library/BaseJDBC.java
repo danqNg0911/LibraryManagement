@@ -34,8 +34,8 @@ abstract class BaseJDBC {
     }
 
     // Thêm tài khoản vào Database
-    public boolean addAccountToDatabase(String name, String username, String password, String phonenum, String email, String birthdate, String Q1, String Q2, String Q3, int avaID) {
-        String query = "INSERT INTO accounts (name, username, password, birthdate, Q1, Q2, Q3, phonenum, email, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public boolean addAccountToDatabase(String name, String username, String password, String phonenum, String email, String birthdate, String Q1, String Q2, String Q3, int avaID, int score) {
+        String query = "INSERT INTO accounts (name, username, password, birthdate, Q1, Q2, Q3, phonenum, email, avatar, gamescore) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, name);
             sqlStatement.setString(2, username);
@@ -47,6 +47,7 @@ abstract class BaseJDBC {
             sqlStatement.setString(6, Q2);
             sqlStatement.setString(7, Q3);
             sqlStatement.setInt(10, avaID);
+            sqlStatement.setInt(11, score);
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -262,6 +263,23 @@ abstract class BaseJDBC {
         return false;
     }
 
+    public boolean scoreUpdate(String username, int newScore) {
+        String query = "UPDATE accounts SET gamescore = ? WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setInt(1, newScore);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     // Lấy tên của user
     public String getName(String username) {
         String query = "SELECT name FROM accounts WHERE username = ?";
@@ -349,6 +367,24 @@ abstract class BaseJDBC {
             if (resultSet.next()) {
                 int avaId = resultSet.getInt("avatar");
                 return avaId;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Nếu không tìm thấy tài khoản
+    }
+
+    public int getScore(String username) {
+        String query = "SELECT gamescore FROM accounts WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username); // Đặt giá trị của tham số vào câu SQL
+            ResultSet resultSet = sqlStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int score = resultSet.getInt("gamescore");
+                return score;
             }
 
         } catch (SQLException e) {

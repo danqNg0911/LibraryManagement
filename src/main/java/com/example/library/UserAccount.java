@@ -40,7 +40,6 @@ public class UserAccount {
     public int getAvatar() {
         return avatar;
     }
-
     public void setAvatar(int avaID) {
         this.avatar = avaID;
     }
