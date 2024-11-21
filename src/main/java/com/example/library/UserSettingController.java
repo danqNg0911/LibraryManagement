@@ -95,9 +95,35 @@ public class UserSettingController extends UserController {
     private Button changeAvaButton;
 
     @FXML
+    private Label score;
+
+    @FXML
+    private Label gift1;
+
+    @FXML
+    private Label gift2;
+
+    @FXML
+    private Button buttonMusic1;
+
+    @FXML
+    private Button buttonMusic2;
+
+    @FXML
     public void initialize() throws IOException {
         baseInitialize();
         currentNameLabel.setText(user.getName(user.getUsername()));
+        score.setText(String.valueOf(user.getScore(user.getUsername()) - 1));
+        if (user.getScore(user.getUsername()) >= 1 && user.getScore(user.getUsername()) < 3) {
+            gift1.setVisible(true);
+            buttonMusic1.setVisible(true);
+        }
+        if (user.getScore(user.getUsername()) >= 3) {
+            gift1.setVisible(true);
+            buttonMusic1.setVisible(true);
+            gift2.setVisible(true);
+            buttonMusic2.setVisible(true);
+        }
     }
 
 
