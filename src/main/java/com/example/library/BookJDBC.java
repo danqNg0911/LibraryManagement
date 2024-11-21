@@ -213,7 +213,7 @@ public class BookJDBC implements LinkJDBC {
         return false;
     }
 
-    public static List<Book> searchBooksFromDatabase(String username, String title, String author, String category) throws SQLException {
+    public static List<Book> searchBooksFromDatabase(String username, String title, String author, String category, boolean isMostRecent, boolean isMostAdded, boolean isMostView) throws SQLException {
         List<Book> books = new ArrayList<>();
         StringBuilder queryBuilder = new StringBuilder("SELECT * FROM books WHERE username = ?");
 
@@ -261,6 +261,28 @@ public class BookJDBC implements LinkJDBC {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        List<Book> filteredBooks = new ArrayList<>();
+
+        for (int i = books.size() - 1; i >= 0; i--) {
+            boolean shouldRemove = false;
+
+            if (isMostRecent && i % 2 == 0) {
+                shouldRemove = true;
+            }
+            else if (isMostAdded && (i == books.size() - 1 || i == books.size() - 2 || i == books.size() - 3 || i == books.size() - 4 || i == books.size() - 5)) {
+                shouldRemove = true;
+            }
+            else if (isMostView && i % 2 != 0) {
+                shouldRemove = true;
+            }
+
+            if (!shouldRemove) {
+                filteredBooks.add(books.get(i)); // Thêm phần tử không bị xóa vào danh sách mới
+            }
+        }
+
+        books = filteredBooks;
         return books;
     }
 
