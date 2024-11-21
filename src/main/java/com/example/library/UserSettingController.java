@@ -116,11 +116,11 @@ public class UserSettingController extends UserController {
         if (user.getScore(user.getUsername()) == 0) {
             score.setText(String.valueOf(0));
         } else {
-            score.setText(String.valueOf(user.getScore(user.getUsername()) - 1));
+            score.setText(String.valueOf(user.getScore(user.getUsername())));
             gift1.setVisible(true);
             buttonMusic1.setVisible(true);
         }
-        if (user.getScore(user.getUsername()) > 3) {
+        if (user.getScore(user.getUsername()) >= 3) {
             gift2.setVisible(true);
             buttonMusic2.setVisible(true);
         }
