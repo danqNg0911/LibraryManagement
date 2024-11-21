@@ -12,7 +12,7 @@ Không chỉ giới hạn trong các thư viện truyền thống, Ulib Library 
 
 Với Ulib Library Manager, quản lý thư viện không chỉ là công việc, mà còn là trải nghiệm hiện đại, tiện nghi và đầy cảm hứng.
 
-# ☄️Tính năng ứng dụng
+# ☄️Tính năng
 # ⚔Ngôn ngữ và công cụ lập trình 
 <table align="center">
   <tr>
