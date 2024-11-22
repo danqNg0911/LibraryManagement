@@ -21,8 +21,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -64,10 +66,16 @@ public class UserLibraryController extends UserController {
     @FXML
     private ProgressIndicator loadingSearching;
 
+    private List<String> suggestions;
+
+    private static final String CATEGORY_DATA_FILE_PATH = LinkSetting.CATEGORY_LIST_FILE_PATH.getLink();
+
     @FXML
     public void initialize() throws IOException {
         baseInitialize();
         libImage.setImage(new Image(getClass().getResource("/com/example/library/assets/lib (2).png").toExternalForm()));
+        suggestions = loadSuggestions("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\ListOfBooks.txt");
+        setupAutoCompletion(categoryField);
     }
 
     // Di chuột vào hiện hiệu ứng và ngược lại
@@ -205,5 +213,28 @@ public class UserLibraryController extends UserController {
             return volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
         }
         return null;
+    }
+
+    private List<String> loadSuggestions(String filePath) throws IOException {
+        List<String> suggestionsList = new ArrayList<>();
+        //InputStream inputStream = getClass().getResourceAsStream(filePath);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(CATEGORY_DATA_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                suggestionsList.add(line.trim());
+            }
+        }
+        return suggestionsList;
+    }
+
+    private void setupAutoCompletion(TextField textField) {
+        // Bind AutoCompletion with the suggestions list
+        AutoCompletionBinding<String> autoCompletionBinding = TextFields.bindAutoCompletion(textField, suggestions);
+
+        // Optional: Customize how suggestions are displayed
+        autoCompletionBinding.setOnAutoCompleted(event -> {
+            System.out.println("Selected: " + event.getCompletion());
+        });
     }
 }
