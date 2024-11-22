@@ -47,7 +47,7 @@ public class ManagerHelpsController extends ManagerController {
         String url = "https://www.youtube.com/@phamhuy2195";
 
         // Mở trình duyệt mặc định
-        if(Desktop.isDesktopSupported()) {
+        if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {
                 desktop.browse(new URI(url));

@@ -108,4 +108,55 @@ public class User extends BaseJDBC implements LinkJDBC {
         return userList;
     }
 
+    public List<UserAccount> searchUserAccounts(String username) throws SQLException {
+        List<UserAccount> userList = new ArrayList<>();
+        String query = "SELECT name, username, phonenum, email, avatar FROM accounts WHERE username LIKE ?";
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, "%" + username + "%");
+
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    userList.add(new UserAccount(
+                            resultSet.getString("name"),
+                            resultSet.getString("username"),
+                            resultSet.getString("phonenum"),
+                            resultSet.getString("email"),
+                            resultSet.getInt("avatar")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    public UserAccount getAccountByUsername(String username) throws SQLException {
+        String query = "SELECT * FROM accounts WHERE username = ?";
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+
+            sqlStatement.setString(1, username);
+
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new UserAccount(
+                            resultSet.getString("name"),
+                            resultSet.getString("username"),
+                            resultSet.getString("phonenum"),
+                            resultSet.getString("email"),
+                            resultSet.getInt("avatar")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

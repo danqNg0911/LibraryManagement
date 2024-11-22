@@ -35,7 +35,7 @@ abstract class BaseJDBC {
 
     // Thêm tài khoản vào Database
     public boolean addAccountToDatabase(String name, String username, String password, String phonenum, String email, String birthdate, String Q1, String Q2, String Q3, int avaID) {
-        String query = "INSERT INTO accounts (name, username, password, birthdate, Q1, Q2, Q3, phonenum, email, avaID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO accounts (name, username, password, birthdate, Q1, Q2, Q3, phonenum, email, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, name);
             sqlStatement.setString(2, username);
@@ -46,7 +46,7 @@ abstract class BaseJDBC {
             sqlStatement.setString(5, Q1);
             sqlStatement.setString(6, Q2);
             sqlStatement.setString(7, Q3);
-            sqlStatement.setInt(8, avaID);
+            sqlStatement.setInt(10, avaID);
 
             int updateToDatabse = sqlStatement.executeUpdate();
             if (updateToDatabse > 0) {
@@ -356,4 +356,5 @@ abstract class BaseJDBC {
         }
         return -1; // Nếu không tìm thấy tài khoản
     }
+
 }

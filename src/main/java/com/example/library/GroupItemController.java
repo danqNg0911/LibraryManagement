@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class GroupItemController {
     User user = new User();
@@ -34,12 +35,17 @@ public class GroupItemController {
             Cover.setImage(new Image(book.getImageUrl()));
         } else {
             // C:/YEAR 2/OOP/JavaFX/Bai tap lon _ Thu VIen/src/main/resources/com/example/library/assets/Picture_is_not_available.png
-            Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
-            Cover.setImage(nullImage);
+            if (book.getSource() != null && book.getSource().equals("create")) {
+                Image defaultImage = new Image(getClass().getResource(LinkSetting.DEFAULT_COVER_IMAGE.getLink()).toExternalForm());
+                Cover.setImage(defaultImage);
+            } else {
+                Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
+                Cover.setImage(nullImage);
+            }
         }
     }
 
-    public void viewBook(ActionEvent event) {
+    public void viewBook(ActionEvent event) throws SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/viewItem.fxml"));
         Parent root = null;
         try {
