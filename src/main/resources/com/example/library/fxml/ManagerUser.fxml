@@ -70,7 +70,7 @@
                 <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                     <children>
                         <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
+                        <Button mnemonicParsing="false" onAction="#moveToHelps" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
                         <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                     </children>
                 </VBox>

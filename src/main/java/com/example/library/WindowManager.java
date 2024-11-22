@@ -197,5 +197,6 @@ public class WindowManager {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
+        mediaPlayer = null;
     }
 }

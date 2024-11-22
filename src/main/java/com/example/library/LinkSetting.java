@@ -18,6 +18,9 @@ public enum LinkSetting {
     IMAGE_NULL("/com/example/library/assets/Picture_is_not_available.png"),
 
     SOUND_CLICK_MOUSE("/com/example/library/assets/mouse-click-153941.mp3"),
+
+    VIDEO_INTRO("/com/example/library/assets/intro_video.mp4"),
+
     MAIN_SOUND_1("/com/example/library/assets/mainSound1.mp3"),
     MAIN_SOUND_2("/com/example/library/assets/mainSound2.mp3"),
     MAIN_SOUND_3("/com/example/library/assets/mainSound3.mp3"),

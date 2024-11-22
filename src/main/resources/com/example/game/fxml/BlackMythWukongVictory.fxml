@@ -4,14 +4,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="326.0" prefWidth="600.0" stylesheets="@../../library/stylesheet%20(css)/game.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.BlackMythWukongVictoryController">
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" stylesheets="@../../library/stylesheet (css)/game.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.BlackMythWukongVictoryController">
    <children>
-      <ImageView fitHeight="341.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="600.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="false">
          <image>
             <Image url="@../assets/BMWVictory.png" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="435.0" layoutY="121.0" mnemonicParsing="false" onAction="#backToLib" text="Back to Library" />
+      <Button fx:id="backButton" layoutX="214.0" layoutY="325.0" mnemonicParsing="false" onAction="#backToLib" prefHeight="45.0" prefWidth="135.0" text="Back to Library">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

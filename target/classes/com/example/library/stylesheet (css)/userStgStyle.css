@@ -6,12 +6,12 @@
     -fx-alignment: center-left;
 }
 
-#accountStgTitledPane {
+.mainTitle {
     -fx-border-color: #494949;
     -fx-border-width: 0.4px;
 }
 
-#accountStgTitledPane > .title {
+.mainTitle > .title {
     -fx-background-color: #d3d3d3;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
@@ -23,14 +23,9 @@
     -fx-transition: opacity 0.2 ease;
 }
 
-#accountStgTitledPane > .title:hover {
+.mainTitle > .title:hover {
     -fx-background-color: #b5b5b5;
     -fx-opacity: 0.8;
-}
-
-#accountStgPane {
-    -fx-background-color: #ffffff
-
 }
 
 .subTitledPane > .title {
@@ -47,6 +42,10 @@
 .subTitledPane > .title:hover {
     -fx-background-color: #b5b5b5;
     -fx-opacity: 0.8;
+}
+
+.subTitledPane > .content {
+    -fx-background-color: #ffffff
 }
 
 .changeButton {
@@ -75,33 +74,6 @@
 
 #newAvatar {
     -fx-border-color: #696969;
-}
-
-#personalitiesTitledPane {
-    -fx-border-color: #494949;
-    -fx-border-width: 0.4px;
-}
-
-#personalitiesTitledPane > .title {
-    -fx-background-color: #d3d3d3;
-    -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-alignment: CENTER-LEFT;
-    -fx-text-fill: #000000;
-    -fx-min-height: 40px;
-    -fx-pref-height: 40px;
-    -fx-max-height: 40px;
-    -fx-transition: opacity 0.2 ease;
-}
-
-#personalitiesTitledPane > .title:hover {
-    -fx-background-color: #b5b5b5;
-    -fx-opacity: 0.8;
-}
-
-#personalitiesPane {
-    -fx-background-color: #ffffff
-
 }
 
 .infoPane {

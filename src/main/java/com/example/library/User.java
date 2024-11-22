@@ -158,5 +158,4 @@ public class User extends BaseJDBC implements LinkJDBC {
         }
         return null;
     }
-
 }

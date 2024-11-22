@@ -1,4 +1,6 @@
 package com.example.game;
+import com.example.library.User;
+import com.example.library.UserJDBC;
 import com.example.library.WindowManager;
 
 import javafx.animation.KeyFrame;
@@ -69,6 +71,10 @@ public class BlackMythWukongController {
     private Timeline spawnCTimeline;
     private Timeline spawnDTimeline;
 
+    private UserJDBC userJDBC = new UserJDBC();
+    private User user = new User();
+
+    private static int score = 0;
 
     @FXML
     private Pane bottomPane;
@@ -103,7 +109,6 @@ public class BlackMythWukongController {
     private int bNums = 0;
     private int cNums = 0;
     private int dNums = 0;
-
 
     public BlackMythWukongController() throws Exception {
         // Mảng chứa các quái vật
@@ -197,7 +202,7 @@ public class BlackMythWukongController {
                                     monsterD = null;
                                     Sound.stopBackgroundMusic();
                                     Sound.restartBackgroundMusic();
-                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 600, 333);
+                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 1100, 600);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -254,8 +259,14 @@ public class BlackMythWukongController {
                 if (roundCount == 6) {
                     updateLabelsTimeline.stop();
                     stopGame();
+                    if (user != null) {
+                        int newscore = user.getScore(user.getUsername()) + 1;
+                        user.scoreUpdate(user.getUsername(), newscore);
+                    } else {
+                        System.out.println("Ko xac dinh dc ng dung");
+                    }
                     try {
-                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", "stylesheet (css)/game.css", 600, 333);
+                        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongVictory.fxml", "stylesheet (css)/game.css", 1100, 600);
                         return;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -323,11 +334,13 @@ public class BlackMythWukongController {
 
     private void loadNextQuestion() {
         if (!questions.isEmpty()) {
-            // Lấy ngẫu nhiên câu hỏi và xóa khỏi danh sách
-            currentQuestion = Question.getRandomQuestion(questions);
+
             if (isWin) {
                 questions.remove(currentQuestion);
             }
+
+            // Lấy ngẫu nhiên câu hỏi và xóa khỏi danh sách
+            currentQuestion = Question.getRandomQuestion(questions);
 
             questionLabel.setText(currentQuestion.getQuestion());
 
@@ -497,12 +510,14 @@ public class BlackMythWukongController {
 
     public void setGameWinARoundOverlay() {
         gameWinARoundOverlay.setVisible(true);
+
         for (Monster monster : monsterList) {
             monster.setIsPause(true);
         }
         bg.setIsPause(true);
         player.setIsPause(true);
     }
+
 
     public void setGameOverOverlay() {
         gameOverOverlay.setVisible(true);
@@ -898,6 +913,10 @@ public class BlackMythWukongController {
 
         // Dừng âm thanh
         Sound.stopAllSounds(); // Nếu bạn đã thêm phương thức này trong lớp Sound
+    }
+
+    public void setCurrentUser(User user) {
+        this.user = user;
     }
 
 }

@@ -67,11 +67,13 @@ public abstract class UserCollectionCltController extends  UserCollectionControl
         if (radioButton3.isSelected()) {
             isMostView = true;
         }
+        //freeUpHeapMemory();
         showCollectionData(actionEvent);
     }
 
     @FXML
     protected void handleAllCollectionButton(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserCollection.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userCltStyle.css", 1200, 800, actionEvent);
     }
@@ -149,4 +151,11 @@ public abstract class UserCollectionCltController extends  UserCollectionControl
         }
         return ListByTitle;
     }
+
+    public void freeUpHeapMemory() {
+        currentAvatar = null;
+        books = null;
+        System.gc();
+    }
+
 }

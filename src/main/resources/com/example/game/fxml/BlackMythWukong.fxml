@@ -9,200 +9,239 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.BlackMythWukongController">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.game.BlackMythWukongController">
 
-        <!-- Nửa màn hình trên: Câu hỏi và đáp án -->
-        <Pane fx:id="topPane" layoutY="0.0" prefHeight="400.0" prefWidth="800.0">
-            <!-- Ảnh nền cho phần câu hỏi -->
-            <ImageView fx:id="questionBackground" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/tiles.png" /> <!-- Thay thế đường dẫn hình ảnh -->
-            </ImageView>
-
-            <StackPane fx:id="answerA" layoutX="50.0" layoutY="170.0" prefHeight="80.0" prefWidth="300.0" />
-            <StackPane fx:id="answerB" layoutX="450.0" layoutY="170.0" prefHeight="80.0" prefWidth="300.0" />
-            <StackPane fx:id="answerC" layoutX="50.0" layoutY="270.0" prefHeight="80.0" prefWidth="300.0" />
-            <StackPane fx:id="answerD" layoutX="450.0" layoutY="270.0" prefHeight="80.0" prefWidth="300.0" />
-            <ImageView fx:id="monsB" fitHeight="80.0" fitWidth="80.0" layoutX="450.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../assets/monsters/B/right/round ghost attack/sprite_0.png" />
-            </ImageView>
-            <ImageView fx:id="monsD" fitHeight="80.0" fitWidth="80.0" layoutX="450.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../assets/monsters/D/right/troll_1.png" />
-            </ImageView>
-            <ImageView fx:id="monsC" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../assets/monsters/C/robot_right.png" />
-            </ImageView>
-            <ImageView fx:id="monsA" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-            </ImageView>
-
-            <!-- Hiển thị câu hỏi -->
-            <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="50.0" prefHeight="100.0" prefWidth="700.0" textFill="#28252b" wrapText="true">
-                <font>
-                    <Font name="System Bold" size="24.0" /> <!-- Kích thước font lớn hơn -->
-                </font>
-         <graphic>
-            <ImageView fx:id="questionImage" fitHeight="100.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/wood.png" />
-            </ImageView>
-         </graphic>
-            </Label>
-            <Label fx:id="answerLabel_A" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="80.0" prefWidth="220.0">
-                <font>
-                    <Font name="System Bold" size="18.0" />
-                </font>
-         <graphic>
-            <ImageView fx:id="answerAImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/wood.png" />
-            </ImageView>
-         </graphic>
-            </Label>
-            <Label fx:id="answerLabel_B" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="170.0" prefHeight="80.0" prefWidth="220.0">
-                <font>
-                    <Font name="System Bold" size="18.0" />
-                </font>
-         <graphic>
-            <ImageView fx:id="answerBImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/wood.png" />
-            </ImageView>
-         </graphic>
-            </Label>
-            <Label fx:id="answerLabel_C" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="270.0" prefHeight="80.0" prefWidth="220.0">
-                <font>
-                    <Font name="System Bold" size="18.0" />
-                </font>
-         <graphic>
-            <ImageView fx:id="answerCImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/wood.png" />
-            </ImageView>
-         </graphic>
-            </Label>
-            <Label fx:id="answerLabel_D" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="270.0" prefHeight="80.0" prefWidth="220.0">
-                <font>
-                    <Font name="System Bold" size="18.0" />
-                </font>
-         <graphic>
-            <ImageView fx:id="answerDImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/wood.png" />
-            </ImageView>
-         </graphic>
-            </Label>
-            <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="345.0" prefHeight="50.0" prefWidth="160.0" textFill="WHITE">
-                <font>
-                    <Font name="System Bold" size="18.0" />
-                </font>
-         <graphic>
-            <ImageView fx:id="timeImage" fitHeight="30.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="false">
-                <Image url="@../assets/green_sign.jpg" />
-            </ImageView>
-         </graphic>
-            </Label>
-        </Pane>
-
-        <!-- Nửa màn hình dưới: Player và Monster -->
-        <Pane fx:id="bottomPane" layoutY="400.0" prefHeight="400.0" prefWidth="800.0">
-
-            <!-- Ảnh nền cho phần chiến đấu -->
-            <ImageView fx:id="battleBackground" fitHeight="400.0" fitWidth="800.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="false">
-                <!--            <Image url="@../assets/sky_night/1.png" /> &lt;!&ndash; Hình nền chiến đấu &ndash;&gt;-->
-            </ImageView>
-
-            <!-- Hiển thị Player -->
-            <ImageView fx:id="playerView" fitHeight="70.0" fitWidth="70.0" layoutX="315.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="player_lives" layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="110.0" textFill="RED">
-                <font>
-                    <Font name="System Bold" size="18.0" />
-                </font>
-            </Label>
-            <Label fx:id="bat_num" alignment="CENTER" contentDisplay="CENTER" layoutX="656.0" layoutY="7.0" prefHeight="37.0" prefWidth="113.0" textFill="#f21b1b">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Label>
-            <Label fx:id="sprite_num" alignment="CENTER" contentDisplay="CENTER" layoutX="656.0" layoutY="51.0" prefHeight="37.0" prefWidth="113.0" textFill="#f22626">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Label>
-            <Label fx:id="robot_num" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="7.0" prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Label>
-            <Label fx:id="troll_num" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="51.0" prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Label>
-      <Label fx:id="roundLabel" layoutX="14.0" layoutY="64.0" prefHeight="50.0" prefWidth="110.0" textFill="#ff0202">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-            <!--            <Image url="@../assets/wukong/right/wukong_right.png" />-->
-            <!--        </ImageView>-->
-        </Pane>
-
-        <!-- Hàng rào bên trái -->
-        <ImageView fx:id="leftFence" fitHeight="400.0" fitWidth="8.0" layoutY="400.0" pickOnBounds="true" preserveRatio="false">
-            <Image url="@../assets/tiles.png" /> <!-- Hàng rào bên trái -->
+    <!-- Nửa màn hình trên: Câu hỏi và đáp án -->
+    <Pane fx:id="topPane" layoutY="0.0" prefHeight="400.0" prefWidth="800.0">
+        <!-- Ảnh nền cho phần câu hỏi -->
+        <ImageView fx:id="questionBackground" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true"
+                   preserveRatio="false">
+            <Image url="@../assets/tiles.png"/> <!-- Thay thế đường dẫn hình ảnh -->
         </ImageView>
 
-        <!-- Hàng rào bên phải -->
-        <ImageView fx:id="rightFence" fitHeight="400.0" fitWidth="8.0" layoutX="792.0" layoutY="400.0" pickOnBounds="true" preserveRatio="false">
-            <Image url="@../assets/tiles.png" /> <!-- Hàng rào bên phải -->
+        <StackPane fx:id="answerA" layoutX="50.0" layoutY="170.0" prefHeight="80.0" prefWidth="300.0"/>
+        <StackPane fx:id="answerB" layoutX="450.0" layoutY="170.0" prefHeight="80.0" prefWidth="300.0"/>
+        <StackPane fx:id="answerC" layoutX="50.0" layoutY="270.0" prefHeight="80.0" prefWidth="300.0"/>
+        <StackPane fx:id="answerD" layoutX="450.0" layoutY="270.0" prefHeight="80.0" prefWidth="300.0"/>
+        <ImageView fx:id="monsB" fitHeight="80.0" fitWidth="80.0" layoutX="450.0" layoutY="170.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../assets/monsters/B/right/round ghost attack/sprite_0.png"/>
+        </ImageView>
+        <ImageView fx:id="monsD" fitHeight="80.0" fitWidth="80.0" layoutX="450.0" layoutY="270.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../assets/monsters/D/right/troll_1.png"/>
+        </ImageView>
+        <ImageView fx:id="monsC" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="270.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../assets/monsters/C/robot_right.png"/>
+        </ImageView>
+        <ImageView fx:id="monsA" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="170.0" pickOnBounds="true"
+                   preserveRatio="true">
         </ImageView>
 
-        <!-- Hàng rào phía trên -->
-        <ImageView fx:id="topFence" fitHeight="9.0" fitWidth="800.0" layoutY="400.0" pickOnBounds="true" preserveRatio="false">
-            <Image url="@../assets/tiles.png" /> <!-- Hàng rào trên -->
+        <!-- Hiển thị câu hỏi -->
+        <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="50.0"
+               prefHeight="100.0" prefWidth="700.0" textFill="#28252b" wrapText="true">
+            <font>
+                <Font name="System Bold" size="24.0"/> <!-- Kích thước font lớn hơn -->
+            </font>
+            <graphic>
+                <ImageView fx:id="questionImage" fitHeight="100.0" fitWidth="700.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wood.png"/>
+                </ImageView>
+            </graphic>
+        </Label>
+        <Label fx:id="answerLabel_A" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="170.0"
+               prefHeight="80.0" prefWidth="220.0">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+            <graphic>
+                <ImageView fx:id="answerAImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wood.png"/>
+                </ImageView>
+            </graphic>
+        </Label>
+        <Label fx:id="answerLabel_B" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="170.0"
+               prefHeight="80.0" prefWidth="220.0">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+            <graphic>
+                <ImageView fx:id="answerBImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wood.png"/>
+                </ImageView>
+            </graphic>
+        </Label>
+        <Label fx:id="answerLabel_C" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="270.0"
+               prefHeight="80.0" prefWidth="220.0">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+            <graphic>
+                <ImageView fx:id="answerCImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wood.png"/>
+                </ImageView>
+            </graphic>
+        </Label>
+        <Label fx:id="answerLabel_D" alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="270.0"
+               prefHeight="80.0" prefWidth="220.0">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+            <graphic>
+                <ImageView fx:id="answerDImage" fitHeight="80.0" fitWidth="220.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/wood.png"/>
+                </ImageView>
+            </graphic>
+        </Label>
+        <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="345.0"
+               prefHeight="50.0" prefWidth="160.0" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+            <graphic>
+                <ImageView fx:id="timeImage" fitHeight="30.0" fitWidth="150.0" pickOnBounds="true"
+                           preserveRatio="false">
+                    <Image url="@../assets/green_sign.jpg"/>
+                </ImageView>
+            </graphic>
+        </Label>
+    </Pane>
+
+    <!-- Nửa màn hình dưới: Player và Monster -->
+    <Pane fx:id="bottomPane" layoutY="400.0" prefHeight="400.0" prefWidth="800.0">
+
+        <!-- Ảnh nền cho phần chiến đấu -->
+        <ImageView fx:id="battleBackground" fitHeight="400.0" fitWidth="800.0" layoutY="-8.0" pickOnBounds="true"
+                   preserveRatio="false">
+            <!--            <Image url="@../assets/sky_night/1.png" /> &lt;!&ndash; Hình nền chiến đấu &ndash;&gt;-->
         </ImageView>
 
-        <!-- Hàng rào phía dưới -->
-        <ImageView fx:id="bottomFence" fitHeight="9.0" fitWidth="800.0" layoutY="791.0" pickOnBounds="true" preserveRatio="false">
-            <Image url="@../assets/tiles.png" /> <!-- Hàng rào dưới -->
+        <!-- Hiển thị Player -->
+        <ImageView fx:id="playerView" fitHeight="70.0" fitWidth="70.0" layoutX="315.0" layoutY="165.0"
+                   pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="player_lives" layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="110.0" textFill="RED">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label fx:id="bat_num" alignment="CENTER" contentDisplay="CENTER" layoutX="656.0" layoutY="7.0"
+               prefHeight="37.0" prefWidth="113.0" textFill="#f21b1b">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="sprite_num" alignment="CENTER" contentDisplay="CENTER" layoutX="656.0" layoutY="51.0"
+               prefHeight="37.0" prefWidth="113.0" textFill="#f22626">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="robot_num" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="7.0"
+               prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="troll_num" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="51.0"
+               prefHeight="37.0" prefWidth="113.0" textFill="#f82d2d">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="roundLabel" layoutX="14.0" layoutY="64.0" prefHeight="50.0" prefWidth="110.0" textFill="#ff0202">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <!--            <Image url="@../assets/wukong/right/wukong_right.png" />-->
+        <!--        </ImageView>-->
+    </Pane>
+
+    <!-- Hàng rào bên trái -->
+    <ImageView fx:id="leftFence" fitHeight="400.0" fitWidth="8.0" layoutY="400.0" pickOnBounds="true"
+               preserveRatio="false">
+        <Image url="@../assets/tiles.png"/> <!-- Hàng rào bên trái -->
+    </ImageView>
+
+    <!-- Hàng rào bên phải -->
+    <ImageView fx:id="rightFence" fitHeight="400.0" fitWidth="8.0" layoutX="792.0" layoutY="400.0" pickOnBounds="true"
+               preserveRatio="false">
+        <Image url="@../assets/tiles.png"/> <!-- Hàng rào bên phải -->
+    </ImageView>
+
+    <!-- Hàng rào phía trên -->
+    <ImageView fx:id="topFence" fitHeight="9.0" fitWidth="800.0" layoutY="400.0" pickOnBounds="true"
+               preserveRatio="false">
+        <Image url="@../assets/tiles.png"/> <!-- Hàng rào trên -->
+    </ImageView>
+
+    <!-- Hàng rào phía dưới -->
+    <ImageView fx:id="bottomFence" fitHeight="9.0" fitWidth="800.0" layoutY="791.0" pickOnBounds="true"
+               preserveRatio="false">
+        <Image url="@../assets/tiles.png"/> <!-- Hàng rào dưới -->
+    </ImageView>
+
+    <!-- Cửa sổ Pause -->
+    <Pane fx:id="pauseOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0"
+          style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+        <ImageView fx:id="pauseImage" fitHeight="345.0" fitWidth="336.0" layoutX="221.0" layoutY="220.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/pause_menu.png"/>
+        </ImageView>
+    </Pane>
+
+    <!-- Cửa sổ "GameOver" -->
+    <Pane fx:id="gameOverOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0"
+          style="-fx-background-color: rgba(0, 0, 0, 0.7);" visible="false">
+        <ImageView fx:id="loseLogoImage" fitHeight="400.0" fitWidth="400.0" layoutX="200.0" layoutY="50.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/lose_logo_2.png"/>
         </ImageView>
 
-        <!-- Cửa sổ Pause -->
-        <Pane fx:id="pauseOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
-            <ImageView fx:id="pauseImage" fitHeight="345.0" fitWidth="336.0" layoutX="221.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../assets/pause_menu.png" />
-            </ImageView>
-        </Pane>
-
-        <!-- Cửa sổ "GameOver" -->
-        <Pane fx:id="gameOverOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: rgba(0, 0, 0, 0.7);" visible="false">
-          <ImageView fx:id="loseLogoImage" fitHeight="400.0" fitWidth="400.0" layoutX="200.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-              <Image url="@../assets/lose_logo_2.png" />
-          </ImageView>
-
-          <ImageView fx:id="loseButtonImage" fitHeight="255.0" fitWidth="275.0" layoutX="274.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-              <Image url="@../assets/lose_menu_1.png" />
+        <ImageView fx:id="loseButtonImage" fitHeight="255.0" fitWidth="275.0" layoutX="274.0" layoutY="300.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/lose_menu_1.png"/>
         </ImageView>
-        </Pane>
+    </Pane>
 
     <!-- Cửa sổ "Win 1 round" -->
-    <Pane fx:id="gameWinARoundOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: rgba(0, 0, 0, 0.7);" visible="false">
-        <ImageView fx:id="winARoundLogoImage" fitHeight="300.0" fitWidth="400.0" layoutX="200.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assets/win_logo.png" />
+    <Pane fx:id="gameWinARoundOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0"
+          style="-fx-background-color: rgba(0, 0, 0, 0.7);" visible="false">
+        <ImageView fx:id="winARoundLogoImage" fitHeight="300.0" fitWidth="400.0" layoutX="200.0" layoutY="110.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/win_logo.png"/>
         </ImageView>
-        <ImageView fx:id="nextButtonImage" fitHeight="182.0" fitWidth="286.0" layoutX="264.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assets/next_button.png" />
+        <ImageView fx:id="nextButtonImage" fitHeight="182.0" fitWidth="286.0" layoutX="264.0" layoutY="300.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/next_button.png"/>
         </ImageView>
-        <ImageView fx:id="winARoundButtonImage" fitHeight="284.0" fitWidth="284.0" layoutX="259.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assets/lose_menu_1.png" />
+        <ImageView fx:id="winARoundButtonImage" fitHeight="284.0" fitWidth="284.0" layoutX="259.0" layoutY="300.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/lose_menu_1.png"/>
         </ImageView>
 
     </Pane>
 
-        <!-- Cửa sổ "Win All round" -->
-        <Pane fx:id="gameWinAllRoundOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: rgba(0, 0, 0, 0.7);" visible="false">
-            <!-- Văn bản "You Lose" -->
-            <Label layoutX="300.0" layoutY="250.0" style="-fx-font-size: 48px; -fx-font-weight: bold;" text="You are the Champion !" textFill="RED" />
+    <!-- Cửa sổ "Win All round" -->
+    <Pane fx:id="gameWinAllRoundOverlay" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="800.0"
+          style="-fx-background-color: rgba(0, 0, 0, 0.7);" visible="false">
+        <!-- Văn bản "You Lose" -->
+        <Label layoutX="300.0" layoutY="250.0" style="-fx-font-size: 48px; -fx-font-weight: bold;"
+               text="You are the Champion !" textFill="RED"/>
 
-            <!-- Nút Restart -->
-            <Button fx:id="winAllRoundRestartButton" layoutX="350.0" layoutY="390.0" text="Restart" />
+        <!-- Nút Restart -->
+        <Button fx:id="winAllRoundRestartButton" layoutX="350.0" layoutY="390.0" text="Restart"/>
 
-            <!-- Nút Menu -->
-            <Button fx:id="winAllRoundMenuButton" layoutX="350.0" layoutY="450.0" text="Menu" />
-        </Pane>
+        <!-- Nút Menu -->
+        <Button fx:id="winAllRoundMenuButton" layoutX="350.0" layoutY="450.0" text="Menu"/>
+    </Pane>
 
 </AnchorPane>

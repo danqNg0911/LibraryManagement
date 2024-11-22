@@ -17,6 +17,8 @@ import java.io.IOException;
 
 abstract class UserController extends BaseController {
 
+    Image avaImg;
+
     @FXML
     protected Button accHelpsButton;
 
@@ -84,7 +86,10 @@ abstract class UserController extends BaseController {
     protected ImageView gamePic;
 
     protected void baseInitialize()  {
+        avaImg = null;
+        System.gc();
 
+        avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
         // Hiển thị username
         accountName.setText(user.getName(user.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -108,53 +113,53 @@ abstract class UserController extends BaseController {
         int avatarId = user.getAvatar(user.getUsername());
         switch (avatarId) {
             case 1: {
-                Image ava1Img = new Image(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
-                currentAvatar.setImage(ava1Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 2: {
-                Image ava2Img = new Image(getClass().getResource(LinkSetting.AVATAR_2.getLink()).toExternalForm());
-                currentAvatar.setImage(ava2Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_2.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 3: {
-                Image ava3Img = new Image(getClass().getResource(LinkSetting.AVATAR_3.getLink()).toExternalForm());
-                currentAvatar.setImage(ava3Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_3.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 4: {
-                Image ava4Img = new Image(getClass().getResource(LinkSetting.AVATAR_4.getLink()).toExternalForm());
-                currentAvatar.setImage(ava4Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_4.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 5: {
-                Image ava5Img = new Image(getClass().getResource(LinkSetting.AVATAR_5.getLink()).toExternalForm());
-                currentAvatar.setImage(ava5Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_5.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 6: {
-                Image ava6Img = new Image(getClass().getResource(LinkSetting.AVATAR_6.getLink()).toExternalForm());
-                currentAvatar.setImage(ava6Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_6.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 7: {
-                Image ava7Img = new Image(getClass().getResource(LinkSetting.AVATAR_7.getLink()).toExternalForm());
-                currentAvatar.setImage(ava7Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_7.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 8: {
-                Image ava8Img = new Image(getClass().getResource(LinkSetting.AVATAR_8.getLink()).toExternalForm());
-                currentAvatar.setImage(ava8Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_8.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 9: {
-                Image ava9Img = new Image(getClass().getResource(LinkSetting.AVATAR_9.getLink()).toExternalForm());
-                currentAvatar.setImage(ava9Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_9.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             case 0: {
-                Image ava0Img = new Image(getClass().getResource(LinkSetting.AVATAR_0.getLink()).toExternalForm());
-                currentAvatar.setImage(ava0Img);
+                avaImg = ImageCache.getImage(getClass().getResource(LinkSetting.AVATAR_0.getLink()).toExternalForm());
+                currentAvatar.setImage(avaImg);
                 break;
             }
             default:
@@ -228,61 +233,71 @@ abstract class UserController extends BaseController {
     // Chuyen den trang khac
     @FXML
     public void moveToDashboard(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserDashboard.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToLibrary(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToCollection(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserCollection.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userCltStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToHelps(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToUpgrade(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserUpgrade.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userUpgStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToaccSetting(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserSetting.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userStgStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void moveToAccHelps(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/UserHelps.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userHelpsStyle.css", 1200, 800, actionEvent);
     }
 
     @FXML
     public void showOptionAccount(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.playButtonSound();
         accVBox.setVisible(!accVBox.isVisible());
     }
 
     @FXML
     protected void handleGameButton(ActionEvent event) throws IOException {
-        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 600, 333);
+        freeUpHeapMemory();
+        WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 1100, 600);
     }
 
 }
