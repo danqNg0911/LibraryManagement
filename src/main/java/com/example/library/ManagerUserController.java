@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,6 +37,9 @@ public class ManagerUserController extends ManagerController {
     @FXML
     private TableColumn<UserAccount, String> phonenumColumn;
 
+    @FXML
+    private TextField nameField;
+
 
     public void showAnimationMU(MouseEvent event) {
         return;
@@ -49,18 +53,28 @@ public class ManagerUserController extends ManagerController {
         return;
     }
 
-    public void loadUserAccounts() {
+    public void loadUserAccounts() throws SQLException {
         User userDB = new User(); // Tạo đối tượng User để truy cập cơ sở dữ liệu user
-        List<UserAccount> userAccounts = userDB.getAllUserAccounts(); // Lấy tất cả user
+        String name = nameField.getText().trim();
+        List<UserAccount> userAccounts = new ArrayList<>();
+        if (name.isEmpty()) {
+            userAccounts = userDB.getAllUserAccounts();
+        } else {
+            userAccounts = userDB.searchUserAccounts(name);// Lấy tất cả user
+        }
 
         // Chuyển đổi List sang ObservableList và đưa vào TableView
         ObservableList<UserAccount> observableUserList = FXCollections.observableArrayList(userAccounts);
         userTable.setItems(observableUserList);
     }
 
+    public void searchUser(ActionEvent actionEvent) throws SQLException {
+        loadUserAccounts();
+    }
+
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         // Hiển thị username
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);

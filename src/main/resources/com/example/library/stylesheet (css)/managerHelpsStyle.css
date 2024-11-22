@@ -5,3 +5,23 @@
     -fx-padding: 0px 10px 0px 50px;
     -fx-alignment: center-left;
 }
+
+.field {
+    -fx-border-color: #bebebe;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-alignment: top-left;
+}
+
+.field:focused {
+    -fx-background-color: #ffffe0;
+    -fx-border-color: #ffcc00;
+    -fx-border-radius: 10;
+    -fx-alignment: top-left;
+}
+
+.opPane {
+    -fx-border-color: transparent #696969 transparent transparent  ;
+    -fx-border-width: 1px;
+}

@@ -13,7 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,8 +51,14 @@ public class ViewUserManagerController extends ManagerController {
     @FXML
     private BarChart<String, Number> rollingYearChart;
 
+    @FXML
+    private Label managerEmail;
+
+    @FXML
+    private Label userEmail;
 
     public void setUserDetails(UserAccount account) throws SQLException {
+        userEmail.setText(account.getEmail());
         selectedAccount = account;
         currentName1Label.setText(account.getName());
         currentUserameLabel.setText(account.getUsername());
@@ -116,6 +125,23 @@ public class ViewUserManagerController extends ManagerController {
         }
     }
 
+    public void openMail(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        String url = "https://mail.google.com/mail/u/0/#inbox?compose=new";
+
+
+        if(Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Desktop không hỗ trợ chức năng này.");
+        }
+    }
+
     public void backToPreviousStage(ActionEvent event) throws IOException {
         //WindowManager.addFxmlCss("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800);
         WindowManager.goBack();
@@ -176,9 +202,9 @@ public class ViewUserManagerController extends ManagerController {
     }
 
     public void initialize() {
+        managerEmail.setText((manager.getEmail(manager.getUsername())));
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
     }
-
 }
 

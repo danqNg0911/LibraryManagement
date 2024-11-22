@@ -36,7 +36,7 @@ public class AddBookController extends UserCollectionCltController {
         if (title.isEmpty() || author.isEmpty() || category.isEmpty() || description.isEmpty()) {
             WindowManager.alertWindow(Alert.AlertType.ERROR, "Alert", "Please complete all information to create your book", "stylesheet (css)/login_alert.css");
         } else {
-            BookJDBC.addBookToDatabase(user.getUsername(), "", title, author, category,null, description, "create");
+            BookJDBC.addBookToDatabase(user.getUsername(), "", title, author, category, null, description, "create");
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book has been added to your library", "stylesheet (css)/login_alert.css");
         }
     }

@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.DatabaseMetaData;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class BookItemController {
         }
     }
 
-    public void viewBook(ActionEvent event) {
+    public void viewBook(ActionEvent event) throws SQLException {
         // Load ViewItem.fxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/ViewItem.fxml"));
         Parent root = null;
