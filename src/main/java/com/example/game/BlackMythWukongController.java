@@ -202,7 +202,7 @@ public class BlackMythWukongController {
                                     monsterD = null;
                                     Sound.stopBackgroundMusic();
                                     Sound.restartBackgroundMusic();
-                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 600, 333);
+                                    WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 1100, 600);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
