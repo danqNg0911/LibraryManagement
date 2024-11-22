@@ -25,7 +25,14 @@ public class AIController extends UserController {
 
     @FXML
     public void handleReturnToLib(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         String fxmlFile = "fxml/UserDashboard.fxml";
         WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800);
+    }
+
+    @Override
+    public void freeUpHeapMemory() {
+        webView = null;
+        System.gc();
     }
 }

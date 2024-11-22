@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.BlackMythWukongMenuController">
    <children>
@@ -12,7 +13,13 @@
             <Image url="@../assets/BMWmenu.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="openButton" layoutX="163.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleOpenButton" prefHeight="45.0" prefWidth="121.0" text="Play" />
-      <Button fx:id="goBackButton" layoutX="163.0" layoutY="258.0" mnemonicParsing="false" onAction="#handleReturnToLib" prefHeight="45.0" prefWidth="121.0" text="Return to Library" />
+      <Button fx:id="openButton" layoutX="163.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleOpenButton" prefHeight="45.0" prefWidth="121.0" text="Play">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="goBackButton" layoutX="157.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleReturnToLib" prefHeight="46.0" prefWidth="133.0" text="Return to Library">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -9,7 +9,7 @@ import javafx.scene.media.MediaView;
 
 import java.io.IOException;
 
-public class IntroController {
+public class IntroController extends UserController {
 
     public Button newUpdateButton;
     @FXML
@@ -35,6 +35,7 @@ public class IntroController {
     @FXML
     public void handleReturnToLib(ActionEvent actionEvent) throws IOException {
         mediaPlayer.stop();
+        freeUpHeapMemory();
         String fxmlFile = "fxml/UserDashboard.fxml";
         WindowManager.addFxmlCss(fxmlFile, "stylesheet (css)/userStyles.css", "stylesheet (css)/userDashStyle.css", 1200, 800);
     }
@@ -42,6 +43,13 @@ public class IntroController {
     @FXML
     public void handleTryAiNow(ActionEvent actionEvent) throws IOException {
         mediaPlayer.stop();
+        freeUpHeapMemory();
         WindowManager.addFxmlCss("fxml/AI.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/AI.css", 640, 700);
+    }
+
+    @Override
+    public void freeUpHeapMemory() {
+        mediaPlayer = null;
+        System.gc();
     }
 }

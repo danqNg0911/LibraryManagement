@@ -166,4 +166,8 @@ public abstract class BaseController extends BaseSettingController {
         manager.closeConnection();
         pause.play();
     }
+
+    public void freeUpHeapMemory() {
+        // Override
+    }
 }
