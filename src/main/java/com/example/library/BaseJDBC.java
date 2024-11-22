@@ -263,23 +263,6 @@ abstract class BaseJDBC {
         return false;
     }
 
-    public boolean scoreUpdate(String username, int newScore) {
-        String query = "UPDATE accounts SET gamescore = ? WHERE username = ?";
-        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
-            sqlStatement.setInt(1, newScore);
-            sqlStatement.setString(2, username);
-
-            int rowsUpdated = sqlStatement.executeUpdate();
-
-            if (rowsUpdated > 0) {
-                return true; // Cập nhật thành công
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     // Lấy tên của user
     public String getName(String username) {
         String query = "SELECT name FROM accounts WHERE username = ?";
@@ -373,6 +356,23 @@ abstract class BaseJDBC {
             e.printStackTrace();
         }
         return -1; // Nếu không tìm thấy tài khoản
+    }
+
+    public boolean scoreUpdate(String username, int newScore) {
+        String query = "UPDATE accounts SET gamescore = ? WHERE username = ?";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setInt(1, newScore);
+            sqlStatement.setString(2, username);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return true; // Cập nhật thành công
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public int getScore(String username) {

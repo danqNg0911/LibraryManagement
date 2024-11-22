@@ -26,9 +26,12 @@ import java.util.*;
 
 public class UserDashboardController extends UserController {
 
-    private final List<Image> images = new ArrayList<>();
+    private List<Image> images = new ArrayList<>();
     private int currentIndex = 0;
     SequentialTransition sequentialTransition;
+
+    @FXML
+    private ImageView currentAvatar1;
 
     @FXML
     public Label introLabel;
@@ -90,6 +93,63 @@ public class UserDashboardController extends UserController {
 
         // Bắt đầu vòng lặp hiển thị ảnh
         startImageLoop();
+
+        int avatarId = user.getAvatar(user.getUsername());
+        switch (avatarId) {
+            case 1: {
+                Image ava1Img = new Image(getClass().getResource(LinkSetting.AVATAR_1.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava1Img);
+                break;
+            }
+            case 2: {
+                Image ava2Img = new Image(getClass().getResource(LinkSetting.AVATAR_2.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava2Img);
+                break;
+            }
+            case 3: {
+                Image ava3Img = new Image(getClass().getResource(LinkSetting.AVATAR_3.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava3Img);
+                break;
+            }
+            case 4: {
+                Image ava4Img = new Image(getClass().getResource(LinkSetting.AVATAR_4.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava4Img);
+                break;
+            }
+            case 5: {
+                Image ava5Img = new Image(getClass().getResource(LinkSetting.AVATAR_5.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava5Img);
+                break;
+            }
+            case 6: {
+                Image ava6Img = new Image(getClass().getResource(LinkSetting.AVATAR_6.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava6Img);
+                break;
+            }
+            case 7: {
+                Image ava7Img = new Image(getClass().getResource(LinkSetting.AVATAR_7.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava7Img);
+                break;
+            }
+            case 8: {
+                Image ava8Img = new Image(getClass().getResource(LinkSetting.AVATAR_8.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava8Img);
+                break;
+            }
+            case 9: {
+                Image ava9Img = new Image(getClass().getResource(LinkSetting.AVATAR_9.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava9Img);
+                break;
+            }
+            case 0: {
+                Image ava0Img = new Image(getClass().getResource(LinkSetting.AVATAR_0.getLink()).toExternalForm());
+                currentAvatar1.setImage(ava0Img);
+                break;
+            }
+            default:
+                System.out.println("Unknown avatar id: " + avatarId);
+        }
+        System.out.println("Avatar updated to ID: " + avatarId);
     }
 
 
@@ -107,11 +167,13 @@ public class UserDashboardController extends UserController {
     }
 
     public void handleIntroButton(ActionEvent actionEvent) throws IOException {
+        freeUpHeapMemory();
         WindowManager.handlemoveButton("fxml/Intro.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/intro.css", 640, 500, actionEvent);
     }
 
     private void startImageLoop() {
         if (images.isEmpty()) return;
+        if (images == null) return;
 
         // Tạo Transition mờ dần ảnh cũ
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), intro);
@@ -125,13 +187,14 @@ public class UserDashboardController extends UserController {
 
         // Thay đổi ảnh trong fadeOut và fadeIn
         fadeOut.setOnFinished(event -> {
+            if (images == null) return;
             // Chuyển sang ảnh tiếp theo
             currentIndex = (currentIndex + 1) % images.size();
             intro.setImage(images.get(currentIndex));
         });
 
         // Tạo khoảng chờ giữa hai lần chuyển ảnh
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2.5));
 
         // Kết hợp fadeOut -> fadeIn -> pause thành một chuỗi
         sequentialTransition = new SequentialTransition(
@@ -197,5 +260,14 @@ public class UserDashboardController extends UserController {
 
         // Đảm bảo trục X hiển thị đầy đủ các ngày
         rollingYearChart.getXAxis().setAutoRanging(true);
+    }
+
+
+    public void freeUpHeapMemory() {
+        currentAvatar = null;
+        currentAvatar1 = null;
+        images = null;
+        rollingYearChart = null;
+        System.gc();
     }
 }
