@@ -3,10 +3,10 @@ package com.example.game;
 public enum LinkSetting {
 
     // Câu hỏi
-    QUESTION_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\QuestionInGame.txt"),
+    QUESTION_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\QuestionInGame.txt"),
 
     // Dữ liệu trận đấu
-    GAME_ROUND_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\bmw_round_"),
+    GAME_ROUND_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\bmw_round_"),
 
 
     // Ảnh nền
