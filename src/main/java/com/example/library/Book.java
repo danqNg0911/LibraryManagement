@@ -79,6 +79,10 @@ public class Book {
         return username;
     }
 
+    public void setSource(String source) {
+        this.source = source;
+    }
+
     public String getSource() {
         return source;
     }

@@ -132,13 +132,17 @@ public class BookJDBC implements LinkJDBC {
             sqlStatement.setString(1, username);
             try (ResultSet resultSet = sqlStatement.executeQuery()) {
                 while (resultSet.next()) {
-                    String title = resultSet.getString("title");
-                    String author = resultSet.getString("author");
-                    String category = resultSet.getString("category");
+                    String resultTitle = resultSet.getString("title");
+                    String resultAuthor = resultSet.getString("author");
+                    String resultCategory = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
-                    Date date = new Date(resultSet.getTimestamp("date").getTime()); // Lấy ngày tháng
-                    Book book = new Book(title, author, category, imageUrl, description, date); // Giả sử Book có constructor phù hợp
+                    String source = resultSet.getString("source");
+                    String resultUsername = resultSet.getString("username");
+                    Date date = new Date(resultSet.getTimestamp("date").getTime());
+                    int id = resultSet.getInt("id");
+
+                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, resultUsername, source, date, id);
                     books.add(book);
                 }
             }
@@ -252,9 +256,12 @@ public class BookJDBC implements LinkJDBC {
                     String resultCategory = resultSet.getString("category");
                     String imageUrl = resultSet.getString("imageUrl");
                     String description = resultSet.getString("description");
+                    String source = resultSet.getString("source");
+                    String resultUsername = resultSet.getString("username");
+                    Date resultDate = resultSet.getDate("date");
                     int id = resultSet.getInt("id");
 
-                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, id);
+                    Book book = new Book(resultTitle, resultAuthor, resultCategory, imageUrl, description, resultUsername, source, resultDate, id);
                     books.add(book);
                 }
             }
@@ -370,7 +377,7 @@ public class BookJDBC implements LinkJDBC {
         return booksByDay;
     }
 
-    public static int getNumberOfBorrowers(String username, String title, String author) throws SQLException {
+    public static int getNumberOfBorrowers(String title, String author) throws SQLException {
         String query = "SELECT COUNT(*) FROM books where title=? and author=? and source=?";
 
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {

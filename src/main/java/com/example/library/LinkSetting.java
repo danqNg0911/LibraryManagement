@@ -14,7 +14,7 @@ public enum LinkSetting {
 
     MANAGER_LIST_FILE_PATH("C:\\YEAR 2\\OOP\\JavaFX\\Bai tap lon _ Thu VIen\\data\\ListOfManagers.txt"),
 
-
+    DEFAULT_COVER_IMAGE("/com/example/library/assets/default_cover.png"),
     IMAGE_NULL("/com/example/library/assets/Picture_is_not_available.png"),
 
     SOUND_CLICK_MOUSE("/com/example/library/assets/mouse-click-153941.mp3"),

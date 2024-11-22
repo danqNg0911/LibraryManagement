@@ -75,3 +75,21 @@
     -fx-background-radius: 50;
     -fx-border-radius: 50;
 }
+
+.eventButton {
+    -fx-background-color: #ff6694;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffff;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+.eventButton:pressed {
+    -fx-background-color: #38b1ff;
+}
+
+#backButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #696969;
+    -fx-font-size: 11;
+}

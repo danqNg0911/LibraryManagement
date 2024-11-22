@@ -68,9 +68,6 @@ public class ManagerBookController extends ManagerController {
 
     private List<Book> listOfBooks = new ArrayList<>();
     private List<Book> listBooksWithFilters = new ArrayList<>();
-    private List<Book> listofOverdueBooks = new ArrayList<>();
-    private List<Book> listofAvailableBooks = new ArrayList<>();
-    private List<Book> listOfAddedBooks = new ArrayList<>();
 
     @FXML
     public void initialize() {

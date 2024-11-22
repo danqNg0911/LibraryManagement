@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ViewItemController extends UserController {
     private Book selectedBook;
@@ -27,7 +28,7 @@ public class ViewItemController extends UserController {
     private Label Category;
 
     @FXML
-    private Label CopiesNumber;
+    private Label borrowersNumber;
 
     @FXML
     private Label Description;
@@ -47,18 +48,29 @@ public class ViewItemController extends UserController {
     @FXML
     private Label libraryTitle;
 
-    public void setBookDetails(Book book) {
+    @FXML
+    private Button addBookButton;
+
+
+    public void setBookDetails(Book book) throws SQLException {
         selectedBook = book;
         BookTitle.setText(book.getTitle());
         Authors.setText("Authors: " + book.getAuthor());
         Category.setText("Category: " + book.getCategory());
         Description.setText(book.getDescription());
+        borrowersNumber.setText("Number of Borrowers: " + BookJDBC.getNumberOfBorrowers(selectedBook.getTitle(), selectedBook.getAuthor()));
         if (book.getImageUrl() != null && !book.getImageUrl().isEmpty()) {
             Image image = new Image(book.getImageUrl());
             coverImage.setImage(image);
         } else {
-            Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
-            coverImage.setImage(nullImage);
+            if (book.getSource() != null && book.getSource().equals("create")) {
+                Image defaultImage = new Image(getClass().getResource(LinkSetting.DEFAULT_COVER_IMAGE.getLink()).toExternalForm());
+                coverImage.setImage(defaultImage);
+            } else {
+                Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
+                coverImage.setImage(nullImage);
+            }
+
         }
     }
 
