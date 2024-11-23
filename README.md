@@ -12,8 +12,27 @@ Không chỉ giới hạn trong các thư viện truyền thống, Ulib Library 
 
 Với Ulib Library Manager, quản lý thư viện không chỉ là công việc, mà còn là trải nghiệm hiện đại, tiện nghi và đầy cảm hứng.
 
-# 📊Tính năng
-# ⚔Ngôn ngữ và công cụ lập trình 
+# 📊Chức năng
+### 1. Với người dùng (User):
+  _ Tìm kiếm sách theo tên, tác giả, và thể loại.
+<br>_ Xem thông tin tóm tắt nội dung cuốn sách.
+<br>_ Thêm, mượn và xóa sách. <br>&nbsp;&nbsp;&nbsp;Không chỉ giới hạn ở những cuốn sách trong API mà còn những cuốn sách cá nhân.
+<br>_ Có bộ sưu tập sách cá nhân.
+<br>_ Theo dõi số lượng sách được thêm mỗi ngày thông qua biểu đồ.
+<br>_ Có thể chọn hình đại diện ảnh động.
+<br>_ Được cập nhật tin tức và thông báo bản cập nhật mới của thư viện (nếu có).
+<br>_ Được xem video giới thiệu thư viện đầy hấp dẫn.
+<br>_ Trải nghiệm trò chơi Black Myth Wukong hoàn toàn miễn phí.
+<br>_ Trải nghiệm danh sách phát nhạc thư giãn. 
+<br>_ Trải nghiệm Chatbot AI Gemini qua email cá nhân.
+<br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn. 
+
+
+### 2. Với người quản lý (Manager)
+  _
+<br>_
+<br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn.
+# ⚔Ngôn ngữ phát triển 
 <table align="center">
   <tr>
     <!-- Java -->
@@ -62,7 +81,11 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
 6. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
 # 🔰Hướng dẫn sử dụng
 # 🐸Minh họa dự án 
+
 # 🔭Cải tiến trong tương lai
+# 🍒Đóng góp
+Chúng tôi mong muốn có thêm những đóng góp của quý độc giả để hoàn thiện dự án hơn !
+![](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg)
 # ⚛Trạng thái dự án 
 Dự án đã được hoàn thiện 
 # 📧Liên hệ
