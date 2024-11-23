@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
@@ -106,13 +107,13 @@ public class ManagerBookController extends ManagerController {
             listOfBooks = BookJDBC.searchBooksFromDatabase(username, title, author, category, date);
         }
 
-        // Phân loại sách theo trạng thái
         for (Book book : listOfBooks) {
             Date borrowedDate = book.getDate();
             if (borrowedDate != null) {
                 if ("borrowed".equals(book.getSource())) {
                     LocalDate localDate = borrowedDate.toLocalDate();
-                    if (localDate.plusDays(7).isBefore(LocalDate.now())) {
+                    // neu muon sach qua 3 ngay chua tra thi tinh la "Overdue" - qua han
+                    if (localDate.plusDays(3).isBefore(LocalDate.now())) {
                         book.setStatus("Overdue");
                     } else {
                         book.setStatus("Available");
@@ -147,7 +148,7 @@ public class ManagerBookController extends ManagerController {
         bookTable.setItems(observableBookList);
     }
 
-    private void showBookDetails(Book selectedBook, javafx.scene.input.MouseEvent event) {
+    private void showBookDetails(Book selectedBook, MouseEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/ViewBookManager.fxml"));
         Parent root;
         try {

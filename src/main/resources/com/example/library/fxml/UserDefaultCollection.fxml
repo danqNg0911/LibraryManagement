@@ -7,77 +7,58 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="1100.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/23"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserDefaultCollectionController">
+<AnchorPane prefHeight="1100.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.UserDefaultCollectionController">
     <children>
         <Pane layoutX="55.0" layoutY="50.0" prefHeight="300.0" prefWidth="296.0">
             <children>
-                <Button fx:id="clt1Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false"
-                        onAction="#handleClt1Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton"
-                        text="View"/>
-                <ImageView fx:id="clt1Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true"
-                           preserveRatio="false">
-                    <Image url="@../assets/white_clt.jpg"/>
+                <Button fx:id="clt1Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClt1Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton" text="View" />
+                <ImageView fx:id="clt1Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="false">
+                    <Image url="@../assets/white_clt.png" />
                 </ImageView>
             </children>
         </Pane>
         <Pane layoutX="490.0" layoutY="50.0" prefHeight="300.0" prefWidth="296.0">
             <children>
-                <Button fx:id="clt2Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false"
-                        onAction="#handleClt2Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton"
-                        text="View"/>
-                <ImageView fx:id="clt2Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true"
-                           preserveRatio="false">
-                    <Image url="@../assets/santa.gif"/>
+                <Button fx:id="clt2Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClt2Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton" text="View" />
+                <ImageView fx:id="clt2Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="false">
+                    <Image url="@../assets/santa.gif" />
                 </ImageView>
             </children>
         </Pane>
         <Pane layoutX="55.0" layoutY="380.0" prefHeight="300.0" prefWidth="296.0">
             <children>
-                <Button fx:id="clt3Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false"
-                        onAction="#handleClt3Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton"
-                        text="View"/>
-                <ImageView fx:id="clt3Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true"
-                           preserveRatio="false">
-                    <Image url="@../assets/spring_clt.png"/>
+                <Button fx:id="clt3Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClt3Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton" text="View" />
+                <ImageView fx:id="clt3Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="false">
+                    <Image url="@../assets/spring_clt.png" />
                 </ImageView>
             </children>
         </Pane>
         <Pane layoutX="490.0" layoutY="380.0" prefHeight="300.0" prefWidth="296.0">
             <children>
-                <Button fx:id="clt4Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false"
-                        onAction="#handleClt4Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton"
-                        text="View"/>
-                <ImageView fx:id="clt4Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true"
-                           preserveRatio="false">
-                    <Image url="@../assets/summer_clt.png"/>
+                <Button fx:id="clt4Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClt4Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton" text="View" />
+                <ImageView fx:id="clt4Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="false">
+                    <Image url="@../assets/summer_clt.png" />
                 </ImageView>
             </children>
         </Pane>
         <Pane layoutX="55.0" layoutY="710.0" prefHeight="300.0" prefWidth="296.0">
             <children>
-                <Button fx:id="clt5Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false"
-                        onAction="#handleClt5Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton"
-                        text="View"/>
-                <ImageView fx:id="clt5Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true"
-                           preserveRatio="false">
-                    <Image url="@../assets/autumn_clt.png"/>
+                <Button fx:id="clt5Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClt5Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton" text="View" />
+                <ImageView fx:id="clt5Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="false">
+                    <Image url="@../assets/autumn_clt.png" />
                 </ImageView>
             </children>
         </Pane>
         <Pane layoutX="490.0" layoutY="715.0" prefHeight="300.0" prefWidth="296.0">
             <children>
-                <Button fx:id="clt6Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false"
-                        onAction="#handleClt6Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton"
-                        text="View"/>
-                <ImageView fx:id="clt6Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true"
-                           preserveRatio="false">
-                    <Image url="@../assets/winter_clt.png"/>
+                <Button fx:id="clt6Button" layoutX="108.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClt6Button" prefHeight="20.0" prefWidth="80.0" styleClass="cltButton" text="View" />
+                <ImageView fx:id="clt6Image" fitHeight="250.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="false">
+                    <Image url="@../assets/winter_clt.png" />
                 </ImageView>
             </children>
         </Pane>
     </children>
     <stylesheets>
-        <URL value="@../stylesheet (css)/userCltStyle.css"/>
+        <URL value="@../stylesheet (css)/userCltStyle.css" />
     </stylesheets>
 </AnchorPane>
