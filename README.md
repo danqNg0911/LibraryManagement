@@ -56,7 +56,7 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
 # 🚀Hướng dẫn cài đặt
 1. Dự án yêu cầu IDE cho Java, CSS và MySQL (ví dụ: `IntelliJ IDEA bản Ultimate` và `MySQL WorkBench`).
 2. Clone dự án về IDE: <a href="https://www.youtube.com/watch?v=ILSQeAOK0gs" target="_blank"> Hướng dẫn.</a>
-3. Mở MySQL WorkBench, tạo MySQL Connections mới (nếu chưa có trên máy), rồi tạo tệp Query Tab mới. <br> Tại đây, chạy tệp [`sql`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/SQL/sql) trong dự án.
+3. Mở MySQL WorkBench, tạo MySQL Connections mới (nếu chưa có trên máy), rồi tạo tệp Query Tab mới. <br> Tại đây, sao chép, dán và chạy tệp [`sql`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/SQL/sql) nhằm tạo database cho dự án.
 4. Mở IDE IntelliJ, vào Project Structure, cài hết các thư viện mở rộng ở thư mục [lib](https://github.com/danqNg0911/LibraryManagement/tree/main/lib) trong dự án.
 5. Tại 2 lớp enum LinkSetting của thư mục [`library`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/LinkSetting.java) và [`game`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/game/LinkSetting.java), chỉnh sửa đường dẫn phù hợp với máy bạn. <br> Đừng quên sửa cả đường dẫn database nhé !
 6. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
