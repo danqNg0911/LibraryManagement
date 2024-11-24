@@ -1,39 +1,43 @@
 # Ulib Library Manager - Ứng dụng quản lý thư viện điện tử Ulib
-# 🐋Tác giả
+# 🐋Tác giả 
+Nhóm `NONAME`
 1. Nguyễn Hữu Hải Đăng - 23020524
 2. Phạm Huy Hiếu - 23020535
 3. Phạm Việt Hưng - 23020542
 # 💡Mô tả
-Ulib Library Manager là giải pháp tối ưu cho việc số hóa và quản lý thư viện một cách hiệu quả. Với giao diện thân thiện cùng các tính năng đa dạng, ứng dụng hỗ trợ từ quản lý kho sách, phân loại tác giả, thể loại đến theo dõi giao dịch mượn trả, giúp mọi hoạt động trở nên nhanh chóng và chính xác.
+Thư viện điện tử Ulib (Ulib Library Manager) là giải pháp tối ưu cho việc số hóa và quản lý thư viện một cách hiệu quả. Ứng dụng được viết bằng ngôn ngữ Java, CSS, MySQL và tích hợp thư viện JavaFX. Ứng dụng dựa trên mô hình MVC (Model - View - Controller).
 
-Điểm mạnh của Ulib Library Manager nằm ở khả năng tự động hóa và tinh gọn quy trình, từ tổ chức dữ liệu đến phân tích, báo cáo trực quan. Ứng dụng không chỉ giảm thiểu sai sót mà còn tiết kiệm thời gian đáng kể, mang lại sự tiện lợi tối đa cho người quản lý.
+Với giao diện thân thiện cùng các tính năng đa dạng, ứng dụng hỗ trợ từ quản lý kho sách, phân loại tác giả, thể loại đến theo dõi giao dịch mượn trả, giúp mọi hoạt động trở nên nhanh chóng và chính xác. 
 
-Không chỉ giới hạn trong các thư viện truyền thống, Ulib Library Manager còn phù hợp với nhiều mô hình khác như trường học, doanh nghiệp, và tổ chức phi lợi nhuận, đáp ứng nhu cầu lưu trữ tài liệu lớn một cách khoa học và dễ tiếp cận.
+Điểm mạnh của thư viện điện tử Ulib nằm ở khả năng tự động hóa và tinh gọn quy trình, từ tổ chức dữ liệu đến phân tích, báo cáo trực quan. Ứng dụng không chỉ giảm thiểu sai sót mà còn tiết kiệm thời gian đáng kể, mang lại sự tiện lợi tối đa cho người quản lý.
 
-Với Ulib Library Manager, quản lý thư viện không chỉ là công việc, mà còn là trải nghiệm hiện đại, tiện nghi và đầy cảm hứng.
+Không chỉ giới hạn trong các thư viện truyền thống, thư viện điện tử Ulib còn phù hợp với nhiều mô hình khác như trường học, doanh nghiệp, và tổ chức phi lợi nhuận, đáp ứng nhu cầu lưu trữ tài liệu lớn một cách khoa học và dễ tiếp cận.
+
+Với thư viện điện tử Ulib, quản lý thư viện không chỉ là công việc khô khan, mà còn là trải nghiệm hiện đại, tuyệt vời và đầy cảm hứng.
 
 # 📊Chức năng
 ### 1. Với người dùng (User):
-  _ Tìm kiếm sách theo tên, tác giả, và thể loại.
-<br>_ Xem thông tin tóm tắt nội dung cuốn sách.
-<br>_ Thêm, mượn và xóa sách. <br>&nbsp;&nbsp;&nbsp;Không chỉ giới hạn ở những cuốn sách trong API mà còn những cuốn sách cá nhân.
-<br>_ Có bộ sưu tập sách cá nhân.
-<br>_ Theo dõi số lượng sách được thêm mỗi ngày thông qua biểu đồ.
-<br>_ Có thể chọn hình đại diện ảnh động.
-<br>_ Được cập nhật tin tức và thông báo bản cập nhật mới của thư viện (nếu có).
-<br>_ Được xem video giới thiệu thư viện đầy hấp dẫn.
-<br>_ Trải nghiệm trò chơi Black Myth Wukong hoàn toàn miễn phí.
-<br>_ Trải nghiệm danh sách phát nhạc thư giãn. 
-<br>_ Trải nghiệm Chatbot AI Gemini qua email cá nhân.
-<br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn. 
+  - Tìm kiếm sách theo tên, tác giả, và thể loại.
+  - Xem thông tin tóm tắt nội dung cuốn sách.
+  - Thêm, mượn và xóa sách. <br> Không chỉ giới hạn ở những cuốn sách trong API mà còn những cuốn sách cá nhân.
+  - Có bộ sưu tập sách cá nhân.
+  - Theo dõi số lượng sách được thêm mỗi ngày thông qua biểu đồ.
+  - Có thể chọn hình đại diện ảnh động.
+  - Được cập nhật tin tức và thông báo bản cập nhật mới của thư viện (nếu có).
+  - Được xem video giới thiệu thư viện đầy hấp dẫn.
+  - Trải nghiệm trò chơi Black Myth Wukong hoàn toàn miễn phí.
+  - Trải nghiệm danh sách phát nhạc thư giãn. 
+  - Trải nghiệm Chatbot AI Gemini qua email cá nhân.
+  - Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn. 
 
 
 ### 2. Với người quản lý (Manager)
-  _ Xem danh sách người dùng, tìm kiếm theo tên người dùng, xem thông tin chi tiết của từng người dùng khi bấm vào.
-<br>_ Xem toàn bộ các quyển sách đang được mượn, thông tin chi tiết của các quyển sách.
-<br>_ Xem các quyển sách đã được người dùng trả về, ghi nhận phạt người dùng nếu quá hạn.
-<br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn.
-# ⚔Ngôn ngữ phát triển 
+  - Quản lý thông tin chi tiết của từng người dùng và từng cuốn sách.
+  - Theo dõi lịch sử mượn, thêm trả và xóa sách của người dùng thông qua số liệu và biểu đồ.
+  - Ghi nhận phạt người dùng nếu quá hạn trả sách.
+  - Có thể chọn hình đại diện ảnh động.
+  - Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn.
+# <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" height="40" width="40"> Ngôn ngữ phát triển 
 <table align="center">
   <tr>
     <!-- Java -->
@@ -68,10 +72,6 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
   <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
 </p>
 
-
-
-
-
 # ❄️Sơ đồ UML
 # 🚀Hướng dẫn cài đặt
 1. Dự án yêu cầu IDE cho Java, CSS và MySQL (ví dụ: `IntelliJ IDEA bản Ultimate` và `MySQL WorkBench`).
@@ -104,8 +104,11 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
 # 🍒Đóng góp
 Chúng tôi mong muốn có thêm những đóng góp của quý độc giả để hoàn thiện dự án hơn !
 ![](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg)
+
 # ⚛Trạng thái dự án 
-Dự án đã được hoàn thiện 
+Dự án đã được hoàn thiện.
+<br> <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "30" width="400">
+
 # 📧Liên hệ
 
 <div align="left">
