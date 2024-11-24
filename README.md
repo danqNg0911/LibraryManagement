@@ -81,6 +81,23 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
 5. Tại 2 lớp enum LinkSetting của thư mục [`library`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/LinkSetting.java) và [`game`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/game/LinkSetting.java), chỉnh sửa đường dẫn phù hợp với máy bạn. <br> Đừng quên sửa cả đường dẫn database nhé !
 6. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
 # 🔰Hướng dẫn sử dụng
+  - Ấn **Start App** để bắt đầu chạy ứng dụng
+### 1. Người dùng (User)
+####  a. Đăng kí và đăng nhập
+  - Nhập *username* và *password* chính xác rồi ấn *Sign in* để đăng nhập vào ứng dụng (nếu đã có tài khoản)
+  - Nếu chưa có tài khoản, ấn *Create new account* để tạo tài khoản mới
+     + Nhập đầy đủ thông tin : *Name*, *Username*, *Password* (từ 8 ký tự trở lên), *Phone number* (đủ 10 số), *Email*
+     + Chọn **Reader** rồi bấm **Next** để hiện ra trang đăng kí bảo mật
+     + Ở trang đăng kí bảo mật, bạn cần nhập những câu hỏi bảo mật liên quan đến cá nhân, bạn cần nhớ câu trả lời của những câu hỏi này, nó sẽ giúp bạn lấy lại tài khoản nếu bạn quên tài khoản
+     + Ấn *Resigter* để hoàn tất đăng kí
+  - Nếu bạn quên mật khẩu, ấn *Forgot password ?* để lấy lại mật khẩu. Ở đây bạn cần nhập đầy đủ và chính xác tất cả thông tin của bạn (username, ngày sinh, câu hỏi bảo mật), sau đó nhấn *Reset password* để hoàn tất tạo mật khẩu mới
+####  b. Sử dụng các chức năng thư viện
+####  c. *Trợ giúp* và *Nâng cấp*
+### 2. Người quản lý (Manager)
+####  a. Đăng kí và đăng nhập
+####  b. Sử dụng các chức năng thư viện
+####  c. *Trợ giúp* và *Nâng cấp*
+  _Ấn "Create account" để tạo tài khoản mới
 # 🐸Minh họa dự án 
 
 # 🔭Cải tiến trong tương lai
