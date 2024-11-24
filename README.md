@@ -29,8 +29,9 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
 
 
 ### 2. Với người quản lý (Manager)
-  _
-<br>_
+  _ Xem danh sách người dùng, tìm kiếm theo tên người dùng, xem thông tin chi tiết của từng người dùng khi bấm vào.
+<br>_ Xem toàn bộ các quyển sách đang được mượn, thông tin chi tiết của các quyển sách.
+<br>_ Xem các quyển sách đã được người dùng trả về, ghi nhận phạt người dùng nếu quá hạn.
 <br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn.
 # ⚔Ngôn ngữ phát triển 
 <table align="center">
