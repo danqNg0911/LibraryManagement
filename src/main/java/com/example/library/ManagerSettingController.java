@@ -20,6 +20,9 @@ public class ManagerSettingController extends ManagerController implements BaseS
 
 
     @FXML
+    public Label currentName2Label;
+
+    @FXML
     protected TextField Q1Field;
 
     @FXML
@@ -247,6 +250,7 @@ public class ManagerSettingController extends ManagerController implements BaseS
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
         currentName1Label.setText(manager.getName(manager.getUsername()));
+        currentNameLabel.setText(manager.getName(manager.getUsername()));
         currentUserameLabel.setText(manager.getUsername());
         currentPhoneLabel.setText(manager.getPhone(manager.getUsername()));
         currentEmailLabel.setText(manager.getEmail(manager.getUsername()));
@@ -394,7 +398,7 @@ public class ManagerSettingController extends ManagerController implements BaseS
         }
 
         if (success && passwordCheck) {
-            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+            // Nếu cập nhật thành công, hiện ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
 
@@ -412,7 +416,7 @@ public class ManagerSettingController extends ManagerController implements BaseS
 
         boolean passwordCheck = false;
         // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
-        boolean success = manager.emailUpdate(manager.getUsername(),newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
+        boolean success = manager.emailUpdate(manager.getUsername(), newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
 
         // check password hiện tại
         if (!currentPassword.equals(manager.getPassword(manager.getUsername()))) {

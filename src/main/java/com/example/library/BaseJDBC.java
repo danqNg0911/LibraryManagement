@@ -40,12 +40,12 @@ abstract class BaseJDBC {
             sqlStatement.setString(1, name);
             sqlStatement.setString(2, username);
             sqlStatement.setString(3, password);
-            sqlStatement.setString(8, phonenum);
-            sqlStatement.setString(9, email);
             sqlStatement.setString(4, birthdate);
             sqlStatement.setString(5, Q1);
             sqlStatement.setString(6, Q2);
             sqlStatement.setString(7, Q3);
+            sqlStatement.setString(8, phonenum);
+            sqlStatement.setString(9, email);
             sqlStatement.setInt(10, avaID);
             sqlStatement.setInt(11, score);
 

@@ -12,4 +12,13 @@ public interface BaseSettingController {
     @FXML
     void handleChangePassword(ActionEvent event);
 
+    @FXML
+    public void handleChangeAnswers(ActionEvent event);
+
+    @FXML
+    public void handleChangePhone(ActionEvent event);
+
+    @FXML
+    public void handleChangeEmail(ActionEvent event);
+
 }
