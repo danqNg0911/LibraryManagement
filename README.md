@@ -101,6 +101,12 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 # 🐸Minh họa dự án 
 
 # 🔭Cải tiến trong tương lai
+  - Tích hợp API Chatbot AI: Sử dụng trí tuệ nhân tạo để gợi ý sách dựa trên sở thích đọc của người dùng.
+  - Tính năng đa nền tảng: Phát triển ứng dụng trên các nền tảng khác như Android, IOS hoặc Web để người dùng có thể truy cập mọi lúc, mọi nơi.
+  - Bổ sung giao diện đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Nhật,... để phục vụ đối tượng người dùng quốc tế.
+  - Cải thiện hiệu suất: Tối ưu hóa tốc độ truy vấn và tải dữ liệu khi thư viện chứa số lượng lớn sách.
+  - Tạo cộng đồng đọc sách trực tuyến: Mở ra diễn đàn để người dùng chia sẻ đánh giá, bình luận, hoặc đề xuất sách hay.
+  - Tích hợp công nghệ quét mã QR: Hỗ trợ người dùng mượn/trả sách bằng cách quét mã QR trên sách.
 # 🍒Đóng góp
 Chúng tôi mong muốn có thêm những đóng góp của quý độc giả để hoàn thiện dự án hơn !
 ![](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg)
