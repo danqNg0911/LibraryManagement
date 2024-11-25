@@ -412,4 +412,81 @@ public class BookJDBC implements LinkJDBC {
         }
         return totalBooks;
     }
+
+    public static void returnBorrowedBooks(String username, String title, String author, String category, Date borrowedDate, String imageUrl) throws SQLException {
+        String query = "INSERT INTO `loanbooks` (username, title, author, category, borrowedDate, returnedDate, fineAmount, imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setString(1, username);
+            sqlStatement.setString(2, title);
+            sqlStatement.setString(3, author);
+            sqlStatement.setString(4, category);
+            sqlStatement.setDate(5, borrowedDate);
+            LocalDate date = LocalDate.now();
+            sqlStatement.setDate(6, java.sql.Date.valueOf(date));
+            sqlStatement.setDouble(7, 0);
+            sqlStatement.setString(8, imageUrl);
+
+            sqlStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Book> getReturnedBooksFromUsers() throws SQLException {
+        List<Book> returnedBooks = new ArrayList<>();
+        String query = "SELECT * FROM loanbooks";
+        try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            try (ResultSet resultSet = sqlStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String username = resultSet.getString("username");
+                    String title = resultSet.getString("title");
+                    String author = resultSet.getString("author");
+                    String category = resultSet.getString("category");
+                    Date borrowedDate = resultSet.getDate("borrowedDate");
+                    Date returnedDate = resultSet.getDate("returnedDate");
+                    double fineAmount = resultSet.getDouble("fineAmount");
+                    int id = resultSet.getInt("id");
+                    String imageUrl = resultSet.getString("imageUrl");
+                    Book book = new Book(username, title, author, category, borrowedDate, returnedDate, id, fineAmount, imageUrl);
+                    returnedBooks.add(book);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnedBooks;
+    }
+
+    public static void updateFineAmount(int id, double fineAmount) throws SQLException {
+        String query = "UPDATE loanbooks SET fineAmount = ? WHERE id = ?";
+
+        try (Connection databaseConnect = connectToDatabase();
+             PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
+            sqlStatement.setDouble(1, fineAmount);
+            sqlStatement.setInt(2, id);
+
+            int rowsUpdated = sqlStatement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Fine update for user");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void editBook(int id, String title, String author, String category, String description) {
+        String query = "UPDATE books SET title = ?, author = ?, category = ?, description = ? WHERE id = ?";
+        try (Connection connection = connectToDatabase();
+             PreparedStatement sqlStatement = connection.prepareStatement(query)) {
+            sqlStatement.setString(1, title);
+            sqlStatement.setString(2, author);
+            sqlStatement.setString(3, category);
+            sqlStatement.setString(4, description);
+            sqlStatement.setInt(5, id);
+            sqlStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

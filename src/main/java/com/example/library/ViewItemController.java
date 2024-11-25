@@ -3,6 +3,10 @@ package com.example.library;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,10 +14,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ViewItemController extends UserController {
     private Book selectedBook;
@@ -49,8 +55,10 @@ public class ViewItemController extends UserController {
     private Label libraryTitle;
 
     @FXML
-    private Button addBookButton;
+    private Button editButton;
 
+    @FXML
+    private Button deleteButton;
 
     public void setBookDetails(Book book) throws SQLException {
         selectedBook = book;
@@ -72,14 +80,60 @@ public class ViewItemController extends UserController {
             }
 
         }
+        System.out.println(book.getSource());
     }
 
-    public void deleteBook(ActionEvent event) {
+    public void deleteBook(ActionEvent event) throws SQLException {
         if (BookJDBC.checkBook(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor())) {
-            BookJDBC.deleteBookFromDatabase(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getId() );
+
+            BookJDBC.deleteBookFromDatabase(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getId());
+            if (selectedBook.getSource() == null || selectedBook.getSource().equals("borrowed")) {
+                BookJDBC.returnBorrowedBooks(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getCategory(), selectedBook.getDate(), selectedBook.getImageUrl());
+            }
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book is successfully removed", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
+        }
+    }
+
+    public void setEditButton() {
+        editButton.setVisible(true);
+    }
+
+    public void setDeleteButton() {
+        deleteButton.setVisible(false);
+    }
+
+    public void editCreatedBook(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/AddBook.fxml"));
+            Parent root = loader.load();
+
+            AddBookController controller = loader.getController();
+            controller.setInfoForBookEditing(selectedBook);
+            controller.setBookEditButton();
+
+            Scene scene = new Scene(root, 1200, 800);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/library/stylesheet (css)/userStyles.css")).toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/library/stylesheet (css)/userCltStyle.css")).toExternalForm());
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            WindowManager.navigateTo(scene);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addBook(ActionEvent actionEvent) {
+        if (!BookJDBC.checkBook(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor())) {
+            BookJDBC.addBookToDatabase(user.getUsername(), "", selectedBook.getTitle(),
+                    selectedBook.getAuthor(), selectedBook.getCategory(),
+                    selectedBook.getImageUrl(), selectedBook.getDescription(), "borrowed");
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
+        } else {
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
         }
     }
 

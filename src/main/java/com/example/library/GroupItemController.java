@@ -57,6 +57,13 @@ public class GroupItemController {
         // Lấy controller của ViewItem và truyền thông tin sách
         ViewItemController viewItemController = loader.getController();
         viewItemController.setBookDetails(selectedBook);
+        if (selectedBook.getSource() != null && selectedBook.getSource().equals("create")) {
+            viewItemController.setEditButton();
+        }
+
+        if (selectedBook.getId() == -1) {
+            viewItemController.setDeleteButton();
+        }
 
         Scene scene = new Scene(root, 1200, 800);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

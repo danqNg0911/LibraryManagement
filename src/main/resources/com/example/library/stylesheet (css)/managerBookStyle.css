@@ -6,39 +6,6 @@
     -fx-alignment: center-left;
 }
 
-.table-view .column-header {
-    -fx-background-color: #ff6694;    /* Màu nền tiêu đề cột */
-}
-
-.table-view {
-    -fx-border-color: #000000;   /* Màu viền */
-    -fx-border-width: 0.3px;       /* Độ dày của viền */
-}
-
-.table-view:focused {
-    -fx-focus-color: transparent;   /* Đổi màu hiệu ứng focus của TableView */
-    -fx-faint-focus-color: #FFCCBC; /* Đổi màu nhạt hơn cho hiệu ứng focus */
-}
-
-.table-view .column-header, .table-view .column-header .label {
-    -fx-text-fill: white;             /* Màu chữ tiêu đề cột */
-    -fx-font-weight: bold;            /* Định dạng chữ in đậm */
-    -fx-alignment: center;            /* Căn giữa tiêu đề cột */
-}
-
-.table-row-cell:selected {
-    -fx-background-color: transparent;
-    -fx-text-fill: #000000;           /* Màu chữ khi hàng được chọn */
-}
-
-.table-view .column-header {
-    -fx-pref-height: 35px; /* Chiều cao của tiêu đề cột */
-}
-
-.table-row-cell {
-    -fx-cell-size: 30px;  /* Đặt chiều cao hàng là 40 pixels */
-}
-
 #description {
     -fx-alignment: top-left;
 }
@@ -70,19 +37,6 @@
 
 #infoPane {
     -fx-background-color: #f5f5f5;
-}
-
-.textField {
-    -fx-background-color: #fff;
-    -fx-background-radius: 50;
-    -fx-border-color: #696969;
-    -fx-border-radius: 50;
-}
-
-.textField:focused {
-    -fx-background-color: #ffffe0;
-    -fx-border-color: #ffcc00;
-    -fx-border-radius: 50;
 }
 
 .filters  > .title {

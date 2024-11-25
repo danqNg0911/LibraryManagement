@@ -38,12 +38,12 @@ public class BookItemController {
     private Label bookInfo;
 
     @FXML
-    private Button viewItemButton;
+    private Button backButton;
 
     private Book book;
 
     @FXML
-    private Button backButton;
+    private Button deleteButton;
 
     public void setBook(Book book) {
         this.book = book;
@@ -72,7 +72,9 @@ public class BookItemController {
         // Lấy controller của ViewItem và truyền thông tin sách
         ViewItemController viewItemController = loader.getController();
         viewItemController.setBookDetails(book);
-
+        if (book.getId() == -1) {
+            viewItemController.setDeleteButton();
+        }
 
         //WindowManager.handlemoveButton("/com/example/library/fxml/ViewItem.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800, event);
 
@@ -90,6 +92,7 @@ public class BookItemController {
         String description = book.getDescription();
         String imageUrl = book.getImageUrl();
         String username = user.getUsername();
+        int id = book.getId();
         Date date = new Date(Timestamp.from(Instant.now()).getTime());
 
         if (!BookJDBC.checkBook(username, title, author)) {
