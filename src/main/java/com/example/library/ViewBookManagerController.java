@@ -93,8 +93,7 @@ public class ViewBookManagerController extends ManagerController {
     }
 
     public void viewUserAccount(ActionEvent event) throws SQLException {
-        User userDB = new User();
-        UserAccount selectedUser = userDB.getAccountByUsername(book.getUsername());
+        UserAccount selectedUser = user.getAccountByUsername(book.getUsername());
         if (selectedUser != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/library/fxml/ViewUserManager.fxml"));
             Parent root = null;

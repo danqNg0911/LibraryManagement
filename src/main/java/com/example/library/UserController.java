@@ -17,8 +17,6 @@ import java.io.IOException;
 
 abstract class UserController extends BaseController {
 
-    Image avaImg;
-
     @FXML
     protected Button accHelpsButton;
 

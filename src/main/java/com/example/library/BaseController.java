@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -17,6 +18,8 @@ public abstract class BaseController  {
     protected ManagerJDBC managerJDBC = new ManagerJDBC();
     protected Manager manager = new Manager();
     protected User user = new User();
+
+    protected Image avaImg;
 
 
     @FXML

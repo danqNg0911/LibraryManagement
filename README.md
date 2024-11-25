@@ -86,13 +86,19 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 ####  a. Đăng kí và đăng nhập
   - Nhập *username* và *password* chính xác rồi ấn *Sign in* để đăng nhập vào ứng dụng (nếu đã có tài khoản)
   - Nếu chưa có tài khoản, ấn *Create new account* để tạo tài khoản mới
-     + Nhập đầy đủ thông tin : *Name*, *Username*, *Password* (từ 8 ký tự trở lên), *Phone number* (đủ 10 số), *Email*
-     + Chọn **Reader** rồi bấm **Next** để hiện ra trang đăng kí bảo mật
+     + Nhập đầy đủ thông tin : *Name*, *Username*, *Password* (từ 8 ký tự trở lên), *Phone number* (đủ 10 số), *Email*.
+     + Chọn **Reader** rồi bấm **Next** để hiện ra trang đăng kí bảo mật.
      + Ở trang đăng kí bảo mật, bạn cần nhập những câu hỏi bảo mật liên quan đến cá nhân, bạn cần nhớ câu trả lời của những câu hỏi này, nó sẽ giúp bạn lấy lại tài khoản nếu bạn quên tài khoản
-     + Ấn *Resigter* để hoàn tất đăng kí
-  - Nếu bạn quên mật khẩu, ấn *Forgot password ?* để lấy lại mật khẩu. Ở đây bạn cần nhập đầy đủ và chính xác tất cả thông tin của bạn (username, ngày sinh, câu hỏi bảo mật), sau đó nhấn *Reset password* để hoàn tất tạo mật khẩu mới
+     + Ấn *Resigter* để hoàn tất đăng kí.
+  - Nếu bạn quên mật khẩu, ấn *Forgot password ?* để lấy lại mật khẩu. Ở đây bạn cần nhập đầy đủ và chính xác tất cả thông tin của bạn (username, ngày sinh, câu hỏi bảo mật), sau đó nhấn *Reset password* để hoàn tất tạo mật khẩu mới.
 ####  b. Sử dụng các chức năng thư viện
-####  c. *Trợ giúp* và *Nâng cấp*
+  - **Dashboard** là nơi hiển thị mọi thông tin của bạn, bạn có thể xem thông tin tài khoản (Your information), lượng sách đã mượn qua biểu đồ. Ngoài ra, bạn có thể xem video giới thiệu về ULib và trải nghiệm AI khi bấm vào cửa sổ AI bên phải màn hình.
+  - **Library** là thư viện của chúng tôi (sử dụng API của Google), bạn có thể tìm sách theo ISBN, tiêu đề, tác giả, thể loại. Thư viện có tích hợp gợi ý để bạn dễ dàng tìm kiếm hơn. Ấn *Search* để tìm sách. Bạn cũng có thể xem tổng quan về sách khi ấn *View*, ấn *Add* để thêm sách vào bộ sưu tập cá nhân, hoặc ấn *Delete* nếu thêm nhầm.
+  - **Collection** là nơi bạn có thể xem bộ sưu tập của bạn, ngoài ra có thể xem những bộ sưu tập khác theo nhiều chủ đề khác nhau. Trước hết với *My collection*, bạn có thể xem toàn bộ số sách bạn đã mượn được sắp xếp theo Alphabet ở khung hình bên trái. Bạn có thể tìm kiếm sách tong bộ sưu tập theo tiêu đề, tác giả, thể loại, sau đó bấm biểu tượng *Tìm kiếm* để hiển thị. Ngoài ra bạn có thể lọc sách qua chức năng *Filters*. Bạn cũng có thể tự thêm sách vào bộ sưu tập của mình khi bấm vào nút *Add your own book* (lưu ý sách mà bạn thêm thì bạn có thể chỉnh sửa và update).
+  - **Setting** là phần cài đặt. Ở đây có 2 phần là cài đặt thông tin tài khoản và cài đặt cá nhân. Bạn có thể chỉnh sửa thông tin cá nhân như *Name*, *Username*, *Security Questions* hay *Phone, Email*ở phần *Account settings* (Lưu ý cần nhập đúng mật khẩu hiện tại và tuân thủ các quy tắc như phần đăng ký). Ở phần cài đặt cá nhân, bạn có thể chọn avatar cho account của bạn khi ấn vào 1 trong 10 bức ảnh và *Accept*. Ngoài ra, chúng tôi còn cung cấp chức năng nghe nhạc khi bạn sử dụng thư viện, bạn có thể chọn phát bài nhạc yêu thích ở playlist và nghe nó trong khi sử dụng app.
+####  c. Chức năng *Trợ giúp* và *Nâng cấp*
+  - **Helps** gồm 2 phần là gửi ý kiến của bạn và hướng dẫn sử dụng. Bạn có thể viết ý kiến, đánh giá, góp ý cho chúng tôi để chúng tôi có thể hoàn thiện app hơn. Nếu bạn chưa biết cách sử dụng, có thể bấm vào nút *Open* để xem hướng dẫn của chúng tôi trên Youtube.
+####  d. Game *"Black Myth Wukong"*
 ### 2. Người quản lý (Manager)
 ####  a. Đăng kí và đăng nhập
 ####  b. Sử dụng các chức năng thư viện
