@@ -13,6 +13,11 @@ public enum LinkSetting {
     DATABASE_MANAGER_PASSWORD("Haidang0911."),
 
     MANAGER_LIST_FILE_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\ListOfManagers.txt"),
+    MANAGER_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\ListOfManagers.txt"),
+    CATEGORY_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\CategorySuggestion.txt"),
+    TITLE_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\TitleSuggestion.txt"),
+    AUTHOR_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\AuthorSuggestion.txt"),
+
 
     DEFAULT_COVER_IMAGE("/com/example/library/assets/default_cover.png"),
     IMAGE_NULL("/com/example/library/assets/Picture_is_not_available.png"),

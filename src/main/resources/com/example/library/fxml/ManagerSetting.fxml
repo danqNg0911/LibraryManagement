@@ -79,7 +79,7 @@
                         <Font name="System Italic" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                  <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="206.0" text="Label">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
@@ -334,11 +334,25 @@
             </Label>
          </children>
          <stylesheets>
-            <URL value="@../stylesheet%20(css)/managerStgStyle.css" />
-            <URL value="@../stylesheet%20(css)/managerStyles.css" />
+            <URL value="@../stylesheet (css)/managerStgStyle.css" />
+            <URL value="@../stylesheet (css)/managerStyles.css" />
          </stylesheets>
       </AnchorPane>
       <Line endX="1207.4000244140625" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094" startY="135.2928924560547" />
+      <Pane layoutY="382.0" prefHeight="417.0" prefWidth="222.0">
+         <children>
+            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/mHelp.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
       <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
          <children>
             <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
@@ -363,6 +377,16 @@
             </HBox>
             <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
+                  <ImageView fx:id="loanManagementPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/loanManagementPic.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="loanManagementButton" mnemonicParsing="false" onAction="#moveToLoanManagement" onMouseEntered="#showAnimationLoan" onMouseExited="#unshowAnimationLoan" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Loan Books" />
+               </children>
+            </HBox>
+            <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
                   <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/mSetting.png" />
@@ -373,23 +397,10 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutY="382.0" prefHeight="417.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/mHelp.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps" />
-               </children>
-            </HBox>
-         </children>
-      </Pane>
    </children>
    <stylesheets>
-      <URL value="@../stylesheet (css)/managerStyles.css" />
-      <URL value="@../stylesheet (css)/managerStgStyle.css" />
+      <URL value="@../stylesheet%20(css)/managerStyles.css" />
+      <URL value="@../stylesheet%20(css)/managerStgStyle.css" />
+      <URL value="@../stylesheet%20(css)/managerStyles.css" />
    </stylesheets>
 </AnchorPane>

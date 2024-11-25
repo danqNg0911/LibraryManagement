@@ -1,0 +1,18 @@
+Cat
+Dog
+Horse
+Thinking
+Chemistry
+Physic
+Math
+Robot
+Fire
+Wind
+Water
+Mountain
+House
+Coin
+King
+War
+Viet Nam
+Capybara

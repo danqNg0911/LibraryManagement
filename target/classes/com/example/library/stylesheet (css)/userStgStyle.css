@@ -44,7 +44,23 @@
     -fx-opacity: 0.8;
 }
 
-.subTitledPane > .content {
+.subTitledPane1 > .title {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-min-height: 35px;
+    -fx-pref-height: 35px;
+    -fx-max-height: 35px;
+    -fx-background-color: #f8f8f8;
+    -fx-transition: opacity 0.2 ease;
+}
+
+.subTitledPane1 > .title:hover {
+    -fx-background-color: #b5b5b5;
+    -fx-opacity: 0.8;
+}
+
+.subTitledPane1 > .content {
     -fx-background-color: #ffffff
 }
 

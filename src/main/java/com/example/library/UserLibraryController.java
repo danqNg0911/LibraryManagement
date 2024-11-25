@@ -21,7 +21,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.controlsfx.control.textfield.TextFields;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -64,13 +67,26 @@ public class UserLibraryController extends UserController {
     @FXML
     private ProgressIndicator loadingSearching;
 
+    private List<String> categorySuggestions;
+    private List<String> titleSuggestions;
+    private List<String> authorSuggestions;
+
+    private static final String CATEGORY_DATA_FILE_PATH = LinkSetting.CATEGORY_LIST_FILE_PATH.getLink();
+    private static final String TITLE_DATA_FILE_PATH = LinkSetting.TITLE_LIST_FILE_PATH.getLink();
+    private static final String AUTHOR_DATA_FILE_PATH = LinkSetting.AUTHOR_LIST_FILE_PATH.getLink();
+
     @FXML
     public void initialize() throws IOException {
         baseInitialize();
         libImage.setImage(new Image(getClass().getResource("/com/example/library/assets/lib (2).png").toExternalForm()));
+        categorySuggestions = loadSuggestions(CATEGORY_DATA_FILE_PATH);
+        titleSuggestions = loadSuggestions(TITLE_DATA_FILE_PATH);
+        authorSuggestions = loadSuggestions(AUTHOR_DATA_FILE_PATH);
+        TextFields.bindAutoCompletion(titleField, titleSuggestions);
+        TextFields.bindAutoCompletion(authorField, authorSuggestions);
+        TextFields.bindAutoCompletion(categoryField, categorySuggestions);
     }
 
-    // Di chuột vào hiện hiệu ứng và ngược lại
     public void showAnimationLib(MouseEvent event) {
         return;
     }
@@ -205,5 +221,18 @@ public class UserLibraryController extends UserController {
             return volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
         }
         return null;
+    }
+
+    private List<String> loadSuggestions(String filePath) throws IOException {
+        List<String> suggestionsList = new ArrayList<>();
+        //InputStream inputStream = getClass().getResourceAsStream(filePath);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                suggestionsList.add(line.trim());
+            }
+        }
+        return suggestionsList;
     }
 }

@@ -103,6 +103,18 @@
     -fx-background-color: #ff6694;
 }
 
+.editButton {
+    -fx-background-color: #38b1ff;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+#editButton:pressed {
+    -fx-background-color: #ff6694;
+}
+
 #accountName {
     -fx-font-weight: bold;
     -fx-font-size: 13px;
@@ -145,7 +157,7 @@
     -fx-border-radius: 50;
 }
 
-#deleteBook {
+#deleteButton {
     -fx-font-weight: bold;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
