@@ -413,8 +413,8 @@ public class BookJDBC implements LinkJDBC {
         return totalBooks;
     }
 
-    public static void returnBorrowedBooks(String username, String title, String author, String category, Date borrowedDate) throws SQLException {
-        String query = "INSERT INTO `loanbooks` (username, title, author, category, borrowedDate, returnedDate, fineAmount) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public static void returnBorrowedBooks(String username, String title, String author, String category, Date borrowedDate, String imageUrl) throws SQLException {
+        String query = "INSERT INTO `loanbooks` (username, title, author, category, borrowedDate, returnedDate, fineAmount, imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, username);
             sqlStatement.setString(2, title);
@@ -424,6 +424,7 @@ public class BookJDBC implements LinkJDBC {
             LocalDate date = LocalDate.now();
             sqlStatement.setDate(6, java.sql.Date.valueOf(date));
             sqlStatement.setDouble(7, 0);
+            sqlStatement.setString(8, imageUrl);
 
             sqlStatement.executeUpdate();
 
@@ -446,7 +447,8 @@ public class BookJDBC implements LinkJDBC {
                     Date returnedDate = resultSet.getDate("returnedDate");
                     double fineAmount = resultSet.getDouble("fineAmount");
                     int id = resultSet.getInt("id");
-                    Book book = new Book(username, title, author, category, borrowedDate, returnedDate, id, fineAmount);
+                    String imageUrl = resultSet.getString("imageUrl");
+                    Book book = new Book(username, title, author, category, borrowedDate, returnedDate, id, fineAmount, imageUrl);
                     returnedBooks.add(book);
                 }
             }
@@ -468,6 +470,21 @@ public class BookJDBC implements LinkJDBC {
             if (rowsUpdated > 0) {
                 System.out.println("Fine update for user");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void editBook(int id, String title, String author, String category, String description) {
+        String query = "UPDATE books SET title = ?, author = ?, category = ?, description = ? WHERE id = ?";
+        try (Connection connection = connectToDatabase();
+             PreparedStatement sqlStatement = connection.prepareStatement(query)) {
+            sqlStatement.setString(1, title);
+            sqlStatement.setString(2, author);
+            sqlStatement.setString(3, category);
+            sqlStatement.setString(4, description);
+            sqlStatement.setInt(5, id);
+            sqlStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

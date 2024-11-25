@@ -112,8 +112,8 @@ public class ManagerBookController extends ManagerController {
             if (borrowedDate != null) {
                 if ("borrowed".equals(book.getSource())) {
                     LocalDate localDate = borrowedDate.toLocalDate();
-                    // neu muon sach qua 3 ngay chua tra thi tinh la "Overdue" - qua han
-                    if (localDate.plusDays(3).isBefore(LocalDate.now())) {
+                    //neu muon sach qua thoi han chua tra thi tinh la "Overdue" - qua han
+                    if (localDate.plusDays(allowedBorrowTime).isBefore(LocalDate.now())) {
                         book.setStatus("Overdue");
                     } else {
                         book.setStatus("Available");
@@ -173,7 +173,7 @@ public class ManagerBookController extends ManagerController {
     }
 
     public void showBooksData(ActionEvent actionEvent) throws SQLException {
-        loadBooksAccounts(); // Tải dữ liệu sách
-        bookFilters(); // Lọc dữ liệu hiển thị
+        loadBooksAccounts();
+        bookFilters();
     }
 }

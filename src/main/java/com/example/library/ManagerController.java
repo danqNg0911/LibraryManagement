@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -14,6 +15,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 abstract class ManagerController extends BaseController {
+    Image avaImg;
+    public int allowedBorrowTime = 3;
 
     @FXML
     protected ImageView MBPic;
@@ -136,7 +139,7 @@ abstract class ManagerController extends BaseController {
 
     public void moveToLoanManagement(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
-        WindowManager.handlemoveButton("fxml/LoanManagement.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
+        WindowManager.handlemoveButton("fxml/LoanManagement.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerLoanBooks.css", 1200, 800, actionEvent);
     }
 
     public void moveToaccSetting(ActionEvent actionEvent) throws IOException {

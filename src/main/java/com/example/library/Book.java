@@ -19,7 +19,7 @@ public class Book {
     private double fineAmount;
 
     private String status;
-    private int id;
+    private int id = -1;
 
     public Book(String title, String author, String category, String imageUrl, String description, Date date) {
         this.title = title;
@@ -30,15 +30,7 @@ public class Book {
         this.date = date;
     }
 
-    /*public Book(String title, String author, String category, String imageUrl, String description) {
-        this.title = title;
-        this.author = author;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.description = description;
-    }*/
-
-    public Book(String username, String title, String author, String category, Date date, Date returnedDate, int id, double fineAmount) {
+    public Book(String username, String title, String author, String category, Date date, Date returnedDate, int id, double fineAmount, String imageUrl) {
         this.username = username;
         this.title = title;
         this.author = author;
@@ -47,6 +39,7 @@ public class Book {
         this.returnedDate = returnedDate;
         this.id = id;
         this.fineAmount = fineAmount;
+        this.imageUrl = imageUrl;
     }
 
     public Book(String title, String author, String category, String imageUrl, String description, String username, String source, Date date, int id) {

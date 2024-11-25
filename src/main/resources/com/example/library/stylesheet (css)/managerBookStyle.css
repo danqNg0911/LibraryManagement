@@ -39,19 +39,6 @@
     -fx-background-color: #f5f5f5;
 }
 
-.textField {
-    -fx-background-color: #fff;
-    -fx-background-radius: 50;
-    -fx-border-color: #696969;
-    -fx-border-radius: 50;
-}
-
-.textField:focused {
-    -fx-background-color: #ffffe0;
-    -fx-border-color: #ffcc00;
-    -fx-border-radius: 50;
-}
-
 .filters  > .title {
     -fx-background-color: #ff6694;
 }

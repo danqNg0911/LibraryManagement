@@ -23,7 +23,7 @@
             </image>
         </ImageView>
         <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
-            <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="82.0" layoutY="442.0" prefHeight="282.0" prefWidth="780.0" styleClass="chart" title="Unique items added by rolling year">
+            <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="82.0" layoutY="442.0" prefHeight="282.0" prefWidth="780.0" styleClass="chart" title="Unique items added by rolling day">
                 <xAxis>
                     <CategoryAxis side="BOTTOM" />
                 </xAxis>

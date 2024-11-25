@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 
@@ -68,6 +70,9 @@ public class ManagerLoanBooksController extends ManagerController {
     @FXML
     private Button finedButton;
 
+    @FXML
+    private ImageView coverImage;
+
     private List<Book> listOfBooks = new ArrayList<>();
     private List<Book> listBooksWithFilters = new ArrayList<>();
 
@@ -116,8 +121,8 @@ public class ManagerLoanBooksController extends ManagerController {
 
         listOfBooks = BookJDBC.getReturnedBooksFromUsers();
         for (Book book : listOfBooks) {
-            int borrwedDays = dateDiff(book.getDate(), book.getReturnedDate());
-            if (borrwedDays <= 3) {
+            int borrowedDays = dateDiff(book.getDate(), book.getReturnedDate());
+            if (borrowedDays <= allowedBorrowTime) {
                 book.setStatus("on time");
             } else {
                 book.setStatus("late");
@@ -162,6 +167,19 @@ public class ManagerLoanBooksController extends ManagerController {
         authorLabel.setText("Author: " + selectedBook.getAuthor());
         categoryLabel.setText("Category: " + selectedBook.getCategory());
 
+        if (selectedBook.getImageUrl() != null && !selectedBook.getImageUrl().isEmpty()) {
+            Image image = new Image(selectedBook.getImageUrl());
+            coverImage.setImage(image);
+        } else {
+            if (selectedBook.getSource() != null && selectedBook.getSource().equals("create")) {
+                Image defaultImage = new Image(getClass().getResource(LinkSetting.DEFAULT_COVER_IMAGE.getLink()).toExternalForm());
+                coverImage.setImage(defaultImage);
+            } else {
+                Image nullImage = new Image(getClass().getResource(LinkSetting.IMAGE_NULL.getLink()).toExternalForm());
+                coverImage.setImage(nullImage);
+            }
+        }
+
         if (selectedBook.getStatus().equals("on time")) {
             finedButton.setVisible(false);
             fineLabel.setText("Fine Amount: 0" );
@@ -171,7 +189,7 @@ public class ManagerLoanBooksController extends ManagerController {
 
             fineLabel.setText("Fine Amount: " + (int) fineAmountCalculate(selectedBook.getDate(), selectedBook.getReturnedDate()));
             noteLabel.setText("Note: This book was returned "
-                    + (dateDiff(selectedBook.getDate(), selectedBook.getReturnedDate()) - 2) + " days late");
+                    + (dateDiff(selectedBook.getDate(), selectedBook.getReturnedDate()) - allowedBorrowTime + 1) + " day(s) late");
         }
     }
 
@@ -199,7 +217,7 @@ public class ManagerLoanBooksController extends ManagerController {
     }
 
     public double fineAmountCalculate(Date borrowedDate, Date returnedDate) {
-        int overdueDays = dateDiff(borrowedDate, returnedDate) - 2;
+        int overdueDays = dateDiff(borrowedDate, returnedDate) - allowedBorrowTime + 1;
         if (overdueDays > 0) {
             if (overdueDays <= 2 ) {
                 return 10000;

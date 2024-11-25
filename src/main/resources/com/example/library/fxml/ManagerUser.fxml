@@ -57,7 +57,7 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nameField" layoutX="683.0" layoutY="168.0" prefHeight="30.0" prefWidth="193.0" />
+                <TextField fx:id="nameField" layoutX="683.0" layoutY="168.0" prefHeight="30.0" prefWidth="193.0" styleClass="textField" />
                 <Button layoutX="881.0" layoutY="168.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#searchUser" prefHeight="30.0" prefWidth="30.0">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
