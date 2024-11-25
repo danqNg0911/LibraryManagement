@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -14,6 +15,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 abstract class ManagerController extends BaseController {
+    Image avaImg;
+    public int allowedBorrowTime = 3;
 
     @FXML
     protected ImageView MBPic;
@@ -66,6 +69,12 @@ abstract class ManagerController extends BaseController {
     @FXML
     protected ImageView settingPic;
 
+    @FXML
+    protected Button loanManagementButton;
+
+    @FXML
+    protected ImageView loanManagementPic;
+
     public void showAnimationMU(MouseEvent event) {
         WindowManager.showPic(event, manageUsersButton, MUPic);
     }
@@ -98,6 +107,15 @@ abstract class ManagerController extends BaseController {
         WindowManager.unshowPic(event, settingButton, settingPic);
     }
 
+    public void showAnimationLoan(MouseEvent event) {
+        WindowManager.showPic(event, loanManagementButton, loanManagementPic);
+    }
+
+    public void unshowAnimationLoan(MouseEvent event) {
+        WindowManager.unshowPic(event, loanManagementButton, loanManagementPic);
+    }
+
+
     // Chuyen den trang khac
     public void moveToManageUsers(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
@@ -117,6 +135,11 @@ abstract class ManagerController extends BaseController {
     public void moveToSetting(ActionEvent actionEvent) throws IOException {
         WindowManager.playButtonSound();
         WindowManager.handlemoveButton("fxml/ManagerSetting.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerStgStyle.css", 1200, 800, actionEvent);
+    }
+
+    public void moveToLoanManagement(ActionEvent actionEvent) throws IOException {
+        WindowManager.playButtonSound();
+        WindowManager.handlemoveButton("fxml/LoanManagement.fxml", "stylesheet (css)/managerStyles.css", "stylesheet (css)/managerLoanBooks.css", 1200, 800, actionEvent);
     }
 
     public void moveToaccSetting(ActionEvent actionEvent) throws IOException {

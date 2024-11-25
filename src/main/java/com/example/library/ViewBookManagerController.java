@@ -111,7 +111,6 @@ public class ViewBookManagerController extends ManagerController {
             } catch (SQLException e) {
                 System.out.println("loi BookJDBC.getTotalBorrowedBooks(...)");
             }
-            //controller.showBarChart(selectedUser);
 
             Scene scene = new Scene(root, 1200, 800);
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet (css)/managerStyles.css")).toExternalForm());
@@ -128,8 +127,11 @@ public class ViewBookManagerController extends ManagerController {
         WindowManager.goBack();
     }
 
-    public void deleteBook(ActionEvent event) {
-        BookJDBC.deleteBookFromDatabase(book.getUsername(), book.getTitle(), book.getAuthor(), book.getId() );
+    public void deleteBook(ActionEvent event) throws SQLException {
+        BookJDBC.deleteBookFromDatabase(book.getUsername(), book.getTitle(), book.getAuthor(), book.getId());
+        if (book.getSource().equals("borrowed")) {
+            BookJDBC.returnBorrowedBooks(book.getUsername(), book.getTitle(), book.getAuthor(), book.getCategory(), book.getDate(), book.getImageUrl());
+        }
         WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book is successfully removed", "stylesheet (css)/login_alert.css");
     }
 

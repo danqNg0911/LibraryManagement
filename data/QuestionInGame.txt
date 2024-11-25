@@ -42,7 +42,7 @@ The Great Gatsby
 //
 What is considered the first science fiction novel?
 &Frankenstein
-20,000 Leagues Under the Sea
+The Chronicles of Narnia
 The War of the Worlds
 The Time Machine
 //

@@ -147,3 +147,8 @@
     -fx-font-size: 13px;
     -fx-background-color: #fff;
 }
+
+.cover {
+    -fx-border-color: #000;
+    -fx-border-width: 0.5;
+}

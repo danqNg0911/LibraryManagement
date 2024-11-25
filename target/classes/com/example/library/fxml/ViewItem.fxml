@@ -64,7 +64,9 @@
                                 </AnchorPane>
                             </content>
                         </ScrollPane>
-                        <Button fx:id="deleteBook" layoutX="95.0" layoutY="332.0" mnemonicParsing="false" onAction="#deleteBook" styleClass="libButton" text="Delete Book" />
+                        <Button fx:id="deleteButton" layoutX="92.0" layoutY="392.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="25.0" prefWidth="90.0" styleClass="libButton" text="Delete Book" />
+                  <Button fx:id="editButton" layoutX="92.0" layoutY="321.0" mnemonicParsing="false" onAction="#editCreatedBook" prefHeight="26.0" prefWidth="90.0" styleClass="editButton" text="Edit Book" visible="false" />
+                  <Button fx:id="addButton" layoutX="92.0" layoutY="356.0" mnemonicParsing="false" onAction="#addBook" prefHeight="26.0" prefWidth="90.0" styleClass="editButton" text="Add Book" />
                     </children>
                 </Pane>
                 <Label fx:id="accountName" layoutX="812.0" layoutY="48.0" prefHeight="26.0" prefWidth="87.0" text="Acc name" />
@@ -103,7 +105,7 @@
                                 <Image url="@../assets/Lib.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="libraryButton" mnemonicParsing="false" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
+                        <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#moveToLibrary" onMouseEntered="#showAnimationLib" onMouseExited="#unshowAnimationLib" prefHeight="40.0" prefWidth="186.0" text="Library" />
                     </children>
                 </HBox>
                 <HBox layoutY="121.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">

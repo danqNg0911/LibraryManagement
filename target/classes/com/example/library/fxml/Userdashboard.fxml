@@ -23,7 +23,7 @@
             </image>
         </ImageView>
         <AnchorPane fx:id="mainSce" layoutX="222.0" prefHeight="800.0" prefWidth="986.0">
-            <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="82.0" layoutY="442.0" prefHeight="282.0" prefWidth="780.0" styleClass="chart" title="Unique items added by rolling year">
+            <BarChart fx:id="rollingYearChart" categoryGap="1.0" layoutX="82.0" layoutY="442.0" prefHeight="282.0" prefWidth="780.0" styleClass="chart" title="Unique items added by rolling day">
                 <xAxis>
                     <CategoryAxis side="BOTTOM" />
                 </xAxis>
@@ -85,7 +85,7 @@
                             <Font name="System Bold" size="16.0" />
                         </font>
                     </Label>
-                    <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="120.0" prefHeight="18.0" prefWidth="156.0" text="Label">
+                    <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="120.0" prefHeight="25.0" prefWidth="190.0" text="Label">
                         <font>
                             <Font name="System Italic" size="16.0" />
                         </font>

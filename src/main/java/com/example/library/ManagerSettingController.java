@@ -223,15 +223,6 @@ public class ManagerSettingController extends ManagerController implements BaseS
     private ImageView settingPic;
 
 
-    // Di chuột vào hiện hiệu ứng và ngược lại
-    /*public void showAnimationDsb(MouseEvent event) {
-        WindowManager.showPic(event, dashboardButton, dashboardPic);
-    }
-
-    public void unshowAnimationDsb(MouseEvent event) {
-        WindowManager.unshowPic(event, dashboardButton, dashboardPic);
-    }*/
-
     public void showAnimationStg(MouseEvent event) {
         return;
     }
@@ -280,6 +271,7 @@ public class ManagerSettingController extends ManagerController implements BaseS
 
             accountName.setText(newName);
             currentNameLabel.setText(newName);
+            currentName1Label.setText(newName);
         } else {
 
             WindowManager.RedWarningLabel(changeNameSuccessedLabel, "This name is invalid", 2);
@@ -401,7 +393,7 @@ public class ManagerSettingController extends ManagerController implements BaseS
             // Nếu cập nhật thành công, hiện ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
-
+            currentPhoneLabel.setText(newPhonenum);
         } else {
 
             WindowManager.RedWarningLabel(newPhoneWarning, "This phone is invalid", 2);
@@ -429,7 +421,7 @@ public class ManagerSettingController extends ManagerController implements BaseS
             // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Email", "Your email has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
-
+            currentEmailLabel.setText(newEmail);
         } else {
             WindowManager.RedWarningLabel(newEmailWarning, "This email is invalid", 2);
         }
