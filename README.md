@@ -78,8 +78,9 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 2. Clone dự án về IDE: <a href="https://www.youtube.com/watch?v=ILSQeAOK0gs" target="_blank"> Hướng dẫn.</a>
 3. Mở MySQL WorkBench, tạo MySQL Connections mới (nếu chưa có trên máy), rồi tạo tệp Query Tab mới. <br> Tại đây, sao chép, dán và chạy tệp [`sql`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/SQL/sql) nhằm tạo database cho dự án.
 4. Mở IDE IntelliJ, vào Project Structure, cài hết các thư viện mở rộng ở thư mục [lib](https://github.com/danqNg0911/LibraryManagement/tree/main/lib) trong dự án.
-5. Tại 2 lớp enum LinkSetting của thư mục [`library`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/LinkSetting.java) và [`game`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/game/LinkSetting.java), chỉnh sửa đường dẫn phù hợp với máy bạn. <br> Đừng quên sửa cả đường dẫn database nhé !
-6. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
+5. Vào Run Configurations, sao chép và dán tệp [Run Configurations](https://github.com/danqNg0911/LibraryManagement/blob/main/data/Run%20Configurations) vào 2 mục VM Options và Program Arguments. <br> Nhớ chỉnh sửa đường dẫn thư viện SDK phù hợp với máy bạn.
+6. Tại 2 lớp enum LinkSetting của thư mục [`library`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/LinkSetting.java) và [`game`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/game/LinkSetting.java), chỉnh sửa đường dẫn phù hợp với máy bạn. <br> Đừng quên sửa cả đường dẫn database nhé !
+7. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
 # 🔰Hướng dẫn sử dụng
   - Ấn **Start App** để bắt đầu chạy ứng dụng
 ### 1. Người dùng (User)
@@ -120,12 +121,13 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 [![HAY THAY DOI ID DE UPLOAD VIDEO CUA BAN](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 # 🔭Cải tiến trong tương lai
-  - Tích hợp API Chatbot AI: Sử dụng trí tuệ nhân tạo để gợi ý sách dựa trên sở thích đọc của người dùng.
-  - Tính năng đa nền tảng: Phát triển ứng dụng trên các nền tảng khác như Android, IOS hoặc Web để người dùng có thể truy cập mọi lúc, mọi nơi.
-  - Bổ sung giao diện đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Nhật,... để phục vụ đối tượng người dùng quốc tế.
-  - Cải thiện hiệu suất: Tối ưu hóa tốc độ truy vấn và tải dữ liệu khi thư viện chứa số lượng lớn sách.
-  - Tạo cộng đồng đọc sách trực tuyến: Mở ra diễn đàn để người dùng chia sẻ đánh giá, bình luận, hoặc đề xuất sách hay.
-  - Tích hợp công nghệ quét mã QR: Hỗ trợ người dùng mượn/trả sách bằng cách quét mã QR trên sách.
+1. Tích hợp Chatbot AI: Sử dụng trí tuệ nhân tạo để giúp người dùng tìm kiếm sách dựa trên sở thích.
+2. Tính năng đa nền tảng: Phát triển ứng dụng trên các nền tảng khác như Android, IOS hoặc Web để người dùng có thể truy cập mọi lúc, mọi nơi.
+3. Bổ sung giao diện đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Nhật,... để phục vụ đối tượng người dùng quốc tế.
+4. Cải thiện hiệu suất: Tối ưu hóa tốc độ truy vấn và tải dữ liệu khi thư viện chứa số lượng lớn sách.
+5. Tạo cộng đồng đọc sách trực tuyến: Mở ra diễn đàn để người dùng chia sẻ đánh giá, bình luận, hoặc đề xuất sách hay.
+6. Tích hợp công nghệ quét mã QR: Hỗ trợ người dùng mượn/trả sách bằng cách quét mã QR trên sách.
+7. Mở rộng thư viện: Thêm truyện chữ, truyện tranh Nhật Bản để thu hút thêm độc giả.
 # 🍒Đóng góp
 Chúng tôi mong muốn có thêm những đóng góp của quý độc giả để hoàn thiện dự án hơn !
 ![](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg)
