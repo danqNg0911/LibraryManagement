@@ -73,7 +73,11 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 </p>
 
 # ❄️Sơ đồ UML
-([src/main/resources/com/example/library/assets/UML.png](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/resources/com/example/library/assets/UML.png))
+<p align="center">
+  <img src="https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/resources/com/example/library/assets/UML.png" height= "500" width="1200"/>
+  <a href="https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/resources/com/example/library/assets/UML.png" target="_blank"> Đường dẫn hình ảnh </a>
+</p>
+
 # 🚀Hướng dẫn cài đặt
 1. Dự án yêu cầu IDE cho Java, CSS và MySQL (ví dụ: `IntelliJ IDEA bản Ultimate` và `MySQL WorkBench`).
 2. Clone dự án về IDE: <a href="https://www.youtube.com/watch?v=ILSQeAOK0gs" target="_blank"> Hướng dẫn.</a>
