@@ -295,7 +295,7 @@ abstract class UserController extends BaseController {
     @FXML
     protected void handleGameButton(ActionEvent event) throws IOException {
         freeUpHeapMemory();
+        WindowManager.stopMusic();
         WindowManager.addGameFxml("/com/example/game/fxml/BlackMythWukongMenu.fxml", "stylesheet (css)/game.css", 1100, 600);
     }
-
 }

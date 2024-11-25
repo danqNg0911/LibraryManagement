@@ -74,9 +74,12 @@ public class ViewItemController extends UserController {
         }
     }
 
-    public void deleteBook(ActionEvent event) {
+    public void deleteBook(ActionEvent event) throws SQLException {
         if (BookJDBC.checkBook(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor())) {
-            BookJDBC.deleteBookFromDatabase(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getId() );
+            BookJDBC.deleteBookFromDatabase(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getId());
+            if (selectedBook.getSource().equals("borrowed")) {
+                BookJDBC.returnBorrowedBooks(user.getUsername(), selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getCategory(), selectedBook.getDate());
+            }
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book is successfully removed", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");

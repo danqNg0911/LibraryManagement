@@ -127,8 +127,11 @@ public class ViewBookManagerController extends ManagerController {
         WindowManager.goBack();
     }
 
-    public void deleteBook(ActionEvent event) {
+    public void deleteBook(ActionEvent event) throws SQLException {
         BookJDBC.deleteBookFromDatabase(book.getUsername(), book.getTitle(), book.getAuthor(), book.getId() );
+        if (book.getSource().equals("borrowed")) {
+            BookJDBC.returnBorrowedBooks(book.getUsername(), book.getTitle(), book.getAuthor(), book.getCategory(), book.getDate());
+        }
         WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "This book is successfully removed", "stylesheet (css)/login_alert.css");
     }
 

@@ -14,6 +14,10 @@ public class Book {
     private String username;
     private String source;
     private Date date;
+
+    private Date returnedDate;
+    private double fineAmount;
+
     private String status;
     private int id;
 
@@ -26,12 +30,23 @@ public class Book {
         this.date = date;
     }
 
-    public Book(String title, String author, String category, String imageUrl, String description) {
+    /*public Book(String title, String author, String category, String imageUrl, String description) {
         this.title = title;
         this.author = author;
         this.category = category;
         this.imageUrl = imageUrl;
         this.description = description;
+    }*/
+
+    public Book(String username, String title, String author, String category, Date date, Date returnedDate, int id, double fineAmount) {
+        this.username = username;
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.date = date;
+        this.returnedDate = returnedDate;
+        this.id = id;
+        this.fineAmount = fineAmount;
     }
 
     public Book(String title, String author, String category, String imageUrl, String description, String username, String source, Date date, int id) {
@@ -105,5 +120,21 @@ public class Book {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Date getReturnedDate() {
+        return returnedDate;
+    }
+
+    public double getFineAmount() {
+        return fineAmount;
+    }
+
+    public void setReturnedDate(Date returnedDate) {
+        this.returnedDate = returnedDate;
+    }
+
+    public void setFineAmount(double fineAmount) {
+        this.fineAmount = fineAmount;
     }
 }

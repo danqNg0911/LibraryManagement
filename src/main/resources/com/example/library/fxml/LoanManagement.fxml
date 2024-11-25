@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ViewBookManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.ManagerLoanBooksController">
    <children>
       <ImageView fx:id="logo" fitHeight="84.0" fitWidth="156.0" layoutX="33.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,32 +36,106 @@
                </image>
             </ImageView>
             <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
+            <Pane layoutY="136.0" prefHeight="658.0" prefWidth="989.0">
+               <children>
+                  <TableView fx:id="loanBooksTable" focusTraversable="false" layoutX="284.0" layoutY="42.0" prefHeight="575.0" prefWidth="673.0">
+                    <columns>
+                      <TableColumn fx:id="usernameColumn" prefWidth="133.0" sortable="false" text="Username" />
+                        <TableColumn fx:id="titleColumn" prefWidth="173.0" sortable="false" text="Title" />
+                        <TableColumn fx:id="borrowedDateColumn" prefWidth="110.0" sortable="false" text="Borrowed Date" />
+                        <TableColumn fx:id="returnedDateColumn" prefWidth="99.0" sortable="false" text="Returned Date" />
+                        <TableColumn fx:id="statusColumn" prefWidth="68.0" sortable="false" text="Status" />
+                        <TableColumn fx:id="fineAmountColumn" prefWidth="89.0" sortable="false" text="Fine" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="finedButton" layoutX="96.0" layoutY="382.0" mnemonicParsing="false" onAction="#fineUser" prefHeight="25.0" prefWidth="87.0" styleClass="eventButton" text="Fine " />
+                  <Label layoutX="25.0" layoutY="64.0" prefHeight="35.0" prefWidth="132.0" text="Search">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameField" layoutX="28.0" layoutY="121.0" prefHeight="25.0" prefWidth="222.0" />
+                  <Button fx:id="searchButton" layoutX="76.0" layoutY="67.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#showBooksData" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/searchIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="titleField" layoutX="28.0" layoutY="178.0" prefHeight="25.0" prefWidth="222.0" />
+                  <Label layoutX="27.0" layoutY="154.0" text="Title" />
+                  <Label layoutX="29.0" layoutY="214.0" text="Book information">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="27.0" layoutY="246.0" prefHeight="129.0" prefWidth="266.0">
+                     <children>
+                        <Label fx:id="usernameLabel" prefHeight="19.0" prefWidth="253.0" text="Username">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="titleLabel" prefHeight="19.0" prefWidth="251.0" text="Title">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="authorLabel" prefHeight="19.0" prefWidth="253.0" text="Author">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="categoryLabel" layoutX="10.0" layoutY="52.0" prefHeight="19.0" prefWidth="253.0" text="Category">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fineLabel" prefHeight="19.0" prefWidth="254.0" text="Fine">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="noteLabel" prefHeight="24.0" prefWidth="254.0" text="Note" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label fx:id="usernameLabel1" layoutX="25.0" layoutY="97.0" prefHeight="19.0" prefWidth="87.0" text="Username">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             <VBox fx:id="accVBox" layoutX="812.0" layoutY="111.0" prefHeight="78.0" prefWidth="132.0" visible="false">
                <children>
                   <Button fx:id="accSetButton" mnemonicParsing="false" onAction="#moveToaccSetting" prefHeight="26.0" prefWidth="134.0" styleClass="accButton" text="Account Setting" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
+                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" prefHeight="26.0" prefWidth="136.0" styleClass="accButton" text="Helps" />
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="138.0" styleClass="accButton" text="Log Out" />
                </children>
             </VBox>
-            <Pane layoutY="142.0" prefHeight="658.0" prefWidth="989.0">
-               <children>
-                  <TableView layoutX="247.0" layoutY="20.0" prefHeight="596.0" prefWidth="728.0">
-                    <columns>
-                      <TableColumn prefWidth="157.0" text="Username" />
-                      <TableColumn prefWidth="168.0" text="Title" />
-                        <TableColumn prefWidth="136.0" text="Borrowed Date" />
-                        <TableColumn prefWidth="164.0" text="Returned Date" />
-                        <TableColumn prefWidth="164.0" text="Fine" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children>
-            </Pane>
          </children>
       </AnchorPane>
       <Line endX="1207.4000244140625" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094" startY="135.2928924560547" />
+      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
+         <children>
+            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../assets/mHelp.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
       <Pane layoutY="172.0" prefHeight="213.0" prefWidth="222.0">
          <children>
             <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
@@ -75,15 +150,25 @@
             </HBox>
             <HBox layoutY="40.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
-                  <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="MBPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../assets/mDash.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="manageBooksButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Books" />
+                  <Button fx:id="manageBooksButton" mnemonicParsing="false" onAction="#moveToManageBooks" onMouseEntered="#showAnimationMB" onMouseExited="#unshowAnimationMB" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Manage Books" />
                </children>
             </HBox>
             <HBox layoutY="80.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
+               <children>
+                  <ImageView fx:id="loanManagementPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/loanManagementPic.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="loanManagementButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Loan Books" />
+               </children>
+            </HBox>
+            <HBox layoutY="120.0" maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
                <children>
                   <ImageView fx:id="settingPic" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
@@ -93,26 +178,11 @@
                   <Button fx:id="settingButton" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Setting" />
                </children>
             </HBox>
-            <Button fx:id="settingButton1" layoutX="36.0" layoutY="127.0" mnemonicParsing="false" onAction="#moveToSetting" onMouseEntered="#showAnimationStg" onMouseExited="#unshowAnimationStg" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Loan Management" />
-         </children>
-      </Pane>
-      <Pane layoutY="385.0" prefHeight="417.0" prefWidth="222.0">
-         <children>
-            <HBox maxHeight="40.0" maxWidth="222.0" minHeight="40.0" minWidth="222.0" prefHeight="40.0" prefWidth="222.0">
-               <children>
-                  <ImageView fx:id="dashboardPic11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../assets/mHelp.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="helpsButton" mnemonicParsing="false" onAction="#moveToHelps" onMouseEntered="#showAnimationHelps" onMouseExited="#unshowAnimationHelps" prefHeight="40.0" prefWidth="186.0" styleClass="sceneButton" text="Helps" />
-               </children>
-            </HBox>
          </children>
       </Pane>
    </children>
    <stylesheets>
-      <URL value="@../stylesheet (css)/managerStyles.css" />
-      <URL value="@../stylesheet (css)/managerBookStyle.css" />
+      <URL value="@../stylesheet%20(css)/managerStyles.css" />
+      <URL value="@../stylesheet%20(css)/managerLoanBooks.css" />
    </stylesheets>
 </AnchorPane>

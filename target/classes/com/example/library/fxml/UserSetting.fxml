@@ -37,7 +37,7 @@
                             <content>
                                 <AnchorPane fx:id="accountStgPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <Accordion focusTraversable="false" layoutX="31.0" prefHeight="428.0" prefWidth="802.0">
+                                        <Accordion focusTraversable="false" layoutX="31.0" prefHeight="452.0" prefWidth="802.0">
                                             <panes>
                                                 <TitledPane fx:id="nameTitledPane" maxHeight="318.0" maxWidth="606.0" minHeight="150.0" minWidth="543.0" prefHeight="286.0" prefWidth="606.0" styleClass="subTitledPane" text="Change name">
                                                     <content>
@@ -100,11 +100,11 @@
                                                 </TitledPane>
                                                 <TitledPane animated="false" prefHeight="427.0" prefWidth="802.0" styleClass="subTitledPane" text="Change answers of Security questions">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="801.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="800.0">
                                                             <children>
                                                                 <ScrollPane prefHeight="368.0" prefWidth="798.0" styleClass="scroll">
                                                                     <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="780.0">
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="780.0">
                                                                             <children>
                                                                                 <Label layoutX="139.0" layoutY="67.0" text="Question 1 : What is your favourite color?">
                                                                                     <font>
@@ -134,7 +134,7 @@
                                                                                 <TextField fx:id="Q1Field" layoutX="215.0" layoutY="91.0" prefHeight="26.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
                                                                                 <TextField fx:id="Q2Field" layoutX="215.0" layoutY="165.0" prefHeight="26.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
                                                                                 <TextField fx:id="Q3Field" layoutX="215.0" layoutY="242.0" prefHeight="30.0" prefWidth="426.0" promptText="New answer" styleClass="field" />
-                                                                                <Button fx:id="changeAnswerButton" layoutX="353.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleChangeAnswers" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
+                                                                                <Button fx:id="changeAnswerButton" layoutX="353.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleChangeAnswers" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
                                                                             </children>
                                                                         </AnchorPane>
                                                                     </content>
@@ -186,7 +186,7 @@
                                     <children>
                                         <Accordion layoutX="31.0" prefHeight="496.0" prefWidth="803.0">
                                             <panes>
-                                                <TitledPane animated="false" styleClass="subTitledPane" text="Change avatar">
+                                                <TitledPane animated="false" styleClass="subTitledPane1" text="Change avatar">
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                             <children>
@@ -325,7 +325,7 @@
                                                         </AnchorPane>
                                                     </content>
                                                 </TitledPane>
-                                                <TitledPane animated="false" prefHeight="466.0" prefWidth="803.0" styleClass="subTitledPane" text="Music Playlist">
+                                                <TitledPane animated="false" prefHeight="466.0" prefWidth="803.0" styleClass="subTitledPane1" text="Music Playlist">
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                             <children>
@@ -492,7 +492,8 @@
         </Pane>
     </children>
     <stylesheets>
-        <URL value="@../stylesheet (css)/userStyles.css" />
-        <URL value="@../stylesheet (css)/userStgStyle.css" />
+        <URL value="@../stylesheet%20(css)/userStyles.css" />
+        <URL value="@../stylesheet%20(css)/userStgStyle.css" />
+      <URL value="@../stylesheet%20(css)/userStyles.css" />
     </stylesheets>
 </AnchorPane>
