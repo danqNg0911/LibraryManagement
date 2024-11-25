@@ -106,6 +106,8 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
   _Ấn "Create account" để tạo tài khoản mới
 # 🐸Minh họa dự án 
 
+[![HAY THAY DOI ID DE UPLOAD VIDEO CUA BAN](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
 # 🔭Cải tiến trong tương lai
   - Tích hợp API Chatbot AI: Sử dụng trí tuệ nhân tạo để gợi ý sách dựa trên sở thích đọc của người dùng.
   - Tính năng đa nền tảng: Phát triển ứng dụng trên các nền tảng khác như Android, IOS hoặc Web để người dùng có thể truy cập mọi lúc, mọi nơi.
