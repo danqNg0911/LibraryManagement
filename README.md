@@ -99,6 +99,17 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 ####  c. Chức năng *Trợ giúp* và *Nâng cấp*
   - **Helps** gồm 2 phần là gửi ý kiến của bạn và hướng dẫn sử dụng. Bạn có thể viết ý kiến, đánh giá, góp ý cho chúng tôi để chúng tôi có thể hoàn thiện app hơn. Nếu bạn chưa biết cách sử dụng, có thể bấm vào nút *Open* để xem hướng dẫn của chúng tôi trên Youtube.
 ####  d. Game *"Black Myth Wukong"*
+  - Giới thiệu : Black Myth Wukong - điều khiển nhân vật Wukong đình đám đánh bại yêu quái, vượt qua những câu hỏi kiến thức và fact liên quan đến sách.
+  - Gameplay :
+    + Ấn *W A S D* để điều khiển nhân vật, *Space* để attack
+    + Game có tổng cộng 5 màn, tương ứng là 5 câu hỏi (random trong list).
+    + Mỗi câu hỏi có 4 đáp, tương ứng 4 quái, phải đánh hết số quái mới qua màn.
+    + Độ khó mỗi màn sẽ tăng dần : máu ít hơn, thời gian ít hơn, số quái tăng lên, power của quái tăng lên qua từng màn.
+    + Player sẽ thua nếu : hết máu, trả lời sai(đánh sai quái), hết thời gian.
+    + Bấm *P* -> pause, sau khi bấm *P* có thể bấm *R* ->restart, *M*->menu, nếu thắng 1 màn chơi có thể bấm *N*-> next level, qua 5 màn thì sẽ hiện ra màn hình victory chúc mừng.
+  - Cơ chế tặng quà : chơi qua thắng game 1 lần -> tặng quà đầu tiên, thắng > 3 lần tặng quà thứ 2, quà là nhạc nền bí mật sẽ tạo nhiều bất ngờ cho bạn.
+    + Vào *Setting* -> music để xem số lần thắng.
+*Chúc bạn dùng app vui vẻ!!!*
 ### 2. Người quản lý (Manager)
 ####  a. Đăng kí và đăng nhập
 ####  b. Sử dụng các chức năng thư viện
