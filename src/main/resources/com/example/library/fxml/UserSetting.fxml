@@ -383,6 +383,11 @@
                                                    <image>
                                                       <Image url="@../assets/noelGift.gif" />
                                                    </image></ImageView>
+                                                <ImageView fitHeight="98.0" fitWidth="156.0" layoutX="609.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/musicgif.gif" />
+                                                   </image>
+                                                </ImageView>
                                                             </children>
                                                         </AnchorPane>
                                                     </content>

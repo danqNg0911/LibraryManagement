@@ -9,48 +9,38 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="bookItem" prefHeight="301.0" prefWidth="743.0" styleClass="bookCell" xmlns="http://javafx.com/javafx/23"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.BookItemController">
+<HBox fx:id="bookItem" prefHeight="301.0" prefWidth="743.0" styleClass="bookCell" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.BookItemController">
     <children>
-        <ImageView fx:id="bookCover" fitHeight="303.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true"/>
-        <Pane prefHeight="303.0" prefWidth="68.0"/>
+        <ImageView fx:id="bookCover" fitHeight="303.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true" />
+        <Pane prefHeight="303.0" prefWidth="68.0" />
         <VBox prefHeight="303.0" prefWidth="313.0">
             <children>
                 <Label fx:id="bookTitle" prefHeight="69.0" prefWidth="318.0" text="Label">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font name="System Bold" size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="bookInfo" prefHeight="289.0" prefWidth="306.0" text="Label" wrapText="true"/>
-                <Pane prefHeight="51.0" prefWidth="274.0"/>
+                <Label fx:id="bookInfo" prefHeight="289.0" prefWidth="306.0" text="Label" wrapText="true" />
+                <Pane prefHeight="51.0" prefWidth="274.0" />
             </children>
         </VBox>
-        <Pane maxHeight="303.0" maxWidth="221.0" minHeight="303.0" minWidth="213.0" prefHeight="303.0"
-              prefWidth="221.0">
+        <Pane maxHeight="303.0" maxWidth="221.0" minHeight="303.0" minWidth="213.0" prefHeight="303.0" prefWidth="221.0">
             <children>
-                <Button fx:id="addItemButton" layoutX="74.0" layoutY="84.0" mnemonicParsing="false" onAction="#addBook"
-                        styleClass="libButton" text="Add item">
+                <Button fx:id="addItemButton" layoutX="73.0" layoutY="114.0" mnemonicParsing="false" onAction="#addBook" prefHeight="27.0" prefWidth="78.0" styleClass="libButton" text="Add item">
                     <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </Button>
-                <Button fx:id="deleteItemButton" layoutX="67.0" layoutY="171.0" mnemonicParsing="false"
-                        onAction="#deleteBook" styleClass="libButton" text="Delete item">
+                <Button fx:id="viewItemButton" layoutX="73.0" layoutY="163.0" mnemonicParsing="false" onAction="#viewBook" styleClass="libButton" text="View item">
                     <font>
-                        <Font size="13.0"/>
-                    </font>
-                </Button>
-                <Button fx:id="viewItemButton" layoutX="72.0" layoutY="127.0" mnemonicParsing="false"
-                        onAction="#viewBook" styleClass="libButton" text="View item">
-                    <font>
-                        <Font size="13.0"/>
+                        <Font size="13.0" />
                     </font>
                 </Button>
             </children>
         </Pane>
     </children>
     <stylesheets>
-        <URL value="@../stylesheet%20(css)/userStyles.css"/>
-        <URL value="@../stylesheet%20(css)/userLibStyle.css"/>
+        <URL value="@../stylesheet%20(css)/userStyles.css" />
+        <URL value="@../stylesheet%20(css)/userLibStyle.css" />
     </stylesheets>
 </HBox>
