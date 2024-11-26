@@ -180,12 +180,12 @@ abstract class BaseJDBC {
 
     // Cap nhat cau hoi bao mat
     public boolean securityQuestionsUpdate(String username, String ques1, String ques2, String ques3) {
-        String query = "UPDATE accounts SET ques1 = ?, ques2 = ?, ques3 = ? WHERE username = ?";
+        String query = "UPDATE accounts SET Q1 = ?, Q2 = ?, Q3 = ? WHERE username = ?";
         try (Connection databaseConnect = connectToDatabase(); PreparedStatement sqlStatement = databaseConnect.prepareStatement(query)) {
             sqlStatement.setString(1, ques1);
             sqlStatement.setString(2, ques2);
             sqlStatement.setString(3, ques3);
-            sqlStatement.setString(2, username);
+            sqlStatement.setString(4, username);
 
             int rowsUpdated = sqlStatement.executeUpdate();
 

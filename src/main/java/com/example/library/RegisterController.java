@@ -98,15 +98,6 @@ public class RegisterController {
             isSuccesful = false;
         }
 
-        /*else {
-            for (int i = 0; i < name.length(); i++) {
-                if (!Character.isAlphabetic(name.charAt(i))) {
-                    WindowManager.RedWarningLabel(nameLabel, "Name cannot contain special characters !", 2);
-                    isSuccesful = false;
-                }
-            }
-        }*/
-
         // Kiểm tra đối tượng là User hay Manager
         if (!username.isEmpty() && managerJDBC.checkMemberOfManager(username)) {
             System.out.println("This is Manager account");
