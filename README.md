@@ -1,38 +1,43 @@
 # Ulib Library Manager - Ứng dụng quản lý thư viện điện tử Ulib
-# 🐋Tác giả
+# 🐋Tác giả 
+Nhóm `NONAME`
 1. Nguyễn Hữu Hải Đăng - 23020524
 2. Phạm Huy Hiếu - 23020535
 3. Phạm Việt Hưng - 23020542
 # 💡Mô tả
-Ulib Library Manager là giải pháp tối ưu cho việc số hóa và quản lý thư viện một cách hiệu quả. Với giao diện thân thiện cùng các tính năng đa dạng, ứng dụng hỗ trợ từ quản lý kho sách, phân loại tác giả, thể loại đến theo dõi giao dịch mượn trả, giúp mọi hoạt động trở nên nhanh chóng và chính xác.
+Thư viện điện tử Ulib (Ulib Library Manager) là giải pháp tối ưu cho việc số hóa và quản lý thư viện một cách hiệu quả. Ứng dụng được viết bằng ngôn ngữ Java, CSS, MySQL và tích hợp thư viện JavaFX. Ứng dụng dựa trên mô hình MVC (Model - View - Controller).
 
-Điểm mạnh của Ulib Library Manager nằm ở khả năng tự động hóa và tinh gọn quy trình, từ tổ chức dữ liệu đến phân tích, báo cáo trực quan. Ứng dụng không chỉ giảm thiểu sai sót mà còn tiết kiệm thời gian đáng kể, mang lại sự tiện lợi tối đa cho người quản lý.
+Với giao diện thân thiện cùng các tính năng đa dạng, ứng dụng hỗ trợ từ quản lý kho sách, phân loại tác giả, thể loại đến theo dõi giao dịch mượn trả, giúp mọi hoạt động trở nên nhanh chóng và chính xác. 
 
-Không chỉ giới hạn trong các thư viện truyền thống, Ulib Library Manager còn phù hợp với nhiều mô hình khác như trường học, doanh nghiệp, và tổ chức phi lợi nhuận, đáp ứng nhu cầu lưu trữ tài liệu lớn một cách khoa học và dễ tiếp cận.
+Điểm mạnh của thư viện điện tử Ulib nằm ở khả năng tự động hóa và tinh gọn quy trình, từ tổ chức dữ liệu đến phân tích, báo cáo trực quan. Ứng dụng không chỉ giảm thiểu sai sót mà còn tiết kiệm thời gian đáng kể, mang lại sự tiện lợi tối đa cho người quản lý.
 
-Với Ulib Library Manager, quản lý thư viện không chỉ là công việc, mà còn là trải nghiệm hiện đại, tiện nghi và đầy cảm hứng.
+Không chỉ giới hạn trong các thư viện truyền thống, thư viện điện tử Ulib còn phù hợp với nhiều mô hình khác như trường học, doanh nghiệp, và tổ chức phi lợi nhuận, đáp ứng nhu cầu lưu trữ tài liệu lớn một cách khoa học và dễ tiếp cận.
+
+Với thư viện điện tử Ulib, quản lý thư viện không chỉ là công việc khô khan, mà còn là trải nghiệm hiện đại, tuyệt vời và đầy cảm hứng.
 
 # 📊Chức năng
 ### 1. Với người dùng (User):
-  _ Tìm kiếm sách theo tên, tác giả, và thể loại.
-<br>_ Xem thông tin tóm tắt nội dung cuốn sách.
-<br>_ Thêm, mượn và xóa sách. <br>&nbsp;&nbsp;&nbsp;Không chỉ giới hạn ở những cuốn sách trong API mà còn những cuốn sách cá nhân.
-<br>_ Có bộ sưu tập sách cá nhân.
-<br>_ Theo dõi số lượng sách được thêm mỗi ngày thông qua biểu đồ.
-<br>_ Có thể chọn hình đại diện ảnh động.
-<br>_ Được cập nhật tin tức và thông báo bản cập nhật mới của thư viện (nếu có).
-<br>_ Được xem video giới thiệu thư viện đầy hấp dẫn.
-<br>_ Trải nghiệm trò chơi Black Myth Wukong hoàn toàn miễn phí.
-<br>_ Trải nghiệm danh sách phát nhạc thư giãn. 
-<br>_ Trải nghiệm Chatbot AI Gemini qua email cá nhân.
-<br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn. 
+  - Tìm kiếm sách theo tên, tác giả, và thể loại.
+  - Xem thông tin tóm tắt nội dung cuốn sách.
+  - Thêm, mượn và xóa sách. <br> Không chỉ giới hạn ở những cuốn sách trong API mà còn những cuốn sách cá nhân.
+  - Có bộ sưu tập sách cá nhân.
+  - Theo dõi số lượng sách được thêm mỗi ngày thông qua biểu đồ.
+  - Có thể chọn hình đại diện ảnh động.
+  - Được cập nhật tin tức và thông báo bản cập nhật mới của thư viện (nếu có).
+  - Được xem video giới thiệu thư viện đầy hấp dẫn.
+  - Trải nghiệm trò chơi Black Myth Wukong hoàn toàn miễn phí.
+  - Trải nghiệm danh sách phát nhạc thư giãn. 
+  - Trải nghiệm Chatbot AI Gemini qua email cá nhân.
+  - Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn. 
 
 
 ### 2. Với người quản lý (Manager)
-  _
-<br>_
-<br>_  Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn.
-# ⚔Ngôn ngữ phát triển 
+  - Quản lý thông tin chi tiết của từng người dùng và từng cuốn sách.
+  - Theo dõi lịch sử mượn, thêm trả và xóa sách của người dùng thông qua số liệu và biểu đồ.
+  - Ghi nhận phạt người dùng nếu quá hạn trả sách.
+  - Có thể chọn hình đại diện ảnh động.
+  - Thông tin cá nhân, tài khoản và mật khẩu được bảo mật an toàn.
+# <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" height="40" width="40"> Ngôn ngữ phát triển 
 <table align="center">
   <tr>
     <!-- Java -->
@@ -67,27 +72,75 @@ Với Ulib Library Manager, quản lý thư viện không chỉ là công việc
   <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
 </p>
 
-
-
-
-
 # ❄️Sơ đồ UML
+<p align="center">
+  <img src="https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/resources/com/example/library/assets/UML.png" height= "500" width="1200"/>
+  <a href="https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/resources/com/example/library/assets/UML.png" target="_blank"> Đường dẫn hình ảnh </a>
+</p>
+
 # 🚀Hướng dẫn cài đặt
 1. Dự án yêu cầu IDE cho Java, CSS và MySQL (ví dụ: `IntelliJ IDEA bản Ultimate` và `MySQL WorkBench`).
 2. Clone dự án về IDE: <a href="https://www.youtube.com/watch?v=ILSQeAOK0gs" target="_blank"> Hướng dẫn.</a>
 3. Mở MySQL WorkBench, tạo MySQL Connections mới (nếu chưa có trên máy), rồi tạo tệp Query Tab mới. <br> Tại đây, sao chép, dán và chạy tệp [`sql`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/SQL/sql) nhằm tạo database cho dự án.
 4. Mở IDE IntelliJ, vào Project Structure, cài hết các thư viện mở rộng ở thư mục [lib](https://github.com/danqNg0911/LibraryManagement/tree/main/lib) trong dự án.
-5. Tại 2 lớp enum LinkSetting của thư mục [`library`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/LinkSetting.java) và [`game`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/game/LinkSetting.java), chỉnh sửa đường dẫn phù hợp với máy bạn. <br> Đừng quên sửa cả đường dẫn database nhé !
-6. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
+5. Vào Run Configurations, sao chép và dán tệp [Run Configurations](https://github.com/danqNg0911/LibraryManagement/blob/main/data/Run%20Configurations) vào 2 mục VM Options và Program Arguments. <br> Nhớ chỉnh sửa đường dẫn thư viện SDK phù hợp với máy bạn.
+6. Tại 2 lớp enum LinkSetting của thư mục [`library`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/LinkSetting.java) và [`game`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/game/LinkSetting.java), chỉnh sửa đường dẫn phù hợp với máy bạn. <br> Đừng quên sửa cả đường dẫn database nhé !
+7. Giờ bạn hãy vào tệp [`Main.java`](https://github.com/danqNg0911/LibraryManagement/blob/main/src/main/java/com/example/library/Main.java) và chạy dự án.
 # 🔰Hướng dẫn sử dụng
+  - Ấn **Start App** để bắt đầu chạy ứng dụng
+### 1. Người dùng (User)
+####  a. Đăng kí và đăng nhập
+  - Nhập *username* và *password* chính xác rồi ấn *Sign in* để đăng nhập vào ứng dụng (nếu đã có tài khoản)
+  - Nếu chưa có tài khoản, ấn *Create new account* để tạo tài khoản mới
+     + Nhập đầy đủ thông tin : *Name*, *Username*, *Password* (từ 8 ký tự trở lên), *Phone number* (đủ 10 số), *Email*.
+     + Chọn **Reader** rồi bấm **Next** để hiện ra trang đăng kí bảo mật.
+     + Ở trang đăng kí bảo mật, bạn cần nhập những câu hỏi bảo mật liên quan đến cá nhân, bạn cần nhớ câu trả lời của những câu hỏi này, nó sẽ giúp bạn lấy lại tài khoản nếu bạn quên tài khoản
+     + Ấn *Resigter* để hoàn tất đăng kí.
+  - Nếu bạn quên mật khẩu, ấn *Forgot password ?* để lấy lại mật khẩu. Ở đây bạn cần nhập đầy đủ và chính xác tất cả thông tin của bạn (username, ngày sinh, câu hỏi bảo mật), sau đó nhấn *Reset password* để hoàn tất tạo mật khẩu mới.
+####  b. Sử dụng các chức năng thư viện
+  - **Dashboard** là nơi hiển thị mọi thông tin của bạn, bạn có thể xem thông tin tài khoản (Your information), lượng sách đã mượn qua biểu đồ. Ngoài ra, bạn có thể xem video giới thiệu về ULib và trải nghiệm AI khi bấm vào cửa sổ AI bên phải màn hình.
+  - **Library** là thư viện của chúng tôi (sử dụng API của Google), bạn có thể tìm sách theo ISBN, tiêu đề, tác giả, thể loại. Thư viện có tích hợp gợi ý để bạn dễ dàng tìm kiếm hơn. Ấn *Search* để tìm sách. Bạn cũng có thể xem tổng quan về sách khi ấn *View*, ấn *Add* để thêm sách vào bộ sưu tập cá nhân, hoặc ấn *Delete* nếu thêm nhầm.
+  - **Collection** là nơi bạn có thể xem bộ sưu tập của bạn, ngoài ra có thể xem những bộ sưu tập khác theo nhiều chủ đề khác nhau. Trước hết với *My collection*, bạn có thể xem toàn bộ số sách bạn đã mượn được sắp xếp theo Alphabet ở khung hình bên trái. Bạn có thể tìm kiếm sách tong bộ sưu tập theo tiêu đề, tác giả, thể loại, sau đó bấm biểu tượng *Tìm kiếm* để hiển thị. Ngoài ra bạn có thể lọc sách qua chức năng *Filters*. Bạn cũng có thể tự thêm sách vào bộ sưu tập của mình khi bấm vào nút *Add your own book* (lưu ý sách mà bạn thêm thì bạn có thể chỉnh sửa và update).
+  - **Setting** là phần cài đặt. Ở đây có 2 phần là cài đặt thông tin tài khoản và cài đặt cá nhân. Bạn có thể chỉnh sửa thông tin cá nhân như *Name*, *Username*, *Security Questions* hay *Phone, Email*ở phần *Account settings* (Lưu ý cần nhập đúng mật khẩu hiện tại và tuân thủ các quy tắc như phần đăng ký). Ở phần cài đặt cá nhân, bạn có thể chọn avatar cho account của bạn khi ấn vào 1 trong 10 bức ảnh và *Accept*. Ngoài ra, chúng tôi còn cung cấp chức năng nghe nhạc khi bạn sử dụng thư viện, bạn có thể chọn phát bài nhạc yêu thích ở playlist và nghe nó trong khi sử dụng app.
+####  c. Chức năng *Trợ giúp* và *Nâng cấp*
+  - **Helps** gồm 2 phần là gửi ý kiến của bạn và hướng dẫn sử dụng. Bạn có thể viết ý kiến, đánh giá, góp ý cho chúng tôi để chúng tôi có thể hoàn thiện app hơn. Nếu bạn chưa biết cách sử dụng, có thể bấm vào nút *Open* để xem hướng dẫn của chúng tôi trên Youtube.
+####  d. Game *"Black Myth Wukong"*
+  - Giới thiệu : Black Myth Wukong - điều khiển nhân vật Wukong đình đám đánh bại yêu quái, vượt qua những câu hỏi kiến thức và fact liên quan đến sách.
+  - Gameplay :
+    + Ấn *W A S D* để điều khiển nhân vật, *Space* để attack
+    + Game có tổng cộng 5 màn, tương ứng là 5 câu hỏi (random trong list).
+    + Mỗi câu hỏi có 4 đáp, tương ứng 4 quái, phải đánh hết số quái mới qua màn.
+    + Độ khó mỗi màn sẽ tăng dần : máu ít hơn, thời gian ít hơn, số quái tăng lên, power của quái tăng lên qua từng màn.
+    + Player sẽ thua nếu : hết máu, trả lời sai(đánh sai quái), hết thời gian.
+    + Bấm *P* -> pause, sau khi bấm *P* có thể bấm *R* ->restart, *M*->menu, nếu thắng 1 màn chơi có thể bấm *N*-> next level, qua 5 màn thì sẽ hiện ra màn hình victory chúc mừng.
+  - Cơ chế tặng quà : chơi qua thắng game 1 lần -> tặng quà đầu tiên, thắng > 3 lần tặng quà thứ 2, quà là nhạc nền bí mật sẽ tạo nhiều bất ngờ cho bạn.
+    + Vào *Setting* -> music để xem số lần thắng.
+*Chúc bạn dùng app vui vẻ!!!*
+### 2. Người quản lý (Manager)
+####  a. Đăng kí và đăng nhập
+####  b. Sử dụng các chức năng thư viện
+####  c. *Trợ giúp* và *Nâng cấp*
+  _Ấn "Create account" để tạo tài khoản mới
 # 🐸Minh họa dự án 
 
+[![HAY THAY DOI ID DE UPLOAD VIDEO CUA BAN](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
 # 🔭Cải tiến trong tương lai
+1. Tích hợp Chatbot AI: Sử dụng trí tuệ nhân tạo để giúp người dùng tìm kiếm sách dựa trên sở thích.
+2. Tính năng đa nền tảng: Phát triển ứng dụng trên các nền tảng khác như Android, IOS hoặc Web để người dùng có thể truy cập mọi lúc, mọi nơi.
+3. Bổ sung giao diện đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Nhật,... để phục vụ đối tượng người dùng quốc tế.
+4. Cải thiện hiệu suất: Tối ưu hóa tốc độ truy vấn và tải dữ liệu khi thư viện chứa số lượng lớn sách.
+5. Tạo cộng đồng đọc sách trực tuyến: Mở ra diễn đàn để người dùng chia sẻ đánh giá, bình luận, hoặc đề xuất sách hay.
+6. Tích hợp công nghệ quét mã QR: Hỗ trợ người dùng mượn/trả sách bằng cách quét mã QR trên sách.
+7. Mở rộng thư viện: Thêm truyện chữ, truyện tranh Nhật Bản để thu hút thêm độc giả.
 # 🍒Đóng góp
 Chúng tôi mong muốn có thêm những đóng góp của quý độc giả để hoàn thiện dự án hơn !
 ![](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg)
+
 # ⚛Trạng thái dự án 
-Dự án đã được hoàn thiện 
+Dự án đã được hoàn thiện.
+<br> <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "30" width="400">
+
 # 📧Liên hệ
 
 <div align="left">

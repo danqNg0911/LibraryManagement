@@ -280,7 +280,7 @@
                   <Image url="@../../../../../../../../backupfiles/LibraryManagement/src/main/resources/com/example/library/assets/Search.png" />
                </image>
             </ImageView>
-            <Button fx:id="addBook" layoutX="825.0" layoutY="210.0" mnemonicParsing="false" onAction="#moveToAddBook" prefHeight="35.0" prefWidth="147.0" styleClass="ItemButton" text="Add your own book +">
+            <Button fx:id="addBook" layoutX="825.0" layoutY="210.0" mnemonicParsing="false" onAction="#moveToAddBook" prefHeight="35.0" prefWidth="147.0" styleClass="ItemButton" text="Add your own book +" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

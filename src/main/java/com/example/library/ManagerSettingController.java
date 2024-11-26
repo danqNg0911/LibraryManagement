@@ -16,31 +16,86 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class ManagerSettingController extends ManagerController {
+public class ManagerSettingController extends ManagerController implements BaseSettingController {
+
 
     @FXML
-    private ImageView MBPic;
+    public Label currentName2Label;
 
     @FXML
-    private ImageView MUPic;
+    protected TextField Q1Field;
 
     @FXML
-    private TextField Q1Field;
+    protected TextField Q2Field;
 
     @FXML
-    private TextField Q2Field;
+    protected TextField Q3Field;
 
     @FXML
-    private TextField Q3Field;
+    protected Label question1Warning;
 
     @FXML
-    private Button accSetButton;
+    protected Label question2Warning;
 
     @FXML
-    private VBox accVBox;
+    protected Label question3Warning;
 
     @FXML
-    private Button accountButton;
+    protected Label currentNameLabel;
+
+    @FXML
+    protected TextField newNameField;
+
+    @FXML
+    protected Button changeNameButton;
+
+    @FXML
+    protected Label changeNameSuccessedLabel;
+
+    @FXML
+    protected PasswordField currentPass;
+
+    @FXML
+    protected PasswordField currentPass1;
+
+    @FXML
+    protected PasswordField currentPass2;
+
+    @FXML
+    protected Label currentPassWarning;
+
+    @FXML
+    protected Label currentPassWarning1;
+
+    @FXML
+    protected Label currentPassWarning2;
+
+    @FXML
+    protected Button changePassButton;
+
+    @FXML
+    protected PasswordField confirmNewPass;
+
+    @FXML
+    protected Label confirmPassWarning;
+
+    @FXML
+    protected PasswordField newPass;
+
+    @FXML
+    protected Label newPassWarning;
+
+    @FXML
+    protected TitledPane nameTitledPane;
+
+    @FXML
+    protected TitledPane passTitledPane;
+
+    @FXML
+    protected TitledPane avatarTitledPane;
+
+    @FXML
+    protected Button changeAnswerButton;
 
     @FXML
     private Label accountName;
@@ -52,16 +107,7 @@ public class ManagerSettingController extends ManagerController {
     private VBox answersVbox;
 
     @FXML
-    private Button changeAnswerButton;
-
-    @FXML
     private Button changeEmailButton;
-
-    @FXML
-    private Button changeNameButton;
-
-    @FXML
-    private Label changeNameSuccessedLabel;
 
     @FXML
     private Label changeNameSuccessedLabel1;
@@ -73,16 +119,7 @@ public class ManagerSettingController extends ManagerController {
     private Label changeNameSuccessedLabel111;
 
     @FXML
-    private Button changePassButton;
-
-    @FXML
     private Button changePhoneButton;
-
-    @FXML
-    private PasswordField confirmNewPass;
-
-    @FXML
-    private Label confirmPassWarning;
 
     @FXML
     private ImageView currentAvatar;
@@ -97,28 +134,7 @@ public class ManagerSettingController extends ManagerController {
     private Label currentName1Label;
 
     @FXML
-    private Label currentNameLabel;
-
-    @FXML
-    private PasswordField currentPass;
-
-    @FXML
-    private PasswordField currentPass1;
-
-    @FXML
-    private PasswordField currentPass2;
-
-    @FXML
     private PasswordField currentPass3;
-
-    @FXML
-    private Label currentPassWarning;
-
-    @FXML
-    private Label currentPassWarning1;
-
-    @FXML
-    private Label currentPassWarning2;
 
     @FXML
     private Label currentPassWarning3;
@@ -128,30 +144,6 @@ public class ManagerSettingController extends ManagerController {
 
     @FXML
     private Label currentUserameLabel;
-
-    @FXML
-    private ImageView dashboardPic11;
-
-    @FXML
-    private Label dashboardTitle;
-
-    @FXML
-    private Button helpsButton;
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private AnchorPane mainSce;
-
-    @FXML
-    private Button manageBooksButton;
-
-    @FXML
-    private Button manageUsersButton;
 
     @FXML
     private Button nameButton;
@@ -164,15 +156,6 @@ public class ManagerSettingController extends ManagerController {
 
     @FXML
     private Label newEmailWarning;
-
-    @FXML
-    private TextField newNameField;
-
-    @FXML
-    private PasswordField newPass;
-
-    @FXML
-    private Label newPassWarning;
 
     @FXML
     private TextField newPhoneField;
@@ -191,21 +174,6 @@ public class ManagerSettingController extends ManagerController {
 
     @FXML
     private VBox phonemailVbox;
-
-    @FXML
-    private Label question1Warning;
-
-    @FXML
-    private Label question2Warning;
-
-    @FXML
-    private Label question3Warning;
-
-    @FXML
-    private Button settingButton;
-
-    @FXML
-    private ImageView settingPic;
 
 
     public void showAnimationStg(MouseEvent event) {
@@ -226,6 +194,7 @@ public class ManagerSettingController extends ManagerController {
         accountName.setText(manager.getName(manager.getUsername()));
         accountName.setPrefWidth(Region.USE_COMPUTED_SIZE);
         currentName1Label.setText(manager.getName(manager.getUsername()));
+        currentNameLabel.setText(manager.getName(manager.getUsername()));
         currentUserameLabel.setText(manager.getUsername());
         currentPhoneLabel.setText(manager.getPhone(manager.getUsername()));
         currentEmailLabel.setText(manager.getEmail(manager.getUsername()));
@@ -302,7 +271,7 @@ public class ManagerSettingController extends ManagerController {
 
         // Nếu thay password thành công
         if (passwordCheck && newPasswordCheck && confirmPasswordCheck) {
-            userJDBC.passwordUpdate(manager.getUsername(), newPassword);
+            managerJDBC.passwordUpdate(manager.getUsername(), newPassword);
             // Thông bao doi mat khau thanh cong
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
@@ -349,7 +318,7 @@ public class ManagerSettingController extends ManagerController {
 
         // khi nhập các câu trả lời hợp lệ
         if (passwordCheck && question1Check && question2Check && question3Check) {
-            userJDBC.securityQuestionsUpdate(manager.getUsername(), question1, question2, question3);
+            managerJDBC.securityQuestionsUpdate(manager.getUsername(), question1, question2, question3);
             // Thông bao doi mat khau thanh cong
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change security answers", "Your security answers has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
@@ -374,7 +343,7 @@ public class ManagerSettingController extends ManagerController {
         }
 
         if (success && passwordCheck) {
-            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+            // Nếu cập nhật thành công, hiện ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
             PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
             currentPhoneLabel.setText(newPhonenum);
@@ -392,7 +361,7 @@ public class ManagerSettingController extends ManagerController {
 
         boolean passwordCheck = false;
         // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
-        boolean success = manager.emailUpdate(manager.getUsername(),newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
+        boolean success = manager.emailUpdate(manager.getUsername(), newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
 
         // check password hiện tại
         if (!currentPassword.equals(manager.getPassword(manager.getUsername()))) {

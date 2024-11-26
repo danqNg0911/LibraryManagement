@@ -79,7 +79,7 @@
                         <Font name="System Italic" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                  <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="206.0" text="Label">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
@@ -334,8 +334,8 @@
             </Label>
          </children>
          <stylesheets>
-            <URL value="@../stylesheet%20(css)/managerStgStyle.css" />
-            <URL value="@../stylesheet%20(css)/managerStyles.css" />
+            <URL value="@../stylesheet (css)/managerStgStyle.css" />
+            <URL value="@../stylesheet (css)/managerStyles.css" />
          </stylesheets>
       </AnchorPane>
       <Line endX="1207.4000244140625" endY="135.2928924560547" layoutY="7.0" startX="220.99998474121094" startY="135.2928924560547" />

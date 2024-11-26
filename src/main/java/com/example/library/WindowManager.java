@@ -44,7 +44,6 @@ public class WindowManager {
     public static void navigateTo(Scene newScene) {
         if (stage.getScene() != null) {
             sceneStack.push(stage.getScene());
-            //System.out.println(sceneStack.peek());
         }
         stage.setScene(newScene);
     }
