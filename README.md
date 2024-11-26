@@ -106,7 +106,7 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
   - **Helps** gồm 2 phần là gửi ý kiến của bạn và hướng dẫn sử dụng. Bạn có thể viết ý kiến, đánh giá, góp ý cho chúng tôi để chúng tôi có thể hoàn thiện app hơn. Nếu bạn chưa biết cách sử dụng, có thể bấm vào nút *Open* để xem hướng dẫn của chúng tôi trên Youtube.
   - **Upgrade** là nơi người dùng có thể xem gói **Ultimate** của chúng tôi, gồm những cải tiến khi mua gói. Ở đây chúng tôi có QR để người dùng tiện giao dịch. Nhớ ấn *Upgrade* rồi checkmail và nhé.
 ####  d. Game *"Black Myth Wukong"*
-  - Giới thiệu : Black Myth Wukong - điều khiển nhân vật Wukong đình đám đánh bại yêu quái, vượt qua những câu hỏi kiến thức và fact liên quan đến sách.
+  - Giới thiệu: Black Myth Wukong : hóa thân thành nhân vật Tề Thiên Đại Thánh gắn liền với tuổi thơ chúng ta, đối đầu yêu quái và vượt qua những câu hỏi hóc búa về sách và lập trình hướng đối tượng.
   - Gameplay :
     + Ấn *W A S D* để điều khiển nhân vật, *Space* để attack
     + Game có tổng cộng 5 màn, tương ứng là 5 câu hỏi (random trong list).
@@ -116,10 +116,10 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
     + Bấm *P* -> pause, sau khi bấm *P* có thể bấm *R* ->restart, *M*->menu, nếu thắng 1 màn chơi có thể bấm *N*-> next level, qua 5 màn thì sẽ hiện ra màn hình victory chúc mừng.
   - Cơ chế tặng quà : chơi qua thắng game 1 lần -> tặng quà đầu tiên, thắng > 3 lần tặng quà thứ 2, quà là nhạc nền bí mật sẽ tạo nhiều bất ngờ cho bạn.
     + Vào *Setting* -> music để xem số lần thắng.
-<br> *Chúc bạn dùng app vui vẻ!!!*
+<br> *Chúc bạn có những trải nghiệm vui vẻ khi sử dụng thư viện!!!*
 ### 2. Người quản lý (Manager)
 ####  a. Đăng kí và đăng nhập
-  - Manager sẽ chỉ đăng kí được khi đã có đầy đủ thông tin trong file (https://github.com/danqNg0911/LibraryManagement/blob/main/data/ListOfManagers.txt)
+  - Manager sẽ chỉ đăng kí được khi đã có đầy đủ thông tin trong tệp [ListOfManagers.txt](https://github.com/danqNg0911/LibraryManagement/blob/main/data/ListOfManagers.txt)
   - Đăng kí như User (Lưu ý là bắt buộc phải nhập thông tin chính xác theo file và chọn manager ở phần *Resigter*)
   - Đăng nhập tương tự như User
 ####  b. Sử dụng các chức năng thư viện
@@ -129,9 +129,33 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
   - **Setting** là nơi thủ thư xem thông tin tài khoản của mình và có thể chỉnh sửa thông tin như : *Name*, *Password*, *Security questions*, *Phone và Email*. 
 ####  c. Chức năng *Trợ giúp* 
   - Tương tự với phần User
+
 # 🐸Minh họa dự án 
 
-[![HAY THAY DOI ID DE UPLOAD VIDEO CUA BAN](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+### Hướng dẫn sử dụng thư viện dành cho người dùng (user)
+<div align="center">
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="Video Thumbnail">
+    </a>
+</div>
+
+### Hướng dẫn chơi trò chơi Black Myth Wukong
+<div align="center">
+    <a href="https://www.youtube.com/watch?v=P6R0NnfDwZg">
+        <img src="https://img.youtube.com/vi/P6R0NnfDwZg/0.jpg" alt="Video Thumbnail">
+    </a>
+</div>
+
+### Hướng dẫn sử dụng thư viện dành cho người quản lý (manager)
+<div align="center">
+    <a href="https://www.youtube.com/watch?v=RbJqQMXwG2M&t=252s">
+        <img src="https://img.youtube.com/vi/RbJqQMXwG2M/0.jpg" alt="Video Thumbnail">
+    </a>
+</div>
+
+
+
+
 
 # 🔭Cải tiến trong tương lai
 1. Tích hợp Chatbot AI: Sử dụng trí tuệ nhân tạo để giúp người dùng tìm kiếm sách dựa trên sở thích.
