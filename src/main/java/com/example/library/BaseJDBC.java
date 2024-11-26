@@ -185,7 +185,7 @@ abstract class BaseJDBC {
             sqlStatement.setString(1, ques1);
             sqlStatement.setString(2, ques2);
             sqlStatement.setString(3, ques3);
-            sqlStatement.setString(2, username);
+            sqlStatement.setString(4, username);
 
             int rowsUpdated = sqlStatement.executeUpdate();
 

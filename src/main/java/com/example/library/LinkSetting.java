@@ -4,18 +4,18 @@ public enum LinkSetting {
 
     API_URL("AIzaSyCZ9Ee9DuenXY5gvW6IcKh_NhTMnB5U4qM"),
 
-    DATABASE_USER_URL("jdbc:mysql://127.0.0.1:3306/useraccount"),
+    DATABASE_USER_URL("jdbc:mysql://localhost:3306/librarymanagement"),
     DATABASE_USER_NAME("root"),
-    DATABASE_USER_PASSWORD("Haidang0911."),
+    DATABASE_USER_PASSWORD("Hieu@123456"),
 
-    DATABASE_MANAGER_URL("jdbc:mysql://127.0.0.1:3306/manageraccount"),
+    DATABASE_MANAGER_URL("jdbc:mysql://localhost:3306/librarymanagement"),
     DATABASE_MANAGER_NAME("root"),
-    DATABASE_MANAGER_PASSWORD("Haidang0911."),
+    DATABASE_MANAGER_PASSWORD("Hieu@123456"),
 
-    MANAGER_LIST_FILE_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\ListOfManagers.txt"),
-    CATEGORY_LIST_FILE_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\CategorySuggestion.txt"),
-    TITLE_LIST_FILE_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\TitleSuggestion.txt"),
-    AUTHOR_LIST_FILE_PATH("F:\\OOP\\LibraryManagement_Ulib\\LibraryManagement\\data\\AuthorSuggestion.txt"),
+    MANAGER_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\ListOfManagers.txt"),
+    CATEGORY_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\CategorySuggestion.txt"),
+    TITLE_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\TitleSuggestion.txt"),
+    AUTHOR_LIST_FILE_PATH("D:\\LibraryManagement\\LibraryManagement\\data\\AuthorSuggestion.txt"),
 
 
     DEFAULT_COVER_IMAGE("/com/example/library/assets/default_cover.png"),

@@ -42,9 +42,6 @@ public class BookItemController {
 
     private Book book;
 
-    @FXML
-    private Button deleteButton;
-
     public void setBook(Book book) {
         this.book = book;
         bookTitle.setText(book.getTitle());
@@ -100,19 +97,6 @@ public class BookItemController {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "You have added a book", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book had already been added to your library", "stylesheet (css)/login_alert.css");
-        }
-    }
-
-    public void deleteBook(ActionEvent event) {
-        String username = user.getUsername();
-        String title = book.getTitle();
-        String author = book.getAuthor();
-        int id = book.getId();
-        if (!BookJDBC.checkBook(username, title, author)) {
-            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "This book hasn't been added to your library", "stylesheet (css)/login_alert.css");
-        } else {
-            BookJDBC.deleteBookFromDatabase(username, title, author, id);
-            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Announcement", "Successfully removing this book from your library", "stylesheet (css)/login_alert.css");
         }
     }
 }

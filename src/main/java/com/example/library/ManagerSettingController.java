@@ -98,22 +98,6 @@ public class ManagerSettingController extends ManagerController implements BaseS
     protected Button changeAnswerButton;
 
     @FXML
-    private ImageView MBPic;
-
-    @FXML
-    private ImageView MUPic;
-
-
-    @FXML
-    private Button accSetButton;
-
-    @FXML
-    private VBox accVBox;
-
-    @FXML
-    private Button accountButton;
-
-    @FXML
     private Label accountName;
 
     @FXML
@@ -121,7 +105,6 @@ public class ManagerSettingController extends ManagerController implements BaseS
 
     @FXML
     private VBox answersVbox;
-
 
     @FXML
     private Button changeEmailButton;
@@ -163,30 +146,6 @@ public class ManagerSettingController extends ManagerController implements BaseS
     private Label currentUserameLabel;
 
     @FXML
-    private ImageView dashboardPic11;
-
-    @FXML
-    private Label dashboardTitle;
-
-    @FXML
-    private Button helpsButton;
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private AnchorPane mainSce;
-
-    @FXML
-    private Button manageBooksButton;
-
-    @FXML
-    private Button manageUsersButton;
-
-    @FXML
     private Button nameButton;
 
     @FXML
@@ -215,12 +174,6 @@ public class ManagerSettingController extends ManagerController implements BaseS
 
     @FXML
     private VBox phonemailVbox;
-
-    @FXML
-    private Button settingButton;
-
-    @FXML
-    private ImageView settingPic;
 
 
     public void showAnimationStg(MouseEvent event) {
