@@ -69,32 +69,32 @@
                                         <Font name="System Bold" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="53.0" layoutY="61.0" text="- Dark mode">
+                                <Label layoutX="53.0" layoutY="61.0" text="- Cross-platform feature">
                                     <font>
                                         <Font name="System Italic" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="53.0" layoutY="86.0" text="- Multi-user management">
+                                <Label layoutX="53.0" layoutY="86.0" text="- Multi-language interface">
                                     <font>
                                         <Font name="System Italic" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="53.0" layoutY="110.0" text="- Update password through email">
+                                <Label layoutX="53.0" layoutY="110.0" text="- Library expansion">
                                     <font>
                                         <Font name="System Italic" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="53.0" layoutY="134.0" text="- Centralized management dashboard">
+                                <Label layoutX="53.0" layoutY="134.0" text="- Perfomance improvements">
                                     <font>
                                         <Font name="System Italic" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="53.0" layoutY="158.0" text="- Custom imports">
+                                <Label layoutX="53.0" layoutY="158.0" text="- Create an online reading community">
                                     <font>
                                         <Font name="System Italic" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="53.0" layoutY="181.0" text="- Priority support">
+                                <Label layoutX="53.0" layoutY="181.0" text="- QR code scanning ">
                                     <font>
                                         <Font name="System Italic" size="13.0" />
                                     </font>
