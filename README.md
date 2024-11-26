@@ -101,9 +101,10 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
   - **Dashboard** là nơi hiển thị mọi thông tin của bạn, bạn có thể xem thông tin tài khoản (Your information), lượng sách đã mượn qua biểu đồ. Ngoài ra, bạn có thể xem video giới thiệu về ULib và trải nghiệm AI khi bấm vào cửa sổ AI bên phải màn hình.
   - **Library** là thư viện của chúng tôi (sử dụng API của Google), bạn có thể tìm sách theo ISBN, tiêu đề, tác giả, thể loại. Thư viện có tích hợp gợi ý để bạn dễ dàng tìm kiếm hơn. Ấn *Search* để tìm sách. Bạn cũng có thể xem tổng quan về sách khi ấn *View*, ấn *Add* để thêm sách vào bộ sưu tập cá nhân, hoặc ấn *Delete* nếu thêm nhầm.
   - **Collection** là nơi bạn có thể xem bộ sưu tập của bạn, ngoài ra có thể xem những bộ sưu tập khác theo nhiều chủ đề khác nhau. Trước hết với *My collection*, bạn có thể xem toàn bộ số sách bạn đã mượn được sắp xếp theo Alphabet ở khung hình bên trái. Bạn có thể tìm kiếm sách tong bộ sưu tập theo tiêu đề, tác giả, thể loại, sau đó bấm biểu tượng *Tìm kiếm* để hiển thị. Ngoài ra bạn có thể lọc sách qua chức năng *Filters*. Bạn cũng có thể tự thêm sách vào bộ sưu tập của mình khi bấm vào nút *Add your own book* (lưu ý sách mà bạn thêm thì bạn có thể chỉnh sửa và update).
-  - **Setting** là phần cài đặt. Ở đây có 2 phần là cài đặt thông tin tài khoản và cài đặt cá nhân. Bạn có thể chỉnh sửa thông tin cá nhân như *Name*, *Username*, *Security Questions* hay *Phone, Email*ở phần *Account settings* (Lưu ý cần nhập đúng mật khẩu hiện tại và tuân thủ các quy tắc như phần đăng ký). Ở phần cài đặt cá nhân, bạn có thể chọn avatar cho account của bạn khi ấn vào 1 trong 10 bức ảnh và *Accept*. Ngoài ra, chúng tôi còn cung cấp chức năng nghe nhạc khi bạn sử dụng thư viện, bạn có thể chọn phát bài nhạc yêu thích ở playlist và nghe nó trong khi sử dụng app.
+  - **Setting** là phần cài đặt. Ở đây có 2 phần là cài đặt thông tin tài khoản và cài đặt cá nhân. Bạn có thể chỉnh sửa thông tin cá nhân như *Name*, *Username*, *Security Questions* hay *Phone, Email* ở phần *Account settings* (Lưu ý cần nhập đúng mật khẩu hiện tại và tuân thủ các quy tắc như phần đăng ký). Ở phần cài đặt cá nhân, bạn có thể chọn avatar cho account của bạn khi ấn vào 1 trong 10 bức ảnh và *Accept*. Ngoài ra, chúng tôi còn cung cấp chức năng nghe nhạc khi bạn sử dụng thư viện, bạn có thể chọn phát bài nhạc yêu thích ở playlist và nghe nó trong khi sử dụng app.
 ####  c. Chức năng *Trợ giúp* và *Nâng cấp*
   - **Helps** gồm 2 phần là gửi ý kiến của bạn và hướng dẫn sử dụng. Bạn có thể viết ý kiến, đánh giá, góp ý cho chúng tôi để chúng tôi có thể hoàn thiện app hơn. Nếu bạn chưa biết cách sử dụng, có thể bấm vào nút *Open* để xem hướng dẫn của chúng tôi trên Youtube.
+  - **Upgrade** là nơi người dùng có thể xem gói **Ultimate** của chúng tôi, gồm những cải tiến khi mua gói. Ở đây chúng tôi có QR để người dùng tiện giao dịch. Nhớ ấn *Upgrade* rồi checkmail và nhé.
 ####  d. Game *"Black Myth Wukong"*
   - Giới thiệu : Black Myth Wukong - điều khiển nhân vật Wukong đình đám đánh bại yêu quái, vượt qua những câu hỏi kiến thức và fact liên quan đến sách.
   - Gameplay :
@@ -115,12 +116,19 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
     + Bấm *P* -> pause, sau khi bấm *P* có thể bấm *R* ->restart, *M*->menu, nếu thắng 1 màn chơi có thể bấm *N*-> next level, qua 5 màn thì sẽ hiện ra màn hình victory chúc mừng.
   - Cơ chế tặng quà : chơi qua thắng game 1 lần -> tặng quà đầu tiên, thắng > 3 lần tặng quà thứ 2, quà là nhạc nền bí mật sẽ tạo nhiều bất ngờ cho bạn.
     + Vào *Setting* -> music để xem số lần thắng.
-*Chúc bạn dùng app vui vẻ!!!*
+<br> *Chúc bạn dùng app vui vẻ!!!*
 ### 2. Người quản lý (Manager)
 ####  a. Đăng kí và đăng nhập
+  - Manager sẽ chỉ đăng kí được khi đã có đầy đủ thông tin trong file (https://github.com/danqNg0911/LibraryManagement/blob/main/data/ListOfManagers.txt)
+  - Đăng kí như User (Lưu ý là bắt buộc phải nhập thông tin chính xác theo file và chọn manager ở phần *Resigter*)
+  - Đăng nhập tương tự như User
 ####  b. Sử dụng các chức năng thư viện
-####  c. *Trợ giúp* và *Nâng cấp*
-  _Ấn "Create account" để tạo tài khoản mới
+  - **Manager Users** là nơi mà người thủ thư có thể xem danh sách tất cả những người dùng thư viện, có thể xem thông tin tổng quát qua bảng, tìm kiếm bằng username. Người thủ thư có thể bấm vào ô 1 người dùng để xe chi tiết thông tin của người dùng, đồng thời có thể gửi email cho họ.
+  - **Manager Books** là nơi người thủ thư có thể xem dánh sách tất cả những cuốn sách đã mượn (kể cả sách người dùng tự thêm). Thủ thư có thể tìm kiếm theo username, tiêu đề, thể loại, tác giả, ngày thêm, hoặc có thể lọc sách để xem những sách hết hạn, quá hạn, sách tự thêm. Thủ thư có thể bấm vào ô sách cụ thể để xem tình trạng sách chi tiết.
+  - **Loan Books** là quản lý mượn trả. Người thủ thư có thể xem danh sách những cuốn sách mà người dùng đã trả. Ấn vào ô sách cụ thể, nếu sách bị *Overdue*, thủ thư có quyền phạt qua nút *Fine* (sách đúng hạn thủ thư sẽ không có quyền phạt). Thủ thư có thể quay lại **Manager User** và gửi mail cho User để phạt họ.
+  - **Setting** là nơi thủ thư xem thông tin tài khoản của mình và có thể chỉnh sửa thông tin như : *Name*, *Password*, *Security questions*, *Phone và Email*. 
+####  c. Chức năng *Trợ giúp* 
+  - Tương tự với phần User
 # 🐸Minh họa dự án 
 
 [![HAY THAY DOI ID DE UPLOAD VIDEO CUA BAN](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
