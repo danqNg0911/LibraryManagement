@@ -43,7 +43,7 @@
                 </image>
             </ImageView>
             <Button fx:id="accountButton" layoutX="812.0" layoutY="82.0" mnemonicParsing="false" onAction="#showOptionAccount" text="Account" />
-            <Pane layoutX="70.0" layoutY="192.0" prefHeight="228.0" prefWidth="411.0" styleClass="infoPane">
+            <Pane layoutX="70.0" layoutY="192.0" prefHeight="228.0" prefWidth="511.0" styleClass="infoPane">
                 <children>
                     <ImageView fx:id="currentAvatar1" fitHeight="80.0" fitWidth="80.0" layoutX="13.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -55,7 +55,7 @@
                             <Font name="System Bold" size="16.0" />
                         </font>
                     </Label>
-                    <Label fx:id="currentName1Label" layoutX="211.0" layoutY="26.0" prefHeight="27.0" prefWidth="156.0" text="Label">
+                    <Label fx:id="currentName1Label" layoutX="211.0" layoutY="26.0" prefHeight="27.0" prefWidth="289.0" text="Label">
                         <font>
                             <Font name="System Italic" size="16.0" />
                         </font>
@@ -65,7 +65,7 @@
                             <Font name="System Bold" size="16.0" />
                         </font>
                     </Label>
-                    <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="71.0" prefHeight="18.0" prefWidth="156.0" text="Label">
+                    <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="71.0" prefHeight="25.0" prefWidth="289.0" text="Label">
                         <font>
                             <Font name="System Italic" size="16.0" />
                         </font>
@@ -75,7 +75,7 @@
                             <Font name="System Bold" size="16.0" />
                         </font>
                     </Label>
-                    <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="169.0" prefHeight="18.0" prefWidth="156.0" text="Label">
+                    <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="169.0" prefHeight="25.0" prefWidth="289.0" text="Label">
                         <font>
                             <Font name="System Italic" size="16.0" />
                         </font>
@@ -85,7 +85,7 @@
                             <Font name="System Bold" size="16.0" />
                         </font>
                     </Label>
-                    <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="120.0" prefHeight="25.0" prefWidth="190.0" text="Label">
+                    <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="120.0" prefHeight="25.0" prefWidth="289.0" text="Label">
                         <font>
                             <Font name="System Italic" size="16.0" />
                         </font>

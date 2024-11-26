@@ -219,26 +219,22 @@ public class UserSettingController extends UserController implements BaseSetting
      */
     @FXML
     public void handleChangeName(ActionEvent event) {
-        String newName = newNameField.getText(); // Lấy tên mới từ ô nhập
-        String currentPassword = currentPass1.getText(); // Lấy mật khẩu hiện tại từ ô nhập
+        String newName = newNameField.getText();
+        String currentPassword = currentPass1.getText();
 
-        boolean passwordCheck = false; // Biến kiểm tra mật khẩu hợp lệ
-        boolean success = user.nameUpdate(user.getUsername(), newName); // Cập nhật tên trong cơ sở dữ liệu
-
-        // Kiểm tra mật khẩu hiện tại
         if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
-            WindowManager.RedWarningLabel(currentPassWarning1, "Password is incorrect", 2); // Thông báo lỗi nếu sai mật khẩu
-        } else {
-            passwordCheck = true; // Đánh dấu mật khẩu hợp lệ
+            WindowManager.RedWarningLabel(currentPassWarning1, "Password is incorrect", 2);
+            return;
         }
 
-        // Nếu cập nhật thành công và mật khẩu hợp lệ
-        if (success && passwordCheck) {
+        boolean success = user.nameUpdate(user.getUsername(), newName);
+
+        if (success) {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Name", "Your name has been successfully changed", "stylesheet (css)/login_alert.css");
-            accountName.setText(newName); // Cập nhật tên hiển thị
+            accountName.setText(newName);
             currentNameLabel.setText(newName);
         } else {
-            WindowManager.RedWarningLabel(changeNameSuccessedLabel, "This name is invalid", 2); // Thông báo lỗi nếu tên không hợp lệ
+            WindowManager.RedWarningLabel(changeNameSuccessedLabel, "This name is invalid", 2);
         }
     }
 
@@ -247,46 +243,40 @@ public class UserSettingController extends UserController implements BaseSetting
      */
     @FXML
     public void handleChangePassword(ActionEvent event) {
-        String currentPassword = currentPass.getText(); // Mật khẩu hiện tại
-        String newPassword = newPass.getText(); // Mật khẩu mới
+        String currentPassword = currentPass.getText();
+        String newPassword = newPass.getText();
         String confirmPassword = confirmNewPass.getText(); // Xác nhận mật khẩu mới
-
-        boolean passwordCheck = false;
-        boolean newPasswordCheck = false;
-        boolean confirmPasswordCheck = false;
 
         // Kiểm tra mật khẩu hiện tại
         if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning, "Password is incorrect", 2);
-        } else {
-            passwordCheck = true; // Mật khẩu hợp lệ
+            return; // Dừng lại nếu mật khẩu hiện tại không đúng
         }
 
         // Kiểm tra mật khẩu mới
-        if (passwordCheck && newPassword.isEmpty()) {
+        if (newPassword.isEmpty()) {
             WindowManager.RedWarningLabel(newPassWarning, "This information is required", 2);
-        } else if (passwordCheck && newPassword.length() < 8) {
+            return;
+        } else if (newPassword.length() < 8) {
             WindowManager.RedWarningLabel(newPassWarning, "Password must be over 8 characters", 2);
-        } else if (passwordCheck && newPassword.equals(user.getPassword(user.getUsername()))) {
+            return;
+        } else if (newPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(newPassWarning, "New password must be different from the current password", 2);
-        } else {
-            newPasswordCheck = true; // Mật khẩu mới hợp lệ
+            return;
         }
 
         // Kiểm tra xác nhận mật khẩu mới
-        if (passwordCheck && confirmPassword.isEmpty()) {
+        if (confirmPassword.isEmpty()) {
             WindowManager.RedWarningLabel(confirmPassWarning, "This information is required", 2);
-        } else if (passwordCheck && newPasswordCheck && !confirmPassword.equals(newPassword)) {
+            return;
+        } else if (!confirmPassword.equals(newPassword)) {
             WindowManager.RedWarningLabel(confirmPassWarning, "Password must be the same", 2);
-        } else {
-            confirmPasswordCheck = true; // Xác nhận mật khẩu hợp lệ
+            return;
         }
 
         // Nếu tất cả kiểm tra đều hợp lệ
-        if (passwordCheck && newPasswordCheck && confirmPasswordCheck) {
-           userJDBC.passwordUpdate(user.getUsername(), newPassword);
-            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet (css)/login_alert.css");
-        }
+        userJDBC.passwordUpdate(user.getUsername(), newPassword);
+        WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet (css)/login_alert.css");
     }
 
     /**
@@ -294,76 +284,61 @@ public class UserSettingController extends UserController implements BaseSetting
      */
     @FXML
     public void handleChangeAnswers(ActionEvent event) {
-        WindowManager.playButtonSound(); // Phát âm thanh khi nhấn nút
-        String question1 = Q1Field.getText(); // Câu hỏi bảo mật 1
-        String question2 = Q2Field.getText(); // Câu hỏi bảo mật 2
-        String question3 = Q3Field.getText(); // Câu hỏi bảo mật 3
-        String currentPassword = currentPass2.getText(); // Mật khẩu hiện tại
+        WindowManager.playButtonSound();
+        String question1 = Q1Field.getText();
+        String question2 = Q2Field.getText();
+        String question3 = Q3Field.getText();
+        String currentPassword = currentPass2.getText();
 
-        boolean passwordCheck = false;
-        boolean question1Check = false;
-        boolean question2Check = false;
-        boolean question3Check = false;
-
-        // Kiểm tra mật khẩu hiện tại
         if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning2, "Password is incorrect", 2);
-        } else {
-            passwordCheck = true;
+            return;
         }
 
-        // Kiểm tra câu hỏi bảo mật 1
-        if (passwordCheck && question1.isEmpty()) {
+        if (question1.isEmpty()) {
             WindowManager.RedWarningLabel(question1Warning, "This information is required", 2);
-        } else {
-            question1Check = true;
+            return;
         }
 
-        // Kiểm tra câu hỏi bảo mật 2
-        if (passwordCheck && question2.isEmpty()) {
+        if (question2.isEmpty()) {
             WindowManager.RedWarningLabel(question2Warning, "This information is required", 2);
-        } else {
-            question2Check = true;
+            return;
         }
 
-        // Kiểm tra câu hỏi bảo mật 3
-        if (passwordCheck && question3.isEmpty()) {
+        if (question3.isEmpty()) {
             WindowManager.RedWarningLabel(question3Warning, "This information is required", 2);
-        } else {
-            question3Check = true;
+            return;
         }
 
-        // Nếu tất cả thông tin đều hợp lệ
-        if (passwordCheck && question1Check && question2Check && question3Check) {
-            userJDBC.securityQuestionsUpdate(user.getUsername(), question1, question2, question3);
-            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change security answers", "Your security answers have been successfully changed", "stylesheet (css)/login_alert.css");
-        }
+        userJDBC.securityQuestionsUpdate(user.getUsername(), question1, question2, question3);
+        WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change security answers", "Your security answers have been successfully changed", "stylesheet (css)/login_alert.css");
     }
 
-    // Thay phone number
     public void handleChangePhone(ActionEvent event) {
         WindowManager.playButtonSound();
         String newPhonenum = newPhoneField.getText();
         String currentPassword = currentPass3.getText();
 
-        boolean passwordCheck = false;
-        // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
-        boolean success = user.phoneNumUpdate(user.getUsername(),newPhonenum); // Cập nhật tên trong DBif (newName.isEmpty()) {
-
-        // check password hiện tại
         if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning3, "Password is incorrect", 2);
-        } else {
-            passwordCheck = true;
+            return;
         }
 
-        if (success && passwordCheck) {
-            // Nếu cập nhật thành công, hiện ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
+        if (newPhonenum.isEmpty()) {
+            WindowManager.RedWarningLabel(newPhoneWarning, "This information is required", 2);
+            return;
+        }
+
+        if (newPhonenum.length() != 10) {
+            WindowManager.RedWarningLabel(newPhoneWarning, "Phone number must be 10 characters", 2);
+            return;
+        }
+
+        boolean success = user.phoneNumUpdate(user.getUsername(), newPhonenum);
+
+        if (success) {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Phone Number", "Your phone number has been successfully changed", "stylesheet (css)/login_alert.css");
-            PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
-
         } else {
-
             WindowManager.RedWarningLabel(newPhoneWarning, "This phone is invalid", 2);
         }
     }
@@ -374,22 +349,25 @@ public class UserSettingController extends UserController implements BaseSetting
         String newEmail = newEmailField.getText();
         String currentPassword = currentPass3.getText();
 
-        boolean passwordCheck = false;
-        // Cập nhật tên mới trong cơ sở dữ liệu (giả sử có phương thức updateName trong User)
-        boolean success = user.emailUpdate(user.getUsername(), newEmail); // Cập nhật tên trong DBif (newName.isEmpty()) {
-
-        // check password hiện tại
         if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning3, "Password is incorrect", 2);
-        } else {
-            passwordCheck = true;
+            return;
         }
 
-        if (success && passwordCheck) {
-            // Nếu cập nhật thành công, hieenj ra thong bao và thay đổi tên trong giao diện ngược lại thong bao loi
-            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Email", "Your email has been successfully changed", "stylesheet (css)/login_alert.css");
-            PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(2));
+        if (newEmail.isEmpty()) {
+            WindowManager.RedWarningLabel(newEmailWarning, "This information is required", 2);
+            return;
+        }
 
+        if (!newEmail.contains("@")) {
+            WindowManager.RedWarningLabel(newEmailWarning, "Your new email is invalid", 2);
+            return;
+        }
+
+        boolean success = user.emailUpdate(user.getUsername(), newEmail); // Thực hiện cập nhật
+
+        if (success) {
+            WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Change Email", "Your email has been successfully changed", "stylesheet (css)/login_alert.css");
         } else {
             WindowManager.RedWarningLabel(newEmailWarning, "This email is invalid", 2);
         }
@@ -431,11 +409,11 @@ public class UserSettingController extends UserController implements BaseSetting
     }
 
     public void pauseMusic(ActionEvent event) {
-        if (!isPause && isPlay) { // Nếu đang phát -> tạm dừng
+        if (!isPause && isPlay) {
             WindowManager.pauseMusic();
             buttonPause.setText("Resume");
             isPause = true;
-        } else if (isPause && isPlay) { // Nếu đang tạm dừng -> tiếp tục phát
+        } else if (isPause && isPlay) {
             WindowManager.resumeMusic();
             buttonPause.setText("Pause");
             isPause = false;

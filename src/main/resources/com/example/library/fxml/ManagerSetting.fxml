@@ -54,7 +54,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentName1Label" layoutX="211.0" layoutY="30.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                  <Label fx:id="currentName1Label" layoutX="211.0" layoutY="30.0" prefHeight="20.0" prefWidth="204.0" text="Label">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="60.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                  <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="60.0" prefHeight="20.0" prefWidth="204.0" text="Label">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
@@ -84,7 +84,7 @@
                         <Font name="System Italic" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="120.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                  <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="120.0" prefHeight="20.0" prefWidth="204.0" text="Label">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>

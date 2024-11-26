@@ -60,7 +60,7 @@
                                                                         <Font name="System Bold" size="13.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label fx:id="currentPassWarning1" layoutX="362.0" layoutY="87.0" prefHeight="18.0" prefWidth="191.0" />
+                                                                <Label fx:id="currentPassWarning1" layoutX="362.0" layoutY="87.0" prefHeight="18.0" prefWidth="191.0" textFill="#c90b0b" />
                                                                 <PasswordField fx:id="currentPass1" layoutX="343.0" layoutY="58.0" prefHeight="26.0" prefWidth="237.0" styleClass="field" />
                                                                 <TextField fx:id="newNameField" layoutX="343.0" layoutY="160.0" prefHeight="26.0" prefWidth="237.0" styleClass="field" />
                                                                 <Button fx:id="changeNameButton" layoutX="368.0" layoutY="213.0" mnemonicParsing="false" onAction="#handleChangeName" prefHeight="26.0" prefWidth="74.0" styleClass="changeButton" text="Change" />
