@@ -50,7 +50,7 @@
                                         <Font name="System Bold" size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="managerEmail" layoutX="141.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Label">
+                                <Label fx:id="managerEmail" layoutX="141.0" layoutY="40.0" prefHeight="21.0" prefWidth="243.0" text="Label">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -60,12 +60,12 @@
                                         <Font name="System Bold" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="userEmail" layoutX="141.0" layoutY="93.0" prefHeight="17.0" prefWidth="192.0" text="Label">
+                                <Label fx:id="userEmail" layoutX="141.0" layoutY="93.0" prefHeight="21.0" prefWidth="243.0" text="Label">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="openMail" layoutX="165.0" layoutY="150.0" mnemonicParsing="false" onAction="#openMail" styleClass="eventButton" text="Button" />
+                                <Button fx:id="openMail" layoutX="165.0" layoutY="150.0" mnemonicParsing="false" onAction="#openMail" styleClass="eventButton" text="Send" />
                             </children>
                         </Pane>
                         <Button fx:id="backButton" layoutX="870.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToPreviousStage" text="← Back">
@@ -95,7 +95,7 @@
                                 <Font name="System Bold" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="currentName1Label" layoutX="211.0" layoutY="30.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentName1Label" layoutX="211.0" layoutY="30.0" prefHeight="20.0" prefWidth="229.0" text="Label">
                             <font>
                                 <Font name="System Italic" size="13.0" />
                             </font>
@@ -120,22 +120,22 @@
                                 <Font name="System Bold" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="60.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentUserameLabel" layoutX="211.0" layoutY="60.0" prefHeight="20.0" prefWidth="229.0" text="Label">
                             <font>
                                 <Font name="System Italic" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentEmailLabel" layoutX="211.0" layoutY="90.0" prefHeight="20.0" prefWidth="229.0" text="Label">
                             <font>
                                 <Font name="System Italic" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="120.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentPhoneLabel" layoutX="211.0" layoutY="120.0" prefHeight="20.0" prefWidth="229.0" text="Label">
                             <font>
                                 <Font name="System Italic" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="currentBorrowedLabel" layoutX="211.0" layoutY="150.0" prefHeight="20.0" prefWidth="192.0" text="Label">
+                        <Label fx:id="currentBorrowedLabel" layoutX="211.0" layoutY="150.0" prefHeight="20.0" prefWidth="229.0" text="Label">
                             <font>
                                 <Font name="System Italic" size="13.0" />
                             </font>
