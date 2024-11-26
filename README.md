@@ -134,8 +134,8 @@ Với thư viện điện tử Ulib, quản lý thư viện không chỉ là cô
 
 ### Hướng dẫn sử dụng thư viện dành cho người dùng (user)
 <div align="center">
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="Video Thumbnail">
+    <a href="https://www.youtube.com/watch?v=zE4Mjy-rs-8">
+        <img src="https://img.youtube.com/vi/zE4Mjy-rs-8/0.jpg" alt="Video Thumbnail">
     </a>
 </div>
 
