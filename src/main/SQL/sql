@@ -29,17 +29,17 @@ CREATE TABLE IF NOT EXISTS books (
 );
 
 create table loanBooks (
-	username varchar(20),
+    username varchar(20),
     bookId int null,
     id int NOT NULL AUTO_INCREMENT,
-	title varchar(120) DEFAULT NULL,
-	author varchar(50) DEFAULT NULL,
-	category varchar(50) DEFAULT NULL,
-	imageUrl varchar(255) DEFAULT NULL,
-	borrowedDate date DEFAULT NULL,
+    title varchar(120) DEFAULT NULL,
+    author varchar(50) DEFAULT NULL,
+    category varchar(50) DEFAULT NULL,
+    imageUrl varchar(255) DEFAULT NULL,
+    borrowedDate date DEFAULT NULL,
     returnedDate date Default null,
     fineAmount Double DEFAULT NULL,
-	PRIMARY KEY (id)
+    PRIMARY KEY (id)
  );
 
 
