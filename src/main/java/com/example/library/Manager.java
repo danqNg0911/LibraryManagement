@@ -59,22 +59,6 @@ public class Manager extends BaseJDBC implements LinkJDBC{
         Manager.username = username;
     }
 
-    /*public String getName() {
-        return userJDBC.getName(username);
-    }*/
-
-    /*public static void setName(String username) {
-        User.username = username;
-    }*/
-
-    /*public String getPassword() {
-        return userJDBC.getPassword(username);
-    }*/
-
-    /*public static void setPassword(String username) {
-        User.username = username;
-    }*/
-
     public boolean nameUpdate(String username, String newName) {
         if (managerJDBC.nameUpdate(username, newName)) {
             return true;

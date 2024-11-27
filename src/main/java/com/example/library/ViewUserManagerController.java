@@ -144,42 +144,32 @@ public class ViewUserManagerController extends ManagerController {
     }
 
     public void backToPreviousStage(ActionEvent event) throws IOException {
-        //WindowManager.addFxmlCss("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800);
         WindowManager.goBack();
     }
 
     public void showBarChart(UserAccount account) {
         System.out.println(account.getUsername());
 
-        // Xóa dữ liệu cũ nếu có
         rollingYearChart.getData().clear();
 
-        // Tạo series dữ liệu
         XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
         dataSeries.setName("Number of books added by days");
 
         try {
-            // Lấy dữ liệu từ cơ sở dữ liệu
             Map<String, Integer> books = BookJDBC.getBooksByDay(account.getUsername());
-
 
             Map<String, Number> fullData = new HashMap<>(books);
 
-            // Sắp xếp dữ liệu theo ngày
             List<Map.Entry<String, Number>> sortedData = new ArrayList<>(fullData.entrySet());
             sortedData.sort(Map.Entry.comparingByKey());
 
-            // Thêm dữ liệu vào series
             for (Map.Entry<String, Number> entry : sortedData) {
                 String day = entry.getKey();
                 Number count = entry.getValue();
-                //System.out.println(day + "  " + count);
 
-                // Tạo đối tượng Data với giá trị Y ban đầu là 0
                 XYChart.Data<String, Number> data = new XYChart.Data<>(day, 0);
                 dataSeries.getData().add(data);
 
-//                // Tạo animation tăng giá trị từ 0 đến giá trị thực
                 Timeline timeline = new Timeline();
                 KeyValue kv = new KeyValue(data.YValueProperty(), count);
                 KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
@@ -192,13 +182,10 @@ public class ViewUserManagerController extends ManagerController {
             e.printStackTrace();
         }
 
-        // Thêm series vào biểu đồ
         rollingYearChart.getData().add(dataSeries);
 
-        // Đảm bảo trục Y tự động điều chỉnh theo dữ liệu
         rollingYearChart.getYAxis().setAutoRanging(true);
 
-        // Đảm bảo trục X hiển thị đầy đủ các ngày
         rollingYearChart.getXAxis().setAutoRanging(true);
     }
 

@@ -247,13 +247,11 @@ public class UserSettingController extends UserController implements BaseSetting
         String newPassword = newPass.getText();
         String confirmPassword = confirmNewPass.getText(); // Xác nhận mật khẩu mới
 
-        // Kiểm tra mật khẩu hiện tại
         if (!currentPassword.equals(user.getPassword(user.getUsername()))) {
             WindowManager.RedWarningLabel(currentPassWarning, "Password is incorrect", 2);
-            return; // Dừng lại nếu mật khẩu hiện tại không đúng
+            return;
         }
 
-        // Kiểm tra mật khẩu mới
         if (newPassword.isEmpty()) {
             WindowManager.RedWarningLabel(newPassWarning, "This information is required", 2);
             return;
@@ -265,7 +263,6 @@ public class UserSettingController extends UserController implements BaseSetting
             return;
         }
 
-        // Kiểm tra xác nhận mật khẩu mới
         if (confirmPassword.isEmpty()) {
             WindowManager.RedWarningLabel(confirmPassWarning, "This information is required", 2);
             return;
@@ -274,7 +271,6 @@ public class UserSettingController extends UserController implements BaseSetting
             return;
         }
 
-        // Nếu tất cả kiểm tra đều hợp lệ
         userJDBC.passwordUpdate(user.getUsername(), newPassword);
         WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Password Reset", "Your password has been successfully changed", "stylesheet (css)/login_alert.css");
     }

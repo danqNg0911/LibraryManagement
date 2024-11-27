@@ -31,14 +31,12 @@ public class UserCollectionClt1Controller extends UserCollectionCltController {
         baseCltInitialize();
     }
 
-    // Tải dữ liệu và cập nhật UI trong một thread riêng biệt
     @Override
     public void showCollectionData(ActionEvent actionEvent) throws IOException {
-        loadingIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS); // Chỉ định trạng thái quay không xác định
+        loadingIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
         loadingIndicator.setVisible(true);
-        mainSce.setEffect(new GaussianBlur(4)); // Mờ giao diện khi đang tải dữ liệu
+        mainSce.setEffect(new GaussianBlur(4));
 
-        // Tạo một task để tải dữ liệu từ cơ sở dữ liệu mà không làm gián đoạn giao diện
         Task<Void> loadDataTask = new Task<>() {
             @Override
             protected Void call() throws Exception {
@@ -58,7 +56,6 @@ public class UserCollectionClt1Controller extends UserCollectionCltController {
         };
 
         loadDataTask.setOnSucceeded(event -> {
-            // Cập nhật giao diện sau khi dữ liệu được tải về thành công
             Map<Character, List<Book>> BooksSortByTitle = sortByTitle(books);
             collectionBookContainer.getChildren().clear();
             for (Map.Entry<Character, List<Book>> entry : BooksSortByTitle.entrySet()) {
@@ -80,20 +77,16 @@ public class UserCollectionClt1Controller extends UserCollectionCltController {
                 }
             }
 
-            // Ẩn loading indicator và hủy hiệu ứng mờ
             loadingIndicator.setVisible(false);
             mainSce.setEffect(null);
         });
 
         loadDataTask.setOnFailed(event -> {
-            // Xử lý nếu có lỗi khi tải dữ liệu
             loadingIndicator.setVisible(false);
             mainSce.setEffect(null);
-            // Hiển thị thông báo lỗi hoặc thông báo người dùng
             System.out.println("Error loading data");
         });
 
-        // Chạy task trong một thread riêng
         new Thread(loadDataTask).start();
     }
 

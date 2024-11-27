@@ -37,7 +37,6 @@ public class UserCollectionController extends UserController {
             showDefaultCollectionData();
         } catch (IOException e) {
             System.out.println("class userCollectionController, line = 39");
-            //e.printStackTrace();
         }
     }
 

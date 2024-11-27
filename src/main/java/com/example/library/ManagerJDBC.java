@@ -16,7 +16,7 @@ public class ManagerJDBC extends BaseJDBC implements LinkJDBC {
         try (BufferedReader br = new BufferedReader(new FileReader(MANAGER_DATA_FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
-                listOfManager.add(line.trim());  // Thêm từng dòng vào listOfManager
+                listOfManager.add(line.trim());
             }
         } catch (IOException e) {
             System.out.println("loi file manager");
