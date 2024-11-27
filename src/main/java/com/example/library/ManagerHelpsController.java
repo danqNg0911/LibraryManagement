@@ -46,7 +46,6 @@ public class ManagerHelpsController extends ManagerController {
         WindowManager.playButtonSound();
         String url = "https://www.youtube.com/@phamhuy2195";
 
-        // Mở trình duyệt mặc định
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {

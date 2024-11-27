@@ -54,7 +54,7 @@ public class ManagerUserController extends ManagerController {
     }
 
     public void loadUserAccounts() throws SQLException {
-        User userDB = new User(); // Tạo đối tượng User để truy cập cơ sở dữ liệu user
+        User userDB = new User();
         String name = nameField.getText().trim();
         List<UserAccount> userAccounts = new ArrayList<>();
         if (name.isEmpty()) {
@@ -63,7 +63,6 @@ public class ManagerUserController extends ManagerController {
             userAccounts = userDB.searchUserAccounts(name);// Lấy tất cả user
         }
 
-        // Chuyển đổi List sang ObservableList và đưa vào TableView
         ObservableList<UserAccount> observableUserList = FXCollections.observableArrayList(userAccounts);
         userTable.setItems(observableUserList);
     }
@@ -103,7 +102,6 @@ public class ManagerUserController extends ManagerController {
                     } catch (SQLException e) {
                         System.out.println("loi BookJDBC.getTotalBorrowedBooks(...)");
                     }
-                    //controller.showBarChart(selectedUser);
 
                     Scene scene = new Scene(root, 1200, 800);
                     scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet (css)/managerStyles.css")).toExternalForm());
@@ -117,7 +115,6 @@ public class ManagerUserController extends ManagerController {
             }
         });
 
-        // Load dữ liệu
         loadUserAccounts();
     }
 }

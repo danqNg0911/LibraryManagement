@@ -118,7 +118,6 @@ public class WindowManager {
     public static void RedWarningLabel (Label label, String warningText, int SecondToDisplay) {
         label.setText(warningText);
 
-        // Ngắt hiển thị cảnh báo sau SecondToDisplay giây
         PauseTransition pause = new PauseTransition(Duration.seconds(SecondToDisplay));
         pause.setOnFinished(new EventHandler<ActionEvent>() {
             @Override

@@ -139,7 +139,6 @@ public class ViewItemController extends UserController {
 
     //back to previous stage
     public void backToPreviousStage(ActionEvent event) throws IOException {
-        //WindowManager.addFxmlCss("fxml/UserLibrary.fxml", "stylesheet (css)/userStyles.css", "stylesheet (css)/userLibStyle.css", 1200, 800);
         WindowManager.goBack();
     }
 

@@ -109,37 +109,32 @@ public class UserLibraryController extends UserController {
             WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "You must filled at least one field to search", "stylesheet (css)/login_alert.css");
         } else {
             loadingSearching.setVisible(true);
-            // làm mờ khi tìm kiếm
             mainSce.setEffect(new GaussianBlur(4));
 
-            // Sử dụng Task để tìm kiếm sách trên luồng nền
             Task<String> searchTask = new Task<>() {
                 @Override
                 protected String call() throws Exception {
-                    return API.searchBooks(title, author, category, isbn);  // Gọi API trên nền
+                    return API.searchBooks(title, author, category, isbn);
                 }
             };
 
-            // Khi task hoàn thành (onSucceeded), cập nhật UI
             searchTask.setOnSucceeded(e -> {
                 String jsonResponse = searchTask.getValue();
                 if (jsonResponse.isEmpty()) {
                     WindowManager.alertWindow(Alert.AlertType.INFORMATION, "Alert", "No books match your search in the current library", "stylesheet (css)/login_alert.css");
                 } else {
-                    updateBook(jsonResponse);  // Cập nhật sách vào giao diện
+                    updateBook(jsonResponse);
                 }
-                loadingSearching.setVisible(false);  // Ẩn biểu tượng loading sau khi hoàn thành
+                loadingSearching.setVisible(false);
                 mainSce.setEffect(null);
             });
 
-            // Nếu task gặp lỗi (onFailed), xử lý lỗi và tắt biểu tượng loading
             searchTask.setOnFailed(e -> {
                 loadingSearching.setVisible(false);
                 mainSce.setEffect(null);
                 WindowManager.alertWindow(Alert.AlertType.ERROR, "Error", "An error occurred during the search", "stylesheet (css)/login_alert.css");
             });
 
-            // Chạy task trên luồng nền
             new Thread(searchTask).start();
         }
     }
@@ -154,7 +149,7 @@ public class UserLibraryController extends UserController {
         }
 
         JsonArray items = jsonObject.getAsJsonArray("items");
-        booksContainer.getChildren().clear();  // Xóa kết quả cũ
+        booksContainer.getChildren().clear();
 
         if (items.size() == 0) {
             System.out.println("No books found");
@@ -172,14 +167,12 @@ public class UserLibraryController extends UserController {
             String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
             String imageUrl = getImageUrl(volumeInfo);
 
-            // Cung cấp giá trị cho timestamp (ví dụ như thời gian hiện tại)
             Date date = new Date(Timestamp.from(Instant.now()).getTime());
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/com/example/library/fxml/bookItem.fxml"));
 
             try {
-                // tao Hbox cho tung doi tuong
                 HBox bookItem = loader.load();
 
                 BookItemController controller = loader.getController();
@@ -225,7 +218,6 @@ public class UserLibraryController extends UserController {
 
     private List<String> loadSuggestions(String filePath) throws IOException {
         List<String> suggestionsList = new ArrayList<>();
-        //InputStream inputStream = getClass().getResourceAsStream(filePath);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
